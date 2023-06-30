@@ -1,0 +1,17 @@
+.DS_Store
+uni_modules
+node_modules/
+unpackage
+androidPrivacy.json
+package-lock.json
+.hbuilderx/
+
+
+# Editor directories and files
+.idea
+.vscode
+.hbuilderx
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
