@@ -15,11 +15,11 @@ interface url {
 }
 /**
  * @description 路由 router
- * @method push()
- * @method tab()
- * @method back()
- * @method reLaunch()
- * @method redirect()
+ * @method push() 关闭当前页面，返回上一页面或多级页面
+ * @method tab() 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。 
+ * @method back() 关闭当前页面，返回上一页面或多级页面
+ * @method reLaunch() 关闭所有页面，打开到应用内的某个页面。 
+ * @method redirect() 关闭当前页面，跳转到应用内的某个页面。
  */
 export default {
 	/**

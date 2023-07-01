@@ -38,11 +38,11 @@ export const clearStorage = (): void => {
 
 /**
  * @description 数据缓存 storage
- * @method get()
- * @method set()
- * @method remove()
- * @method getAll()
- * @method clear()
+ * @method get() 获取 从本地缓存中同步获取指定 key 对应的内容。
+ * @method set() 设置 将 data 存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的内容，这是一个同步接口。
+ * @method remove() 删除 从本地缓存中同步移除指定 key。
+ * @method getAll() 获取所有 同步获取当前 storage 的相关信息。
+ * @method clear() 清除所有 同步清理本地数据缓存。
  */
 export default {
 	/**
