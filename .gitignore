@@ -1,5 +1,4 @@
 .DS_Store
-uni_modules
 node_modules/
 unpackage
 androidPrivacy.json
