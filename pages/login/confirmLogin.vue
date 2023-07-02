@@ -15,6 +15,7 @@
 	import storage from '@/utils/storage';
 	import {qrConfirmLogin,qrCancelLogin} from '@/api/user'
 	let loading = ref<boolean>(false)
+	let status = ref<number>(0)
 	let loginText = computed(()=>{
 		return loading.value ? '授权登录中....' : '授权登录'
 	})
@@ -23,6 +24,7 @@
 		loading.value = true
 		qrConfirmLogin({qrcodeId:qrCode.qrcodeId}).then(res=>{
 			console.log(res);
+			status.value = res.data.status
 			router.back()
 		}).catch((err) => {
 		  console.log(err);
@@ -31,6 +33,7 @@
 		})
 	}
 	let cancel = ()=>{
+		if(status.value === 3) return
 		qrCancelLogin({qrcodeId:qrCode.qrcodeId}).then(res=>{
 			console.log(res);
 		}).catch((err) => {
@@ -39,7 +42,7 @@
 			router.back()
 		})
 	}
-	onUnload(()=>{ 
+	onUnload(()=>{
 		cancel()
 	})	
 </script>
