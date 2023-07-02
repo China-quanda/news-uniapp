@@ -14,7 +14,7 @@
 				timeout: config.timeout || requestConfig.timeout,
 				data: config.data,
 				header: {
-					// 'Authorization': storage.get('token') || null,
+					'Authorization': storage.get('token') || null,
 					...config.header
 				},
 				dataType: requestConfig.dataType,
@@ -32,7 +32,7 @@
 							duration: 2000
 						});
 					}
-					if (res.data.code == 200) {
+					if (res.data.code == 200 || res.data.code == 0) {
 						resolve(res.data);
 					} else if (res.data.code == 400) {
 						reject('400')
