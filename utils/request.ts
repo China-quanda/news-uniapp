@@ -7,7 +7,6 @@
 				title: '加载中'
 			});
 		}
-		console.log(config);
 		return new Promise((resolve, reject) => {
 			uni.request({
 				url: config.baseUrl || requestConfig.baseUrl + config.url,
@@ -80,8 +79,6 @@
 					});
 				},
 				complete: res => {
-					console.log('complete',res);
-					console.log('config',config);
 					if (res.statusCode == '500') {
 						reject('服务器开小差了,请稍后再试')
 						uni.showToast({
