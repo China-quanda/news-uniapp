@@ -54,9 +54,10 @@ export default {
 	get: (name: string): any => {
 		try {
 			const data = uni.getStorageSync(name);
-			return JSON.parse(data);
+			return data ? JSON.parse(data) :false;
 		} catch (e) {
-			return data;
+			const data = uni.getStorageSync(name);
+			return data ? data : false;
 		}
 	},
 	/**
