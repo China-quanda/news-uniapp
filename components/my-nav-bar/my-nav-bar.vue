@@ -1,7 +1,5 @@
+<!-- 发现bug；当父组件传入左侧插槽时，还会触发返回上一页，暂时解决办法是绑定clickLeft不执行操作 -->
 <template>
-	<view class="">
-		{{title}}
-	</view>
 	<view class="my-navBar">
 		<uni-nav-bar 
 		@clickLeft="clickLeft" 
@@ -18,11 +16,13 @@
 		:border="border"
 		:height="height"
 		:color="color"
+		:leftWidth="leftWidth"
+		:rightWidth="rightWidth"
 		>
 		<block v-slot:left>
 			<slot name="left"></slot>
 		</block>
-		<view v-if="!title" @tap="clickCentre" class="default" v-slot:default>
+		<view v-if="!title" @tap="clickCentre" class="default" >
 			<slot name="default"></slot>
 		</view>
 		<block v-slot:right>
@@ -114,7 +114,10 @@
 <style lang="scss" scoped>
 .default{
 	display: flex;
+	// width: 100vw;
+	flex: 1;
 	align-items: center;
+	justify-content: center;
 	margin: 0 auto;
 }
 </style>
