@@ -31,8 +31,12 @@ export default {
 	 * @param {Objct} payload.events 页面间通信接口，用于监听被打开页面发送到当前页面的数据。2.8.9+ 开始支持。
 	 * @example push({url:'/pages/index/index'})
 	 */
-	push:(payload:push)=>{
-		uni.navigateTo(payload);
+	push:(payload:push|string)=>{
+		if (typeof payload === "object") {
+		  uni.navigateTo(payload);
+		} else {
+		  uni.navigateTo({url:payload});
+		}
 	},
 	/**
 	 * 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面。 
@@ -72,6 +76,10 @@ export default {
 	 * @example redirect({delta:1})
 	 */
 	back:(payload:back)=>{
-		uni.navigateBack(payload)
+		if (typeof payload === "object") {
+		  uni.navigateBack(payload)
+		} else {
+		  uni.navigateBack()
+		}
 	}
 }
