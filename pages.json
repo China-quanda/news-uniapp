@@ -1,23 +1,38 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
-			"path": "pages/test/test",
+			"path": "pages/index/index",
 			"style": {
+				"navigationBarTitleText": "首页",
 				"navigationStyle": "custom"
 			}
 		},
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}, {
 			"path": "pages/login/confirmLogin",
 			"style": {
 				"navigationBarTitleText": "扫码登录确认",
 				"enablePullDownRefresh": false
 			}
-
+		},
+		{
+			"path": "pages/test/test",
+			"style": {
+				"navigationStyle": "custom"
+			}
+		}
+	],
+	"subPackages": [
+		{
+			"root": "pages/search",
+			"pages": [
+				{
+					"path": "index",
+					"style": {
+						"navigationBarTitleText": "搜索页",
+						"navigationStyle": "custom"
+					}
+				}
+			]
 		}
 	],
 		"globalStyle": {
