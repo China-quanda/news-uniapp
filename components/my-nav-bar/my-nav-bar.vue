@@ -93,7 +93,7 @@
 		  clickLeft: {
 		    type: Function,
 		    default: () => {
-					uni.navigateBack()
+					// uni.navigateBack()
 				}
 		  },
 			clickRight: {
