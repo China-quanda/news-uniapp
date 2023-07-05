@@ -14,4 +14,6 @@
 
 <style>
 	/*每个页面公共css */
+	/* 阿里图标 */
+	@import '@/static/font/iconfont.css';
 </style>
