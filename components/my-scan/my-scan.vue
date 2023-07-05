@@ -1,6 +1,6 @@
 <template>
 	<view class="my-scan" @tap="tapScan">
-		<uni-icons type="scan" :size="size" :color="color" />
+		<my-icon icon="icon-saoyisao" :color="color" :size="size"/>
 	</view>
 </template>
 
