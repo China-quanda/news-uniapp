@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue';
+import { reactive, onMounted } from 'vue';
 const props = defineProps({
 	backgroundColor: {
 		type: String,
@@ -36,7 +36,7 @@ let grid = reactive({
 	'grid-template-rows': 'repeat(1fr)',
 	'background-color': '#f8f8f8'
 });
-watch(() => {
+onMounted(() => {
 	grid['background-color'] = props.backgroundColor;
 	grid['grid-gap'] = props.gap + 'px';
 	grid['grid-template-columns'] = `repeat(${props.columns},${props.width})`;
@@ -48,7 +48,6 @@ watch(() => {
 .grid {
 	display: grid;
 	padding: 12px;
-	// margin: 12px;
 	text-align: center;
 	box-sizing: border-box;
 }

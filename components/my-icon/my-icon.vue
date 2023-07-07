@@ -47,7 +47,7 @@ const svgClass = computed(() => {
 		</template>
 	</view>
 </template>
-<style scoped>
+<style scoped lang="scss">
 .my-icon {
 	display: inline-block;
 }

@@ -18,19 +18,17 @@
 		</my-nav-bar>
 		<!-- <text class="search-result-text">当前输入为：{{ search }}</text> -->
 
-	<!-- 联想建议 -->
+		<!-- 联想建议 -->
 		<!-- <search-advice :list="searchResList" :keyword="search" @onSearch="searchKeywords"/> -->
 		<!-- history -->
 		<search-history :list="searchHistories"></search-history>
 		<!-- hot_search -->
 		<search-hot :list="hotSearchResList"></search-hot>
-		
-		
+
 		<!-- 搜索结果 -->
 		<!-- <view class="search-result" v-if="isSearchList">
 		  <ArticleItem :config="config" :data="articleList"/>
 		</view> -->
-		
 	</view>
 </template>
 <script setup lang="ts">

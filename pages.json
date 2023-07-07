@@ -8,6 +8,13 @@
 			}
 		},
 		{
+			"path": "pages/index/channel",
+			"style": {
+				"navigationBarTitleText": "频道管理",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/login/confirmLogin",
 			"style": {
 				"navigationBarTitleText": "扫码登录确认",
@@ -60,6 +67,13 @@
 					"path": "index",
 					"style": {
 						"navigationBarTitleText": "我的",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "all-service",
+					"style": {
+						"navigationBarTitleText": "全部服务",
 						"navigationStyle": "custom"
 					}
 				}

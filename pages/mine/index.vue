@@ -1,11 +1,11 @@
 <template>
-	<view class="wrap">
+	<view class="container">
 		<my-nav-bar backgroundColor="transparent">
-			<block v-slot:left><my-scan size="23" color="#000"/></block>
+			<block v-slot:left><my-scan size="23" color="#000" /></block>
 			<block v-slot:right>
 				<view class="my-nav-bar-right">
-					<my-icon icon="icon-jiahao" color="#000" :size="26" @tap="goToPublish"/>
-					<my-icon icon="icon-set" color="#000" :size="26" @tap="setting"/>
+					<my-icon icon="icon-jiahao" color="#000" :size="26" @tap="goToPublish" />
+					<my-icon icon="icon-set" color="#000" :size="26" @tap="setting" />
 				</view>
 			</block>
 		</my-nav-bar>
@@ -29,9 +29,7 @@
 					<view class="info-four">
 						<button type="primary" class="custom-style" size="mini" @tap="prompt.msg('暂时未开发此功能')">申请认证</button>
 						<button type="primary" class="custom-style" size="mini" @tap="router.push('/pages/setting/profile/index')">编辑资料</button>
-						<button type="primary" class="custom-style" size="mini" @tap="prompt.msg('暂时未开发此功能')">
-							<my-icon icon="icon-fenxiang" color="#fff" :size="12"/>
-						</button>
+						<button type="primary" class="custom-style" size="mini" @tap="prompt.msg('暂时未开发此功能')"><my-icon icon="icon-fenxiang" color="#fff" :size="12" /></button>
 					</view>
 				</view>
 				<view class="cover" v-else @tap="toLogin">登录</view>
@@ -40,7 +38,7 @@
 
 		<my-grid class="my-grid" columns="4" backgroundColor="#fff">
 			<my-grid-item v-for="(item, index) in twoGridList" :key="index" @tap="tapItem(item)">
-				<my-icon :icon="item.icon" :size="26"/>
+				<my-icon :icon="item.icon" :size="26" />
 				<text class="text">{{ item.title }}</text>
 			</my-grid-item>
 		</my-grid>
@@ -125,14 +123,11 @@ let twoGridList = ref([
 	},
 	{
 		icon: 'icon-quanbu',
-		title: '全部'
+		title: '全部',
+		url: './all-service'
 	}
 ]);
 
-const clickLeft = () => {};
-const clickRight = () => {
-	console.log('扫一扫');
-};
 let goMyContent = () => {
 	router.push('/pages//user/mycontent');
 };
@@ -157,11 +152,13 @@ let getUserHomePage = async id => {
 	// this.$store.commit('user/SET_USERINFO',userInfo)
 };
 let toLogin = () => {
-	router.push('/pages/login/index');
+	router.push('/pages/login/login');
 };
 let tapItem = row => {
 	console.log(row);
-	prompt.msg(`${row.title} 功能未实现`);
+	if (!row.url) return prompt.msg(`${row.title} 功能未实现`);
+	router.push(row.url);
+
 	// console.log(`点击了第${name}个`);
 	// if (name == 2) {
 	// 	router.push('/pages/user/download/index');
@@ -176,12 +173,12 @@ let tapItem = row => {
 </script>
 
 <style lang="scss" scoped>
-.wrap {
+.container {
 	font-size: 14px;
 	color: #292929;
 	background-color: #f8f8f8;
 }
-.my-nav-bar-right{
+.my-nav-bar-right {
 	width: 60px;
 	display: flex;
 	justify-content: space-between;
@@ -240,10 +237,10 @@ let tapItem = row => {
 		}
 	}
 }
-.my-grid{
+.my-grid {
 	padding: 10px 0px;
 	color: #292929;
-	.text{
+	.text {
 		margin-top: 3px;
 	}
 }

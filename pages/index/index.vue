@@ -7,7 +7,8 @@
 			</view>
 			<block v-slot:left><my-scan size="18" color="#000" /></block>
 		</my-nav-bar>
-		<article-item :config="config" :list="articleList"/>
+		<button @tap="router.push('./channel')">111</button>
+		<article-item :config="config" :list="articleList" />
 	</view>
 </template>
 <script setup lang="ts">
@@ -50,7 +51,7 @@ let config = reactive({
 // page {
 // 	background-color: $uni-bg-color-grey;
 // }
-.content{
+.content {
 	background-color: $uni-bg-color-grey;
 }
 .input-view {

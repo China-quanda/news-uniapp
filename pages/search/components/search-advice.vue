@@ -26,7 +26,7 @@ const highlight = str => {
 	return str.replace(new RegExp(props.keyword, 'gi'), highlightStr);
 };
 const tapAdvice = keyword => {
-	console.log('点击类型建议item 发请求查询文章',keyword);
+	console.log('点击类型建议item 发请求查询文章', keyword);
 	// this.$emit('onSearch', keyword);
 	// this.list = [] // 清空联想建议才能显示搜索结果
 	// this.hotSearchResList.push(item)

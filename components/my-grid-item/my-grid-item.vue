@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 const props = defineProps({
 	backgroundColor: {
 		type: String,
@@ -12,15 +12,23 @@ const props = defineProps({
 	radius: {
 		type: [String, Number],
 		default: 0
+	},
+	border: {
+		type: Boolean,
+		default: false
 	}
 });
 let gridItem = reactive({
 	'border-radius': '0px',
+	border: '0px solid #ccc',
 	'background-color': '#fff'
 });
-watch(() => {
+onMounted(() => {
 	gridItem['background-color'] = props.backgroundColor;
-	gridItem['grid-gap'] = props.radius + 'px';
+	gridItem['border-radius'] = props.radius + 'px';
+	if (props.border) {
+		gridItem['border'] = '0.5px solid #ccc';
+	}
 });
 </script>
 
@@ -31,5 +39,8 @@ watch(() => {
 	align-items: center;
 	justify-content: center;
 	padding: 5px;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden;
 }
 </style>

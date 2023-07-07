@@ -34,19 +34,19 @@
 		<!-- 账号密码登录 -->
 		<view v-if="type == 1">
 			<uni-forms class="form-uni" :modelValue="form">
-				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim/></uni-forms-item>
-				<uni-forms-item><uni-easyinput type="password" v-model="form.password" placeholder="密码" trim/></uni-forms-item>
+				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim /></uni-forms-item>
+				<uni-forms-item><uni-easyinput type="password" v-model="form.password" placeholder="密码" trim /></uni-forms-item>
 			</uni-forms>
 		</view>
 
 		<!-- 验证码快捷登录 -->
 		<view v-if="type == 2">
 			<uni-forms class="form-uni" :modelValue="form">
-				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim/></uni-forms-item>
+				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim /></uni-forms-item>
 				<uni-forms-item>
 					<view class="" style="display: flex;justify-content: space-between; align-items: center;">
-						<uni-easyinput type="number" v-model="form.code" placeholder="验证码" trim/>
-						<button class="btn-item btn-mini" type="primary" :disabled="loading" size="mini" @tap="submit(type)">{{ tips }}</button>
+						<uni-easyinput type="number" v-model="form.code" placeholder="验证码" trim />
+						<button class="btn-item btn-mini" type="primary" :disabled="codeLoading" size="mini" @tap="getCode">{{ tips }}</button>
 					</view>
 				</uni-forms-item>
 			</uni-forms>
@@ -55,14 +55,14 @@
 		<!-- 通过手机/邮箱重设密码 -->
 		<view v-if="type == 3">
 			<uni-forms class="form-uni" :modelValue="form">
-				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim/></uni-forms-item>
+				<uni-forms-item><uni-easyinput type="text" v-model="form.account" placeholder="手机号 / 邮箱" trim /></uni-forms-item>
 				<uni-forms-item>
 					<view class="" style="display: flex;justify-content: space-between; align-items: center;">
-						<uni-easyinput type="number" v-model="form.code" placeholder="验证码" trim/>
-						<button class="btn-item btn-mini" type="primary" :disabled="loading" size="mini" @tap="submit(type)">{{ tips }}</button>
+						<uni-easyinput type="number" v-model="form.code" placeholder="验证码" trim />
+						<button class="btn-item btn-mini" type="primary" :disabled="codeLoading" size="mini" @tap="getCode">{{ tips }}</button>
 					</view>
 				</uni-forms-item>
-				<uni-forms-item><uni-easyinput type="password" v-model="form.password" placeholder="新密码" trim/></uni-forms-item>
+				<uni-forms-item><uni-easyinput type="password" v-model="form.password" placeholder="新密码" trim /></uni-forms-item>
 			</uni-forms>
 		</view>
 
@@ -77,17 +77,13 @@
 			<text v-if="type != 3" class="tips">未注册的账号通过验证后将自动注册</text>
 		</view>
 		<view v-if="type != 3" class="other-item">
-					<text v-for="(item,index) in 6" @tap="otherLogin(index)">{{index}}</text>
-          
-					<!-- <i class="iconfont icon-weixin"></i>
-					<i class="iconfont icon-qq"></i>
-					<i class="iconfont icon-xinlangweibo"></i>
-					<i class="iconfont icon-shejiaotubiao-09"></i>
-					<i class="iconfont icon-weiruan"></i>
-					<i class="iconfont icon-github"></i> -->
+			<my-icon v-for="item in otherLoginData" class="my-icon" :icon="item.icon" :color="item.color" :size="20" @tap="otherLogin(item)" />
 		</view>
 		<view v-if="type != 3" class="reading-item">
-			登录注册即代表同意xx <text>《用户协议》</text> 和 <text>《隐私协议》</text>
+			登录注册即代表同意xx
+			<text>《用户协议》</text>
+			和
+			<text>《隐私协议》</text>
 		</view>
 	</view>
 </template>
@@ -109,6 +105,7 @@ let weChatUrl = ref<string>(
 );
 let type = ref<number>(2);
 let loading = ref<boolean>(false);
+let codeLoading = ref<boolean>(false);
 let time = ref<number>(1000 * 60);
 let formRef = ref(null);
 
@@ -117,6 +114,15 @@ let form = reactive({
 	password: null,
 	code: null
 });
+let otherLoginData = ref([
+	{ name: 'weixin', icon: 'icon-weixin', color: 'rgb(74, 221, 51)' },
+	{ name: 'qq', icon: 'icon-qq', color: 'rgb(87, 139, 222)' },
+	{ name: 'weibo', icon: 'icon-xinlangweibo', color: 'rgb(244, 94, 75)' },
+	{ name: 'zfb', icon: 'icon-shejiaotubiao-09', color: 'rgb(93, 140, 241)' },
+	{ name: 'wr', icon: 'icon-weiruan', color: 'rgb(93, 140, 241)' },
+	{ name: 'github', icon: 'icon-github', color: 'rgb(10, 24, 54)' }
+]);
+
 let rules = reactive({
 	account: [
 		{
@@ -148,10 +154,10 @@ let rules = reactive({
 		}
 	]
 });
-const otherLogin = (data) =>{
-	prompt.msg('该功能未实现')
+const otherLogin = data => {
+	prompt.msg('该功能未实现');
 	console.log(data);
-}
+};
 const submit = type => {
 	if (type == 1) {
 		login();
@@ -163,20 +169,34 @@ const submit = type => {
 		resetPassword();
 	}
 };
-// 验证码提示
-const codeChange = text => {
-	tips.value = text;
+let interval = ref(null);
+let intervalFn = () => {
+	if (time.value == 1000) {
+		clearInterval(interval.value);
+		codeLoading.value = false;
+		tips.value = `获取验证码`;
+		time.value = 60000;
+		return;
+	}
+	time.value = time.value - 1000;
+	tips.value = `${time.value / 1000}s 后再获取`;
 };
 // 获取验证码
 const getCode = () => {
 	if (!isMobile(form.account) && !isEmail(form.account)) return prompt.msg('请输入有效的账号');
-	if (!form.code) return prompt.msg('请输入验证码');
 	prompt.loading('正在获取验证码');
+	codeLoading.value = true;
 	getVerifyCode({ account: form.account })
 		.then(res => {
 			console.log('res', res);
 			prompt.msg('验证码已发送');
 			// 通知验证码组件内部开始倒计时
+			interval.value = setInterval(() => {
+				intervalFn();
+			}, 1000);
+		})
+		.catch(e => {
+			codeLoading.value = false;
 		})
 		.finally(() => {
 			prompt.hideLoading();
@@ -281,13 +301,13 @@ const resetPassword = () => {
 }
 .form-uni {
 	padding: 10px 15px 0px 15px;
-	
+
 	::v-deep.is-input-border {
 		border: 0.5px solid #328bf9 !important;
 		// box-shadow: 0.5px 1px 5px 0.5px rgba(24, 56, 180, 0.06);
 		border-radius: 20px;
 	}
-	::v-deep.uni-forms-item{
+	::v-deep.uni-forms-item {
 		margin-bottom: 12px;
 	}
 }
@@ -311,7 +331,7 @@ const resetPassword = () => {
 		color: $uni-text-color-grey;
 	}
 }
-.other-item{
+.other-item {
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
@@ -324,31 +344,19 @@ const resetPassword = () => {
 		justify-content: center;
 		width: 33px;
 		height: 33px;
-		border: .5px solid #328bf9;
+		border: 0.5px solid #328bf9;
 		border-radius: 100px;
 	}
-	// .iconfont {
-	// 	font-size: 18px;
-	// }
-	// .icon-weixin {
-	// 	color: rgb(74, 221, 51);
-	// }
-	// .icon-qq {
-	// 	//  font-size:16px;
-	// 	color: rgb(87, 139, 222);
-	// }
-	// .icon-xinlangweibo {
-	// 	color: rgb(244, 94, 75);
-	// }
-	// .icon-shejiaotubiao-09 {
-	// 	color: rgb(93, 140, 241);
-	// }
-	// .icon-weiruan {
-	// 	color: rgb(93, 140, 241);
-	// }
-	// .icon-github {
-	// 	color: rgb(10, 24, 54);
-	// }
+	.my-icon {
+		width: 25px;
+		height: 25px;
+		line-height: 25px;
+		padding: 5px;
+		text-align: center;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 1px solid #ccc;
+	}
 }
 .reading-item {
 	position: absolute;
