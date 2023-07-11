@@ -13,7 +13,7 @@
 		</view>
 		<view class="channel-item">
 			<my-grid class="my-grid" columns="4" gap="10" backgroundColor="#fff">
-				<my-grid-item class="my-grid-item" v-for="(item, index) in myChannel" :key="index" backgroundColor="#f8f8f8" radius="4" @tap="tapMyChannel(item, editStatus)">
+				<my-grid-item class="my-grid-item" :class="{'shake-bottom' :editStatus }" v-for="(item, index) in myChannel" :key="index" backgroundColor="#f8f8f8" radius="4" @tap="tapMyChannel(item, editStatus)">
 					{{ item.title }}
 					<my-icon v-if="editStatus" class="m-icon icon-cha" icon="icon-cha" size="12" color="#000" />
 				</my-grid-item>
@@ -315,6 +315,76 @@ let tapMyChannel = (row, status) => {
 </script>
 
 <style scoped lang="scss">
+	.shake-bottom {
+		-webkit-animation: shake-bottom 0.8s cubic-bezier(0.255, 0.030, 0.215, 0.255) infinite both;
+		        animation: shake-bottom 0.8s cubic-bezier(0.255, 0.030, 0.215, 0.255) infinite both;
+	}
+	@-webkit-keyframes shake-bottom {
+	  0%,
+	  100% {
+	    -webkit-transform: rotate(0deg);
+	            transform: rotate(0deg);
+	    -webkit-transform-origin: 50% 100%;
+	            transform-origin: 50% 100%;
+	  }
+	  10% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	  20%,
+	  40%,
+	  60% {
+	    -webkit-transform: rotate(-2deg);
+	            transform: rotate(-2deg);
+	  }
+	  30%,
+	  50%,
+	  70% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	  80% {
+	    -webkit-transform: rotate(-2deg);
+	            transform: rotate(-2deg);
+	  }
+	  90% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	}
+	@keyframes shake-bottom {
+	  0%,
+	  100% {
+	    -webkit-transform: rotate(0deg);
+	            transform: rotate(0deg);
+	    -webkit-transform-origin: 50% 100%;
+	            transform-origin: 50% 100%;
+	  }
+	  10% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	  20%,
+	  40%,
+	  60% {
+	    -webkit-transform: rotate(-2deg);
+	            transform: rotate(-2deg);
+	  }
+	  30%,
+	  50%,
+	  70% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	  80% {
+	    -webkit-transform: rotate(-2deg);
+	            transform: rotate(-2deg);
+	  }
+	  90% {
+	    -webkit-transform: rotate(2deg);
+	            transform: rotate(2deg);
+	  }
+	}
 .channel {
 	padding: 0px 15px;
 }
