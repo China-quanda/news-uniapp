@@ -5,7 +5,7 @@
 			<block v-slot:right>
 				<view class="my-nav-bar-right">
 					<my-icon icon="icon-jiahao" color="#000" :size="26" @tap="goToPublish" />
-					<my-icon icon="icon-set" color="#000" :size="26" @tap="setting" />
+					<my-icon icon="icon-set" color="#000" :size="26" @tap="router.push('/pages/mine/setting/index')" />
 				</view>
 			</block>
 		</my-nav-bar>
@@ -130,10 +130,6 @@ let twoGridList = ref([
 
 let goMyContent = () => {
 	router.push('/pages//user/mycontent');
-};
-let setting = () => {
-	console.log(11);
-	// router.push('/pages/setting/index');
 };
 // 点击发布
 let goToPublish = () => {

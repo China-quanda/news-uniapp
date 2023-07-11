@@ -15,6 +15,18 @@
 			}
 		},
 		{
+			"path": "pages/common/webview/index",
+			"style": {
+				"navigationBarTitleText": "浏览网页"
+			}
+		},
+		{
+			"path": "pages/common/textview/index",
+			"style": {
+				"navigationBarTitleText": "浏览文本"
+			}
+		},
+		{
 			"path": "pages/login/confirmLogin",
 			"style": {
 				"navigationBarTitleText": "扫码登录确认",
@@ -74,6 +86,13 @@
 					"path": "all-service",
 					"style": {
 						"navigationBarTitleText": "全部服务",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "setting/index",
+					"style": {
+						"navigationBarTitleText": "设置",
 						"navigationStyle": "custom"
 					}
 				}
