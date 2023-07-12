@@ -1,8 +1,37 @@
 <template>
 	<view>
-		<button @tap="scanCode">扫码</button>
-		<button @tap="requestApi">请求</button>
-		<button @tap="requestFn">请求request接口测试</button>
+		<!-- <button @tap="scanCode">扫码</button> -->
+		<!-- <button @tap="requestApi">请求</button> -->
+		<!-- <button @tap="requestFn">请求request接口测试</button> -->
+		
+		<my-switch
+		v-model:value="value1"
+		disabled
+		></my-switch>
+		
+		<my-switch
+		v-model:value="value1" 
+		disabled
+		active-color="red"
+		inactive-color="green"
+		></my-switch>
+		
+		<my-switch
+		v-model:value="value1"
+		loading
+		></my-switch>
+		
+		<my-switch
+		v-model:value="value1"
+		activeValue="开"
+		inactiveValue="关"
+		
+		>
+		<block v-slot:value> {{value1? '1' : '2'}} </block>
+		
+		</my-switch>
+		
+
 	</view>
 </template>
 
@@ -12,8 +41,15 @@
 	// import { io, Socket } from 'socket.io-client'
 	import io from '@hyoga/uni-socket.io';
 	import router from '@/utils/router';
-	import storage from '@/utils/storage';
+	import storage, { clearStorage } from '@/utils/storage';
 	import {qrScannedLogin} from '@/api/user'
+	
+	
+	let value1 = ref(true)
+	const changeSwitch = (e)=>{
+		value1.value = e
+	}
+	
 	const scanCode =()=>{
 		// 只允许通过相机扫码
 		uni.scanCode({
@@ -94,29 +130,29 @@
 	}
 	*/
 	
-	onLoad((option) => { 
-		requestApi()
-		// webSocket()
+	// onLoad((option) => { 
+	// 	// requestApi()
+	// 	// webSocket()
 		
-		const ws1 = 'ws://192.168.2.2:7001/hello'
-		const ws2 = 'ws://127.0.0.1:7001/hello'
-		const ws3 = 'ws://192.168.43.191/hello'
-		const socket = io(ws2, {
-			transports: ['websocket'],
-			timeout: 5000, 
-		}); 
-		socket.on('connect', () => {
-			console.log('ws 已连接');
-		});
-		socket.emit('words', {  time: 'lisi'});
-		socket.on('words', (msg: any) => {
-		  console.log('words words', msg);
-		});
-		socket.on('error', (msg: any) => {
-			console.log('ws error', msg);
-		});
+	// 	const ws1 = 'ws://192.168.2.2:7001/hello'
+	// 	const ws2 = 'ws://127.0.0.1:7001/hello'
+	// 	const ws3 = 'ws://192.168.43.191/hello'
+	// 	const socket = io(ws2, {
+	// 		transports: ['websocket'],
+	// 		timeout: 5000, 
+	// 	}); 
+	// 	socket.on('connect', () => {
+	// 		console.log('ws 已连接');
+	// 	});
+	// 	socket.emit('words', {  time: 'lisi'});
+	// 	socket.on('words', (msg: any) => {
+	// 	  console.log('words words', msg);
+	// 	});
+	// 	socket.on('error', (msg: any) => {
+	// 		console.log('ws error', msg);
+	// 	});
 
-	});
+	// });
 	onHide(()=>{ })	
 </script>
 
