@@ -2,40 +2,36 @@
   <view class='container'>
 		<my-nav-bar title="设置" :clickLeft="router.back" />
     <view class="setting user-setting" ></view>
-		<my-cell title="编辑资料" isLink url="/pages/setting/profile/index" />
-		<my-cell title="账号安全" isLink url="/pages/setting/account/index" />
-		<my-cell title="隐私设置" isLink url="/pages/setting/privacy/index" />
+		<my-cell title="编辑资料" url="/pages/setting/profile/index"/>
+		<my-cell title="账号安全" url="/pages/setting/account/index"/>
+		<my-cell title="隐私设置" url="/pages/setting/privacy/index"/>
 		
     <view class="setting basic-setting"></view>
-		<my-cell title="夜间模式"  >
-			<view slot="value">
-				<!-- <u-switch v-model="switchoverStatus" @change="switchoverChange"></u-switch> -->
-			</view>
+		<my-cell title="夜间模式" :isLink="false" :clickable="false">
+			<block v-slot:value> <my-switch v-model:value="promptStatus"/></block>
 		</my-cell>
-		<my-cell title="大字设置" isLink />
-		<my-cell title="字体大小" isLink value="小" />
+		<my-cell title="大字设置" />
+		<my-cell title="字体大小" value="小" />
 		
     <view class="setting"></view>
-		<my-cell title="清除缓存" isLink  value="0B" />
-		<my-cell title="播放与网络设置" isLink  />
-		<my-cell title="推送通知设置" isLink  />
-		<my-cell title="安全浏览设置" isLink />
-		<my-cell title="提示音开关"  >
-			<view slot="value" >
-				<!-- <u-switch v-model="promptStatus" @change="promptChange"></u-switch> -->
-			</view>
+		<my-cell title="清除缓存" value="0B" />
+		<my-cell title="播放与网络设置"/>
+		<my-cell title="推送通知设置"/>
+		<my-cell title="安全浏览设置"/>
+		<my-cell title="提示音开关" :isLink="false" :clickable="false">
+			<block v-slot:value> <my-switch v-model:value="switchoverStatus"/></block>
 		</my-cell>
 		
     <view class="setting"></view>
-		<my-cell title="隐私政策及简明版" isLink />
-		<my-cell title="个人信息收集清单" isLink  />
-		<my-cell title="第三方信息共享清单" isLink  />
-		<my-cell title="安全浏览设置" isLink />
+		<my-cell title="隐私政策及简明版"/>
+		<my-cell title="个人信息收集清单"/>
+		<my-cell title="第三方信息共享清单"/>
+		<my-cell title="安全浏览设置"/>
 		
     <view class="setting"></view>
-		<my-cell title="检查版本" isLink  :value="appVersion" />
-		<my-cell title="关于头条" isLink  />
-		<my-cell title="用户反馈" isLink  />
+		<my-cell title="检查版本" :value="appVersion"/>
+		<my-cell title="关于头条"/>
+		<my-cell title="用户反馈"/>
 		
     <view class="login-out" v-if="token">
 			<button type="default" @click="onExit()">退出登录</button>
@@ -62,12 +58,6 @@ onLoad(()=>{
 	appVersion.value = storage.get('systemInfo')?.appVersion
 	token.value = storage.get('token')
 })
-const promptChange = (e)=>{
-	promptStatus.value = e
-}
-const switchoverChange = (e)=>{
-	switchoverStatus.value = e
-}
 
 const onExit = ()=> {
   this.logout()
