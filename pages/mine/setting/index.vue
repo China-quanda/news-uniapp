@@ -2,9 +2,9 @@
   <view class='container'>
 		<my-nav-bar title="设置" :clickLeft="router.back" />
     <view class="setting user-setting" ></view>
-		<my-cell title="编辑资料" url="/pages/setting/profile/index"/>
-		<my-cell title="账号安全" url="/pages/setting/account/index"/>
-		<my-cell title="隐私设置" url="/pages/setting/privacy/index"/>
+		<my-cell title="编辑资料" url="/pages/mine/setting/profile/index"/>
+		<my-cell title="账号安全" url="/pages/mine/setting/account/index"/>
+		<my-cell title="隐私设置" url="/pages/mine/setting/privacy/index"/>
 		
     <view class="setting basic-setting"></view>
 		<my-cell title="夜间模式" :isLink="false" :clickable="false">

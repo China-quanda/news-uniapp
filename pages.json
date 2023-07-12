@@ -88,12 +88,24 @@
 						"navigationBarTitleText": "全部服务",
 						"navigationStyle": "custom"
 					}
-				},
+				}
+			]
+		},
+		{
+			"root": "pages/mine/setting",
+			"pages": [
 				{
-					"path": "setting/index",
+					"path": "index",
 					"style": {
 						"navigationBarTitleText": "设置",
 						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "profile/index",
+					"style": {
+						"navigationBarTitleText": "编辑资料"
+						// "navigationStyle": "custom"
 					}
 				}
 			]
