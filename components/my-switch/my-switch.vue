@@ -88,7 +88,9 @@ const setColor = () => {
 };
 onMounted(() => {
 	status.value = props.value ? true : false
-	setColor();
+	nextTick(()=>{
+		setColor();
+	})
 });
 
 </script>
