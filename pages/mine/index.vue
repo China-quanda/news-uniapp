@@ -1,11 +1,11 @@
 <template>
 	<view class="container">
 		<my-nav-bar backgroundColor="transparent">
-			<block v-slot:left><my-scan size="23" color="#000" /></block>
+			<block v-slot:left><my-scan size="18" color="#000" /></block>
 			<block v-slot:right>
 				<view class="my-nav-bar-right">
-					<my-icon icon="icon-jiahao" color="#000" :size="26" @tap="goToPublish" />
-					<my-icon icon="icon-set" color="#000" :size="26" @tap="router.push('/pages/mine/setting/index')" />
+					<my-icon icon="icon-jiahao" color="#000" :size="20" @tap="goToPublish" />
+					<my-icon icon="icon-set" color="#000" :size="20" @tap="router.push('/pages/mine/setting/index')" />
 				</view>
 			</block>
 		</my-nav-bar>
@@ -14,7 +14,10 @@
 			<view>
 				<view class="info" v-if="token">
 					<view class="info-one">
-						<view class="logo"><image :src="userInfo?.avatar ? userInfo?.avatar : '@/static/images/login.png'" mode="widthFix" /></view>
+						<view class="logo">
+							<!-- <image :src="userInfo?.avatar ? userInfo?.avatar : '@/static/images/login.png'" mode="widthFix" /> -->
+							<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="70px" height="70px" @tap="uploadAvatarImg"/>
+						</view>
 						<view class="info-name">
 							<view class="name">{{ userInfo?.nickname || userInfo?.user_name || '你的maya' }}</view>
 							<view>
@@ -38,7 +41,7 @@
 
 		<my-grid class="my-grid" columns="4" backgroundColor="#fff">
 			<my-grid-item v-for="(item, index) in twoGridList" :key="index" @tap="tapItem(item)">
-				<my-icon :icon="item.icon" :size="26" />
+				<my-icon :icon="item.icon" :size="22" />
 				<text class="text">{{ item.title }}</text>
 			</my-grid-item>
 		</my-grid>
@@ -237,7 +240,7 @@ let tapItem = row => {
 	padding: 10px 0px;
 	color: #292929;
 	.text {
-		margin-top: 3px;
+		margin-top: 8px;
 	}
 }
 .three {

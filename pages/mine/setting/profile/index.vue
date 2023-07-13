@@ -4,13 +4,7 @@
 		<!-- <my-nav-bar title="编辑资料" :clickLeft="router.back" /> -->
 		<view class="info">
 			<view class="info-img">
-				<my-image
-					width="75px" 
-					height="75px"
-					src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
-					shape="circle"
-					@tap="uploadAvatarImg"
-				/>
+				<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="75px" height="75px" @tap="uploadAvatarImg"/>
 				<!-- <u--image :showLoading="true" :src="userInfo.avatar"  shape="circle" @tap="uploadAvatarImg" /> -->
 				<!-- <a class="info-click" @tap="uploadAvatarImg">点击更换头像</a> -->
 			</view>

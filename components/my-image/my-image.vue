@@ -14,12 +14,16 @@
 		/>
 		<view class="icon" v-if="isLoad || isError">
 			<view class="icon-slot" v-if="isLoad && showLoading">
-				<my-icon :icon="loadingIcon" :size="iconSize" color="#dcdee0" />
-				<text class="icon-slot-text">{{ loadingText }}</text>
+				<slot name="loading">
+					<my-icon :icon="loadingIcon" :size="iconSize" color="#dcdee0" />
+					<text class="icon-slot-text">{{ loadingText }}</text>
+				</slot>
 			</view>
 			<view class="icon-slot" v-if="isError && showError">
-				<my-icon :icon="errorIcon" :size="iconSize" color="#dcdee0" />
-				<text class="icon-slot-text">{{ errorText }}</text>
+				<slot name="error">
+					<my-icon :icon="errorIcon" :size="iconSize" color="#dcdee0" />
+					<text class="icon-slot-text">{{ errorText }}</text>
+				</slot>
 			</view>
 		</view>
 	</view>
@@ -137,16 +141,21 @@ let imageRef = ref(null);
 let isLoad = ref(true);
 let isError = ref(false);
 
+const emits = defineEmits(['load', 'error']);
+
 const imageLoad = e => {
 	console.log(e);
+	emits('load', e);
 	isLoad.value = false;
 };
 
 const imageError = e => {
 	console.log(e);
+	emits('error', e);
 	isError.value = true;
 	isLoad.value = false;
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -165,7 +174,7 @@ const imageError = e => {
 }
 .icon {
 	position: absolute;
-	z-index: 9999;
+	// z-index: 9999;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);

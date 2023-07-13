@@ -85,8 +85,7 @@
 				{
 					"path": "all-service",
 					"style": {
-						"navigationBarTitleText": "全部服务",
-						"navigationStyle": "custom"
+						"navigationBarTitleText": "全部服务"
 					}
 				}
 			]
@@ -97,8 +96,7 @@
 				{
 					"path": "index",
 					"style": {
-						"navigationBarTitleText": "设置",
-						"navigationStyle": "custom"
+						"navigationBarTitleText": "设置"
 					}
 				},
 				{

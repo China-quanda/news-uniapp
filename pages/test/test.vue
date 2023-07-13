@@ -31,6 +31,30 @@
 		
 		</my-switch>
 		
+		<my-image
+			width="75px" 
+			height="75px"
+			src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
+			shape="circle"
+			@tap="uploadAvatarImg"
+		>
+		</my-image>
+		
+		<my-image
+			width="75px" 
+			height="75px"
+			src="https://fastly.jsdelivr.net/npm/@vant/assets/cat1.jpeg"
+			shape="circle"
+		>
+		</my-image>
+		
+		<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat1.jpeg"></my-avatar>
+		<view class="" style="margin: 10px;"> </view>
+		<my-avatar text="的Maya" ></my-avatar>
+		<view class="" style="margin: 10px;"> </view>
+		<my-avatar text="的Maya" shape="square" badgeColor="pink" showBadge></my-avatar>
+		
+		
 
 	</view>
 </template>

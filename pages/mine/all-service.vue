@@ -1,11 +1,11 @@
 <template>
 	<view class="container">
-		<my-nav-bar title="全部服务" border :clickLeft="router.back" />
+		<!-- <my-nav-bar title="全部服务" border :clickLeft="router.back" /> -->
 		<view class="Panel" v-for="service in serviceList" :key="service.title">
 			<text class="Panel-title">{{ service.title }}</text>
 			<my-grid class="my-grid" columns="4" backgroundColor="#fff">
 				<my-grid-item v-for="(item, index) in service.data" :key="index" @tap="tapItem(item)">
-					<my-icon :icon="item.icon" :size="26" />
+					<my-icon :icon="item.icon" :size="22" />
 					<text class="text">{{ item.text }}</text>
 				</my-grid-item>
 			</my-grid>
@@ -83,7 +83,7 @@ let leftClick = () => {
 	margin-bottom: -0px;
 }
 .Panel {
-	margin: 12px;
+	// margin: 12px;
 	padding: 0px 5px;
 	background-color: #fff;
 	border-radius: 8px;
@@ -99,7 +99,8 @@ let leftClick = () => {
 	padding: 10px 0px;
 	color: #292929;
 	.text {
-		margin-top: 3px;
+		margin-top: 8px;
+		font-size: 14px;
 	}
 }
 </style>

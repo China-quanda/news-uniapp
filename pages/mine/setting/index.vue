@@ -1,6 +1,6 @@
 <template>
   <view class='container'>
-		<my-nav-bar title="设置" :clickLeft="router.back" />
+		<!-- <my-nav-bar title="设置" :clickLeft="router.back" /> -->
     <view class="setting user-setting" ></view>
 		<my-cell title="编辑资料" url="/pages/mine/setting/profile/index"/>
 		<my-cell title="账号安全" url="/pages/mine/setting/account/index"/>

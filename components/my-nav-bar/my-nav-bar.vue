@@ -117,4 +117,7 @@ const props = defineProps({
 ::v-deep.uni-navbar--border {
 	border-bottom-color: rgb(237 208 208) !important;
 }
+::v-deep.uni-nav-bar-right-text{
+	font-size: 16px;
+}
 </style>
