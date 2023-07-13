@@ -31,28 +31,31 @@
 		
 		</my-switch>
 		
-		<my-image
-			width="75px" 
-			height="75px"
-			src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
-			shape="circle"
-			@tap="uploadAvatarImg"
-		>
-		</my-image>
+		<!-- <my-progress
+		   :width="100"
+		   :radius="6"
+		   :progress="100"
+		   :delay="200"
+		   :duration="1000"
+			 :centreStyle="{fontSize: '16px'}"
+			 round
+		></my-progress>
+		<my-progress
+		   :width="100"
+		   :radius="6"
+		   :progress="80"
+		   :delay="200"
+		   :duration="1000"
+			 :centreStyle="{fontSize: '16px'}"
+			 round
+		></my-progress> -->
 		
-		<my-image
-			width="75px" 
-			height="75px"
-			src="https://fastly.jsdelivr.net/npm/@vant/assets/cat1.jpeg"
-			shape="circle"
-		>
-		</my-image>
+		<my-progress :progress="20" shape="square" id="a"/>
+		<my-progress :progress="50" shape="square" id="aa"/>
+		<my-progress :progress="60" :centreStyle="{fontSize: '20px'}"  id="b"/>
+
 		
-		<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat1.jpeg"></my-avatar>
-		<view class="" style="margin: 10px;"> </view>
-		<my-avatar text="的Maya" ></my-avatar>
-		<view class="" style="margin: 10px;"> </view>
-		<my-avatar text="的Maya" shape="square" badgeColor="pink" showBadge></my-avatar>
+		
 		
 		
 
