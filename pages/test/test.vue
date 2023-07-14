@@ -84,6 +84,55 @@
 </view> -->
 
 
+
+<!-- <view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text>基础功能</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text type="primary">主要</my-text>
+		<my-text type="success">成功</my-text>
+		<my-text type="default">默认</my-text>
+		<my-text type="info">默认</my-text>
+		<my-text type="warning">警告</my-text>
+		<my-text type="danger">危险</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text color="red">自定义颜色</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text size="20">自定义大小</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text bold>自定义粗体</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text prefixIcon="icon-cha" >前置图标</my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text suffixIcon="icon-cha" >后置图标</my-text>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-text lines="1" >自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体自定义粗体</my-text>
+	<my-text  mode="price" text="123456"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text  mode="phone" text="18684868151"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text desensitization mode="phone" text="18684868151"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text desensitization mode="emall" text="877880098@qq.com"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text desensitization mode="idCard" text="431024199906234536"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text desensitization mode="bankCard" text="6212268202014638666"></my-text>
+	<view class="" style="margin: 12px;"></view> 
+	<my-text desensitization mode="name" text="李泉达"></my-text>
+</view> -->
+
 	</view>
 </template>
 
