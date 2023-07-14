@@ -144,13 +144,11 @@ let isError = ref(false);
 const emits = defineEmits(['load', 'error']);
 
 const imageLoad = e => {
-	console.log(e);
 	emits('load', e);
 	isLoad.value = false;
 };
 
 const imageError = e => {
-	console.log(e);
 	emits('error', e);
 	isError.value = true;
 	isLoad.value = false;

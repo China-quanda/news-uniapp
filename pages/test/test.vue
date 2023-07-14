@@ -4,58 +4,22 @@
 		<!-- <button @tap="requestApi">请求</button> -->
 		<!-- <button @tap="requestFn">请求request接口测试</button> -->
 		
-		<my-switch
-		v-model:value="value1"
-		disabled
-		></my-switch>
+	<!-- 	<my-switch v-model:value="value1" disabled ></my-switch>
 		
-		<my-switch
-		v-model:value="value1" 
-		disabled
-		active-color="red"
-		inactive-color="green"
-		></my-switch>
+		<my-switch v-model:value="value1"  disabled active-color="red" inactive-color="green" ></my-switch>
 		
-		<my-switch
-		v-model:value="value1"
-		loading
-		></my-switch>
+		<my-switch v-model:value="value1" loading ></my-switch>
 		
-		<my-switch
-		v-model:value="value1"
-		activeValue="开"
-		inactiveValue="关"
-		
-		>
-		<block v-slot:value> {{value1? '1' : '2'}} </block>
-		
-		</my-switch>
-		
-		<!-- <my-progress
-		   :width="100"
-		   :radius="6"
-		   :progress="100"
-		   :delay="200"
-		   :duration="1000"
-			 :centreStyle="{fontSize: '16px'}"
-			 round
-		></my-progress>
-		<my-progress
-		   :width="100"
-		   :radius="6"
-		   :progress="80"
-		   :delay="200"
-		   :duration="1000"
-			 :centreStyle="{fontSize: '16px'}"
-			 round
-		></my-progress> -->
+		<my-switch v-model:value="value1" activeValue="开" inactiveValue="关" >
+			<block v-slot:value> {{value1? '1' : '2'}} </block>
+		</my-switch> -->
 		
 		<!-- <my-progress :progress="20" shape="square" id="a"/>
 		<my-progress :progress="50" shape="square" id="aa"/>
 		<my-progress :progress="60" :centreStyle="{fontSize: '20px'}"  id="b"/> -->
 
-<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
-	
+
+<!-- <view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
 	<my-button type="primary">主要按钮</my-button>
 	<my-button type="success">成功按钮</my-button>
 	<my-button type="default">默认按钮</my-button>
@@ -80,7 +44,6 @@
 </view>
 
 <view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
-	<!-- 加载状态 -->
 	<my-button loading type="primary" />
 	<my-button loading type="success" loading-text="加载中..." />
 </view>
@@ -111,8 +74,6 @@
 	<my-button type="primary" linkType="tab" url="/pages/index/index">路由跳转</my-button>
 </view>
 
-
-
 <view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
 	<my-button color="#7232dd">单色按钮</my-button>
 	<my-button color="#7232dd" plain>单色按钮2</my-button>
@@ -120,7 +81,7 @@
 	<my-button @tap="buttono" color="linear-gradient(to right, #ff6034, #ee0a24)">
 	  渐变色按钮
 	</my-button>
-</view>
+</view> -->
 
 
 	</view>

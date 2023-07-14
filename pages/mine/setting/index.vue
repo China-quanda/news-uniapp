@@ -34,7 +34,7 @@
 		<my-cell title="用户反馈"/>
 		
     <view class="login-out" v-if="token">
-			<button type="default" @click="onExit()">退出登录</button>
+			<my-button hairline @click="onExit()">退出登录</my-button>
     </view> 
 		
    </view>
