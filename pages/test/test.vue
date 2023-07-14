@@ -50,14 +50,78 @@
 			 round
 		></my-progress> -->
 		
-		<my-progress :progress="20" shape="square" id="a"/>
+		<!-- <my-progress :progress="20" shape="square" id="a"/>
 		<my-progress :progress="50" shape="square" id="aa"/>
-		<my-progress :progress="60" :centreStyle="{fontSize: '20px'}"  id="b"/>
+		<my-progress :progress="60" :centreStyle="{fontSize: '20px'}"  id="b"/> -->
 
-		
-		
-		
-		
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	
+	<my-button type="primary">主要按钮</my-button>
+	<my-button type="success">成功按钮</my-button>
+	<my-button type="default">默认按钮</my-button>
+	<my-button type="info">默认按钮</my-button>
+	<my-button type="warning">警告按钮</my-button>
+	<my-button type="danger">危险按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button plain type="primary" >朴素按钮</my-button>
+	<my-button plain type="success">朴素按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button plain hairline type="primary" >细边框按钮</my-button>
+	<my-button plain hairline type="success">细边框按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button disabled type="primary">禁用状态</my-button>
+	<my-button disabled type="success">禁用状态</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<!-- 加载状态 -->
+	<my-button loading type="primary" />
+	<my-button loading type="success" loading-text="加载中..." />
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button type="primary">方形按钮</my-button>
+	<my-button shape="circle" type="success">圆形按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button icon="icon-cha" type="primary" />
+	<my-button icon="icon-cha" type="primary" text="哈哈"/>
+	<my-button icon="icon-cha" type="primary">按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button type="primary" size="large">大号按钮</my-button>
+	<my-button type="primary" size="normal">普通按钮</my-button>
+	<my-button type="primary" size="small">小型按钮</my-button>
+	<my-button type="primary" size="mini">迷你按钮</my-button>
+	<my-button shape="circle" type="primary" size="mini">迷你按钮</my-button>
+</view>
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button type="primary" url="https://github.com">URL 跳转</my-button>
+	<my-button type="primary" url="/pages/index/index">路由跳转</my-button>
+	
+	<my-button type="primary" linkType="tab" url="/pages/index/index">路由跳转</my-button>
+</view>
+
+
+
+<view class="" style="margin: 10px; display: flex; flex: 1;flex-wrap: wrap;">
+	<my-button color="#7232dd">单色按钮</my-button>
+	<my-button color="#7232dd" plain>单色按钮2</my-button>
+	<my-button color="#7232dd" shape="circle">单色按钮</my-button>
+	<my-button @tap="buttono" color="linear-gradient(to right, #ff6034, #ee0a24)">
+	  渐变色按钮
+	</my-button>
+</view>
+
 
 	</view>
 </template>
@@ -71,7 +135,9 @@
 	import storage, { clearStorage } from '@/utils/storage';
 	import {qrScannedLogin} from '@/api/user'
 	
-	
+	const buttono =(e)=>{
+		console.log(e);
+	}
 	let value1 = ref(true)
 	const changeSwitch = (e)=>{
 		value1.value = e
@@ -184,5 +250,7 @@
 </script>
 
 <style lang="scss">
-
+page{
+	background-color: #f8f8f8;
+}
 </style>
