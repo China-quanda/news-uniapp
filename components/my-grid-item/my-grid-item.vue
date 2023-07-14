@@ -42,5 +42,9 @@ onMounted(() => {
 	position: relative;
 	box-sizing: border-box;
 	overflow: hidden;
+	&:active {
+		opacity: 0.8;
+		transform: all 0.9s;
+	}
 }
 </style>
