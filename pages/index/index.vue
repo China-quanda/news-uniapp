@@ -23,7 +23,7 @@ onLoad(async () => {
 	storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODgyODA5NTQsImV4cCI6MTY4OTU3Njk1NH0.XTBQ5F0k2XV7yxRH94TwWO4XWTEtJrRXJgoSV9I3_Cg');
 	getArticleList().then(res => {
 		articleList.value = res.data.list;
-		console.log(articleList.value);
+		// console.log(articleList.value);
 	});
 });
 

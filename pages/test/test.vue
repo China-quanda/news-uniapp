@@ -133,6 +133,12 @@
 	<my-text desensitization mode="name" text="李泉达"></my-text>
 </view> -->
 
+
+<!-- <my-panel title="标题" label="猜猜猜" value="状态" icon="icon-dianzan_kuai" radius="8">
+	内容
+</my-panel> -->
+		
+		
 	</view>
 </template>
 

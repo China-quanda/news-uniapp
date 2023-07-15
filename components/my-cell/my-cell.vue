@@ -72,6 +72,11 @@
 		rightIcon:{
 			type: String,
 			default: 'icon-xiangyoujiantou'
+		},
+		// 对齐方式
+		align:{
+			type: String,
+			default: 'center'
 		}
 	});
 	const toRouter = ()=>{
@@ -91,7 +96,7 @@
 .my-cell{
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
+	align-items: v-bind('props.align');
 	box-sizing: border-box;
 	padding:10px 12px;
 	background-color: #fff;

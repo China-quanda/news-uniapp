@@ -1,6 +1,6 @@
 <template>
 	<view v-if="show" @tap="tapClick" :class="['my-text', suffixIcon ? 'my-text-suffixIcon' : '']">
-		<my-icon v-if="prefixIcon || suffixIcon" :icon="prefixIcon || suffixIcon"></my-icon>
+		<my-icon class="my-icon-text" v-if="prefixIcon || suffixIcon" :icon="prefixIcon || suffixIcon" :size="iconSize" :color="iconColor"/>
 		<text :class="['my-text-all', textType, bold ? 'my-text-bold' : '']" :style="{ color: color, fontSize: `${size}px`, lineHeight: `${lineHeight}px`, textAlign: align }">
 			<slot>{{ myText }}</slot>
 		</text>
@@ -68,6 +68,16 @@ const props = defineProps({
 		type: String,
 		default: 'push'
 	},
+	iconSize:{
+		// 前后图标大小
+		type: [String, Number],
+		default: 18
+	},
+	iconColor:{
+		// 前后图标颜色
+		type: String,
+		default: ''
+	},
 	prefixIcon: {
 		// 前置图标
 		type: String,
@@ -85,7 +95,7 @@ const props = defineProps({
 	},
 	lines: {
 		// 文本显示的行数，如果设置，超出此行数，将会显示省略号
-		type: String,
+		type: [String, Number],
 		default: ''
 	}
 });
