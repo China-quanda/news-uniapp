@@ -6,6 +6,55 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "577312",
+      "name": "加号",
+      "font_class": "jiahao-yuan",
+      "unicode": "e726",
+      "unicode_decimal": 59174
+    },
+    {
+      "icon_id": "16562586",
+      "name": "微笑",
+      "font_class": "weixiao",
+      "unicode": "e6db",
+      "unicode_decimal": 59099
+    },
+    {
+      "icon_id": "6616553",
+      "name": "头像",
+      "font_class": "touxiang",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "1684786",
+      "name": "箭头3",
+      "font_class": "xiangshang",
+      "unicode": "e6b6",
+      "unicode_decimal": 59062
+    },
+    {
+      "icon_id": "1684791",
+      "name": "箭头4",
+      "font_class": "xiala",
+      "unicode": "e6b5",
+      "unicode_decimal": 59061
+    },
+    {
+      "icon_id": "12754141",
+      "name": "左箭头",
+      "font_class": "xiangzuojiantou",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "12754142",
+      "name": "右箭头",
+      "font_class": "xiangyoujiantou",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
       "icon_id": "7588026",
       "name": "24gl-pictureSplit",
       "font_class": "24gl-pictureSplit",
@@ -32,13 +81,6 @@
       "font_class": "24gf-pictureSplit",
       "unicode": "e9f5",
       "unicode_decimal": 59893
-    },
-    {
-      "icon_id": "630095",
-      "name": "向左箭头",
-      "font_class": "xiangzuojiantou",
-      "unicode": "e660",
-      "unicode_decimal": 58976
     },
     {
       "icon_id": "658044",
@@ -111,13 +153,6 @@
       "unicode_decimal": 59040
     },
     {
-      "icon_id": "672036",
-      "name": "下拉",
-      "font_class": "xiala",
-      "unicode": "e6b9",
-      "unicode_decimal": 59065
-    },
-    {
       "icon_id": "1269",
       "name": "加",
       "font_class": "jia",
@@ -165,13 +200,6 @@
       "font_class": "weixin",
       "unicode": "e7e5",
       "unicode_decimal": 59365
-    },
-    {
-      "icon_id": "630094",
-      "name": "向右箭头",
-      "font_class": "xiangyoujiantou",
-      "unicode": "e65f",
-      "unicode_decimal": 58975
     },
     {
       "icon_id": "1467351",

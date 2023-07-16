@@ -137,6 +137,8 @@
 <!-- <my-panel title="标题" label="猜猜猜" value="状态" icon="icon-dianzan_kuai" radius="8">
 	内容
 </my-panel> -->
+
+<my-share></my-share>
 		
 		
 	</view>

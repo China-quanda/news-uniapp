@@ -61,6 +61,7 @@ onLoad(()=>{
 
 const onExit = ()=> {
   this.logout()
+	storage.clear()
   this.$router.back()
 }
 </script>

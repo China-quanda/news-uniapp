@@ -160,6 +160,7 @@ const imageError = e => {
 .my-image {
 	display: inline-block;
 	position: relative;
+	overflow: hidden;
 }
 .my-image-img {
 	width: v-bind('props.width');

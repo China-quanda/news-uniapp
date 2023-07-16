@@ -16,7 +16,7 @@ import router from '@/utils/router';
 import storage from '@/utils/storage';
 import { reactive, ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
-import articleItem from '../article/article-item.vue';
+import articleItem from '../article/components/article-item.vue';
 import { getArticleList } from '@/api/article';
 let articleList = ref([]);
 onLoad(async () => {

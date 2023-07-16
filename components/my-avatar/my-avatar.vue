@@ -46,7 +46,7 @@
 				@load="imageLoad"
 				@error="imageError"
 			>
-				<block v-slot:error><my-icon :icon="errorIcon" :size="iconSize" color="#dcdee0" /></block>
+				<block v-slot:error><my-icon :icon="errorIcon" :size="iconSize" color="rgb(243 234 234)" /></block>
 			</my-image>
 			<view class="badge" v-if="showBadge"></view>
 		</view>
@@ -128,7 +128,7 @@ const props = defineProps({
 	loadingIcon: {
 		// 加载中的图标，或者小图片
 		type: String,
-		default: 'icon-24gf-pictures'
+		default: 'icon-touxiang'
 	},
 	loadingText: {
 		// 加载中的文字
@@ -138,7 +138,7 @@ const props = defineProps({
 	errorIcon: {
 		// 加载失败的图标，或者小图片
 		type: String,
-		default: 'icon-24gf-pictureSplit'
+		default: 'icon-touxiang'
 	},
 	errorText: {
 		// 加载失败文字
@@ -148,7 +148,7 @@ const props = defineProps({
 	iconSize: {
 		//加载图标和失败图标的大小
 		type: [String, Number],
-		default: 14
+		default: 26
 	},
 	textSize: {
 		//加载字体和失败字体的大小

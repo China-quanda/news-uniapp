@@ -6,6 +6,7 @@
 				:title="title" 
 				:label="label" 
 				:value="value"
+				:border="border"
 				align="flex-start"
 				>
 				<block v-slot:icon>
@@ -69,6 +70,11 @@
 			// 状态
 			type: String,
 			default: ''
+		},
+		// 是否显示下边框
+		border:{
+			type: Boolean,
+			default: true
 		},
 		radius: {
 			// 圆角

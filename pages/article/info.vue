@@ -2,14 +2,14 @@
 	<view class="container">
 		<!-- 顶部 -->
 		<my-nav-bar rightText="搜索" :clickLeft="clickLeft" leftWidth="60rpx" rightWidth="120rpx">
-			<view  class="user" v-if="showNavBarAuthor">
+			<view class="user" v-if="showNavBarAuthor">
 				<view class="user-info" @tap="goToUser(article.user_id)">
-					<my-avatar :src="article?.user?.avatar" width="26px" height="26px"></my-avatar>
-					<my-text bold lines="1" style="margin:0px 8px;">{{article?.user?.nickname}}</my-text>
+					<my-avatar :src="article?.user?.avatar" width="26px" height="26px" iconSize="16"></my-avatar>
+					<my-text bold lines="1" style="margin:0px 8px;">{{ article?.user?.nickname }}</my-text>
 				</view>
-				<my-button type="primary" :plain="isAttentionAuthor" :text="isAttentionAuthor ? '已关注':'+ 关注'" size="mini" @tap="gzUser(article?.user_id)"/>
+				<my-button type="primary" :plain="isAttentionAuthor" :text="isAttentionAuthor ? '已关注' : '+ 关注'" size="mini" @tap="gzUser(article?.user_id)" />
 			</view>
-			<my-text v-else lines="1" style="margin-left: 8px;">{{app.title}}</my-text>
+			<my-text v-else lines="1" style="margin-left: 8px;">{{ app.title }}</my-text>
 			<block v-slot:right>
 				<view>
 					<uni-icons type="search" size="18" color="#000" style="margin-right: 7.5px;" @tap="search" />
@@ -17,26 +17,27 @@
 				</view>
 			</block>
 		</my-nav-bar>
+
 		<!-- 文章内容 -->
 		<view class="article-content" ref="articleContent">
 			<h1>{{ article.title }}</h1>
 			<!-- 文章作者 -->
-			<info-author id="author" :article="article" :isWage="isAttentionAuthor"/>
+			<info-author id="author" :article="article" :isWage="isAttentionAuthor" />
 			<!-- 文章描述 -->
-			<rich-text class="content" :nodes="article.content" ref="content"/>
+			<rich-text class="content" :nodes="article.content" ref="content" />
 		</view>
-		<!-- 相关搜索 -->
-		<my-panel title="相关推荐" radius="8" rightIcon="xx" bold>
-			<!-- 文章推荐 -->
-			 <!-- <ArticleItem :config="config"></ArticleItem> -->
-		</my-panel>
-		
-		<!-- <MyPanel :title="'评论 ' + total + ''" showTitle>
-		  <ArticleComment @onShowPost="siPostshow=true" :articleId="articleId"/>
-		</MyPanel> -->
+
+		<!-- 相关搜索 暂时不需要-->
+
+		<!-- 相关推荐 -->
+		<my-panel title="相关推荐" radius="8b" rightIcon="xx" bold :border="false"><article-item :config="config" :list="articleList"></article-item></my-panel>
+
+		<!-- 评论组件 -->
+		<article-comment v-show="showComment" />
+
 		<!-- 底部区域 -->
-		<!-- <CommentAction  @onShowPost="siPostshow=true" :articleId="articleId"/> -->
-		<info-action></info-action>
+		<info-action @onAction="onActionTap" />
+
 		<!-- 分享 -->
 		<!-- <my-share /> -->
 		<!-- 发布评论 -->
@@ -47,6 +48,7 @@
     >
     <PostComment :articleId="articleId" />
     </u-popup> -->
+		<view style="height: 44px;"></view>
 	</view>
 </template>
 <script setup lang="ts">
@@ -55,44 +57,58 @@ import { onLoad ,onPageScroll} from '@dcloudio/uni-app';
 import router from '@/utils/router';
 import storage from '@/utils/storage';
 import {app} from '@/utils/config';
+import { getArticleList } from '@/api/article';
 import { getArticleId } from '@/api/article'
 import infoAuthor from './components/info-author.vue';
 import infoAction from './components/info-action.vue';
-// import MyPanel from './components/My-panel.vue'
-// import ArticleItem from '@/pages/index/Article-item.vue'
-// import ArticleComment from './components/article-comment.vue'
-// import CommentAction from './components/comment-action.vue'
-// import PostComment from './components/post-comment.vue'
+import articleItem from './components/article-item.vue';
+import articleComment from './components/article-comment.vue'
 
 // import { isWage } from '@/api/user'
 // import bus from '@/utils/bus'
 // import {mapGetters} from 'vuex'
 let total = ref<number>(2980)
 let showNavBarAuthor = ref<boolean>(false)
-let siPostshow = ref<boolean>(false)
-let config = reactive({
-       showAuthorName: true,
-       showRead: true,
-       // showAvatar: true
-       one: true,
-       showAvatar: false
- })
+let showComment = ref<boolean>(true)
+// let config = reactive({
+//        showAuthorName: true,
+//        showRead: true,
+//        // showAvatar: true
+//        one: true,
+//        showAvatar: false
+//  })
+ let config = reactive({
+ 	showAuthorName: true,
+ 	showRead: true,
+ 	// showAvatar: true
+ 	one: true,
+ 	two: true,
+ 	three: true,
+ 	zero: true,
+ 	// showTime: true
+ });
 let articleId = ref<number>(0)
 let article = ref({})
 let author_id = ref<number>(0)
 let isAttentionAuthor = ref<boolean>(false)
 let token = ref<string>('')
+let articleList = ref([]);
 onLoad((o)=>{
 	articleId.value = o.article_id
 	getArticle(o.article_id)
 	token.value	= storage.get('token')
+
+	getArticleList().then(res => {
+		articleList.value = res.data.list;
+		console.log(articleList.value);
+	});
 
 })
 // let time = ref(null)
 onPageScroll((e)=>{
 	// clearTimeout(time.value)
 	// time.value = setTimeout(()=>{
-		
+
 	// },300)
 	const query = uni.createSelectorQuery().in(this);
 	query.select('#author').boundingClientRect(data => {
@@ -110,9 +126,17 @@ onPageScroll((e)=>{
 			showNavBarAuthor.value=false
 		}
 		// #endif
-		
+
 	}).exec();
 })
+const onActionTap = (value)=>{
+	console.log(value);
+	if(value === 'comment') showComment.value = !showComment.value
+	// if(value === 'star') showComment.value = true
+	// if(value === 'like') showComment.value = true
+	// if(value === 'share') showComment.value = true
+}
+
 const clickLeft = () => {
 	router.back()
 };
@@ -179,25 +203,25 @@ const handlePerviewImage = ()=>{
 
 <style lang="scss" scoped>
 .user {
-		flex: 1;
-		animation: nav-view-in 0.3s linear;
+	flex: 1;
+	animation: nav-view-in 0.3s linear;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.user-info {
 		display: flex;
+		// line-height: 10px;
 		align-items: center;
-		justify-content: space-between;
-		.user-info {
-			display: flex;
-			align-items: center;
-		}
 	}
-@keyframes nav-view-in {
-  0% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
 }
- 
+@keyframes nav-view-in {
+	0% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
+	}
+}
 
 .article-content {
 	padding: 5px 12px;
@@ -205,7 +229,7 @@ const handlePerviewImage = ()=>{
 		text-align: left;
 		font-size: 22px;
 	}
-	
+
 	.content {
 		font-size: 16px;
 		p {

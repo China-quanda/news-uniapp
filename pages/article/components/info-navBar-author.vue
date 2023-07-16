@@ -3,7 +3,7 @@
 		<view class="author-left" @tap="goToUser(article?.user_id)">
 			<view class="author-avatar"><my-avatar :src="article?.user?.avatar" width="35px" height="35px" /></view>
 			<view class="author-name">
-				<my-text bold >{{article?.user?.nickname}}</my-text>
+				<my-text bold>{{ article?.user?.nickname }}</my-text>
 				<view class="author-more">
 					<text>{{ article?.createdAt }}</text>
 					<text>·</text>
@@ -11,40 +11,40 @@
 				</view>
 			</view>
 		</view>
-		<my-button type="primary" :plain="isWage" :text="isWage ? '已关注':'+ 关注'" size="small" @tap="tapFocus(article?.user_id)"/>
+		<my-button type="primary" :plain="isWage" :text="isWage ? '已关注' : '+ 关注'" size="small" @tap="tapFocus(article?.user_id)" />
 	</view>
 </template>
 
 <script setup lang="ts">
-	import storage from '@/utils/storage';
-	// import { addUserFollowings,deleteUserFollowings } from '@/api/user'
+import storage from '@/utils/storage';
+// import { addUserFollowings,deleteUserFollowings } from '@/api/user'
 const props = defineProps({
 	article: {
 		type: Object,
 		default: () => {}
 	},
 	isWage: {
-		type:Boolean,
-		default:false
+		type: Boolean,
+		default: false
 	}
 });
-const goToUser = (id)=>{
+const goToUser = id => {
 	console.log(id);
-}
+};
 console.log(props.isWage);
-const tapFocus = async (author_id)=>{
-	if(!storage.get('token')) return console.log('请先登录');
-	if(props.isWage){
-	  // 发起请求取消关注
-	   await deleteUserFollowings(author_id)
-	  // console.log('取消关注作者成功');
-	}else{
-	  // 发起请求关注
-	  const re = await addUserFollowings({follerd_id:author_id})
-	  if(!re) return console.log('关注失败');
-	  // console.log('关注作者成功');
+const tapFocus = async author_id => {
+	if (!storage.get('token')) return console.log('请先登录');
+	if (props.isWage) {
+		// 发起请求取消关注
+		await deleteUserFollowings(author_id);
+		// console.log('取消关注作者成功');
+	} else {
+		// 发起请求关注
+		const re = await addUserFollowings({ follerd_id: author_id });
+		if (!re) return console.log('关注失败');
+		// console.log('关注作者成功');
 	}
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -57,7 +57,7 @@ const tapFocus = async (author_id)=>{
 	box-sizing: border-box;
 	.author-left {
 		display: flex;
-		align-items: center ;
+		align-items: center;
 		.author-avatar {
 			margin-top: 5px;
 			margin-right: 15px;

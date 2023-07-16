@@ -105,7 +105,6 @@ const emits = defineEmits(['click']);
 const tapClick = e => {
 	emits('click', e);
 	if (!props.desensitization && props.mode === 'phone') {
-		console.log(11);
 		uni.makePhoneCall({
 			phoneNumber: textType.value
 		});

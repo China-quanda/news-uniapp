@@ -42,7 +42,7 @@ import router from '@/utils/router';
 import { isHttp } from '@/utils/validate';
 const props = defineProps({
 	type: {
-		// 按钮类型 ：primary、success、info、warning、error 默认为 default
+		// 按钮类型 ：primary、success、info、warning、danger 默认为 default
 		type: String,
 		default: 'default'
 	},
@@ -237,7 +237,7 @@ watch(
 .button-size-mini {
 	height: 22px;
 	font-size: 10px;
-	padding: 0 4px;
+	padding: 0 8px;
 }
 
 // 朴素按钮 通过 plain 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
