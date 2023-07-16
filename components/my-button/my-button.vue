@@ -24,7 +24,7 @@
 
 			<view class="" v-if="icon" style="display: flex; align-items: center;">
 				<my-icon :icon="icon" color="#fff"/>
-				<view style="margin-left: 10px;">
+				<view v-if="text" style="margin-left: 10px;">
 					<slot>{{ text }}</slot>
 				</view>
 				<!-- <slot><view style="margin-left: 10px;">{{ text }}</view></slot> -->

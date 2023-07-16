@@ -138,7 +138,7 @@
 	内容
 </my-panel> -->
 
-<my-share></my-share>
+<!-- <my-share></my-share> -->
 		
 		
 	</view>

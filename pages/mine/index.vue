@@ -30,9 +30,9 @@
 					<view class="info-two">介绍：{{ userInfo?.introduce || '它很懒，什么都没介绍。' }}</view>
 					<view class="info-three">IP 属地：{{ userInfo?.city || '未知' }}</view>
 					<view class="info-four">
-						<button type="primary" class="custom-style" size="mini" @tap="prompt.msg('暂时未开发此功能')">申请认证</button>
-						<button type="primary" class="custom-style" size="mini" @tap="router.push('/pages/setting/profile/index')">编辑资料</button>
-						<button type="primary" class="custom-style" size="mini" @tap="prompt.msg('暂时未开发此功能')"><my-icon icon="icon-fenxiang" color="#fff" :size="12" /></button>
+						<my-button type="primary" class="custom-style" size="small" @tap="prompt.msg('暂时未开发此功能')">申请认证</my-button>
+						<my-button type="primary" class="custom-style" size="small" url="/pages/mine/setting/profile/index">编辑资料</my-button>
+						<my-button type="primary" class="custom-style" size="small" icon="icon-fenxiang" @tap="prompt.msg('暂时未开发此功能')"></my-button>
 					</view>
 				</view>
 				<view class="cover" v-else @tap="toLogin">登录</view>
@@ -230,6 +230,8 @@ let tapItem = row => {
 		}
 		.info-four {
 			margin-top: 7px;
+			display: flex;
+			// text-align: left;
 			.custom-style {
 				margin-right: 6px;
 			}

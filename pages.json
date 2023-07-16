@@ -105,6 +105,48 @@
 						"navigationBarTitleText": "编辑资料"
 						// "navigationStyle": "custom"
 					}
+				},
+				{
+					"path": "account/index",
+					"style": {
+						"navigationBarTitleText": "账号安全"
+					}
+				},
+				{
+					"path": "account/replace",
+					"style": {
+						"navigationBarTitleText": "更换"
+					}
+				},
+				{
+					"path": "account/del-account",
+					"style": {
+						"navigationBarTitleText": "注销账号"
+					}
+				},
+				{
+					"path": "account/device/login-device",
+					"style": {
+						"navigationBarTitleText": "登录设备管理"
+					}
+				},
+				{
+					"path": "account/device/device-info",
+					"style": {
+						"navigationBarTitleText": "登录设备详情"
+					}
+				},
+				{
+					"path": "account/security/index",
+					"style": {
+						"navigationBarTitleText": "安全中心"
+					}
+				},
+				{
+					"path": "account/security/security-lock",
+					"style": {
+						"navigationBarTitleText": "安全锁定"
+					}
 				}
 			]
 		}

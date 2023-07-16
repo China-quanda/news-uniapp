@@ -7,7 +7,8 @@
 			</view>
 			<block v-slot:left><my-scan size="18" color="#000" /></block>
 		</my-nav-bar>
-		<button @tap="router.push('./channel')">111</button>
+		<button @tap="router.push('./channel')">频道管理</button>
+		<button @tap="router.push('/pages/article/info?article_id=47')">文章详情页</button>
 		<article-item :config="config" :list="articleList" />
 	</view>
 </template>
@@ -20,7 +21,7 @@ import articleItem from '../article/components/article-item.vue';
 import { getArticleList } from '@/api/article';
 let articleList = ref([]);
 onLoad(async () => {
-	storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODgyODA5NTQsImV4cCI6MTY4OTU3Njk1NH0.XTBQ5F0k2XV7yxRH94TwWO4XWTEtJrRXJgoSV9I3_Cg');
+	storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODk1MjYxMTYsImV4cCI6MTY5MDgyMjExNn0.934sg2hFbiyVR04z989k4zUZNdLzdI6gcEaMXrHFGeo');
 	getArticleList().then(res => {
 		articleList.value = res.data.list;
 		// console.log(articleList.value);

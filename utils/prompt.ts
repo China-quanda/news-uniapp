@@ -140,7 +140,7 @@ export default {
 	  return new Promise((resolve, reject) => {
 			if (typeof option === "object") {
 			  uni.showModal({
-			    title: option.title || '系统提示',
+			    title: option.title || '',
 			    content: option.content,
 			    confirmText: option.confirmText || '确定',
 			    cancelText: option.cancelText || '取消',
