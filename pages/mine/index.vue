@@ -106,7 +106,8 @@ let twoGridList = ref([
 	},
 	{
 		icon: 'icon-xiazai',
-		title: '下载'
+		title: '下载',
+		url:'./download/index'
 	},
 	{
 		icon: 'icon-lishi',
@@ -114,7 +115,8 @@ let twoGridList = ref([
 	},
 	{
 		icon: 'icon-xiaoxi',
-		title: '消息'
+		title: '消息',
+		url: './message/index'
 	},
 	{
 		icon: 'icon-dianzan',

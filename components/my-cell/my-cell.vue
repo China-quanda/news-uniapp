@@ -10,7 +10,7 @@
 				<slot name="icon"></slot>
 				<slot name="title">{{props.title}}</slot>
 			</view>
-			<view class="label">
+			<view v-if="label" class="label">
 				<slot name="label">{{props.label}}</slot>
 			</view>
 		</view>
@@ -114,6 +114,7 @@
 }
 .my-cell-left{
 	.label{
+		margin-top: 3px;
 		color: #c3b8b8;
 		font-size: 13px;
 	}

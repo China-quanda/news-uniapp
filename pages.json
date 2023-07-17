@@ -87,9 +87,24 @@
 					"style": {
 						"navigationBarTitleText": "全部服务"
 					}
+				},
+				{
+					"path": "message/index",
+					"style": {
+						"navigationBarTitleText": "消息私信",
+						"navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "download/index",
+					"style": {
+						"navigationBarTitleText": "下载",
+						"navigationStyle": "custom"
+					}
 				}
 			]
 		},
+		// 设置
 		{
 			"root": "pages/mine/setting",
 			"pages": [
@@ -104,6 +119,13 @@
 					"style": {
 						"navigationBarTitleText": "编辑资料"
 						// "navigationStyle": "custom"
+					}
+				},
+				{
+					"path": "profile/edit",
+					"style": {
+						"navigationBarTitleText": "编辑资料",
+						"navigationStyle": "custom"
 					}
 				},
 				{
@@ -146,6 +168,18 @@
 					"path": "account/security/security-lock",
 					"style": {
 						"navigationBarTitleText": "安全锁定"
+					}
+				},
+				{
+					"path": "privacy/index",
+					"style": {
+						"navigationBarTitleText": "隐私设置"
+					}
+				},
+				{
+					"path": "message/index",
+					"style": {
+						"navigationBarTitleText": "消息设置"
 					}
 				}
 			]
