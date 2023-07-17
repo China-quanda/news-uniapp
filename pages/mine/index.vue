@@ -15,8 +15,7 @@
 				<view class="info" v-if="token">
 					<view class="info-one">
 						<view class="logo">
-							<!-- <image :src="userInfo?.avatar ? userInfo?.avatar : '@/static/images/login.png'" mode="widthFix" /> -->
-							<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="70px" height="70px" @tap="uploadAvatarImg"/>
+							<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="70px" height="70px" />
 						</view>
 						<view class="info-name">
 							<view class="name">{{ userInfo?.nickname || userInfo?.user_name || '你的maya' }}</view>
@@ -86,6 +85,7 @@ onLoad(() => {
 	// getUserArticle(this.userId);
 	token.value = storage.get('token');
 });
+let userInfo = reactive({})
 let token = ref<string>('');
 let total = ref<number>(0);
 let myAllArticle = ref([]);

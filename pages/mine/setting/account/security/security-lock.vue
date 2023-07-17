@@ -4,7 +4,7 @@
 	<view class="dev-info">
 		<view class="cell">
 			<view class="Panel-con">
-				<i class="iconfont icon-jiesuo"></i>
+				<i :class="['iconfont' ,type==='lock' ? 'icon-jiesuo' : 'icon-suoding']"></i>
 				<view class="Panel-title">{{type === 'lock' ? '开启锁定保护' : '解除锁定保护'}}</view>
 			</view>
 			<view class="Panel-list" v-if="type==='lock'">

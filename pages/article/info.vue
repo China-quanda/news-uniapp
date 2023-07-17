@@ -36,7 +36,7 @@
 		<article-comment v-show="showComment" />
 
 		<!-- 底部区域 -->
-		<info-action @onAction="onActionTap" />
+		<info-action v-show="showAction" @onAction="onActionTap" />
 
 		<!-- 分享 -->
 		<!-- <my-share /> -->
@@ -70,6 +70,7 @@ import articleComment from './components/article-comment.vue'
 let total = ref<number>(2980)
 let showNavBarAuthor = ref<boolean>(false)
 let showComment = ref<boolean>(true)
+let showAction = ref<boolean>(true)
 // let config = reactive({
 //        showAuthorName: true,
 //        showRead: true,
@@ -131,7 +132,10 @@ onPageScroll((e)=>{
 })
 const onActionTap = (value)=>{
 	console.log(value);
-	if(value === 'comment') showComment.value = !showComment.value
+	if(value === 'comment'){
+		showComment.value = !showComment.value
+		showAction.value = false
+	}
 	// if(value === 'star') showComment.value = true
 	// if(value === 'like') showComment.value = true
 	// if(value === 'share') showComment.value = true
