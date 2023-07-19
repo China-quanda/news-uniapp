@@ -23,7 +23,7 @@
 			</view>
 
 			<view class="" v-if="icon" style="display: flex; align-items: center;">
-				<my-icon :icon="icon" color="#fff"/>
+				<my-icon :icon="icon" :color="iconColor"/>
 				<view v-if="text" style="margin-left: 10px;">
 					<slot>{{ text }}</slot>
 				</view>
@@ -95,6 +95,11 @@ const props = defineProps({
 		// 左侧图标名称或图片链接，等同于 Icon 组件的
 		type: String,
 		default: ''
+	},
+	iconColor:{
+		// 自定义图标颜色
+		type: String,
+		default: '#ccc'
 	},
 	url: {
 		// 点击后跳转的链接地址
