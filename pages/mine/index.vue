@@ -12,7 +12,7 @@
 
 		<view class="one">
 			<view>
-				<view class="info" v-if="token">
+				<view class="info" v-if="!token">
 					<view class="info-one">
 						<view class="logo">
 							<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="70px" height="70px" />

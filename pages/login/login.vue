@@ -338,15 +338,15 @@ const resetPassword = () => {
 	position: absolute;
 	bottom: 40px;
 	margin-bottom: 20px;
-	text {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 33px;
-		height: 33px;
-		border: 0.5px solid #328bf9;
-		border-radius: 100px;
-	}
+	// text {
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: 33px;
+	// 	height: 33px;
+	// 	border: 0.5px solid #328bf9;
+	// 	border-radius: 100px;
+	// }
 	.my-icon {
 		width: 25px;
 		height: 25px;
