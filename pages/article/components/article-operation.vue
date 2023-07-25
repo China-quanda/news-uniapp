@@ -37,8 +37,7 @@ onMounted(() => {
 //点击分享
 
 const onShare = () => {
-	bus.$emit('ontapShare');
-};
+}
 const onComment = () => {};
 // 点击点赞或取消点赞
 const onLike = async () => {

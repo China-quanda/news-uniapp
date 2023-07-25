@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<!-- 顶部 -->
-		<my-nav-bar rightText="搜索" :clickLeft="clickLeft" leftWidth="60rpx" rightWidth="120rpx">
+		<my-nav-bar :clickLeft="clickLeft" leftWidth="60rpx" rightWidth="120rpx">
 			<view class="user" v-if="showNavBarAuthor">
 				<view class="user-info" @tap="goToUser(article.user_id)">
 					<my-avatar :src="article?.user?.avatar" width="26px" height="26px" iconSize="16"></my-avatar>
@@ -36,7 +36,7 @@
 		<article-comment v-show="showComment" />
 
 		<!-- 底部区域 -->
-		<info-action v-show="showAction" @onAction="onActionTap" />
+		<info-action class="info-action" v-show="showAction" @onAction="onActionTap" />
 
 		<!-- 分享 -->
 		<!-- <my-share /> -->
@@ -247,5 +247,12 @@ const handlePerviewImage = ()=>{
 			border-radius: 5px;
 		}
 	}
+}
+.info-action{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-top: 1px solid rgb(245, 245, 245);
 }
 </style>

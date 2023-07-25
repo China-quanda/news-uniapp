@@ -44,7 +44,7 @@ const tapItem = value => {
 };
 const ontapShare = () => {
 	// this.$toast('点击分享')
-	bus.$emit('onClickShare');
+	// bus.$emit('onClickShare');
 };
 
 // 点赞或取消点赞
@@ -117,13 +117,8 @@ onBeforeMount(() => {
 </script>
 <style lang="scss" scoped>
 .info-action {
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	height: 44px;
 	display: flex;
-	border-top: 1px solid rgb(245, 245, 245);
 	justify-content: space-around;
 	align-items: center;
 	// line-height: 50px;

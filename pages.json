@@ -101,7 +101,15 @@
 						"navigationBarTitleText": "下载",
 						"navigationStyle": "custom"
 					}
+				},
+				{
+					"path": "content/index",
+					"style": {
+						"navigationBarTitleText": "内容",
+						"navigationStyle": "custom"
+					}
 				}
+				
 			]
 		},
 		// 设置
