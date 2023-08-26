@@ -12,6 +12,10 @@
 		</my-cell>
 		<my-cell title="大字设置" />
 		<my-cell title="字体大小" value="小" />
+		<!-- <my-cell title="蓝牙连接" 
+		:value="Bluetooth.connection ? Bluetooth.BLEInformation.name : '未连接'" 
+		@tap="toConnectionBluetooth"
+		/> -->
 		
     <view class="setting"></view>
 		<my-cell title="清除缓存" value="0B" />
@@ -45,9 +49,14 @@
 // import {getStorage} from '@/utils/storage'
 // ...mapActions('user', ['logout']),
 import {ref} from 'vue';
-import { onLoad } from '@dcloudio/uni-app';
+import { onLoad ,onShow} from '@dcloudio/uni-app';
 import storage from '@/utils/storage';
 import router from '@/utils/router';
+import { storeToRefs } from 'pinia'
+import { useBluetoothStore } from '@/store/bluetooth'
+const bluetoothStore = useBluetoothStore()
+const { BLEInformation ,connection } = storeToRefs(bluetoothStore)
+const {onBLEConnectionState,connectionBLE} = bluetoothStore
 let token = ref('')
 let appVersion = ref('')
 let promptStatus = ref(false)
@@ -58,11 +67,21 @@ onLoad(()=>{
 	appVersion.value = storage.get('systemInfo')?.appVersion
 	token.value = storage.get('token')
 })
-
+onShow(()=>{
+	onBLEConnectionState()
+	if(!connection && BLEInformation.deviceId){
+		connectionBLE()
+	}
+})
 const onExit = ()=> {
   this.logout()
 	storage.clear()
   this.$router.back()
+}
+
+const toConnectionBluetooth = ()=>{
+	if(this.Bluetooth.connection) return uni.showToast({ title: '已连接打印机', icon:'none' });
+	uni.navigateTo({url:'/pages/index/bluetoothConnect'})
 }
 </script>
 <style lang="scss" scoped>
