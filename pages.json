@@ -41,6 +41,13 @@
 			}
 		},
 		{
+			"path": "pages/index/bluetoothConnect",
+			"style": {
+				"navigationBarTitleText": "连接蓝牙",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
 			"path": "pages/test/test",
 			"style": {
 				"navigationStyle": "custom"
