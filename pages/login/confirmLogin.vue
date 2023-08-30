@@ -12,6 +12,7 @@ import { ref, computed } from 'vue';
 import { onUnload } from '@dcloudio/uni-app';
 import { app as appConfig } from '@/utils/config';
 import router from '@/utils/router';
+import prompt from '@/utils/prompt';
 import storage from '@/utils/storage';
 import { qrConfirmLogin, qrCancelLogin } from '@/api/user';
 let loading = ref<boolean>(false);
@@ -26,23 +27,19 @@ let login = () => {
 		.then(res => {
 			console.log(res);
 			status.value = res.data.status;
+			if(res.data.status == 5) prompt.errorMsg('二维码已过期，请重新扫码')
 			router.back();
-		})
-		.catch(err => {
-			console.log(err);
 		})
 		.finally(() => {
 			loading.value = false;
 		});
 };
+
 let cancel = () => {
 	if (status.value === 3) return;
 	qrCancelLogin({ qrcodeId: qrCode.qrcodeId })
 		.then(res => {
 			console.log(res);
-		})
-		.catch(err => {
-			console.log(err);
 		})
 		.finally(() => {
 			router.back();

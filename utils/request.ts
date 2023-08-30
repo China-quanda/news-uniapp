@@ -52,7 +52,7 @@
 				},
 				complete: res => {
 					// 是否隐藏加载
-					if(requestData.data && requestData.data.Loading) {
+					if (config.data && config.data.Loading) {
 						uni.hideLoading();
 						clearInterval(myInterval)
 					}
