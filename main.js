@@ -43,9 +43,11 @@ app.$mount()
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 import {createPinia} from 'pinia'
+import { createUnistorage } from 'pinia-plugin-unistorage'
 export function createApp() {
   const app = createSSRApp(App)
 	const pinia = createPinia()
+	pinia.use(createUnistorage())
 	app.use(pinia)
   return {
     app,

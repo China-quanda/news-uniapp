@@ -1,7 +1,27 @@
 import { defineStore } from 'pinia'
 import storage from '@/utils/storage'
 export const useBluetoothStore = defineStore('bluetooth', {
+	// unistorage: true, // 是否持久化
+	unistorage: { // true
+			key: 'bluetooth', // 缓存的键，默认为该 store 的 id，这里是 bluetooth,
+			paths: ['connection', 'BLEInformation.deviceId'], // 需要缓存的路径，这里设置 connection 和 BLEInformation 下的 data 会被缓存
+			// 初始化恢复前触发
+			// beforeRestore(ctx) {},
+			// 初始化恢复后触发
+			// afterRestore(ctx) {},
+			serializer: {
+				// 序列化，默认为 JSON.stringify
+				serialize(v) {
+					return JSON.stringify(v)
+				},
+				// 反序列化，默认为 JSON.parse
+				deserialize(v) {
+					return JSON.parse(v)
+				}
+			}
+		},
     state: () => ({
+			test:'1111',
 			// BLEInformation: {
 			// 	platform: sysinfo.platform || "",
 			// 	deviceId: "",
