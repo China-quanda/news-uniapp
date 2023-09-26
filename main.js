@@ -46,6 +46,8 @@ import {createPinia} from 'pinia'
 import { createUnistorage } from 'pinia-plugin-unistorage'
 export function createApp() {
   const app = createSSRApp(App)
+	// 挂载到全局的每一个Vue实例上
+	// app.config.globalProperties.$http = myRequest
 	const pinia = createPinia()
 	pinia.use(createUnistorage())
 	app.use(pinia)
