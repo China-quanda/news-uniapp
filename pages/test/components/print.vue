@@ -2,17 +2,17 @@
 	<view class="container-print">
 		
 		<!-- 连接蓝牙按钮 -->
-		<!-- <view class="connection" 
+		<view class="connection" 
 		:style="`background: linear-gradient(2deg,${Bluetooth.connection ? ' #1cb75c, #58f884' : '#f32f32, #f58356'});`" 
 		@tap="toConnectionBluetooth">
 			<text class="state">{{Bluetooth.connection ? '已' : '未'}}连接</text>
-		</view> -->
+		</view>
 
 		<!-- 底部按钮 -->
-		<!-- <view style="height: 40px;"></view>
+		<view style="height: 40px;"></view>
 		<view class="footer-box">
 			<button class="footer-btn" @tap="print" :loading="isLabelSend" :disabled="isLabelSend">{{ isLabelSend ? '打印中' : '打印' }}</button>
-		</view> -->
+		</view>
 	</view>
 </template>
 
@@ -38,7 +38,7 @@ let isReceiptSend = ref<boolean>(false)
 let isLabelSend = ref<boolean>(false)
 
 onMounted(()=>{
-	onBLEConnectionState()
+	// onBLEConnectionState()
 	let list = [];
 	let numList = [];
 	let j = 0;

@@ -52,14 +52,14 @@
 	
 	//开始搜索蓝牙
 	const startSearch = () =>{
-		if(bluetoothStore.connection) return
-		uni.closeBluetoothAdapter()
+		// if(bluetoothStore.connection) return
+		// uni.closeBluetoothAdapter()
 		uni.openBluetoothAdapter({
 			success(res) {
 				uni.getBluetoothAdapterState({
 					success(res2) {
 						if(!res2.available) return uni.showModal({ title: '提示', content: '本机蓝牙不可用', showCancel: false })
-						that.isSearching = true;
+						isSearching.value = true;
 						if (res2.discovering) return uni.showToast({ title: '正在搜索附近打印机设备', icon: "none"  })
 						getBluetoothDevices()
 					},
@@ -81,7 +81,7 @@
 	const stopSearch =()=> {
 		uni.stopBluetoothDevicesDiscovery({
 			success: (res) => {
-				this.isSearching = false;
+				isSearching.value = false;
 			},
 			fail: (e) => {
 				errorCodeTip(e.errCode);
