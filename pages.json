@@ -50,6 +50,14 @@
 		{
 			"path": "pages/test/test",
 			"style": {
+				"navigationBarTitleText": "测试页面",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/test/components/print",
+			"style": {
+				"navigationBarTitleText": "打印页面，引入文件报错",
 				"navigationStyle": "custom"
 			}
 		}
