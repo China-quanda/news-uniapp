@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import '@/static/font/iconfont.js'
 import { computed, reactive } from 'vue';
 
 const props = defineProps({
@@ -25,7 +26,7 @@ const props = defineProps({
 });
 const style = reactive({
 	icon: props.icon,
-	'font-size': props.size + 'px',
+	fontSize: props.size + 'px',
 	color: props.color
 });
 // 给图标添加上类名
