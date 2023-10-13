@@ -3,7 +3,7 @@
 		<view
 			ref="myBtnRef"
 			:class="[
-				'button-all',
+				'button',
 				buttonType,
 				buttonSize,
 				plain ? 'button-plain' : '',
@@ -16,21 +16,31 @@
 			@tap="tapButton"
 		>
 			<view v-if="loading" style="display: flex; align-items: center;">
-				<view class="loading" />
-				<view v-if="loadingText" style="margin-left: 10px;">
-					<slot>{{ loadingText }}</slot>
+				<view class="loading"/>
+				<view style="margin-left: 10px;">
+					<text v-if="loadingText">
+						{{ loadingText }}
+					</text>
+					<text v-else>
+						<slot>{{ loadingText }}</slot>
+					</text>
 				</view>
 			</view>
 
-			<view class="" v-if="icon" style="display: flex; align-items: center;">
+			<view v-if="icon" style="display: flex; align-items: center;">
 				<my-icon :icon="icon" :color="iconColor"/>
-				<view v-if="text" style="margin-left: 10px;">
-					<slot>{{ text }}</slot>
+				<view style="margin-left: 10px;">
+					<text v-if="text">
+						{{ text }}
+					</text>
+					<text v-else>
+						<slot></slot>
+					</text>
 				</view>
 				<!-- <slot><view style="margin-left: 10px;">{{ text }}</view></slot> -->
 			</view>
 
-			<view class="" v-if="!icon && !loading">
+			<view v-if="!icon && !loading">
 				<slot>{{ text }}</slot>
 			</view>
 		</view>
@@ -44,12 +54,18 @@ const props = defineProps({
 	type: {
 		// 按钮类型 ：primary、success、info、warning、danger 默认为 default
 		type: String,
-		default: 'default'
+		default: 'default',
+		validator(value) {
+			return ['primary', 'success', 'info','warning','danger'].includes(value);
+		}
 	},
 	size: {
 		// 按钮尺寸 :支持 large、normal、small、mini 四种尺寸，默认为 normal。
 		type: String,
-		default: 'normal'
+		default: 'normal',
+		validator(value) {
+			return ['large', 'normal', 'small','mini'].includes(value);
+		}
 	},
 	plain: {
 		// 朴素按钮 通过 plain 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
@@ -79,7 +95,10 @@ const props = defineProps({
 	shape: {
 		// 按钮形状 通过shape值设置按钮形状，circle为圆角
 		type: String,
-		require: 'shape'
+		require: 'shape',
+		validator(value) {
+			return ['shape', 'circle'].includes(value);
+		}
 	},
 	color: {
 		// 自定义颜色 通过color值设置按钮渐变颜色
@@ -109,7 +128,10 @@ const props = defineProps({
 	// 链接跳转的方式
 	linkType: {
 		type: String,
-		default: 'push'
+		default: 'push',
+		validator(value) {
+			return ['push', 'tab', 'redirect','reLaunch'].includes(value);
+		}
 	}
 });
 const emits = defineEmits(['click']);
@@ -130,7 +152,7 @@ const isType = v => {
 let color = ref('');
 let myBtnStyle = reactive({
 	color: '',
-	background: '',
+	background: 'linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36));',
 	border: '',
 	'border-color': ''
 });
@@ -147,6 +169,7 @@ const setMyBtnStyle = () => {
 		const gradient = props.color.search('linear-gradien') != -1;
 		if (gradient) {
 			myBtnStyle['border'] = 'none';
+			myBtnStyle['background'] = props.color;
 			return;
 		}
 		myBtnStyle['border-color'] = props.color;
@@ -179,21 +202,19 @@ watch(
 
 <style lang="scss" scoped>
 // 按钮类型 ：primary、success、info、warning、error 默认为 default
-.button-all {
+.button {
 	border: 1px solid #ccc;
 	color: #fff;
 	border-radius: 3px;
 	cursor: pointer;
 	display: inline-block;
+	text-align: center;
 	box-sizing: border-box;
 	&:active {
 		// background-color: v-bind(color);
 		opacity: 0.6;
 		transform: all 0.5s;
 	}
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 .button-type-default {
 	background-color: #fff;
@@ -226,21 +247,25 @@ watch(
 .button-size-large {
 	width: 100%;
 	height: 50px;
+	line-height: 50px;
 	padding: 0 15px;
 	font-size: 16px;
 }
 .button-size-normal {
 	height: 40px;
+	line-height: 40px;
 	padding: 0 15px;
 	font-size: 14px;
 }
 .button-size-small {
 	height: 30px;
+	line-height: 30px;
 	padding: 0 8px;
 	font-size: 12px;
 }
 .button-size-mini {
 	height: 22px;
+	line-height: 22px;
 	font-size: 10px;
 	padding: 0 8px;
 }
@@ -262,11 +287,18 @@ watch(
 .button-disabled {
 	opacity: 0.5;
 	cursor: not-allowed;
+	&:active {
+		opacity: 0.5;
+	}
 }
 
 // 加载状态 通过loading值设置是否开启加载图标，loadingText设置加载中文字
 .button-loading {
 	cursor: default;
+	opacity: 0.9;
+	&:active {
+		opacity: 0.9;
+	}
 }
 // 圆形按钮
 .button-shape {
