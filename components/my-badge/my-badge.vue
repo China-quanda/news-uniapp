@@ -28,6 +28,10 @@ const props = defineProps({
 	position: {
 		type: String,
 		default: 'top-right'
+	},
+	customStyle: {
+		type: Object,
+		default: ()=>{}
 	}
 });
 
@@ -55,7 +59,10 @@ watch(
 
 <template>
 	<view class="badge">
-		<text v-if="value || showZero" :class="['badge-content', isDot ? 'badge-dot' : '', position]" @tap="handleTap">{{ content }}</text>
+		<text v-if="value || showZero" 
+		:class="['badge-content', isDot ? 'badge-dot' : '', position]" 
+		:style="customStyle"
+		@tap="handleTap">{{ content }}</text>
 		<slot></slot>
 	</view>
 </template>

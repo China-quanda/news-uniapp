@@ -67,5 +67,6 @@
 | color | 文字颜色 | string | '#fff' | 否 |
 | bgColor | 背景颜色 | string | '#f56c6c' | 否 |
 | position | 徽标位置，可选值为 top-left bottom-left bottom-right | string | 'top-right' | 否 |
+| customStyle | 自定义样式，对象形式 | bbject | '-' | 否 |
 
 position还未实现
