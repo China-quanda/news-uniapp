@@ -152,27 +152,27 @@ const isType = v => {
 let color = ref('');
 let myBtnStyle = reactive({
 	color: '',
-	background: 'linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36));',
+	background: '',
 	border: '',
-	'border-color': ''
+	borderColor: ''
 });
 const setMyBtnStyle = () => {
 	nextTick(() => {
 		if (!props.color) return;
 		if (props.plain) {
-			myBtnStyle['color'] = props.color;
-			myBtnStyle['border-color'] = props.color;
+			myBtnStyle.color = props.color;
+			myBtnStyle.borderColor = props.color;
 			return;
 		}
-		myBtnStyle['color'] = 'white';
-		myBtnStyle['background'] = props.color;
+		myBtnStyle.color = 'white';
+		myBtnStyle.background = props.color;
 		const gradient = props.color.search('linear-gradien') != -1;
 		if (gradient) {
-			myBtnStyle['border'] = 'none';
-			myBtnStyle['background'] = props.color;
+			myBtnStyle.border = 'none';
+			myBtnStyle.background = props.color;
 			return;
 		}
-		myBtnStyle['border-color'] = props.color;
+		myBtnStyle.borderColor = props.color;
 	});
 };
 const tapButton = e => {
