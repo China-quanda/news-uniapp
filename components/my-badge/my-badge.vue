@@ -32,7 +32,10 @@ const props = defineProps({
 });
 
 let content = ref(props.value);
-
+const emits = defineEmits(['click']);
+const handleTap = ()=>{
+	emits('click');
+}
 watch(
 	() => props,
 	() => {
@@ -52,7 +55,7 @@ watch(
 
 <template>
 	<view class="badge">
-		<text v-if="value || showZero" :class="['badge-content', isDot ? 'badge-dot' : '', position]">{{ content }}</text>
+		<text v-if="value || showZero" :class="['badge-content', isDot ? 'badge-dot' : '', position]" @tap="handleTap">{{ content }}</text>
 		<slot></slot>
 	</view>
 </template>
