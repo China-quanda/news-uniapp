@@ -119,3 +119,10 @@
 | iconColor | 自定义图标颜色 | string | '#ccc' | 否 |
 | url | 点击后跳转的链接地址 | string | '-' | 否 |
 | linkType | 链接跳转的方式 可选 push', 'tab', 'redirect','reLaunch | string | '-' | 否 |
+
+**Events事件**
+
+| 事件 | 说明 | 回调参数
+| ----- | ----------------- | ----- |
+| click |  点击按钮的回调函数 | - |
+
