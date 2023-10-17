@@ -2,142 +2,142 @@
 	<view :class="['loading', vertical ? 'loading-column' : '']">
 		<!-- 经典款 type="classic"-->
 		<template v-if="type === 'classic'">
-			<div v-if="No == '1'" class="classic-1"></div>
-			<div v-if="No == '2'" class="classic-2"></div>
-			<div v-if="No == '3'" class="classic-3"></div>
-			<div v-if="No == '4'" class="classic-4"></div>
-			<div v-if="No == '5'" class="classic-5"></div>
-			<div v-if="No == '6'" class="classic-6"></div>
-			<div v-if="No == '7'" class="classic-7"></div>
-			<div v-if="No == '8'" class="classic-8"></div>
-			<div v-if="No == '9'" class="classic-9"></div>
-			<div v-if="No == '10'" class="classic-10"></div>
+			<view v-if="No == '1'" class="classic-1"></view>
+			<view v-if="No == '2'" class="classic-2"></view>
+			<view v-if="No == '3'" class="classic-3"></view>
+			<view v-if="No == '4'" class="classic-4"></view>
+			<view v-if="No == '5'" class="classic-5"></view>
+			<view v-if="No == '6'" class="classic-6"></view>
+			<view v-if="No == '7'" class="classic-7"></view>
+			<view v-if="No == '8'" class="classic-8"></view>
+			<view v-if="No == '9'" class="classic-9"></view>
+			<view v-if="No == '10'" class="classic-10"></view>
 		</template>
 
 		<!-- 无限循环款 type="infinity"-->
 		<template v-if="type === 'infinity'">
-			<div v-if="No === '1'" class="infinity-1"></div>
-			<div v-if="No === '2'" class="infinity-2"></div>
-			<div v-if="No === '3'" class="infinity-3"></div>
-			<div v-if="No === '4'" class="infinity-4"></div>
-			<div v-if="No === '5'" class="infinity-5"></div>
-			<div v-if="No === '6'" class="infinity-6"></div>
-			<div v-if="No === '7'" class="infinity-7"></div>
-			<div v-if="No === '8'" class="infinity-8"></div>
-			<div v-if="No === '9'" class="infinity-9"></div>
-			<div v-if="No === '10'" class="infinity-10"></div>
+			<view v-if="No === '1'" class="infinity-1"></view>
+			<view v-if="No === '2'" class="infinity-2"></view>
+			<view v-if="No === '3'" class="infinity-3"></view>
+			<view v-if="No === '4'" class="infinity-4"></view>
+			<view v-if="No === '5'" class="infinity-5"></view>
+			<view v-if="No === '6'" class="infinity-6"></view>
+			<view v-if="No === '7'" class="infinity-7"></view>
+			<view v-if="No === '8'" class="infinity-8"></view>
+			<view v-if="No === '9'" class="infinity-9"></view>
+			<view v-if="No === '10'" class="infinity-10"></view>
 		</template>
 
 		<!-- 多点动画款 type="dots"-->
 		<template v-if="type === 'dots'">
-			<div v-if="No === '1'" class="dots-1"></div>
-			<div v-if="No === '2'" class="dots-2"></div>
-			<div v-if="No === '3'" class="dots-3"></div>
-			<div v-if="No === '4'" class="dots-4"></div>
-			<div v-if="No === '5'" class="dots-5"></div>
-			<div v-if="No === '6'" class="dots-6"></div>
-			<div v-if="No === '7'" class="dots-7"></div>
-			<div v-if="No === '8'" class="dots-8"></div>
-			<div v-if="No === '9'" class="dots-9"></div>
-			<div v-if="No === '10'" class="dots-10"></div>
+			<view v-if="No === '1'" class="dots-1"></view>
+			<view v-if="No === '2'" class="dots-2"></view>
+			<view v-if="No === '3'" class="dots-3"></view>
+			<view v-if="No === '4'" class="dots-4"></view>
+			<view v-if="No === '5'" class="dots-5"></view>
+			<view v-if="No === '6'" class="dots-6"></view>
+			<view v-if="No === '7'" class="dots-7"></view>
+			<view v-if="No === '8'" class="dots-8"></view>
+			<view v-if="No === '9'" class="dots-9"></view>
+			<view v-if="No === '10'" class="dots-10"></view>
 		</template>
 
 		<!-- 条形款 type="bars"-->
 		<template v-if="type === 'bars'">
-			<div v-if="No === '1'" class="bars-1"></div>
-			<div v-if="No === '2'" class="bars-2"></div>
-			<div v-if="No === '3'" class="bars-3"></div>
-			<div v-if="No === '4'" class="bars-4"></div>
-			<div v-if="No === '5'" class="bars-5"></div>
-			<div v-if="No === '6'" class="bars-6"></div>
-			<div v-if="No === '7'" class="bars-7"></div>
-			<div v-if="No === '8'" class="bars-8"></div>
-			<div v-if="No === '9'" class="bars-9"></div>
-			<div v-if="No === '10'" class="bars-10"></div>
+			<view v-if="No === '1'" class="bars-1"></view>
+			<view v-if="No === '2'" class="bars-2"></view>
+			<view v-if="No === '3'" class="bars-3"></view>
+			<view v-if="No === '4'" class="bars-4"></view>
+			<view v-if="No === '5'" class="bars-5"></view>
+			<view v-if="No === '6'" class="bars-6"></view>
+			<view v-if="No === '7'" class="bars-7"></view>
+			<view v-if="No === '8'" class="bars-8"></view>
+			<view v-if="No === '9'" class="bars-9"></view>
+			<view v-if="No === '10'" class="bars-10"></view>
 		</template>
 
 		<!-- 旋转动画款 type="spinner"-->
 		<template v-if="type === 'spinner'">
-			<div v-if="No === '1'" class="spinner-1"></div>
-			<div v-if="No === '2'" class="spinner-2"></div>
-			<div v-if="No === '3'" class="spinner-3"></div>
-			<div v-if="No === '4'" class="spinner-4"></div>
-			<div v-if="No === '5'" class="spinner-5"></div>
-			<div v-if="No === '6'" class="spinner-6"></div>
-			<div v-if="No === '7'" class="spinner-7"></div>
-			<div v-if="No === '8'" class="spinner-8"></div>
-			<div v-if="No === '9'" class="spinner-9"></div>
-			<div v-if="No === '10'" class="spinner-10"></div>
-			<div v-if="No === '11'" class="spinner-11"></div>
+			<view v-if="No === '1'" class="spinner-1"></view>
+			<view v-if="No === '2'" class="spinner-2"></view>
+			<view v-if="No === '3'" class="spinner-3"></view>
+			<view v-if="No === '4'" class="spinner-4"></view>
+			<view v-if="No === '5'" class="spinner-5"></view>
+			<view v-if="No === '6'" class="spinner-6"></view>
+			<view v-if="No === '7'" class="spinner-7"></view>
+			<view v-if="No === '8'" class="spinner-8"></view>
+			<view v-if="No === '9'" class="spinner-9"></view>
+			<view v-if="No === '10'" class="spinner-10"></view>
+			<view v-if="No === '11'" class="spinner-11"></view>
 		</template>
 
 		<!-- 连续款 type="continuous"-->
 		<template v-if="type === 'continuous'">
-			<div v-if="No === '1'" class="continuous-1"></div>
-			<div v-if="No === '2'" class="continuous-2"></div>
-			<div v-if="No === '3'" class="continuous-3"></div>
-			<div v-if="No === '4'" class="continuous-4"></div>
-			<div v-if="No === '5'" class="continuous-5"></div>
-			<div v-if="No === '6'" class="continuous-6"></div>
-			<div v-if="No === '7'" class="continuous-7"></div>
-			<div v-if="No === '8'" class="continuous-8"></div>
-			<div v-if="No === '9'" class="continuous-9"></div>
-			<div v-if="No === '10'" class="continuous-10"></div>
+			<view v-if="No === '1'" class="continuous-1"></view>
+			<view v-if="No === '2'" class="continuous-2"></view>
+			<view v-if="No === '3'" class="continuous-3"></view>
+			<view v-if="No === '4'" class="continuous-4"></view>
+			<view v-if="No === '5'" class="continuous-5"></view>
+			<view v-if="No === '6'" class="continuous-6"></view>
+			<view v-if="No === '7'" class="continuous-7"></view>
+			<view v-if="No === '8'" class="continuous-8"></view>
+			<view v-if="No === '9'" class="continuous-9"></view>
+			<view v-if="No === '10'" class="continuous-10"></view>
 		</template>
 
 		<!-- 进度条款 type="progress"-->
 		<template v-if="type === 'progress'">
-			<div v-if="No === '1'" class="progress-1"></div>
-			<div v-if="No === '2'" class="progress-2"></div>
-			<div v-if="No === '3'" class="progress-3"></div>
-			<div v-if="No === '4'" class="progress-4"></div>
-			<div v-if="No === '5'" class="progress-5"></div>
-			<div v-if="No === '6'" class="progress-6"></div>
-			<div v-if="No === '7'" class="progress-7"></div>
-			<div v-if="No === '8'" class="progress-8"></div>
-			<div v-if="No === '9'" class="progress-9"></div>
-			<div v-if="No === '10'" class="progress-10"></div>
+			<view v-if="No === '1'" class="progress-1"></view>
+			<view v-if="No === '2'" class="progress-2"></view>
+			<view v-if="No === '3'" class="progress-3"></view>
+			<view v-if="No === '4'" class="progress-4"></view>
+			<view v-if="No === '5'" class="progress-5"></view>
+			<view v-if="No === '6'" class="progress-6"></view>
+			<view v-if="No === '7'" class="progress-7"></view>
+			<view v-if="No === '8'" class="progress-8"></view>
+			<view v-if="No === '9'" class="progress-9"></view>
+			<view v-if="No === '10'" class="progress-10"></view>
 		</template>
 
 		<!-- 晃动款 type="wobbling"-->
 		<template v-if="type === 'wobbling'">
-			<div v-if="No === '1'" class="wobbling-1"></div>
-			<div v-if="No === '2'" class="wobbling-2"></div>
-			<div v-if="No === '3'" class="wobbling-3"></div>
-			<div v-if="No === '4'" class="wobbling-4"></div>
-			<div v-if="No === '5'" class="wobbling-5"></div>
-			<div v-if="No === '6'" class="wobbling-6"></div>
-			<div v-if="No === '7'" class="wobbling-7"></div>
-			<div v-if="No === '8'" class="wobbling-8"></div>
-			<div v-if="No === '9'" class="wobbling-9"></div>
-			<div v-if="No === '10'" class="wobbling-10"></div>
+			<view v-if="No === '1'" class="wobbling-1"></view>
+			<view v-if="No === '2'" class="wobbling-2"></view>
+			<view v-if="No === '3'" class="wobbling-3"></view>
+			<view v-if="No === '4'" class="wobbling-4"></view>
+			<view v-if="No === '5'" class="wobbling-5"></view>
+			<view v-if="No === '6'" class="wobbling-6"></view>
+			<view v-if="No === '7'" class="wobbling-7"></view>
+			<view v-if="No === '8'" class="wobbling-8"></view>
+			<view v-if="No === '9'" class="wobbling-9"></view>
+			<view v-if="No === '10'" class="wobbling-10"></view>
 		</template>
 
 		<!-- 几何变形款 type="shapes"-->
 		<template v-if="type === 'shapes'">
-			<div v-if="No === '1'" class="shapes-1"></div>
-			<div v-if="No === '2'" class="shapes-2"></div>
-			<div v-if="No === '3'" class="shapes-3"></div>
-			<div v-if="No === '4'" class="shapes-4"></div>
-			<div v-if="No === '5'" class="shapes-5"></div>
-			<div v-if="No === '6'" class="shapes-6"></div>
-			<div v-if="No === '7'" class="shapes-7"></div>
-			<div v-if="No === '8'" class="shapes-8"></div>
-			<div v-if="No === '9'" class="shapes-9"></div>
-			<div v-if="No === '10'" class="shapes-10"></div>
+			<view v-if="No === '1'" class="shapes-1"></view>
+			<view v-if="No === '2'" class="shapes-2"></view>
+			<view v-if="No === '3'" class="shapes-3"></view>
+			<view v-if="No === '4'" class="shapes-4"></view>
+			<view v-if="No === '5'" class="shapes-5"></view>
+			<view v-if="No === '6'" class="shapes-6"></view>
+			<view v-if="No === '7'" class="shapes-7"></view>
+			<view v-if="No === '8'" class="shapes-8"></view>
+			<view v-if="No === '9'" class="shapes-9"></view>
+			<view v-if="No === '10'" class="shapes-10"></view>
 		</template>
 
 		<!-- 脉动款 type="pulsing"-->
 		<template v-if="type === 'pulsing'">
-			<div v-if="No === '1'"  class="pulsing-1"></div>
-			<div v-if="No === '2'"  class="pulsing-2"></div>
-			<div v-if="No === '3'"  class="pulsing-3"></div>
-			<div v-if="No === '4'"  class="pulsing-4"></div>
-			<div v-if="No === '5'"  class="pulsing-5"></div>
-			<div v-if="No === '6'"  class="pulsing-6"></div>
-			<div v-if="No === '7'"  class="pulsing-7"></div>
-			<div v-if="No === '8'"  class="pulsing-8"></div>
-		 <div  v-if="No === '9'" class="pulsing-9" data-c="💯"></div>
+			<view v-if="No === '1'"  class="pulsing-1"></view>
+			<view v-if="No === '2'"  class="pulsing-2"></view>
+			<view v-if="No === '3'"  class="pulsing-3"></view>
+			<view v-if="No === '4'"  class="pulsing-4"></view>
+			<view v-if="No === '5'"  class="pulsing-5"></view>
+			<view v-if="No === '6'"  class="pulsing-6"></view>
+			<view v-if="No === '7'"  class="pulsing-7"></view>
+			<view v-if="No === '8'"  class="pulsing-8"></view>
+		 <view  v-if="No === '9'" class="pulsing-9" data-c="💯"></view>
 		</template>
 
 		<text v-if="text" class="loading-text"> <slot>{{ text }}</slot> </text>
