@@ -1,55 +1,31 @@
 <template>
-	<view class="my-avatar">
-		<view class="my-avatar-view" v-if="text">
-			<my-image
-				:width="width"
-				:height="height"
-				src="xxx"
-				:mode="mode"
-				:shape="shape"
-				:bgColor="isRandomColor ? randomColor : bgColor"
-				:radius="radius"
-				:showLoading="showLoading"
-				:showError="showError"
-				:loadingIcon="loadingIcon"
-				:loadingText="loadingText"
-				:errorIcon="errorIcon"
-				:errorText="errorText"
-				:iconSize="iconSize"
-				:textSize="textSize"
-				@load="imageLoad"
-				@error="imageError"
-			>
-				<block v-slot:error>
-					<view class="avator-text-box"><view class="avator" :alt="text" /></view>
-				</block>
-			</my-image>
-			<view class="badge" v-if="showBadge"></view>
-		</view>
-		<view class="my-avatar-view" v-else>
-			<my-image
-				:width="width"
-				:height="height"
-				:src="src"
-				:mode="mode"
-				:shape="shape"
-				:bgColor="bgColor"
-				:radius="radius"
-				:showLoading="showLoading"
-				:showError="showError"
-				:loadingIcon="loadingIcon"
-				:loadingText="loadingText"
-				:errorIcon="errorIcon"
-				:errorText="errorText"
-				:iconSize="iconSize"
-				:textSize="textSize"
-				@load="imageLoad"
-				@error="imageError"
-			>
-				<block v-slot:error><my-icon :icon="errorIcon" :size="iconSize" color="rgb(243 234 234)" /></block>
-			</my-image>
-			<view class="badge" v-if="showBadge"></view>
-		</view>
+	<view class="avatar">
+		<my-image
+			:width="width"
+			:height="height"
+			:src="text ? 'xx' : src"
+			:mode="mode"
+			:shape="shape"
+			:bgColor="isRandomColor ? randomColor : bgColor"
+			:radius="radius"
+			:showLoading="showLoading"
+			:showError="showError"
+			:loadingIcon="loadingIcon"
+			loadingText=""
+			:errorIcon="errorIcon"
+			errorText=""
+			:iconSize="iconSize"
+			:textSize="textSize"
+			@load="imageLoad"
+			@error="imageError"
+		>
+			<block v-slot:loading><my-icon :icon="loadingIcon" :size="iconSize" color="rgb(243 234 234)" /></block>
+			<block v-slot:error>
+				<view v-if="text" class="avator-text-box"><view class="avator" :alt="text" /></view>
+				<my-icon v-else :icon="errorIcon" :size="iconSize" color="rgb(243 234 234)" />
+			</block>
+		</my-image>
+		<view class="badge" v-if="showBadge"></view>
 	</view>
 </template>
 
@@ -69,14 +45,14 @@ const props = defineProps({
 	randomBgColor: {
 		// 是否开启随机背景颜色，在text文字头像下有效
 		type: Boolean,
-		default: true
+		default: false
 	},
 	showBadge: {
 		// 是否开启badge
 		type: Boolean,
 		default: false
 	},
-	badgeColor:{
+	badgeColor: {
 		// badge颜色
 		type: String,
 		default: 'red'
@@ -130,25 +106,15 @@ const props = defineProps({
 		type: String,
 		default: 'icon-touxiang'
 	},
-	loadingText: {
-		// 加载中的文字
-		type: String,
-		default: ''
-	},
 	errorIcon: {
 		// 加载失败的图标，或者小图片
 		type: String,
 		default: 'icon-touxiang'
 	},
-	errorText: {
-		// 加载失败文字
-		type: String,
-		default: '加载失败'
-	},
 	iconSize: {
 		//加载图标和失败图标的大小
-		type: [String, Number],
-		default: 26
+		type: String,
+		default: '26px'
 	},
 	textSize: {
 		//加载字体和失败字体的大小
@@ -186,7 +152,7 @@ const props = defineProps({
 		default: 500
 	}
 });
-
+const emits = defineEmits(['load', 'error']);
 // 生产随机颜色
 let randomColor = ref(
 	`#${Math.floor(Math.random() * 0xffffff)
@@ -195,11 +161,16 @@ let randomColor = ref(
 );
 
 const isRandomColor = computed(() => {
+	console.log(props.text && props.randomBgColor, 22);
 	return props.text && props.randomBgColor;
 });
 
-const imageLoad = () => {};
-const imageError = () => {};
+const imageLoad = (e) => {
+	emits('load', e);
+};
+const imageError = (e) => {
+	emits('error', e);
+};
 
 onMounted(() => {
 	// randomBgColor()
@@ -207,21 +178,19 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-	.my-avatar{
-		display: inline-block;
-	}
-.my-avatar-view {
+.avatar {
+	display: inline-block;
 	position: relative;
 	display: inline-block;
 	.badge {
 		position: absolute;
-		width: 8px;
-		height: 8px;
+		width: 7px;
+		height: 7px;
 		background-color: v-bind('props.badgeColor');
 		border-radius: 50%;
-		bottom: 4px;
-		right: -1px;
-		border: 2.5px solid #fff;
+		bottom: 8px;
+		right: -4px;
+		border: 1.5px solid #fff;
 	}
 	.avator-text-box {
 		display: flex;
