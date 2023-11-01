@@ -103,7 +103,7 @@ const showBackTop = computed(()=>{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		// justify-content: center;
+		justify-content: center;
 		z-index: v-bind('props.zIndex');
 		background-color: pink;
 		box-sizing: border-box;
