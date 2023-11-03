@@ -573,8 +573,8 @@ const props = defineProps({
 }
 
 .dots-5 {
-	width: 12px;
-	height: 12px;
+	width: 8px;
+	height: 8px;
 	background: #000000;
 	border-radius: 50%;
 	box-shadow: 20px 0 #00000022, -20px 0 #000000;
@@ -966,10 +966,10 @@ const props = defineProps({
 
 // 旋转动画款 type="spinner"
 .spinner-1 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
-	border: 3px solid;
+	border: 1.5px solid;
 	border-color: v-bind('props.color') #0000;
 	animation: s1 1s infinite;
 	@keyframes s1 {
@@ -980,10 +980,10 @@ const props = defineProps({
 }
 
 .spinner-2 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
-	border: 3px solid;
+	border: 1.5px solid;
 	border-color: #eeeeee;
 	border-right-color: v-bind('props.color');
 	animation: s2 1s infinite linear;
@@ -995,11 +995,11 @@ const props = defineProps({
 }
 
 .spinner-3 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	background: conic-gradient(#0000 10%, v-bind('props.color'));
-	-webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 3px), #000 0);
+	-webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1.5px), #000 0);
 	animation: s3 1s infinite linear;
 	@keyframes s3 {
 		to {
@@ -1009,12 +1009,12 @@ const props = defineProps({
 }
 
 .spinner-4 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	padding: 1px;
 	background: conic-gradient(#0000 10%, v-bind('props.color')) content-box;
-	-webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg), radial-gradient(farthest-side, #0000 calc(100% - 4px), #000 calc(100% - 3px));
+	-webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg), radial-gradient(farthest-side, #0000 calc(100% - 2.5px), #000 calc(100% - 2.5px));
 	-webkit-mask-composite: destination-in;
 	mask-composite: intersect;
 	animation: s4 1s infinite steps(10);
@@ -1026,11 +1026,11 @@ const props = defineProps({
 }
 
 .spinner-5 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	background: v-bind('props.color');
-	-webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 70deg, #0000 71deg 90deg), radial-gradient(farthest-side, #0000 calc(100% - 4px), #000 calc(100% - 3px));
+	-webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 70deg, #0000 71deg 90deg), radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 calc(100% - 2px));
 	-webkit-mask-composite: destination-in;
 	mask-composite: intersect;
 	animation: s5 1s infinite;
@@ -1042,12 +1042,12 @@ const props = defineProps({
 }
 
 .spinner-6 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
 	padding: 3px;
-	background: radial-gradient(farthest-side, v-bind('props.color') 95%, #0000) 50% 0/8px 8px no-repeat,
-		radial-gradient(farthest-side, #0000 calc(100% - 5px), #eeeeee calc(100% - 4px)) content-box;
+	background: radial-gradient(farthest-side, v-bind('props.color') 95%, #0000) 50% 0/4px 4px no-repeat,
+		radial-gradient(farthest-side, #0000 calc(100% - 2px), #eeeeee calc(100% - 2px)) content-box;
 	animation: s6 2s infinite;
 	@keyframes s6 {
 		to {
@@ -1057,11 +1057,11 @@ const props = defineProps({
 }
 
 .spinner-7 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	--c: radial-gradient(farthest-side, v-bind('props.color') 92%, #0000);
 	background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
-	background-size: 8px 8px;
+	background-size: 4px 4px;
 	background-repeat: no-repeat;
 	animation: s7 1s infinite;
 	@keyframes s7 {
@@ -1072,11 +1072,11 @@ const props = defineProps({
 }
 
 .spinner-8 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	color: v-bind('props.color');
 	--c: radial-gradient(farthest-side, currentColor 92%, #0000);
-	background: var(--c) 50% 0 /8px 8px, var(--c) 50% 100%/8px 8px, var(--c) 100% 50%/8px 8px, var(--c) 0 50%/8px 8px, var(--c) 50% 50%/8px 8px,
+	background: var(--c) 50% 0 /4px 4px, var(--c) 50% 100%/4px 4px, var(--c) 100% 50%/4px 4px, var(--c) 0 50%/4px 4px, var(--c) 50% 50%/4px 4px,
 		linear-gradient(currentColor 0 0) 50% 50%/2px 100%, linear-gradient(currentColor 0 0) 50% 50%/100% 2px;
 	background-repeat: no-repeat;
 	animation: s8 1s infinite linear;
@@ -1088,10 +1088,10 @@ const props = defineProps({
 }
 
 .spinner-9 {
-	width: 30px;
-	height: 30px;
+	width: 16px;
+	height: 16px;
 	border-radius: 50%;
-	background: radial-gradient(farthest-side, v-bind('props.color') 95%, #0000) 50% 1px/8px 8px no-repeat, radial-gradient(farthest-side, #0000 calc(100% - 8px), #eeeeee 0);
+	background: radial-gradient(farthest-side, v-bind('props.color') 95%, #0000) 50% 1px/6px 6px no-repeat, radial-gradient(farthest-side, #0000 calc(100% - 8px), #eeeeee 0);
 	animation: s9 2s infinite linear;
 	@keyframes s9 {
 		to {
@@ -1126,9 +1126,9 @@ const props = defineProps({
 }
 
 .spinner-11 {
-	width: 30px;
-	height: 30px;
-	border: 2px solid v-bind('props.color');
+	width: 16px;
+	height: 16px;
+	border: 1.5px solid v-bind('props.color');
 	border-bottom: 1px solid rgba(24, 144, 255, 0.2);
 	border-left: 1px solid rgba(24, 144, 255, 0.2);
 	border-right: 1px solid rgba(24, 144, 255, 0.2);
