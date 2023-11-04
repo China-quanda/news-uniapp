@@ -1,48 +1,46 @@
 <template>
-	<view>
-		<view
-			ref="myBtnRef"
-			:class="[
-				'button',
-				buttonType,
-				buttonSize,
-				plain ? 'button-plain' : '',
-				hairline ? 'button-hairline' : '',
-				disabled ? 'button-disabled' : '',
-				loading ? 'button-loading' : '',
-				shape === 'circle' ? 'button-shape' : ''
-			]"
-			:style="myBtnStyle"
-			@tap="tapButton"
-		>
-			<view v-if="loading" style="display: flex; align-items: center;">
-				<view class="loading"/>
-				<view style="margin-left: 10px;">
-					<text v-if="loadingText">
-						{{ loadingText }}
-					</text>
-					<text v-else>
-						<slot>{{ loadingText }}</slot>
-					</text>
-				</view>
+	<view
+		ref="myBtnRef"
+		:class="[
+			'button',
+			buttonType,
+			buttonSize,
+			plain ? 'button-plain' : '',
+			hairline ? 'button-hairline' : '',
+			disabled ? 'button-disabled' : '',
+			loading ? 'button-loading' : '',
+			shape === 'circle' ? 'button-shape' : ''
+		]"
+		:style="myBtnStyle"
+		@tap="tapButton"
+	>
+		<view v-if="loading" style="display: flex; align-items: center;">
+			<view class="loading"/>
+			<view style="margin-left: 10px;">
+				<text v-if="loadingText">
+					{{ loadingText }}
+				</text>
+				<text v-else>
+					<slot>{{ loadingText }}</slot>
+				</text>
 			</view>
-
-			<view v-if="icon" style="display: flex; align-items: center;">
-				<my-icon :icon="icon" :color="iconColor"/>
-				<view style="margin-left: 10px;">
-					<text v-if="text">
-						{{ text }}
-					</text>
-					<text v-else>
-						<slot></slot>
-					</text>
-				</view>
-				<!-- <slot><view style="margin-left: 10px;">{{ text }}</view></slot> -->
+		</view>
+	
+		<view v-if="icon" style="display: flex; align-items: center;">
+			<my-icon :icon="icon" :color="iconColor"/>
+			<view style="margin-left: 10px;">
+				<text v-if="text">
+					{{ text }}
+				</text>
+				<text v-else>
+					<slot></slot>
+				</text>
 			</view>
-
-			<view v-if="!icon && !loading">
-				<slot>{{ text }}</slot>
-			</view>
+			<!-- <slot><view style="margin-left: 10px;">{{ text }}</view></slot> -->
+		</view>
+	
+		<view v-if="!icon && !loading">
+			<slot>{{ text }}</slot>
 		</view>
 	</view>
 </template>
@@ -56,7 +54,7 @@ const props = defineProps({
 		type: String,
 		default: 'default',
 		validator(value) {
-			return ['primary', 'success', 'info','warning','danger'].includes(value);
+			return ['primary', 'success', 'info','warning','danger','default'].includes(value);
 		}
 	},
 	size: {
