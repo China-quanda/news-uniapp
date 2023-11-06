@@ -1,4 +1,9 @@
 {
+	"easycom": {
+		"custom": {
+		  "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
+		}
+	},
 	"pages": [
 		{
 			"path": "pages/index/index",
