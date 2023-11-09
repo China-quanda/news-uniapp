@@ -47,6 +47,12 @@ redirect 关闭当前页面，跳转到应用内的某个页面。
 <my-cell title="标题" value="value" isLink clickable>
 ```
 
+**禁用单元格**
+通过disabled属性开启禁用单元格，禁用后不会触发click点击事件,不会路由跳转
+```
+<my-cell title="标题" value="value" isLink disabled>
+```
+
 **对齐方式**
 通过align属性设置对齐方式
 ```
@@ -92,6 +98,7 @@ label	自定义label内容
 | url | 点击后跳转的URL地址| string | '-' | 否 |
 | linkType | 链接跳转的方式 可选 push', 'tab', 'redirect','reLaunch | string | '-' | 否 |
 | clickable | 是否开启点击反馈(表现为点击时加上灰色背景) | boolean | 'false' | 否 |
+| disabled | 是否禁用单元格| boolean | 'false' | 否 |
 | isLink | 是否展示右侧箭头并开启点击反馈 | boolean | 'false' | 否 |
 | icon | 在标题左侧展示图标。 | string | '-' | 否 |
 | rightIcon | 右侧的图标箭头| string | 'icon-xiangyoujiantou' | 否 |

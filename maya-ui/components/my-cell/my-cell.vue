@@ -1,5 +1,5 @@
 <template>
-	<view :class="[clickable ? 'clickable' : '', border ? 'border' : '', 'my-cell']" @tap="handleTap">
+	<view :class="[clickable || isLink ? 'clickable' : '', border ? 'border' : '', 'my-cell', disabled ? 'cell-disabled' : '']" @tap="handleTap">
 		<view class="my-cell-left">
 			<view class="title">
 				<slot name="icon"><my-icon v-if="icon" class="icon" :icon="icon" size="16" color="#969799" /></slot>
@@ -93,17 +93,18 @@ import { isHttp } from '@/utils/validate';
 // 	}
 // });
 interface PorpsType {
-	title: string; // 左侧标题
-	label: string; // 标题下方的描述信息
-	value: string; // 右侧的内容
-	border: boolean; // 是否显示下边框
-	url: string; // 点击后跳转的URL地址
-	linkType: string; // 链接跳转的方式
-	clickable: boolean; // 是否开启点击反馈(表现为点击时加上灰色背景)
-	isLink: boolean; // 是否展示右侧箭头并开启点击反馈
-	icon: string; // 在标题左侧展示图标。
-	rightIcon: string; // 右侧的图标箭头
-	align:string //对齐方式
+	title?: string; // 左侧标题
+	label?: string; // 标题下方的描述信息
+	value?: string; // 右侧的内容
+	border?: boolean; // 是否显示下边框
+	url?: string; // 点击后跳转的URL地址
+	linkType?: string; // 链接跳转的方式
+	clickable?: boolean; // 是否开启点击反馈(表现为点击时加上灰色背景)
+	isLink?: boolean; // 是否展示右侧箭头并开启点击反馈
+	disabled?: boolean; // 是否禁用单元格
+	icon?: string; // 在标题左侧展示图标。
+	rightIcon?: string; // 右侧的图标箭头
+	align?: string; //对齐方式
 }
 // required:boolean// 是否显示表单必填星号
 const props = withDefaults(defineProps<PorpsType>(), {
@@ -112,14 +113,14 @@ const props = withDefaults(defineProps<PorpsType>(), {
 	value: '',
 	border: true,
 	url: '',
-	linkType: 'push'||'tab'||'redirect'||'reLaunch',
-	align: 'center'||'flex-start'||'flex-end',
+	linkType: 'push' || 'tab' || 'redirect' || 'reLaunch',
+	align: 'center' || 'flex-start' || 'flex-end',
 	clickable: false,
 	isLink: false,
-	icon:'',
-	rightIcon:'icon-xiangyoujiantou',
+	disabled: false,
+	icon: '',
+	rightIcon: 'icon-xiangyoujiantou'
 });
-
 
 interface EmitsType {
 	(e: 'click'): void;
@@ -127,6 +128,7 @@ interface EmitsType {
 const emit = defineEmits<EmitsType>();
 
 const handleTap = () => {
+	if (props.disabled) return;
 	emit('click');
 	if (!props.url || !props.isLink) return;
 	if (isHttp(props.url)) {
@@ -151,6 +153,26 @@ const handleTap = () => {
 	color: #323233;
 	line-height: 22px;
 	font-size: 14px;
+	.my-cell-left {
+		.icon {
+			margin-right: 2px;
+		}
+		.label {
+			font-size: 12px;
+			color: #909193;
+			line-height: 18px;
+		}
+	}
+	.my-cell-right {
+		display: flex;
+		align-items: center;
+		.value {
+			text-align: right;
+			font-size: 13px;
+			line-height: 24px;
+			color: #606266;
+		}
+	}
 }
 .clickable {
 	&:active {
@@ -158,27 +180,15 @@ const handleTap = () => {
 		transform: background-color 0.5s;
 	}
 }
+.cell-disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	&:active {
+		background-color: transparent;
+		transform: background-color 0s;
+	}
+}
 .border {
 	border-bottom: 0.5px solid #ebedf0;
-}
-.my-cell-left {
-	.icon{
-		margin-right: 2px;
-	}
-	.label {
-		font-size: 12px;
-		color: #909193;
-		line-height: 18px;
-	}
-}
-.my-cell-right {
-	display: flex;
-	align-items: center;
-	.value {
-		text-align: right;
-		font-size: 13px;
-		line-height: 24px;
-		color: #606266;
-	}
 }
 </style>
