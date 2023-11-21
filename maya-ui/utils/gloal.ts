@@ -138,6 +138,24 @@ function os() {
 
 
 
+/** 地址栏中get参数并放入对象中
+ * @param {Object} url 地址栏
+ */
+export const serilizeUrl=(url) =>{
+  if (/\?/.test(url)) {
+    let urlStr = url.substring(url.indexOf('?') + 1)
+    let urlArr = urlStr.split('&')
+
+    return urlArr.reduce((acc, cur) => {
+      let item = cur.split('=')
+      acc[item[0]] = item[1]
+      return acc
+    }, {})
+  }
+}
+
+
+
 // 获取开发环境和生产环境
 const getProcess =()=>{
 	// uEnvDev
