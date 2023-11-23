@@ -104,7 +104,7 @@ import props from './config/props'
 
 // gloal挂载到uni对象上
 uni.my = gloal
-uni.$my = gloal
+// uni.$my = gloal
 
 // console.log('uni',uni);
 // console.log(uni.my.props.statusBar.bgColor);
