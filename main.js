@@ -45,6 +45,8 @@ import { createSSRApp } from 'vue'
 import {createPinia} from 'pinia'
 import { createUnistorage } from 'pinia-plugin-unistorage'
 import MayaUi from '@/maya-ui';
+import './permission' // permission
+import '@/utils/mixin' // mixin
 export function createApp() {
   const app = createSSRApp(App)
 	// 挂载到全局的每一个Vue实例上

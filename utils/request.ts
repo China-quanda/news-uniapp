@@ -10,6 +10,12 @@
 				if(time >= 6000) uni.showLoading({title: '当前网络较慢'});
 			},1000)	
 		}
+		// get请求映射params参数
+		// if (config.params) {
+		// 	let url = config.url + '?' + tansParams(config.params)
+		// 	url = url.slice(0, -1)
+		// 	config.url = url
+		// }
 		return new Promise((resolve, reject) => {
 			uni.request({
 				url: config.baseUrl || requestConfig.baseUrl + config.url,
@@ -17,7 +23,7 @@
 				timeout: config.timeout || requestConfig.timeout,
 				data: config.data,
 				header: {
-					'Authorization': storage.get('token') || null,
+					'Authorization': 'Bearer ' +  storage.get('token') || null,
 					...config.header
 				},
 				dataType: requestConfig.dataType,
