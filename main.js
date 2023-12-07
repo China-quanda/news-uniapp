@@ -41,7 +41,14 @@ app.$mount()
 // #endif
 
 // #ifdef VUE3
+// 国际化 json 文件，文件内容详见下面的示例
+import i18nConfig from '@/locale'
+
+
+
 import { createSSRApp } from 'vue'
+import { createI18n } from 'vue-i18n'// v9.x
+const i18n = createI18n(i18nConfig)
 import {createPinia} from 'pinia'
 import { createUnistorage } from 'pinia-plugin-unistorage'
 import MayaUi from '@/maya-ui';
@@ -49,6 +56,7 @@ import './permission' // permission
 import '@/utils/mixin' // mixin
 export function createApp() {
   const app = createSSRApp(App)
+	app.use(i18n)
 	// 挂载到全局的每一个Vue实例上
 	// app.config.globalProperties.$http = myRequest
 	const pinia = createPinia()

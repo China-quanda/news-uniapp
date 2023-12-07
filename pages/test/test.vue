@@ -18,12 +18,24 @@
 		<br> -->
 		<!-- <my-example>11</my-example> -->
 		<!-- <test></test> -->
+		{{$t('locale.auto')}}
+		当前语言为：{{locale}}
+		<button @click="setLocale('en')">设置英文语言</button>
+		<button @click="setLocale('zh-Hans')">设置中文语言</button>
 	</view>
 </template>
 
 <script setup lang="ts">
 	import { onMounted, ref, onBeforeUnmount, nextTick } from 'vue';
 	import { onPageScroll } from '@dcloudio/uni-app'
+	let locale = ref<string>('')
+	onMounted(()=>{
+		console.log('当前语言为：',uni.getLocale());
+		locale.value = uni.getLocale()
+	})
+	const setLocale = (locale:string)=>{
+		uni.setLocale(locale)
+	}
 	let scrollTop = ref(0)
 	onPageScroll(e => {
 		scrollTop.value = e.scrollTop
