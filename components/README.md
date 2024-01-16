@@ -1,3 +1,15 @@
+奥峰app
+my-dept-tree
+my-remove
+my-search-tree
+省/市/区my-secSelect
+my-select-tree
+my-user-tree
+uploadMultiple
+
+my-selects 测试
+my-selector 测试
+
 uview 2.0.36 2023-03-27
 [Transition 动画](https://www.uviewui.com/components/transition.html)
 [CodeIn CodeInput 验证码输入](https://www.uviewui.com/components/codeInput.html)
