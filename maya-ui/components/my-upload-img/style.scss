@@ -1,0 +1,85 @@
+.flexRow {
+		display: flex;
+		flex-direction: row;
+		box-sizing: border-box;
+		width: 100%;
+	}
+	.flexCol {
+		display: flex;
+		flex-direction: column;
+		box-sizing: border-box;
+		width: 100%;
+	}
+	
+	.my-upload-img {
+		padding: 24rpx 10rpx;
+		justify-content: space-between;
+		&-name {
+			min-width: 30%;
+			font-weight: bold;
+			color: #000000;
+			line-height: 56rpx;
+			text-align: left;
+
+			.required {
+				&::before {
+					content: "*";
+					color: #FF0000;
+					margin-right: 3px;
+				}
+			}
+		}
+
+		.upload-more {
+			flex-wrap: wrap;
+			.item-pic {
+				width: 160rpx;
+				height: 160rpx;
+				border-radius: 16rpx;
+				overflow: hidden;
+				position: relative;
+				background-color: #e9e9e9;
+				margin: 6rpx;
+			}
+
+			.car-img {
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin: auto;
+			}
+
+			.delete-img {
+				position: absolute;
+				right: 10rpx;
+				top: 10rpx;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 35rpx;
+				height: 35rpx;
+				background-color: #101010;
+				border-radius: 100px;
+				background-size: cover;
+				z-index: 99;
+			}
+
+			.item-pic-add {
+				height: 160rpx;
+				width: 160rpx;
+				justify-content: center;
+				align-items: center;
+				border-radius: 16rpx;
+				background: #F5F8FB;
+				color: #909DAA;
+				font-size: 24rpx;
+				margin: 6rpx;
+			}
+		}
+	}
+	.border-bottom{
+		border-bottom: 1rpx solid #D4D4D4;
+	}
