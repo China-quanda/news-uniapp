@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<image class="img" src="@/static/macbook.png" mode="scaleToFill" />
-		<view class="tips">当前账号正在尝试登录{{ appConfig.title }}网页端，请确认信息及登录行为</view>
+		<view class="tips">当前账号正在尝试登录{{ appName }}网页端，请确认信息及登录行为</view>
 		<button type="primary" :loading="loading" @tap="login">{{ loginText }}</button>
 		<button type="default" style="margin-top: 15px;" @tap="cancel">取消</button>
 	</view>
@@ -10,7 +10,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { onUnload } from '@dcloudio/uni-app';
-import { app as appConfig } from '@/utils/config';
+import {useAppStore} from '@/store/app'
+const {appName} = useAppStore()
 import router from '@/utils/router';
 import prompt from '@/utils/prompt';
 import storage from '@/utils/storage';

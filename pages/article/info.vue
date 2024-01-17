@@ -9,7 +9,7 @@
 				</view>
 				<my-button type="primary" :plain="isAttentionAuthor" :text="isAttentionAuthor ? '已关注' : '+ 关注'" size="mini" @tap="gzUser(article?.user_id)" />
 			</view>
-			<my-text v-else lines="1" style="margin-left: 8px;">{{ app.title }}</my-text>
+			<my-text v-else lines="1" style="margin-left: 8px;">{{ appName}}</my-text>
 			<block v-slot:right>
 				<view>
 					<uni-icons type="search" size="18" color="#000" style="margin-right: 7.5px;" @tap="search" />
@@ -56,7 +56,8 @@ import { reactive, ref } from 'vue';
 import { onLoad ,onPageScroll} from '@dcloudio/uni-app';
 import router from '@/utils/router';
 import storage from '@/utils/storage';
-import {app} from '@/utils/config';
+import {useAppStore} from '@/store/app'
+const {appName} = useAppStore()
 import { getArticleList } from '@/api/article';
 import { getArticleId } from '@/api/article'
 import infoAuthor from './components/info-author.vue';
