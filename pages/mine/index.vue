@@ -12,13 +12,13 @@
 
 		<view class="one">
 			<view>
-				<view class="info" v-if="!token">
+				<view class="info" v-if="userStore.token">
 					<view class="info-one">
 						<view class="logo">
-							<my-avatar src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" width="70px" height="70px" />
+							<my-avatar :src="userStore.avatar" width="70px" height="70px" />
 						</view>
 						<view class="info-name">
-							<view class="name">{{ userInfo?.nickname || userInfo?.user_name || '你的maya' }}</view>
+							<view class="name">{{ userStore.username || '你的maya' }}</view>
 							<view>
 								<text>{{ userInfo?.myFocus || 0 }}关注</text>
 								<text>{{ userInfo?.myFans || 0 }}粉丝</text>
@@ -38,15 +38,15 @@
 			</view>
 		</view>
 
-		<my-grid class="my-grid" columns="4" backgroundColor="#fff">
-			<my-grid-item v-for="(item, index) in twoGridList" :key="index" @tap="tapItem(item)">
+		<my-grid class="my-grid" columns="4" :border="false">
+			<my-grid-item v-for="(item, index) in twoGridList" :key="index" radius="4px" @tap="tapItem(item)">
 				<my-icon :icon="item.icon" :size="22" />
 				<text class="text">{{ item.title }}</text>
 			</my-grid-item>
 		</my-grid>
 
 		<view class="bottom">
-			<view class="three" v-if="token">
+			<view class="three" v-if="userStore.token">
 				<view>
 					<text>“</text>
 					分享今天值得记录的瞬间
@@ -69,21 +69,24 @@
 </template>
 
 <script setup lang="ts">
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 // import { getUserHomePage } from '@/api/user'
 // import { getUserArticle } from '@/api/article'
 // import AllService from '@/pages/user/components/all-service.vue'
+import { useUserStore } from '@/store/user'
+	const userStore = useUserStore()
 import router from '@/utils/router';
-import storage from '@/utils/storage';
+// import storage from '@/utils/storage';
 import prompt from '@/utils/prompt';
 import { ref, reactive } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 // ...mapGetters([ 'token', 'userInfo','userId' ])
 
 onLoad(() => {
+	// userStore.getUserInfo()
 	// getUserHomePage(this.userId)
 	// getUserArticle(this.userId);
-	token.value = storage.get('token');
+	// token.value = storage.get('token');
 });
 let userInfo = reactive({})
 let token = ref<string>('');
@@ -243,6 +246,9 @@ let tapItem = row => {
 .my-grid {
 	padding: 10px 0px;
 	color: #292929;
+	.grid-item{
+		align-items: center;
+	}
 	.text {
 		margin-top: 8px;
 	}

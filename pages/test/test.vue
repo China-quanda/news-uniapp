@@ -17,30 +17,53 @@
 		</view>
 		<br> -->
 		<!-- <my-example>11</my-example> -->
-		<!-- <test></test> -->
-		{{$t('locale.auto')}}
-		当前语言为：{{locale}}
-		<button @click="setLocale('en')">设置英文语言</button>
-		<button @click="setLocale('zh-Hans')">设置中文语言</button>
+		<test></test>
+		<!-- {{$t('locale.auto')}} -->
+		<!-- 当前语言为：{{locale}} -->
+		<!-- <button @click="setLocale('en')">设置英文语言</button>
+		<button @click="setLocale('zh-Hans')">设置中文语言</button> -->
+		<button @click="share">系统分享</button>
 	</view>
 </template>
 
 <script setup lang="ts">
 	import { onMounted, ref, onBeforeUnmount, nextTick } from 'vue';
 	import { onPageScroll } from '@dcloudio/uni-app'
+	import { useAppStore } from '@/store/app'
+	import { shareSystem } from '@/utils/share'
+	const appStore = useAppStore()
 	let locale = ref<string>('')
-	onMounted(()=>{
-		console.log('当前语言为：',uni.getLocale());
+	onMounted(() => {
+		// appStore.checkUpdate('111') // 检查app更新
+		console.log('当前语言为：', uni.getLocale());
 		locale.value = uni.getLocale()
 	})
-	const setLocale = (locale:string)=>{
+	const share = () => {
+		// shareSystem({
+		// 	type: 'text', 
+		// 	content: '分享内容', 
+		// 	href: 'http://www.baidu.io/',
+		// })
+		
+		shareSystem({
+			type: 'image',
+			title: "百度",
+			content: '寻她千百度',
+			pictures:['https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg'],
+		}).then(res => {
+			console.log('res', res);
+		}).catch(err => {
+			console.log('err', err);
+		})
+	}
+	const setLocale = (locale : string) => {
 		uni.setLocale(locale)
 	}
 	let scrollTop = ref(0)
 	onPageScroll(e => {
 		scrollTop.value = e.scrollTop
-	  // console.log(e);
-	}) 
+		// console.log(e);
+	})
 	// import test from '@/components/my-grid/test.vue';
 	// import test from '@/components/my-link/test.vue';
 	// import test from '@/components/my-cell/test.vue';
@@ -59,41 +82,43 @@
 	// import test from '@/components/my-overlay/test.vue';
 	// import test from '@/components/my-dialog/test.vue';
 	// import test from '@/maya-ui/components/my-signature/test.vue';
-	
+	// import test from '@/maya-ui/components/my-select/test.vue';
+	import test from '@/maya-ui/components/my-upload-img/test.vue';
+
 	// import test from '@/components/my-scrollList/test.vue';
 	// import test from '@/maya-ui/components/my-collapse/test.vue';
 	// import test from '@/maya-ui/components/my-notify/test.vue';
-import { useBluetoothStore } from '@/store/bluetooth';
-const useStore = useBluetoothStore();
-// import printBtn from './components/print.vue';
-// import { storeToRefs } from 'pinia'
-// import { useSettingStore } from '@/store/setting'
-// const useStore = useSettingStore()
-// const { collapse } = storeToRefs(useStore)
+	import { useBluetoothStore } from '@/store/bluetooth';
+	const useStore = useBluetoothStore();
+	// import printBtn from './components/print.vue';
+	// import { storeToRefs } from 'pinia'
+	// import { useSettingStore } from '@/store/setting'
+	// const useStore = useSettingStore()
+	// const { collapse } = storeToRefs(useStore)
 
 
-import { onLoad, onHide,onBackPress } from '@dcloudio/uni-app';
-onBackPress(e=>{
-	console.log('e',onBackPress);
-})
-// import ScrapingHappy from './ScrapingHappy.vue';
-// console.log(useStore.test);
-useStore.test = '2223111';
-const fenxiang = () => {
-	console.log(1);
-};
+	import { onLoad, onHide, onBackPress } from '@dcloudio/uni-app';
+	onBackPress(e => {
+		console.log('e', onBackPress);
+	})
+	// import ScrapingHappy from './ScrapingHappy.vue';
+	// console.log(useStore.test);
+	useStore.test = '2223111';
+	const fenxiang = () => {
+		console.log(1);
+	};
 
-const bluetoothConnect = () => {
-	uni.navigateTo({
-		url: '/pages/index/bluetoothConnect'
-	});
-};
-const printBtn = () => {
-	console.log(1);
-	uni.navigateTo({
-		url: '/pages/test/components/print'
-	});
-};
+	const bluetoothConnect = () => {
+		uni.navigateTo({
+			url: '/pages/index/bluetoothConnect'
+		});
+	};
+	const printBtn = () => {
+		console.log(1);
+		uni.navigateTo({
+			url: '/pages/test/components/print'
+		});
+	};
 // let print = ref()
 
 // onMounted(()=>{
@@ -116,16 +141,17 @@ const printBtn = () => {
 </script>
 
 <style lang="scss">
-page {
-	// background-color: #1890ff;
-}
-// .content {
-// 	box-sizing: border-box;
-// 	padding: 24rpx;
-// }
-// .box {
-// 	width: 100%;
-// 	height: 200rpx;
-// 	margin: 20rpx auto;
-// }
+	page {
+		// background-color: #1890ff;
+	}
+
+	// .content {
+	// 	box-sizing: border-box;
+	// 	padding: 24rpx;
+	// }
+	// .box {
+	// 	width: 100%;
+	// 	height: 200rpx;
+	// 	margin: 20rpx auto;
+	// }
 </style>

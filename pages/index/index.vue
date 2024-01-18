@@ -14,14 +14,14 @@
 </template>
 <script setup lang="ts">
 import router from '@/utils/router';
-import storage from '@/utils/storage';
+// import storage from '@/utils/storage';
 import { reactive, ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import articleItem from '../article/components/article-item.vue';
 import { getArticleList } from '@/api/article';
 let articleList = ref([]);
 onLoad(async () => {
-	storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODk1MjYxMTYsImV4cCI6MTY5MDgyMjExNn0.934sg2hFbiyVR04z989k4zUZNdLzdI6gcEaMXrHFGeo');
+	// storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODk1MjYxMTYsImV4cCI6MTY5MDgyMjExNn0.934sg2hFbiyVR04z989k4zUZNdLzdI6gcEaMXrHFGeo');
 	getArticleList().then(res => {
 		articleList.value = res.data.list;
 		// console.log(articleList.value);
