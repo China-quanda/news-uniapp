@@ -30,7 +30,7 @@ export default {
 		    duration: 2000
 		  })
 	 */
-	msg: (option:option|msgOption): void => {
+	msg: (option:str|msgOption): void => {
 		if (typeof option === "object") {
 		  uni.showToast(option)
 		} else {

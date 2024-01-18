@@ -7,7 +7,7 @@ interface push extends base{
 	events?:object;
 }
 interface back extends base{
-	delta: number;
+	delta?: number;
 	events?:object;
 }
 interface url {
@@ -75,7 +75,7 @@ export default {
 	 * @param {number} payload.animationDuration 窗口关闭动画的持续时间，单位为 ms。 默认值：300
 	 * @example redirect({delta:1})
 	 */
-	back:(payload:back)=>{
+	back:(payload?:back)=>{
 		if (typeof payload === "object") {
 		  uni.navigateBack(payload)
 		} else {

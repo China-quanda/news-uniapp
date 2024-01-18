@@ -2,7 +2,6 @@
 	import {tansParams} from '@/utils/mixin';
 
 	const request = (config:any) => {
-		console.log(config);
 		// 是否隐藏加载
 		if (config.data && config.data.Loading  || config.params && config.params?.Loading) {
 			uni.showLoading({ title: '加载中' });
@@ -18,14 +17,15 @@
 			url = url.slice(0, -1)
 			config.url = url
 		}
+		const token = storage.get('userStore') ? storage.get('userStore').token : null
 		return new Promise((resolve, reject) => {
 			uni.request({
-				url: config.baseUrl || 'http://127.0.0.1:7001',
+				url: config.baseUrl || 'http://127.0.0.1:7001/api/app' + config.url,
 				method: config.method || 'get',
 				timeout: config.timeout || 10000,
 				data: config.data,
 				header: {
-					'Authorization': 'Bearer ' +  storage.get('token') || null,
+					Authorization: `Bearer ${token}` ,
 					...config.header
 				},
 				dataType: 'json',
@@ -38,8 +38,9 @@
 					if (res.data.code == 200 || res.data.code == 0) {
 						resolve(res.data);
 					} else if (res.data.code == 400) {
+						console.log(res);
 						reject('400')
-						return uni.showToast({ icon: 'none', title: res.data.msg });
+						return uni.showToast({ icon: 'none', title: res.data.message });
 					} else if (res.data.code == 401) {
 						reject('401')
 						uni.showToast({ icon: 'none', title: '认证失败,请重新登录' });
@@ -51,7 +52,7 @@
 						return uni.showToast({ icon: 'none', title: '无权限操作' });
 					} else {
 						reject(res.data)
-						uni.showToast({ title: res.data.msg, icon: 'none', duration: 2000 });
+						uni.showToast({ title: res.data.message, icon: 'none', duration: 2000 });
 					}
 				},
 				fail: error => {
