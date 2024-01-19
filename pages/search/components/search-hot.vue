@@ -12,50 +12,54 @@
 		</view>
 	</view>
 </template>
-
 <script setup lang="ts">
-import { ref } from 'vue';
-const props = defineProps({
-	list: {
-		type: Array,
-		required: true,
-		default: () => {
-			return [];
+	import { ref } from 'vue'
+	const props = defineProps({
+		list: {
+			type: Array,
+			required: true,
+			default: () => {
+				return [];
+			}
 		}
-	}
-});
+	});
 
-const tapItem = row => {
-	console.log('tapItem', row);
-};
+	const tapItem = row => {
+		console.log('tapItem', row);
+	};
 </script>
 
 <style lang="scss" scoped>
-.hot {
-	.handle {
-		margin: 0px 12px;
-		.name {
-			color: $uni-text-color;
+	.hot {
+		.handle {
+			margin: 0px 12px;
+
+			.name {
+				color: $uni-text-color;
+			}
+
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			color: $uni-text-color-grey;
 		}
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		color: $uni-text-color-grey;
+
+		.item {
+			.iconfont {
+				margin-right: 10px;
+			}
+
+			.left {
+				flex: 1;
+			}
+
+			margin-left: 12px;
+			font-size: 16px;
+			height: 35px;
+			line-height: 1;
+			// border-bottom: 0.5px solid #ccc;
+			display: flex;
+			align-items: center;
+		}
 	}
-	.item {
-		.iconfont {
-			margin-right: 10px;
-		}
-		.left {
-			flex: 1;
-		}
-		margin-left: 12px;
-		font-size: 16px;
-		height: 35px;
-		line-height: 1;
-		// border-bottom: 0.5px solid #ccc;
-		display: flex;
-		align-items: center;
-	}
-}
 </style>

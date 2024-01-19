@@ -1,71 +1,88 @@
 <template>
 	<view class="my-comment">
-		<view class="item-avatar-one" v-for="(item, index) in 4" :key="index">
-			<view class="top" @tap="goToUser(item.comment_user.id)">
-				<my-avatar :src="avatar" size="36" />
+		<view class="item-avatar-one" v-for="(item, index) in list" :key="index">
+			
+			<view class="top">
+				<my-avatar :src="item.commentUser.avatar" size="36" @click="goToUser(item.commentUser.id)"/>
 				<view class="author">
-					<a>你的Maya</a>
-					<text>3天前</text>
+					<a @click="goToUser(item.commentUser.id)">{{item.commentUser.username}}</a>
+					<text selectable>{{item.createTime}}</text>
 				</view>
 			</view>
-			<view class="comment">妞妞妈妈</view>
+			
+			<view class="comment">{{item.content}}</view>
+			
 			<view class="centre">
 				<view class="left">
-					<view class="author" @tap="goToUser(item.comment_article.user.id)">
-						<my-avatar :src="avatar" size="36" />
-						<a>1233</a>
+					<view class="author" @click="goToUser(item.commentArticle.user.id)">
+						<my-avatar :src="item.commentArticle.user.avatar" width="30px" height="30px"/>
+						<a>{{item.commentArticle.user.username}}</a>
 					</view>
-					<h1 @tap="goToArticle(item.comment_article.id)">今天是个好日子</h1>
+					<h1 @click="goToArticle(item.commentArticle.id)">
+						{{item.commentArticle.title}}
+					</h1>
 				</view>
-				<view class="right" @tap="goToArticle(item.comment_article.id)"><my-image :showLoading="true" :src="avatar" width="120px" height="90px" @click="click" /></view>
+				<view class="right" @click="goToArticle(item.commentArticle.id)">
+					<my-image :showLoading="true" 
+					:src="avatar" width="120px" height="90px" 
+					mode="scaleToFill"/>
+					</view>
 			</view>
-			<view class="bottom"><info-action @onAction="onActionTap" /></view>
+			
+			<view class="bottom">
+				<info-action @onAction="onActionTap" />
+			</view>
 		</view>
-
-		<!-- 	<view v-if="!list.length" class="empty">
-			暂无评论内容
-		</view> -->
+		
+		<my-empty v-if="!list.length" text="暂无评论内容"/>
 	</view>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue';
 import infoAction from '@/pages/article/components/info-action.vue';
-// import {getUserComment} from '@/api/comment'
-let userId = ref(1);
-let list = reactive([]);
+import {getUserCommentlist} from '@/api/comment'
+import router from '@/utils/router';
+let list = ref([]);
 let total = ref(0);
 let avatar = ref('https://img01.yzcdn.cn/vant/cat.jpeg');
-let isAttentionAuthor = ref(false);
+// let isAttentionAuthor = ref(false);
+let query = reactive({
+	pageNum:1,
+	pageSize:10
+})
 onMounted(() => {
-	// getUserComment(userId.value,query)
+	getUserComment(query)
 });
 const onActionTap = value => {
 	console.log(value);
 	if (value === 'comment') {
-		showComment.value = !showComment.value;
-		showAction.value = false;
+		// showComment.value = !showComment.value;
+		// showAction.value = false;
 	}
 };
 const goToUser = id => {
-	router.push('/pages/user/index?user_id=' + id);
+	console.log('id',id);
+	// router.push('/pages/user/index?user_id=' + id);
 };
 const goToArticle = id => {
+	console.log('id',id);
 	router.push('/pages/article/index?article_id=' + id);
 };
-const getUserComment = (id, data) => {
-	getUserComment(id, data).then(res => {
-		query.pageNum = res.pageNum;
-		query.pageSize = res.pageSize;
-		list = res.list;
-		total.value = res.total;
+// 获取用户评论列表
+const getUserComment = (query:any) => {
+	getUserCommentlist(query).then(res => {
+		list.value = res.data.list
+		query.pageNum = res.data.pagination.pageNum;
+		query.pageSize = res.data.pagination.pageSize;
+		total.value = res.data.pagination.total;
 	});
 };
 </script>
 
 <style lang="scss" scoped>
 .my-comment {
-	background-color: rgb(247, 247, 247);
+	// background-color: rgb(247, 247, 247);
 	text-align: left;
 }
 
@@ -85,8 +102,14 @@ const getUserComment = (id, data) => {
 			align-items: flex-start;
 			margin-left: 10px;
 			a {
+				// @include ellipsis(1);
 				font-size: 14px;
 				font-weight: 500;
+				overflow: hidden; //溢出内容隐藏
+					text-overflow: ellipsis; //文本溢出部分用省略号表示
+					display: -webkit-box; //特别显示模式
+					-webkit-line-clamp: 1; //行数
+					-webkit-box-orient: vertical; //盒子中内容竖直排列
 			}
 			text {
 				font-size: 12px;
@@ -100,22 +123,25 @@ const getUserComment = (id, data) => {
 	}
 	.centre {
 		display: flex;
+		justify-content: space-between;
 		padding: 10px;
-
 		border: 1px solid rgb(237, 237, 237);
 		border-radius: 10px;
 		.left {
 			display: flex;
-
 			flex-direction: column;
-			width: 230px;
-			margin-right: 14px;
+			// margin-right: 14px;
 			h1 {
 				font-size: 16px;
 				margin: 0;
+				overflow: hidden; //溢出内容隐藏
+					text-overflow: ellipsis; //文本溢出部分用省略号表示
+					display: -webkit-box; //特别显示模式
+					-webkit-line-clamp: 2; //行数
+					-webkit-box-orient: vertical; //盒子中内容竖直排列
 			}
 			.author {
-				position: relative;
+				// position: relative;
 				display: flex;
 				align-items: center;
 				margin-bottom: 10px;
@@ -123,16 +149,23 @@ const getUserComment = (id, data) => {
 					margin-left: 5px;
 					font-size: 14px;
 					font-weight: 500;
+					overflow: hidden; //溢出内容隐藏
+						text-overflow: ellipsis; //文本溢出部分用省略号表示
+						display: -webkit-box; //特别显示模式
+						-webkit-line-clamp: 1; //行数
+						-webkit-box-orient: vertical; //盒子中内容竖直排列
 				}
 			}
 		}
 		.right {
 			border-radius: 4px;
 			overflow: hidden;
+			min-width: 110px;
+			height: 90px;
 		}
 	}
 	.bottom {
-		margin-top: 10px;
+		margin-top: 8px;
 	}
 }
 </style>

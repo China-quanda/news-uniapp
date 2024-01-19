@@ -99,9 +99,11 @@ let query = reactive({
 let isAllServiceShow = ref<boolean>(false);
 let myList = ref([{ name: '全部' }, { name: '文章' }, { name: '视频' }, { name: '问答' }, { name: '小视频' }, { name: '微头条' }]);
 let twoGridList = ref([
-	{
+	{	
 		icon: 'icon-pinglun',
-		title: '评论'
+		title: '评论',
+		url:'/pages/mine/content/index',
+		type:'comment'
 	},
 	{
 		icon: 'icon-shoucang',
@@ -160,8 +162,8 @@ let toLogin = () => {
 };
 let tapItem = row => {
 	console.log(row);
-	if (!row.url) return prompt.msg(`${row.title} 功能未实现`);
-	router.push(row.url);
+	if (!row.url || !row.type) return prompt.msg(`${row.title} 功能未实现`);
+	router.push(`${row.url}?type=${row.type}`);
 
 	// console.log(`点击了第${name}个`);
 	// if (name == 2) {
