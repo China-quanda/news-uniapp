@@ -5,7 +5,7 @@ my-search-tree
 省/市/区my-secSelect
 my-select-tree
 my-user-tree
-uploadMultiple
+uploadMultiple ok
 
 my-selects 测试
 my-selector 测试

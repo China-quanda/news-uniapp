@@ -1,0 +1,24 @@
+.ellipsis ,.ellipsis1 ,.ellipsis2, .ellipsis3{
+	overflow: hidden; //溢出内容隐藏
+	text-overflow: ellipsis; //文本溢出部分用省略号表示
+	display: -webkit-box; //特别显示模式
+	-webkit-box-orient: vertical; //盒子中内容竖直排列
+}
+.ellipsis1{
+	-webkit-line-clamp: 1;
+}
+.ellipsis2{
+	-webkit-line-clamp: 2;
+}
+.ellipsis3{
+	-webkit-line-clamp: 3; 
+}
+
+// 字体益出隐藏
+@mixin ellipsis($clamp: 1 , $orient :vertical ){
+	overflow: hidden; //溢出内容隐藏
+	text-overflow: ellipsis; //文本溢出部分用省略号表示
+	display: -webkit-box; //特别显示模式
+	-webkit-line-clamp: $clamp; //行数
+	-webkit-box-orient: $orient; //盒子中内容竖直排列
+}

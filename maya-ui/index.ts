@@ -65,6 +65,8 @@ import router from './utils/router';
 import prompt from './utils/prompt';
 // props配置信息
 import props from './config/props'
+// 引入样式文件
+import './styles/index.scss'
 
  const gloal = {
 	getRect,
@@ -112,6 +114,7 @@ uni.$my = gloal
 
 
 const install = (Vue) => {
+	console.log(Vue);
 	// console.log(Vue);
     // // 时间格式化，同时两个名称，date和timeFormat
     // Vue.filter('timeFormat', (timestamp, format) => uni.$u.timeFormat(timestamp, format))

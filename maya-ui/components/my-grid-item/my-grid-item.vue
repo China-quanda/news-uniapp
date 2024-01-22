@@ -27,17 +27,17 @@ let badgeStyle = reactive({
 	zIndex: '999'
 });
 interface PorpsType {
-	bgColor: string; // 背景
-	radius: string; // 圆角
-	text: string; // 文字
-	icon: string; //图标
-	iconColor: string; // 图标颜色
-	iconSize: string; // 图标大小
-	url: string; // 点击后跳转的URL地址
-	linkType: string; // 链接跳转的方式
-	badgeValue: number | string; // 徽标显示值
-	badgeMax: number; // 最大值，超过最大值会显示 '{max}+'
-	badgeDot: boolean; // 不展示数字，只有一个小点
+	bgColor?: string; // 背景
+	radius?: string; // 圆角
+	text?: string; // 文字
+	icon?: string; //图标
+	iconColor?: string; // 图标颜色
+	iconSize?: string; // 图标大小
+	url?: string; // 点击后跳转的URL地址
+	linkType?: string; // 链接跳转的方式
+	badgeValue?: number | string; // 徽标显示值
+	badgeMax?: number; // 最大值，超过最大值会显示 '{max}+'
+	badgeDot?: boolean; // 不展示数字，只有一个小点
 }
 const props = withDefaults(defineProps<PorpsType>(), {
 	bgColor: '#fff',

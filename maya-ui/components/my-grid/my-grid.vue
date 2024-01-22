@@ -8,16 +8,16 @@
 import { computed, reactive, watchEffect } from 'vue';
 
 interface PorpsType {
-	bgColor: string // 背景颜色
-	gap: string // 间距
-	columns: string|number // 每列显示个数
-	rows: string|number //
-	width: string // 
-	height: string // 
-	border:boolean // 是否显示宫格的边框
-	direction:string // 内容横排
-	reverse:boolean // 是否调换图标和文本的位置
-	clickable:boolean // 是否开启格子点击反馈
+	bgColor?: string // 背景颜色
+	gap?: string // 间距
+	columns?: string|number // 每列显示个数
+	rows?: string|number //
+	width?: string // 
+	height?: string // 
+	border?:boolean // 是否显示宫格的边框
+	direction?:string // 内容横排
+	reverse?:boolean // 是否调换图标和文本的位置
+	clickable?:boolean // 是否开启格子点击反馈
 }
 const props = withDefaults(defineProps<PorpsType>(), {
 	bgColor: '#fff',
