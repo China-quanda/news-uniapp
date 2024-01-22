@@ -10,13 +10,16 @@ import request from '@/utils/request'
 // }
 
 
-// / 获取文章列表  带用户搜索记录
-export const getArticleList = () => {
+// 获取文章列表  带用户搜索记录
+export const getArticleList = (query) => {
 	return request({
-		url:'/api/m/article',
-		method: 'GET'
+		url:'/article',
+		method: 'GET',
+		params:query
 	})
 }
+
+
 // 根据文章id获取文章信息
 export const getArticleId = id => {
 	return request({

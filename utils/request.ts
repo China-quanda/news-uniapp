@@ -31,6 +31,7 @@
 				},
 				dataType: 'json',
 				success: res => {
+					console.log('res',res);
 					// 请求失败
 					if (res.errMsg != 'request:ok') {
 						reject('请求失败')

@@ -1,65 +1,74 @@
 <template>
-	<view class="hot">
-		<view class="handle">
+	<view class="hot-search">
+		<view class="title-box">
 			<view class="name">热门搜索</view>
-			<view><uni-icons type="fire-filled" size="18" color="#999" /></view>
+			<uni-icons type="fire-filled" size="18" color="red" />
 		</view>
-		<view class="item" v-for="(item, index) in list" :key="index">
-			<view class="left" @tap="tapItem(item)">
-				<uni-icons class="iconfont" type="eye" size="18" color="#999" />
-				<text>{{ item.keywords }}</text>
+		<view class="list">
+			<view class="item ellipsis1" v-for="(item, index) in list" :key="index" @click="emit('onClick',item)">
+				<uni-icons type="fire-filled" size="18" color="red" />
+				<text class="keyword">{{ item.keywords }}</text>
 			</view>
 		</view>
 	</view>
 </template>
+<script lang="ts">
+	export default { name: 'search-hot'}
+</script>
 <script setup lang="ts">
-	import { ref } from 'vue'
-	const props = defineProps({
+	defineProps({
 		list: {
 			type: Array,
 			required: true,
-			default: () => {
-				return [];
-			}
+			default: () => []
 		}
 	});
-
-	const tapItem = row => {
-		console.log('tapItem', row);
-	};
+	const emit = defineEmits<{
+		(e : 'onClick', row) : void
+	}>()
 </script>
 
 <style lang="scss" scoped>
-	.hot {
-		.handle {
-			margin: 0px 12px;
+	.hot-search {
+		// margin: 12px;
 
-			.name {
-				color: $uni-text-color;
-			}
-
+		.title-box {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			color: $uni-text-color-grey;
+
+			.name {
+				color: $uni-text-color;
+				font-weight: 500;
+			}
 		}
 
-		.item {
-			.iconfont {
-				margin-right: 10px;
-			}
-
-			.left {
-				flex: 1;
-			}
-
-			margin-left: 12px;
-			font-size: 16px;
-			height: 35px;
-			line-height: 1;
-			// border-bottom: 0.5px solid #ccc;
+		.list {
 			display: flex;
-			align-items: center;
+			flex-wrap: wrap;
+			margin-top: 5px;
+
+			.item {
+				width: calc(50% - 3px);
+				font-size: 15px;
+				line-height: 35px;
+				display: flex;
+				align-items: center;
+
+				&:nth-child(1n) {
+					margin-right: 3px;
+				}
+
+				&:nth-child(2n) {
+					margin-right: 0px;
+					margin-left: 3px;
+				}
+
+				.iconfont {
+					margin-right: 10px;
+				}
+			}
 		}
 	}
 </style>

@@ -1,7 +1,7 @@
 <template>
 	<view class="advice">
-		<view class="item" v-for="(advice, index) in list" :key="index" @tap="tapAdvice(advice)">
-			<uni-icons class="iconfont" type="search" size="18" color="#999" />
+		<view class="item ellipsis1" v-for="(advice, index) in list" :key="index" @click="emit('onClick',advice)">
+			<uni-icons type="search" size="18" color="#999" />
 			<view v-html="highlight(advice)"></view>
 		</view>
 	</view>
@@ -12,28 +12,31 @@ const props = defineProps({
 	list: {
 		type: Array,
 		required: true,
-		default: () => {
-			return [];
-		}
+		default: () => []
 	},
 	keyword: {
 		type: String,
 		default: ''
 	}
 });
+
+const emit = defineEmits<{
+		(e : 'onClick', row) : void
+	}>()
+	
 const highlight = str => {
 	const highlightStr = `<text style="color:red">${props.keyword}</text>`;
 	return str.replace(new RegExp(props.keyword, 'gi'), highlightStr);
 };
-const tapAdvice = keyword => {
-	console.log('点击类型建议item 发请求查询文章', keyword);
-	// this.$emit('onSearch', keyword);
-	// this.list = [] // 清空联想建议才能显示搜索结果
-	// this.hotSearchResList.push(item)
-	// this.keyword = item
-	// this.getArticleList()
-	// this.$emit('close')
-};
+// const tapAdvice = keyword => {
+// 	console.log('点击类型建议item 发请求查询文章', keyword);
+// 	// this.$emit('onSearch', keyword);
+// 	// this.list = [] // 清空联想建议才能显示搜索结果
+// 	// this.hotSearchResList.push(item)
+// 	// this.keyword = item
+// 	// this.getArticleList()
+// 	// this.$emit('close')
+// };
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +51,7 @@ const tapAdvice = keyword => {
 		font-size: 16px;
 		height: 45px;
 		line-height: 1;
-		border-bottom: 0.5px solid #ccc;
+		border-bottom: 0.5px solid #e2e5ea;
 		display: flex;
 		align-items: center;
 	}
