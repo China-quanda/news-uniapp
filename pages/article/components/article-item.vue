@@ -1,102 +1,78 @@
 <template>
-	<view ref="article-item">
-		<view class="Panel-item">
-			<view class="item" v-for="item in list" :key="item.id">
-				<view class="avatar" v-if="showAvatar" @tap="goToUser(item.user_id)">
-					<image class="user-avatar" :src="item.user.avatar" mode="widthFix"></image>
-					<view class="author">
-						<a>{{ item.user.nickname }}</a>
-						<text class="introduce">已关注 · {{ item.user.introduce }}</text>
-					</view>
-				</view>
-
-				<view class="top" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3" @tap="goToArticle(item.id)">
-					<h1>{{ item.title }}</h1>
-				</view>
-
-				<view class="centre" v-if="cover.type === 2" @tap="goToArticle(item.id)"><image :lazy-load="true" :src="item.cover_img" mode="widthFix" /></view>
-
-				<view class="centre-3" v-if="cover.type === 3" @tap="goToArticle(item.id)">
-					<view class="image"><image :src="item.cover_img" mode="widthFix" /></view>
-					<view class="image"><image :src="item.cover_img" mode="widthFix" /></view>
-					<view class="image"><image :src="item.cover_img" mode="widthFix" /></view>
-				</view>
-				<view>
-					<view class="bottom-1" v-if="cover.type === 1">
-						<view class="left">
-							<h1 @tap="goToArticle(item.id)">{{ item.title }}</h1>
-							<view class="left-bottom">
-								<view>
-									<text class="author-name" v-if="!showAvatar">{{ item.user.nickname }}</text>
-									<text class="comment">{{ item.comment_count }}评论</text>
-									<text class="read">{{ item.read_count }}观看</text>
-									<text class="time">{{ item.createdAt }}</text>
-								</view>
-								<view>
-									<!-- <i class="iconfont icon-cha" @tap="onClickCha"></i> -->
-									<uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(item)" />
-								</view>
-							</view>
-						</view>
-						<view class="right" @tap="goToArticle(item.id)"><image :src="item.cover_img" mode="widthFix" /></view>
-					</view>
-					<view class="bottom" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3">
+	<view class="article-item" ref="article-item">
+		<view class="avatar" v-if="showAvatar" @tap="goToUser(info.user.id)">
+			<my-image class="user-avatar" :src="info.user.avatar" radius="100px" width="30px" height="30px"/>
+			<view class="author">
+				<a>{{ info.user.username }}</a>
+				<text class="introduce">已关注 · {{ info.user.introduce||'' }}</text>
+			</view>
+		</view>
+		
+		<view class="top" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3" @tap="goToArticleInfo(info.id)">
+			<h1>{{ info.title }}</h1>
+		</view>
+		
+		<view class="centre" v-if="cover.type === 2" @tap="goToArticleInfo(info.id)">
+			<image :lazy-load="true" :src="info.coverImg  || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" />
+		</view>
+		
+		<view class="centre-3" v-if="cover.type === 3" @tap="goToArticleInfo(info.id)">
+			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
+			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
+			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
+			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
+			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
+			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
+		</view>
+		
+		<view>
+			<view class="bottom-1" v-if="cover.type === 1">
+				<view class="left">
+					<h1 @tap="goToArticleInfo(info.id)">{{ info.title }}</h1>
+					<view class="left-bottom">
 						<view>
-							<text class="author-name" v-if="!showAvatar">{{ item.user.nickname }}</text>
-							<text class="comment">{{ item.comment_count }}评论</text>
-							<text class="read">{{ item.read_count }}观看</text>
-							<text class="time">{{ item.createdAt }}</text>
+							<text class="author-name" v-if="!showAvatar">{{ info.user.username }}</text>
+							<text class="comment">{{ info.commentCount }}评论</text>
+							<text class="read">{{ info.readCount }}观看</text>
+							<text class="time">{{ info.createdTime }}</text>
 						</view>
-						<view><uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(item)" /></view>
+						<view>
+							<!-- <i class="iconfont icon-cha" @tap="onClickCha"></i> -->
+							<uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(info)" />
+						</view>
 					</view>
 				</view>
+				<view class="right" @tap="goToArticleInfo(info.id)"><image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="scaleToFill" /></view>
+			</view>
+			<view class="bottom" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3">
+				<view>
+					<text class="author-name" v-if="!showAvatar">{{ info.user.username }}</text>
+					<text class="comment">{{ info.commentCount }}评论</text>
+					<text class="read">{{ info.readCount }}观看</text>
+					<text class="time">{{ info.createdAt }}</text>
+				</view>
+				<view><uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(info)" /></view>
 			</view>
 		</view>
 	</view>
 </template>
-
+<script lang="ts">
+	export default { name: 'article-item' }
+</script>
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
 import router from '@/utils/router';
-// import { debounce } from 'lodash'
-// import { getArticleList } from '@/api/article'
-const props = defineProps({
-	config: {
-		zero: false,
-		one: false,
-		two: false,
-		three: false,
-		showComment: true
-		// showAuthorName: {
-		//   type: Boolean,
-		//   default: () => true
-		// },
-		// showComment: {
-		//   type: Boolean,
-		//   default: true
-		// },
-		// ,
-		//    showAvatar: {
-		//      type: Boolean,
-		//      default: true
-		//    },
-		// showRead: {
-		//   type: Boolean,
-		//   default: true
-		// },
-		// showTime: {
-		//   type: Boolean,
-		//   default: true
-		// }
+defineProps({
+	info: {
+		type: Object,
+		required: true 
 	},
-	list: {
-		type: Array,
-		required: true // 暂时不必填
+	// 是否显示图片
+	showAvatar:{
+		type:Boolean,
+		default:false
 	}
 });
 
-// 是否显示图片
-let showAvatar = ref<boolean>(false);
 let cover = {
 	// 封面类型 0 无图；1 右边1张图；2 一张大图；3 三张图片；
 	type: 1,
@@ -104,10 +80,11 @@ let cover = {
 	images: []
 };
 const goToUser = id => {
-	router.push('/pages/user/index?user_id=' + id);
+	console.log('goToUser',id);
+	// router.push('/pages/user/index?user_id=' + id);
 };
-const goToArticle = id => {
-	router.push('/pages/article/info?article_id=' + id);
+const goToArticleInfo = id => {
+	router.push(`/pages/article/info?articleId=${id}`);
 };
 const onClickCha = () => {
 	console.log('点击了差');
@@ -117,20 +94,9 @@ const onClickCha = () => {
 </script>
 
 <style lang="scss" scoped>
-// .Panel-item{
-// 	background-color: rgb(245, 243, 243);
-// }
-.article-home {
-	position: fixed;
-	left: 0;
-	right: 0;
-	top: 97.95px;
-	bottom: 50px;
-	overflow-y: auto;
-	background-color: rgb(245, 243, 243);
-}
 
-.item {
+
+.article-item {
 	display: flex;
 	flex-direction: column;
 	padding: 15px 15px 15px 15px;
@@ -189,10 +155,10 @@ const onClickCha = () => {
 		border-radius: 4px;
 		overflow: hidden;
 		margin-top: 5px;
-		// .van-image {
-		//   width: 100%;
-		//   height: 200px;
-		// }
+		image {
+			width: 100%;
+			height: 100%;
+		}
 	}
 	.centre-3 {
 		display: flex;
@@ -200,10 +166,14 @@ const onClickCha = () => {
 		margin-top: 10px;
 		border-radius: 4px;
 		overflow: hidden;
-
+		
 		.image {
 			width: 114px;
 			height: 90px;
+			image {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 
@@ -230,7 +200,8 @@ const onClickCha = () => {
 			flex-direction: column;
 			justify-content: space-between;
 			text-align: left;
-			width: 230px;
+			// width: 230px;
+			flex: 1;
 			margin-right: 14px;
 			h1 {
 				font-size: 16px;
@@ -259,9 +230,13 @@ const onClickCha = () => {
 		}
 		.right {
 			width: 120px;
-			// height: 99px;
+			height: 90px;
 			border-radius: 4px;
 			overflow: hidden;
+			image{
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 }
