@@ -129,7 +129,7 @@
 		.my-cell{
 			padding: 0px;
 			::v-deep.label{
-				margin: 10px 0px;
+				margin: 5px 0px;
 			}
 			.my-icon-left{
 				margin-right: 8px;
@@ -139,7 +139,7 @@
 			}
 		}
 		.default{
-			margin: 10px 0px;
+			// margin: 10px 0px;
 		}
 		.footer{
 			
