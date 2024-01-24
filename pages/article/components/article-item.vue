@@ -139,7 +139,7 @@ const onClickCha = () => {
 		justify-content: space-between;
 		text-align: left;
 		h1 {
-			font-size: 16px;
+			font-size: 15px;
 			line-height: 23px;
 			margin: 0;
 			overflow: hidden; //溢出内容隐藏
@@ -204,7 +204,7 @@ const onClickCha = () => {
 			flex: 1;
 			margin-right: 14px;
 			h1 {
-				font-size: 16px;
+				font-size: 15px;
 				line-height: 23px;
 				margin: 0;
 				overflow: hidden; //溢出内容隐藏

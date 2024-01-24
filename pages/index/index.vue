@@ -8,16 +8,18 @@
 			</view>
 			<block v-slot:left><my-scan size="18" color="#000" /></block>
 		</my-nav-bar>
+		
 		<view class="channel">
 			<view class="channel-wrapper">
-				<view class="channel-item" v-for="item in 10">
-					{{item}}
+				<view class="channel-item" :class="{'activeCtegory':activeCtegory == index}" v-for="(item,index) in articleCtegoryList" :key="item.id" @click="handleClickArticleCtegory(item,index)">
+					{{item.name}}
 				</view>
 				<view class="hamburger" @click="router.push('./channel')">
 					<uni-icons type="bars" size="18" color="#999" />
 				</view>
 			</view>
 		</view>
+		
 		<view class="list">
 			<article-item v-for="(item,index) in articleList" :key="index" :info="item" />
 		</view>
@@ -29,23 +31,37 @@
 	import { onLoad } from '@dcloudio/uni-app';
 	import articleItem from '@/pages/article/components/article-item.vue';
 	import { getArticleList } from '@/api/article';
+	import { getArticleCtegoryList } from '@/api/articleCategory';
 	const articleList = ref([])
 	let query = reactive({
 		pageNum: 1,
 		pageSize: 10,
-		total: 0
+		total: 0,
+		articleCategoryId:2,
 	})
 	const loadArticleList = async (pageNum = 1) => {
 		const result = await getArticleList(query)
-		console.log('result',result);
 		articleList.value = pageNum > 1 ? articleList.value.concat(result.data.list) : result.data.list
-		query.pageNum = result.data.pagination
-		query.pageSize = result.data.pageSize
-		query.total = result.data.total
+		query.pageNum = result.data.pagination.pageNum
+		query.pageSize = result.data.pagination.pageSize
+		query.total = result.data.pagination.total
 	}
-
+	const articleCtegoryList = ref([])
+	const loadArticleCtegoryList=()=>{
+		getArticleCtegoryList({pageSize:100}).then(res=>{
+			articleCtegoryList.value = res.data.list
+			activeCtegory.value = articleCtegoryList.value.findIndex(item=>item.id === query.articleCategoryId)
+		})
+	}
+	const activeCtegory = ref(0)
+	const handleClickArticleCtegory =(item,index)=>{
+		activeCtegory.value = index
+		query.articleCategoryId = item.id
+		loadArticleList()
+	}
 	onLoad(async () => {
 		loadArticleList()
+		loadArticleCtegoryList()
 	});
 
 	const clickLeft = () => { };
@@ -108,6 +124,7 @@
 			overflow-x: scroll;
 			height: 35px;
 			z-index: 1;
+			font-size: 15px;
 			background-color: white;
 
 			&::-webkit-scrollbar {
@@ -119,10 +136,14 @@
 				align-items: center;
 				padding: 0px 10px;
 				height: 100%;
+				color: #0e0e0e;
 
 				&:not(:first-child) {
 					margin-left: 10px;
 				}
+			}
+			.activeCtegory {
+				color: #3c73cc;
 			}
 
 			.hamburger {

@@ -211,11 +211,11 @@
 
 		h1 {
 			text-align: left;
-			font-size: 22px;
+			font-size: 19px;
 		}
 
 		.content {
-			font-size: 16px;
+			font-size: 14px;
 
 			p {
 				line-height: 28px;

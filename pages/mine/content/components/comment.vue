@@ -121,7 +121,7 @@ const loadUserComment = async(pageNum = 1) => {
 	}
 	.comment {
 		margin-bottom: 5px;
-		font-size: 16px;
+		font-size: 15px;
 	}
 	.centre {
 		display: flex;
@@ -134,7 +134,7 @@ const loadUserComment = async(pageNum = 1) => {
 			flex-direction: column;
 			// margin-right: 14px;
 			h1 {
-				font-size: 16px;
+				font-size: 15px;
 				margin: 0;
 				overflow: hidden; //溢出内容隐藏
 					text-overflow: ellipsis; //文本溢出部分用省略号表示
