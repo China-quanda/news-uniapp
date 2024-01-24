@@ -34,7 +34,7 @@
 	const userStore = useUserStore()
 	import prompt from '@/utils/prompt';
 	const emit = defineEmits<{
-		(e : 'onAction', id : string) : void
+		(e : 'onAction', value : string) : void
 		(e : 'onRefresh') : void
 		(e : 'onClickShare') : void
 		(e : 'onClickLike') : void

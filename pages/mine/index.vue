@@ -39,10 +39,7 @@
 		</view>
 
 		<my-grid class="my-grid" columns="4" :border="false">
-			<my-grid-item v-for="(item, index) in twoGridList" :key="index" radius="4px" @tap="tapItem(item)">
-				<my-icon :icon="item.icon" :size="22" />
-				<text class="text">{{ item.title }}</text>
-			</my-grid-item>
+			<my-grid-item v-for="(item, index) in twoGridList" :icon="item.icon" :text="item.text" :key="index" iconSize="20" @tap="tapItem(item)"/>
 		</my-grid>
 
 		<view class="bottom">
@@ -69,71 +66,73 @@
 </template>
 
 <script setup lang="ts">
-// import { mapGetters } from 'vuex';
 // import { getUserHomePage } from '@/api/user'
 // import { getUserArticle } from '@/api/article'
 // import AllService from '@/pages/user/components/all-service.vue'
 import { useUserStore } from '@/store/user'
 	const userStore = useUserStore()
 import router from '@/utils/router';
-// import storage from '@/utils/storage';
 import prompt from '@/utils/prompt';
 import { ref, reactive } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
-// ...mapGetters([ 'token', 'userInfo','userId' ])
 
 onLoad(() => {
 	// userStore.getUserInfo()
 	// getUserHomePage(this.userId)
 	// getUserArticle(this.userId);
-	// token.value = storage.get('token');
 });
 let userInfo = reactive({})
-let token = ref<string>('');
 let total = ref<number>(0);
 let myAllArticle = ref([]);
 let query = reactive({
 	pageNum: 1,
 	pageSize: 10
 });
-let isAllServiceShow = ref<boolean>(false);
 let myList = ref([{ name: '全部' }, { name: '文章' }, { name: '视频' }, { name: '问答' }, { name: '小视频' }, { name: '微头条' }]);
 let twoGridList = ref([
 	{	
 		icon: 'icon-pinglun',
-		title: '评论',
+		text: '评论',
 		url:'/pages/mine/content/index',
 		type:'comment'
 	},
 	{
 		icon: 'icon-shoucang',
-		title: '收藏'
+		text: '收藏',
+		url:'/pages/mine/content/index',
+		type:'collect'
 	},
 	{
 		icon: 'icon-xiazai',
-		title: '下载',
+		text: '下载',
 		url:'./download/index'
 	},
 	{
 		icon: 'icon-lishi',
-		title: '历史'
+		text: '历史',
+		url:'/pages/mine/content/index',
+		type:'history'
 	},
 	{
 		icon: 'icon-xiaoxi',
-		title: '消息',
+		text: '消息',
 		url: './message/index'
 	},
 	{
 		icon: 'icon-dianzan',
-		title: '点赞'
+		text: '点赞',
+		url:'/pages/mine/content/index',
+		type:'like'
 	},
 	{
 		icon: 'icon-jubao',
-		title: '举报'
+		text: '举报',
+		url:'/pages/mine/content/index',
+		type:'report'
 	},
 	{
 		icon: 'icon-quanbu',
-		title: '全部',
+		text: '全部',
 		url: './all-service'
 	}
 ]);
@@ -155,26 +154,20 @@ let getUserArticle = async id => {
 // 获取用户主页信息
 let getUserHomePage = async id => {
 	const userInfo = await getUserHomePage(id);
-	// this.$store.commit('user/SET_USERINFO',userInfo)
 };
 let toLogin = () => {
 	router.push('/pages/login/login');
 };
-let tapItem = row => {
-	console.log(row);
-	if (!row.url || !row.type) return prompt.msg(`${row.title} 功能未实现`);
-	router.push(`${row.url}?type=${row.type}`);
-
-	// console.log(`点击了第${name}个`);
-	// if (name == 2) {
-	// 	router.push('/pages/user/download/index');
-	// } else if (name == 4) {
-	// 	router.push('/pages/user/message/index');
-	// } else if (name == 7) {
-	// 	this.isAllServiceShow = true;
-	// } else {
-	// 	router.push('/pages/user/content/index');
-	// }
+const tapItem = row => {
+	if(row.url){
+		if(row.type){
+			router.push(`${row.url}?type=${row.type}`);
+		}else{
+			router.push(`${row.url}`);
+		}
+	}else{
+		return prompt.msg(`${row.text} 功能未实现`);
+	}
 };
 </script>
 
@@ -245,14 +238,19 @@ let tapItem = row => {
 		}
 	}
 }
+// .my-grid {
+// 	padding: 10px 0px;
+// 	color: #292929;
+// 	.grid-item{
+// 		align-items: center;
+// 	}
+// 	.text {
+// 		margin-top: 8px;
+// 	}
+// }
 .my-grid {
-	padding: 10px 0px;
-	color: #292929;
-	.grid-item{
-		align-items: center;
-	}
-	.text {
-		margin-top: 8px;
+	:deep(.grid-item-text) {
+		margin-top: 6px;
 	}
 }
 .three {

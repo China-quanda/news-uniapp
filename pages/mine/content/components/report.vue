@@ -1,48 +1,70 @@
 <template>
 	<view class="my-report">
-		<view class="my-report-item" v-for="(item, index) in 3" :key="index">
-			<view class="title"><h1>1234</h1></view>
+		<view class="my-report-item" v-for="(item, index) in list" :key="index">
+			<view class="title"><h1>{{item.article.title}}</h1></view>
 			<view>
 				<text>处理进度：</text>
-				<text class="active">举报处理中</text>
+				<text class="active">{{statusDict(item.status)}}</text>
 			</view>
 			<view>
 				<text>举报理由：</text>
-				<text>封面引人不适</text>
+				<text>{{item.remark}}</text>
 			</view>
 			<view>
 				<text>举报时间：</text>
-				<text>3天前</text>
+				<text>{{item.createTime}}</text>
 			</view>
-			<!-- '举报类型： 0-其他问题，1-标题夸张，2-低俗色情，3-错别字多，4-旧闻重复，5-广告软文，6-内容不实，7-涉嫌违法犯罪，8-侵权' -->
+			<view>
+				<text>举报类型：</text>
+				<text>{{typeDict(item.type)}}</text>
+			</view>
 		</view>
-		<!-- <view v-if="!list.length" class="empty">
-			暂无举报内容
-		</view> -->
 	</view>
 </template>
 
 <script setup lang="ts">
-// import {getUserReport} from '@/api/article'
+import {getUserReportList} from '@/api/articleReport'
 import { reactive, ref, onMounted } from 'vue';
-let userId = ref(1);
-let list = reactive([]);
-let total = ref(0);
+let list = ref([]);
 let query = reactive({
 	pageNum: 1,
-	pageSize: 10
+	pageSize: 10,
+	total: 0
 });
-onMounted(() => {
-	// getUserReport(userId.value,query)
-});
-const getUserReport = (id, data) => {
-	getUserReport(id, data).then(res => {
-		query.pageNum = res.pageNum;
-		query.pageSize = res.pageSize;
-		list = res.list;
-		total.value = res.total;
-	});
+const loadUserReportList = async(pageNum:number = 1) => {
+	const result = await getUserReportList(query)
+	list.value = pageNum > 1 ? list.value.concat(result.data.list) : result.data.list
+	query.pageNum = result.data.pagination
+	query.pageSize = result.data.pageSize
+	query.total = result.data.total
 };
+
+const typeDict =(val:number)=>{
+	const map ={
+		0:'其他问题',
+		1:'标题夸张',
+		2:'低俗色情',
+		3:'错别字多',
+		4:'旧闻重复',
+		5:'广告软文',
+		6:'内容不实',
+		7:'涉嫌违法犯罪',
+		8:'侵权',
+	}
+	return map[val] || '未知'
+}
+const statusDict =(val:number)=>{
+	const map ={
+		0:'审核失败',
+		1:'审核中',
+		2:'审核完成,内容未违规',
+		3:'审核完成,内容违规已删除该文章'
+	}
+	return map[val] || '未知'
+}
+onMounted(() => {
+	loadUserReportList()
+});
 </script>
 <style lang="scss" scoped>
 .my-report {

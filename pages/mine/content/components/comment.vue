@@ -1,5 +1,5 @@
 <template>
-	<view class="my-comment">
+	<view class="comment">
 		<view class="item-avatar-one" v-for="(item, index) in list" :key="index">
 			
 			<view class="top">
@@ -30,14 +30,16 @@
 			</view>
 			
 			<view class="bottom">
-				<info-action @onAction="onActionTap" />
+				<info-action @onAction="onActionTap" :info="item"/>
 			</view>
 		</view>
 		
 		<my-empty v-if="!list.length" text="暂无评论内容"/>
 	</view>
 </template>
-
+<script lang="ts">
+	export default { name: 'comment' }
+</script>
 <script setup lang="ts">
 import { reactive, ref, onMounted } from 'vue';
 import infoAction from '@/pages/article/components/info-action.vue';
@@ -52,7 +54,7 @@ let query = reactive({
 	pageSize:10
 })
 onMounted(() => {
-	getUserComment(query)
+	loadUserComment(query)
 });
 const onActionTap = value => {
 	console.log(value);
@@ -67,16 +69,16 @@ const goToUser = id => {
 };
 const goToArticle = id => {
 	console.log('id',id);
-	router.push('/pages/article/index?article_id=' + id);
+	router.push(`/pages/article/info?articleId=${id}`);
+	// router.push('/pages/article/index?article_id=' + id);
 };
 // 获取用户评论列表
-const getUserComment = (query:any) => {
-	getUserCommentlist(query).then(res => {
-		list.value = res.data.list
-		query.pageNum = res.data.pagination.pageNum;
-		query.pageSize = res.data.pagination.pageSize;
-		total.value = res.data.pagination.total;
-	});
+const loadUserComment = async(pageNum = 1) => {
+	const result = await getUserCommentlist(query)
+	list.value = pageNum > 1 ? list.value.concat(result.data.list) : result.data.list
+	query.pageNum = result.data.pagination
+	query.pageSize = result.data.pageSize
+	query.total = result.data.total
 };
 </script>
 

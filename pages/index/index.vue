@@ -1,73 +1,152 @@
 <template>
 	<view class="content">
-		<my-nav-bar rightText="搜索" :clickLeft="clickLeft" :clickRight="clickRight" :clickCentre="clickCentre" leftWidth="60rpx" rightWidth="70rpx">
+		<my-nav-bar rightText="搜索" :clickLeft="clickLeft" :clickRight="clickRight" :clickCentre="clickCentre"
+			leftWidth="60rpx" rightWidth="70rpx">
 			<view class="input-view">
 				<uni-icons type="search" size="18" color="#999" />
 				<input disabled class="nav-bar-input" type="text" placeholder="你想搜索点什么" />
 			</view>
 			<block v-slot:left><my-scan size="18" color="#000" /></block>
 		</my-nav-bar>
-		<button @tap="router.push('./channel')">频道管理</button>
-		<button @tap="router.push('/pages/article/info?article_id=47')">文章详情页</button>
-		<article-item :config="config" :list="articleList" />
+		<view class="channel">
+			<view class="channel-wrapper">
+				<view class="channel-item" v-for="item in 10">
+					{{item}}
+				</view>
+				<view class="hamburger" @click="router.push('./channel')">
+					<uni-icons type="bars" size="18" color="#999" />
+				</view>
+			</view>
+		</view>
+		<view class="list">
+			<article-item v-for="(item,index) in articleList" :key="index" :info="item" />
+		</view>
 	</view>
 </template>
 <script setup lang="ts">
-import router from '@/utils/router';
-// import storage from '@/utils/storage';
-import { reactive, ref } from 'vue';
-import { onLoad } from '@dcloudio/uni-app';
-import articleItem from '../article/components/article-item.vue';
-import { getArticleList } from '@/api/article';
-let articleList = ref([]);
-onLoad(async () => {
-	// storage.set('token', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjIxLCJpYXQiOjE2ODk1MjYxMTYsImV4cCI6MTY5MDgyMjExNn0.934sg2hFbiyVR04z989k4zUZNdLzdI6gcEaMXrHFGeo');
-	getArticleList().then(res => {
-		articleList.value = res.data.list;
-		// console.log(articleList.value);
-	});
-});
+	import router from '@/utils/router';
+	import { reactive, ref } from 'vue';
+	import { onLoad } from '@dcloudio/uni-app';
+	import articleItem from '@/pages/article/components/article-item.vue';
+	import { getArticleList } from '@/api/article';
+	const articleList = ref([])
+	let query = reactive({
+		pageNum: 1,
+		pageSize: 10,
+		total: 0
+	})
+	const loadArticleList = async (pageNum = 1) => {
+		const result = await getArticleList(query)
+		console.log('result',result);
+		articleList.value = pageNum > 1 ? articleList.value.concat(result.data.list) : result.data.list
+		query.pageNum = result.data.pagination
+		query.pageSize = result.data.pageSize
+		query.total = result.data.total
+	}
 
-const clickLeft = () => {};
-const clickRight = () => {
-	console.log('clickRight');
-};
-const clickCentre = () => {
-	console.log('clickCentre');
-	router.push('../search/index');
-};
-let config = reactive({
-	showAuthorName: true,
-	showRead: true,
-	// showAvatar: true
-	one: true,
-	two: true,
-	three: true,
-	zero: true,
-	showTime: true
-});
+	onLoad(async () => {
+		loadArticleList()
+	});
+
+	const clickLeft = () => { };
+	const clickRight = () => {
+		console.log('clickRight');
+	};
+	const clickCentre = () => {
+		console.log('clickCentre');
+		router.push('../search/index');
+	};
+	let config = reactive({
+		showAuthorName: true,
+		showRead: true,
+		// showAvatar: true
+		one: true,
+		two: true,
+		three: true,
+		zero: true,
+		showTime: true
+	});
 </script>
 
 <style lang="scss" scoped>
-// page {
-// 	background-color: $uni-bg-color-grey;
-// }
-.content {
-	background-color: $uni-bg-color-grey;
-}
-.input-view {
-	display: flex;
-	flex: 1;
-	border-radius: 15px;
-	padding: 0 15px;
-	line-height: 30px;
-	background-color: #f8f8f8;
-}
-.nav-bar-input {
-	height: 30px;
-	width: 100%;
-	line-height: 30px;
-	padding: 0 5px;
-	font-size: 12px;
-}
+	// page {
+	// 	background-color: $uni-bg-color-grey;
+	// }
+	.content {
+		background-color: $uni-bg-color-grey;
+	}
+
+	.input-view {
+		display: flex;
+		flex: 1;
+		border-radius: 15px;
+		padding: 0 15px;
+		line-height: 30px;
+		background-color: #f8f8f8;
+	}
+
+	.nav-bar-input {
+		height: 30px;
+		width: 100%;
+		line-height: 30px;
+		padding: 0 5px;
+		font-size: 12px;
+	}
+
+	.channel {
+		position: relative;
+		height: 35px;
+
+		.channel-wrapper {
+			position: fixed;
+			// top: 0;
+			left: 0;
+			right: 40px;
+			display: flex;
+			align-items: center;
+			flex-wrap: nowrap;
+			overflow-x: scroll;
+			height: 35px;
+			z-index: 1;
+			background-color: white;
+
+			&::-webkit-scrollbar {
+				height: 0px;
+			}
+
+			.channel-item {
+				display: flex;
+				align-items: center;
+				padding: 0px 10px;
+				height: 100%;
+
+				&:not(:first-child) {
+					margin-left: 10px;
+				}
+			}
+
+			.hamburger {
+				position: fixed;
+				right: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 35px;
+				width: 40px;
+				background-color: white;
+				// background-color: rgba(255,255,255,0.8);
+				&::before {
+					position: absolute;
+					content: '';
+					left: 0px;
+					height: 15px;
+					width: 1px;
+					// box-shadow: -3px 0px 7px 1px rgba(0, 0, 0, 0.7);
+					// background-color: #000;
+					background-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+				}
+			}
+
+		}
+	}
 </style>

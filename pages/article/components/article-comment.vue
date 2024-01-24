@@ -6,10 +6,10 @@
 					<view class="header-left"> 0条评论 </view>
 					<view class="header-right">
 						<view class="icon-button" @click="isFullScreen=!isFullScreen">
-							<my-icon :icon="isFullScreen?'icon-xiala':'icon-xiangshang'" size="10"/>
+							<my-icon :icon="isFullScreen?'icon-xiala':'icon-xiangshang'" size="10" color="#868686"/>
 						</view>
 						<view class="icon-button" @click="popupClose">
-							<my-icon icon="icon-cha" size="8"/>
+							<my-icon icon="icon-cha" size="8" color="#868686"/>
 						</view>
 					</view>
 				</view>
@@ -85,8 +85,8 @@
 			<view class="comment-action" @tap="showSendComment = !showSendComment" v-if="showActionComment">
 				<view class="radius-box">
 					<my-text class="radius-box-edit" :text="commentContent ? commentContent : commentPlaceholder"
-						prefixIcon="icon-chuangzuo" size="12" iconSize="14" />
-					<my-icon icon="icon-weixiao" color="#000" size="22" />
+						prefixIcon="icon-chuangzuo" size="12" iconSize="16" />
+					<my-icon icon="icon-weixiao" color="#000" size="24" />
 				</view>
 				<my-button v-if="commentContent" class="send-btn" style="margin-left: 10px;" type="primary" size="mini"
 					shape="circle">发送</my-button>
@@ -219,8 +219,9 @@
 				align-items: center;
 				justify-content:space-between;
 				z-index: 1;
+				// background-color: red;
 				.header-left{
-					font-size: 12px;
+					font-size: 13px;
 				}
 				.header-right{
 					display: flex;
@@ -228,9 +229,9 @@
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						background-color: #ccc;
-						width: 15px;
-						height: 15px;
+						background-color: #ebebeb;
+						width: 20px;
+						height: 20px;
 						border-radius: 100px;
 						&:not(:last-child){
 							margin-right: 10px;
@@ -241,7 +242,12 @@
 		}
 	}
 	.fullScreen{
-		height: 100vh;
+		/* #ifdef APP-PLUS */
+		height: calc(100vh - 44px - var(--status-bar-height));
+		/* #endif */
+		/* #ifdef H5 */
+		height: calc(100vh - 44px);
+		/* #endif */
 		border-radius: unset;
 	}
 	.comment-item {

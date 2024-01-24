@@ -20,10 +20,10 @@
 		</view>
 		<view class="Panel">
 			<view class="" v-if="type == 0"></view>
-			<!-- <collect v-if="type=== 'collect'" :userId='userId'/> -->
+			<collect v-if="type=== 'collect'"/>
 			<comment v-else-if="type === 'comment'" />
-			<!-- <history v-else-if="type == 2" /> -->
-			<!-- <like v-else-if="type==3" :userId='userId'/> -->
+			<history v-else-if="type ==='history'" />
+			<like v-else-if="type==='like'"/>
 			<report v-else-if="type === 'report'" />
 			<view v-else class="">暂未开发</view>
 		</view>
@@ -35,10 +35,10 @@
 	import { onLoad } from '@dcloudio/uni-app'
 	import router from '@/utils/router';
 	import prompt from '@/utils/prompt';
-	// import collect from './components/collect.vue'
+	import collect from './components/collect.vue'
 	import comment from './components/comment.vue';
-	// import like from './components/like.vue'
-	// import history from './components/history.vue';
+	import like from './components/like.vue'
+	import history from './components/history.vue';
 	import report from './components/report.vue';
 	onLoad((query) => {
 		if (query.type) type.value = query.type
@@ -46,7 +46,6 @@
 	let type = ref('');
 	let tabsList = reactive([{ name: '收藏' }, { name: '评论' }, { name: '历史' }, { name: '点赞' }, { name: '举报' }, { name: '推送' }, { name: '预约' }]);
 	const clickTabs = item => {
-		console.log(item);
 		if (item.name == '收藏') {
 			type.value = 'collect';
 		} else if (item.name == '评论') {
