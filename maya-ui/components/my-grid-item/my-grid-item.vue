@@ -7,9 +7,11 @@
 			:value="badgeValue" 
 			:max="badgeMax" 
 			:isDot="badgeDot" />
-			<slot name="icon"><my-icon :icon="icon" :color="iconColor" :size="iconSize" /></slot>
+			<slot name="icon">
+				<my-icon class="grid-item-icon" :icon="icon" :color="iconColor" :size="iconSize" />
+			</slot>
 			<slot name="text">
-				<text>{{ text }}</text>
+				<text class="grid-item-text">{{ text }}</text>
 			</slot>
 		</slot>
 	</view>
@@ -66,11 +68,12 @@ const handleTap = () => {
 
 <style lang="scss">
 .grid-item {
-	// align-items: center;
+	align-items: center;
 	// justify-content: center;
 	padding: 5px;
 	position: relative;
 	box-sizing: border-box;
+	font-size: 14px;
 	// overflow: hidden;
 	border-radius: v-bind('props.radius');
 	background-color: v-bind('props.bgColor');

@@ -161,7 +161,6 @@ let randomColor = ref(
 );
 
 const isRandomColor = computed(() => {
-	console.log(props.text && props.randomBgColor, 22);
 	return props.text && props.randomBgColor;
 });
 
@@ -181,7 +180,8 @@ onMounted(() => {
 .avatar {
 	display: inline-block;
 	position: relative;
-	display: inline-block;
+	width: v-bind('props.width');
+	height: v-bind('props.height');
 	.badge {
 		position: absolute;
 		width: 7px;
