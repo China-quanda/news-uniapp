@@ -19,15 +19,11 @@ export const getArticleList = (query) => {
 	})
 }
 
-
 // 根据文章id获取文章信息
-export const getArticleId = id => {
+export const getArticleById = id => {
 	return request({
-		url:`/api/m/article/${id}`,
-		method: 'GET',
-		params:{
-			id
-		}
+		url:`/article/${id}`,
+		method: 'GET'
 	})
 }
 
