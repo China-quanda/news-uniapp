@@ -23,7 +23,7 @@ export default {
 		console.log('监听到事件来自 update ，携带参数 msg 为：' + data.msg);
 	})
 	 */
-	on:(eventName:string,callback)=>{
+	on:(eventName:string,callback?: (result: any) => void)=>{
 		uni.$on(eventName,callback)
 	},
 	/**
@@ -34,7 +34,7 @@ export default {
 		console.log('监听到事件来自 update ，携带参数 msg 为：' + data.msg);
 	})
 	 */
-	once:(eventName:string,callback)=>{
+	once:(eventName:string,callback?: (result: any) => void)=>{
 		uni.$once(eventName,callback)
 	},
 	/**
@@ -43,7 +43,7 @@ export default {
 	 * @param {function} callback 事件的回调函数 必填
 	 * @example off('update',()=>{console.log('结束监听')})
 	 */
-	off:(eventName:string,callback)=>{
+	off:(eventName?: string | string[],callback?: (result: any) => void)=>{
 		uni.$off(eventName,callback)
 	}
 }

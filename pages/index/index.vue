@@ -8,10 +8,12 @@
 			</view>
 			<block v-slot:left><my-scan size="18" color="#000" /></block>
 		</my-nav-bar>
-		
+
 		<view class="channel">
 			<view class="channel-wrapper">
-				<view class="channel-item" :class="{'activeCtegory':activeCtegory == index}" v-for="(item,index) in articleCtegoryList" :key="item.id" @click="handleClickArticleCtegory(item,index)">
+				<view class="channel-item" 
+					:class="{'activeCtegory':item.id === articleCtegoryStore.ctegorId}"
+					v-for="(item,index) in articleCtegoryStore.myCtegoryList" :key="item.id" @click="handleClickArticleCtegory(item,index)">
 					{{item.name}}
 				</view>
 				<view class="hamburger" @click="router.push('./channel')">
@@ -19,25 +21,26 @@
 				</view>
 			</view>
 		</view>
-		
+
 		<view class="list">
 			<article-item v-for="(item,index) in articleList" :key="index" :info="item" />
 		</view>
 	</view>
 </template>
 <script setup lang="ts">
-	import router from '@/utils/router';
 	import { reactive, ref } from 'vue';
-	import { onLoad } from '@dcloudio/uni-app';
+	import { onShow,onLoad} from '@dcloudio/uni-app';
+	import router from '@/utils/router';
 	import articleItem from '@/pages/article/components/article-item.vue';
+	import { useArticleCtegoryStore } from '@/store/articleCtegory'
+	const articleCtegoryStore = useArticleCtegoryStore()
 	import { getArticleList } from '@/api/article';
-	import { getArticleCtegoryList } from '@/api/articleCategory';
 	const articleList = ref([])
 	let query = reactive({
 		pageNum: 1,
 		pageSize: 10,
 		total: 0,
-		articleCategoryId:2,
+		articleCategoryId: null,
 	})
 	const loadArticleList = async (pageNum = 1) => {
 		const result = await getArticleList(query)
@@ -46,24 +49,21 @@
 		query.pageSize = result.data.pagination.pageSize
 		query.total = result.data.pagination.total
 	}
-	const articleCtegoryList = ref([])
-	const loadArticleCtegoryList=()=>{
-		getArticleCtegoryList({pageSize:100}).then(res=>{
-			articleCtegoryList.value = res.data.list
-			activeCtegory.value = articleCtegoryList.value.findIndex(item=>item.id === query.articleCategoryId)
-		})
-	}
-	const activeCtegory = ref(0)
-	const handleClickArticleCtegory =(item,index)=>{
-		activeCtegory.value = index
-		query.articleCategoryId = item.id
+	const handleClickArticleCtegory = (item, index) => {
+		if(query.articleCategoryId === item.id) return
+		query.articleCategoryId = articleCtegoryStore.ctegorId = item.id
 		loadArticleList()
 	}
-	onLoad(async () => {
-		loadArticleList()
-		loadArticleCtegoryList()
-	});
-
+	onLoad(()=>{
+		articleCtegoryStore.loadArticleCtegoryList()
+	})
+	onShow(async() => {
+		// 监听文章频道页面传来的值
+		if(query.articleCategoryId !== articleCtegoryStore.ctegorId){
+			query.articleCategoryId = articleCtegoryStore.ctegorId
+			loadArticleList()	
+		}
+	})
 	const clickLeft = () => { };
 	const clickRight = () => {
 		console.log('clickRight');
@@ -142,6 +142,7 @@
 					margin-left: 10px;
 				}
 			}
+
 			.activeCtegory {
 				color: #3c73cc;
 			}
@@ -155,6 +156,7 @@
 				height: 35px;
 				width: 40px;
 				background-color: white;
+
 				// background-color: rgba(255,255,255,0.8);
 				&::before {
 					position: absolute;

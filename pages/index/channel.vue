@@ -3,42 +3,42 @@
 		<my-nav-bar color="transparent" :clickRight="router.back">
 			<block v-slot:right><my-icon icon="icon-cha" size="18" color="#000" /></block>
 		</my-nav-bar>
-
-		<view class="my-channel">
-			<view class="left">
-				<view class="title">我的频道</view>
-				<view class="desc">{{ editStatus ? '点击删除频道' : '点击进入频道' }}</view>
+		
+		<template v-if="articleCtegoryStore.myCtegoryList.length">
+			<view class="my-channel" >
+				<view class="left">
+					<view class="title">我的频道</view>
+					<view class="desc">{{ editStatus ? '点击删除频道' : '点击进入频道' }}</view>
+				</view>
+				<view class="edit" @click="editStatus = !editStatus">{{ editStatus ? '完成' : '编辑' }}</view>
 			</view>
-			<view class="edit" @tap="editStatus = !editStatus">{{ editStatus ? '完成' : '编辑' }}</view>
-		</view>
-		<view class="channel-item">
-			<my-grid class="my-grid" columns="4" gap="10" :border="false">
-				<my-grid-item class="my-grid-item" :class="{'shake-bottom' :editStatus }" v-for="(item, index) in myChannel"
-					:key="index" bgColor="#f8f8f8" radius="4px" @tap="tapMyChannel(item, editStatus)">
-					{{ item.title }}
-					<my-icon v-if="editStatus" class="m-icon icon-cha" icon="icon-cha" size="12" color="#000" />
-				</my-grid-item>
-			</my-grid>
-		</view>
-
-		<view class="tj-channel">
-			<view class="left">
-				<view class="title">为你推荐</view>
-				<view class="desc">点击添加频道</view>
+			<view class="channel-item">
+				<my-grid class="my-grid" columns="4" gap="10" :border="false">
+					<my-grid-item class="my-grid-item" :class="{'shake-bottom' :editStatus }" v-for="(item, index) in articleCtegoryStore.myCtegoryList"
+						:key="index" bgColor="#f8f8f8" radius="4px" @click="tapMyChannel(item, index)">
+						<text :class="{'activeCtegory': item.id === articleCtegoryStore.ctegorId}">{{ item.name }}</text>
+						<my-icon v-if="editStatus" class="m-icon icon-cha" icon="icon-cha" size="12" color="#000" />
+					</my-grid-item>
+				</my-grid>
 			</view>
-		</view>
-		<view class="channel-item tj-channel-item">
-			<view class="Panel" v-for="hot in hotChannel" :key="hot.title">
-				<text class="Panel-title">{{ hot.title }}</text>
+		</template>
+		<template v-if="articleCtegoryStore.tjCtegoryList.length">
+			<view class="tj-channel">
+				<view class="left">
+					<view class="title">为你推荐</view>
+					<view class="desc">点击添加频道</view>
+				</view>
+			</view>
+			<view class="channel-item tj-channel-item">
 				<my-grid class="my-grid" columns="4" gap="10" backgroundColor="#fff">
-					<my-grid-item class="my-grid-item" v-for="(item, index) in hot.data" :key="index" border radius="4px"
-						@tap="tapHotChannel(item)">
-						{{ item.title }}
+					<my-grid-item class="my-grid-item" v-for="(item, index) in articleCtegoryStore.tjCtegoryList" :key="index" border radius="4px"
+						@click="articleCtegoryStore.addMyCtegory(item,index)">
+						{{ item.name }}
 						<my-icon class="m-icon icon-jiahao" icon="icon-jiahao" size="12" color="#282828" />
 					</my-grid-item>
 				</my-grid>
 			</view>
-		</view>
+		</template>
 	</view>
 </template>
 
@@ -46,7 +46,10 @@
 	import { ref } from 'vue';
 	import router from '@/utils/router';
 	import prompt from '@/utils/prompt';
-	let editStatus = ref<boolean>(false);
+	import { useArticleCtegoryStore } from '@/store/articleCtegory'
+	const articleCtegoryStore = useArticleCtegoryStore()
+	
+	const editStatus = ref<boolean>(false);
 	let myChannel = ref([
 		{
 			name: 'photo',
@@ -300,25 +303,20 @@
 			]
 		}
 	]);
-	let tapHotChannel = row => {
-		console.log(row);
-		if (!row.url) return prompt.msg(`${row.title} 功能未实现`);
-		router.push(row.url);
-	};
-	let tapMyChannel = (row, status) => {
-		if (status) {
+	let tapMyChannel = (row, index) => {
+		if (editStatus.value) {
 			// 删除频道
-			console.log('删除频道');
+			articleCtegoryStore.delMyCtegory(row, index)
 		} else {
 			// 去频道页面
-			console.log('去频道页面');
+			articleCtegoryStore.ctegorId = row.id
+			router.tab(`/pages/index/index?id=1`)
 		}
-		console.log(row, status);
-		// router.push(row.url);
 	};
 </script>
 
 <style scoped lang="scss">
+	
 	.shake-bottom {
 		-webkit-animation: shake-bottom 0.8s cubic-bezier(0.255, 0.030, 0.215, 0.255) infinite both;
 		animation: shake-bottom 0.8s cubic-bezier(0.255, 0.030, 0.215, 0.255) infinite both;
@@ -442,7 +440,7 @@
 
 			.my-grid-item {
 				margin-bottom: 10px;
-
+				padding:6px 0px;
 				&:not(:nth-child(4n)) {
 					margin-right: 10px;
 					// background-color: palegoldenrod;
@@ -488,5 +486,8 @@
 
 			}
 		}
+	}
+	.activeCtegory {
+		color: #3c73cc;
 	}
 </style>

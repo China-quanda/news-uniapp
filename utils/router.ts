@@ -45,7 +45,7 @@ export default {
 	 * @param {string} url 需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数
 	 * @example tab({url:'/pages/index/index'})
 	 */
-	tab:(url:url)=>{
+	tab:(url:string)=>{
 		uni.switchTab({ url });
 	},
 	/**
