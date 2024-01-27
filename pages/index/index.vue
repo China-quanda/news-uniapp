@@ -21,10 +21,12 @@
 				</view>
 			</view>
 		</view>
-
-		<view class="list">
-			<article-item v-for="(item,index) in articleList" :key="index" :info="item" />
-		</view>
+		<my-list 
+		:list="list" refresherEnabled :pageInfo="pageInfo" 
+		:loadData="getDataList"
+		:loading="loading">
+			<article-item v-for="(item, index) in list" :key="index" :info="item"/>
+		</my-list>
 	</view>
 </template>
 <script setup lang="ts">
@@ -35,24 +37,19 @@
 	import { useArticleCtegoryStore } from '@/store/articleCtegory'
 	const articleCtegoryStore = useArticleCtegoryStore()
 	import { getArticleList } from '@/api/article';
-	const articleList = ref([])
+	import {usePageList} from '@/maya-ui/components/my-list/hook';
 	let query = reactive({
-		pageNum: 1,
-		pageSize: 10,
-		total: 0,
 		articleCategoryId: null,
 	})
-	const loadArticleList = async (pageNum = 1) => {
-		const result = await getArticleList(query)
-		articleList.value = pageNum > 1 ? articleList.value.concat(result.data.list) : result.data.list
-		query.pageNum = result.data.pagination.pageNum
-		query.pageSize = result.data.pagination.pageSize
-		query.total = result.data.pagination.total
-	}
+	const { list, pageInfo, loading, getDataList } =usePageList({
+		requestApi:getArticleList,
+		queryParams:query
+	})
+
 	const handleClickArticleCtegory = (item, index) => {
 		if(query.articleCategoryId === item.id) return
 		query.articleCategoryId = articleCtegoryStore.ctegorId = item.id
-		loadArticleList()
+		getDataList(pageInfo.pageNum)
 	}
 	onLoad(()=>{
 		articleCtegoryStore.loadArticleCtegoryList()
@@ -61,7 +58,7 @@
 		// 监听文章频道页面传来的值
 		if(query.articleCategoryId !== articleCtegoryStore.ctegorId){
 			query.articleCategoryId = articleCtegoryStore.ctegorId
-			loadArticleList()	
+			getDataList(pageInfo.pageNum)
 		}
 	})
 	const clickLeft = () => { };
@@ -72,16 +69,7 @@
 		console.log('clickCentre');
 		router.push('../search/index');
 	};
-	let config = reactive({
-		showAuthorName: true,
-		showRead: true,
-		// showAvatar: true
-		one: true,
-		two: true,
-		three: true,
-		zero: true,
-		showTime: true
-	});
+
 </script>
 
 <style lang="scss" scoped>
@@ -89,7 +77,7 @@
 	// 	background-color: $uni-bg-color-grey;
 	// }
 	.content {
-		background-color: $uni-bg-color-grey;
+		// background-color: $uni-bg-color-grey;
 	}
 
 	.input-view {
