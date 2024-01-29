@@ -13,9 +13,10 @@ export const usePageList = ({ requestApi,queryParams })=>{
 	
   // 获取数据
   const getDataList = (pageNum = pageInfo.pageNum) =>{
-    if(loading.value) return console.log('数据加载中。。。请稍等');
-    loading.value = true
 		return new Promise((resolve, reject) => {
+			if(loading.value) return reject('数据加载中。。。请稍等')
+			loading.value = true
+			
 			requestApi({
 			  pageNum,
 			  pageSize:pageInfo.pageSize,

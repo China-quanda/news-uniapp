@@ -50,6 +50,8 @@ const getData = e => {
 | width | 列表的宽度 | string | 'auto' | 否 |
 | showBackTop | 是否显示返回顶部按钮 开启后scrollTop大于200会显示| boolean | 'true' | 否 |
 | query | 自定义列表查询参数| object | '{}' | 否 |
+| loading | 列表数据加载状态 | boolean | 'false' | 否 |
+| loadingText | 数据加载时显示的文字 | boolean | '数据加载中' | 否 |
 
 **Events**
 | 事件 | 说明 | 回调参数
@@ -70,3 +72,4 @@ const getData = e => {
 | topLoading |自定义下拉刷新动画插槽|
 | bottomLoading |自定义上拉加载动画更多插槽|
 | empty |空数据插槽|
+| loading |数据加载时插槽|

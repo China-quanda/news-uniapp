@@ -2,7 +2,7 @@
 	<view class="list">
 		<scroll-view class="scroll" :scroll-y="true" :scroll-top="scrollTop" :upper-threshold="upperThreshold"
 			:lower-threshold="lowerThreshold" :enable-back-to-top="enableBackToTop" :show-scrollbar="showScrollbar"
-			:refresher-enabled="refresherEnabled" :refresher-threshold="refresherThreshold"
+			:refresher-enabled="list.length>0 && refresherEnabled" :refresher-threshold="refresherThreshold"
 			:refresher-default-style="refresherDefaultStyle" :refresher-background="refresherBackground"
 			:refresher-triggered="refresherTriggered" :scroll-with-animation="scrollWithAnimation"
 			@scrolltoupper="scrolltoupper" @scrolltolower="scrolltolower" @scroll="scroll"
@@ -26,17 +26,22 @@
 					</slot>
 				</template>
 			</view>
-			<view v-show="!list.length">
+			<template v-if="!list.length && loading">
+				<slot name="loading">
+					<my-empty :text="loadingText" icon="icon-sousuo"/>
+				</slot>
+			</template>
+			<view v-show="!list.length && !loading">
 				<slot name="empty">
 					<my-empty></my-empty>
 				</slot>
 			</view>
 		</scroll-view>
-		<my-back-top v-if="showBackTop" :scrollTop="scrollTop" @click="backTop" />
+		<my-back-top bottom="60px" v-if="showBackTop" :scrollTop="scrollTop" @click="backTop" />
 	</view>
 </template>
 <script lang="ts" setup>
-	import { onMounted, ref } from 'vue';
+	import { onMounted, ref,watch } from 'vue';
 	const props = defineProps({
 		upperThreshold: {
 			// 距顶部/左边多远时（单位px），触发 scrolltoupper 事件
@@ -86,7 +91,7 @@
 		height: {
 			// 列表的高度
 			type: String,
-			default: '80vh'
+			default: '100vh'
 		},
 		width: {
 			// 列表的宽度
@@ -102,6 +107,10 @@
 			// loading
 			type: Boolean,
 			default: false
+		},
+		loadingText:{
+			type:String,
+			default: '数据加载中'
 		},
 		pageInfo: {
 			// 自定义列表查询参数
@@ -175,7 +184,13 @@
 			})
 		})
 	}
-
+	watch(()=>props.loading,(newValue)=>{
+		if(newValue){
+			uni.showLoading({ title: props.loadingText, mask:true });
+		}else{
+			uni.hideLoading();
+		}
+	},{immediate:true})
 
 	// 滚动到顶部/左边，会触发 scrolltoupper 事件
 	const scrolltoupper = e => {
@@ -186,6 +201,7 @@
 	const scrolltolower = e => {
 		emit('scrolltolower', e);
 		// console.log(e, '滚动到底部/右边，会触发 scrolltolower 事件')
+		if (!props.list.length) loadMoreStatus.value = 'nomore';
 		loadListData(props.pageInfo.pageNum + 1);
 	};
 	// 页面滑动触发
