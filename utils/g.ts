@@ -22,6 +22,16 @@ const preventEvent = e => {
 	e && typeof e.stopPropagation === 'function' && e.stopPropagation();
 };
 
+/**
+ * 数组模糊搜索
+	* @param targetArr 对哪个*对象数组*进行模糊搜索
+	* @param attribute (数组中某个元素)对象的属性名
+	* @param keyword 搜索关键字
+*/
+export const searchArr=(targetArr:any, attribute:string, keyword:any) =>{
+	const filterRetArr = targetArr.filter((item:any) => item[attribute].includes(keyword))
+	return filterRetArr.length!=0 ? filterRetArr : []
+}
 
 
 /**
