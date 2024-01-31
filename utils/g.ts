@@ -33,6 +33,23 @@ export const searchArr=(targetArr:any, attribute:string, keyword:any) =>{
 	return filterRetArr.length!=0 ? filterRetArr : []
 }
 
+/**
+ * 数组去重
+ * @param {Array} arr 要去重的数组
+ */ 
+export const uniqueArr=(arr:any) =>{
+	if (!Array.isArray(arr)) {
+	  console.log('type error!')
+	  return
+	}
+	var Arr = [];
+	for (var i = 0; i < arr.length; i++) {
+	  if (Arr.indexOf(arr[i]) === -1) {
+	    Arr.push(arr[i])
+	  }
+	}
+	return Arr;
+}
 
 /**
  * 节流原理：在一定时间内，只能触发一次
