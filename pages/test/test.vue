@@ -22,7 +22,7 @@
 		<!-- 当前语言为：{{locale}} -->
 		<!-- <button @click="setLocale('en')">设置英文语言</button>
 		<button @click="setLocale('zh-Hans')">设置中文语言</button> -->
-		<button @click="share">系统分享</button>
+		<!-- <button @click="share">系统分享</button> -->
 	</view>
 </template>
 
@@ -73,7 +73,7 @@
 	// import test from '@/components/my-footer/test.vue';
 	// import test from '@/components/my-tabbar/test.vue';
 	// import test from '@/components/my-index-bar/test.vue';
-	// import test from '@/components/my-list/test.vue';
+	// import test from '@/maya-ui/components/my-list/test.vue';
 	// import test from '@/components/my-waterfall/test.vue';
 	// import test from '@/components/my-segmented/test.vue';
 	// import test from '@/components/my-divider/test.vue';
@@ -83,7 +83,7 @@
 	// import test from '@/components/my-dialog/test.vue';
 	// import test from '@/maya-ui/components/my-signature/test.vue';
 	// import test from '@/maya-ui/components/my-select/test.vue';
-	import test from '@/maya-ui/components/my-upload-img/test.vue';
+	// import test from '@/maya-ui/components/my-upload-img/test.vue';
 
 	// import test from '@/components/my-scrollList/test.vue';
 	// import test from '@/maya-ui/components/my-collapse/test.vue';
