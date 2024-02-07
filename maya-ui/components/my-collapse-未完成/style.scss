@@ -1,0 +1,13 @@
+$borderCorlo: #ebedf0;
+.collapse {
+	// color: red;
+	.collapse-line {
+		margin: 0px;
+		border-bottom: 1px solid $borderCorlo;
+		width: 100%;
+		transform: scaleY(0.5);
+		border-top-color: $borderCorlo;
+		border-right-color: $borderCorlo;
+		border-left-color: $borderCorlo;
+	}
+}
