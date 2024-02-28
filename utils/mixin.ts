@@ -52,6 +52,7 @@ const getSystemDictData =(type)=> {
  * @param {Object} url 地址栏
  */
 export const serilizeUrl=(url:string) =>{
+	url = decodeURI(url) // 解决中文乱码问题
   if (/\?/.test(url)) {
     let urlStr = url.substring(url.indexOf('?') + 1)
     let urlArr = urlStr.split('&')
