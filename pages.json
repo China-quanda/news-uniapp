@@ -60,6 +60,12 @@
 			}
 		},
 		{
+			"path": "pages/test/test2",
+			"style": {
+				"navigationBarTitleText": "测试页面2"
+			}
+		},
+		{
 			"path": "pages/test/components/print",
 			"style": {
 				"navigationBarTitleText": "打印页面，引入文件报错",

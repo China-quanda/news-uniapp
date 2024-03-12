@@ -3,5 +3,12 @@
 		"@hyoga/uni-socket.io": "^3.0.4",
 		"pinia-plugin-unistorage": "^0.0.17",
 		"socket.io-client": "^4.7.0"
+	},
+	"devDependencies": {
+		"@dcloudio/types": "^3.4.8",
+		"@tsconfig/node18": "^18.2.2",
+		"@types/node": "18",
+		"@vue/tsconfig": "^0.5.1",
+		"unplugin-auto-import": "^0.17.5"
 	}
 }
