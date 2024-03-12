@@ -50,6 +50,7 @@ import { setupStore } from '@/store'
 import MayaUi from '@/maya-ui';
 import '@/utils/mixin' // mixin
 import './permission' // permission
+import 'uno.css'
 export function createApp() {
   const app = createSSRApp(App)
 	setupStore(app)

@@ -1,14 +1,18 @@
 {
 	"dependencies": {
 		"@hyoga/uni-socket.io": "^3.0.4",
+		"@uni-helper/unocss-preset-uni": "^0.2.7",
 		"pinia-plugin-unistorage": "^0.0.17",
 		"socket.io-client": "^4.7.0"
 	},
 	"devDependencies": {
 		"@dcloudio/types": "^3.4.8",
+		"@iconify/json": "^2.2.191",
 		"@tsconfig/node18": "^18.2.2",
 		"@types/node": "18",
 		"@vue/tsconfig": "^0.5.1",
+		"unocss": "^0.58.5",
+		"unocss-applet": "^0.7.8",
 		"unplugin-auto-import": "^0.17.5"
 	}
 }
