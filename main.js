@@ -44,8 +44,7 @@ app.$mount()
 // 国际化 json 文件，文件内容详见下面的示例
 import i18nConfig from '@/locale'
 import { createSSRApp } from 'vue'
-import { createI18n } from 'vue-i18n'// v9.x
-const i18n = createI18n(i18nConfig)
+import i18n from "./locale";
 import { setupStore } from '@/store'
 import MayaUi from '@/maya-ui';
 import '@/utils/mixin' // mixin

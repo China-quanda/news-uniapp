@@ -1,3 +1,4 @@
+import { createI18n } from 'vue-i18n'// v9.x
 import en from './en.json'
 import zhHans from './zh-Hans.json'
 // import zhHant from './zh-Hant.json'
@@ -12,4 +13,15 @@ const i18nConfig = {
 	}
 }
 
-export default i18nConfig
+const i18n = createI18n(i18nConfig)
+export const t = i18n.global.t
+export const locale = i18n.global.locale
+export const setLocale = (lang : "en" | "zh-Hans") => {
+  uni.setLocale(lang)
+  i18n.global.locale = lang
+}
+export const getLocale = ():string => {
+  return i18n.global.locale
+}
+
+export default i18n
