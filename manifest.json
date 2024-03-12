@@ -1,7 +1,7 @@
 {
     "name" : "news-app",
     "appid" : "__UNI__D3CDCA7",
-    "description" : "",
+    "description" : "news-新闻app",
     "versionName" : "1.0.1",
     "versionCode" : 1,
     "transformPx" : false,
@@ -136,6 +136,8 @@
             "treeShaking" : {
                 "enable" : true
             }
-        }
-    }
+        },
+        "title" : "news-app"
+    },
+    "locale" : "zh-Hans"
 }
