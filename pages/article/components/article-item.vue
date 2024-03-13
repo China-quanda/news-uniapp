@@ -1,25 +1,30 @@
 <template>
 	<view class="article-item" ref="article-item">
-		<view class="avatar" v-if="showAvatar" @tap="goToUser(info.user.id)">
-			<my-image class="user-avatar" :src="info.user.avatar" radius="100px" width="30px" height="30px"/>
+		<view class="avatar" v-if="showAvatar" @click="goToUser(info.user.id)">
+			<!-- <my-image class="user-avatar" :src="info.user.avatar" radius="100px" width="30px" height="30px"/> -->
+      <image 
+      class="w-30px h-30px overflow-hidden rounded-full" 
+      lazy-load 
+      :src="info.user.avatar || 'https://img01.yzcdn.cn/vant/cat.jpeg'" 
+      mode="aspectFill" />
 			<view class="author">
 				<a>{{ info.user.username }}</a>
 				<text class="introduce">已关注 · {{ info.user.introduce||'' }}</text>
 			</view>
 		</view>
 		
-		<view class="top" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3" @tap="goToArticleInfo(info.id)">
+		<view class="top" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3" @click="goToArticleInfo(info.id)">
 			<h1>{{ info.title }}</h1>
 		</view>
 		
-		<view class="centre" v-if="cover.type === 2" @tap="goToArticleInfo(info.id)">
-			<image :lazy-load="true" :src="info.coverImg  || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" />
+		<view class="centre" v-if="cover.type === 2" @click="goToArticleInfo(info.id)">
+			<image lazy-load  :src="info.coverImg  || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" />
 		</view>
 		
-		<view class="centre-3" v-if="cover.type === 3" @tap="goToArticleInfo(info.id)">
-			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
-			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
-			<my-image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" width="114px" height="90px"/>
+		<view class="centre-3" v-if="cover.type === 3" @click="goToArticleInfo(info.id)">
+			<image class="w-114px h-90px" :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" />
+			<image class="w-114px h-90px" :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" />
+			<image class="w-114px h-90px" :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" />
 			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
 			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
 			<!-- <view class="image"><image :src="info.coverImg|| 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="widthFix" /></view> -->
@@ -28,7 +33,7 @@
 		<view>
 			<view class="bottom-1" v-if="cover.type === 1">
 				<view class="left">
-					<h1 @tap="goToArticleInfo(info.id)">{{ info.title }}</h1>
+					<h1 @click="goToArticleInfo(info.id)">{{ info.title }}</h1>
 					<view class="left-bottom">
 						<view>
 							<text class="author-name" v-if="!showAvatar">{{ info.user.username }}</text>
@@ -37,12 +42,14 @@
 							<text class="time">{{ info.createdTime }}</text>
 						</view>
 						<view>
-							<!-- <i class="iconfont icon-cha" @tap="onClickCha"></i> -->
-							<uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(info)" />
+							<!-- <i class="iconfont icon-cha" @click="onClickCha"></i> -->
+							<uni-icons type="closeempty" size="14" color="#999" @click="onClickCha(info)" />
 						</view>
 					</view>
 				</view>
-				<view class="right" @tap="goToArticleInfo(info.id)"><image :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="scaleToFill" /></view>
+				<view class="right" @click="goToArticleInfo(info.id)">
+          <image class="w-full h-full" :src="info.coverImg || 'https://img01.yzcdn.cn/vant/cat.jpeg'" mode="scaleToFill" />
+        </view>
 			</view>
 			<view class="bottom" v-if="cover.type === 0 || cover.type === 2 || cover.type === 3">
 				<view>
@@ -51,7 +58,7 @@
 					<text class="read">{{ info.readCount }}观看</text>
 					<text class="time">{{ info.createdAt }}</text>
 				</view>
-				<view><uni-icons type="closeempty" size="14" color="#999" @tap="onClickCha(info)" /></view>
+				<view><uni-icons type="closeempty" size="14" color="#999" @click="onClickCha(info)" /></view>
 			</view>
 		</view>
 	</view>
@@ -60,7 +67,6 @@
 	export default { name: 'article-item' }
 </script>
 <script setup lang="ts">
-import router from '@/utils/router';
 defineProps({
 	info: {
 		type: Object,
@@ -79,12 +85,16 @@ let cover = {
 	// 图片数组
 	images: []
 };
-const goToUser = id => {
+const goToUser = (id:number) => {
 	console.log('goToUser',id);
-	// router.push('/pages/user/index?user_id=' + id);
+  uni.navigateTo({
+    url:'/pages/user/index?user_id=' + id
+  })
 };
-const goToArticleInfo = id => {
-	router.push(`/pages/article/info?articleId=${id}`);
+const goToArticleInfo = (id:number) => {
+  uni.navigateTo({
+    url:`/pages/article/info?articleId=${id}`
+  })
 };
 const onClickCha = () => {
 	console.log('点击了差');
@@ -94,7 +104,6 @@ const onClickCha = () => {
 </script>
 
 <style lang="scss" scoped>
-
 
 .article-item {
 	display: flex;
@@ -107,9 +116,6 @@ const onClickCha = () => {
 	.avatar {
 		display: flex;
 		margin-bottom: 10px;
-		.user-avatar {
-			width: 36px;
-		}
 		.author {
 			display: flex;
 			flex-direction: column;
@@ -167,14 +173,14 @@ const onClickCha = () => {
 		border-radius: 4px;
 		overflow: hidden;
 		
-		.image {
-			width: 114px;
-			height: 90px;
-			image {
-				width: 100%;
-				height: 100%;
-			}
-		}
+		// .image {
+		// 	width: 114px;
+		// 	height: 90px;
+		// 	image {
+		// 		width: 100%;
+		// 		height: 100%;
+		// 	}
+		// }
 	}
 
 	.bottom {
@@ -233,10 +239,6 @@ const onClickCha = () => {
 			height: 90px;
 			border-radius: 4px;
 			overflow: hidden;
-			image{
-				width: 100%;
-				height: 100%;
-			}
 		}
 	}
 }

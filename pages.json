@@ -1,230 +1,39 @@
 {
-	"easycom": {
-		"custom": {
-		  "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
-		}
-	},
+	// "easycom": {
+	// 	"custom": {
+	// 	  "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
+	// 	}
+	// },
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText": "首页",
+				"navigationBarTitleText": "%pages.home%",
 				"navigationStyle": "custom"
 			}
 		},
 		{
-			"path": "pages/index/channel",
+			"path": "pages/mine/mine",
 			"style": {
-				"navigationBarTitleText": "频道管理",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/common/webview/index",
-			"style": {
-				"navigationBarTitleText": "浏览网页"
-			}
-		},
-		{
-			"path": "pages/common/textview/index",
-			"style": {
-				"navigationBarTitleText": "浏览文本"
-			}
-		},
-		{
-			"path": "pages/login/confirmLogin",
-			"style": {
-				"navigationBarTitleText": "扫码登录确认",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "登录",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/index/bluetoothConnect",
-			"style": {
-				"navigationBarTitleText": "连接蓝牙",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/test/test",
-			"style": {
-				"navigationBarTitleText": "测试页面",
-				"navigationStyle": "custom"
-			}
-		},
-		{
-			"path": "pages/test/test2",
-			"style": {
-				"navigationBarTitleText": "测试页面2"
-			}
-		},
-		{
-			"path": "pages/test/i18n",
-			"style": {
-				"navigationBarTitleText": "测试页面2"
-			}
-		},
-		{
-			"path": "pages/test/components/print",
-			"style": {
-				"navigationBarTitleText": "打印页面，引入文件报错",
-				"navigationStyle": "custom"
+				"navigationBarTitleText": "%pages.mine%"
+				// "navigationStyle": "custom"
 			}
 		}
 	],
-	"subPackages": [
-		{
-			"root": "pages/search",
-			"pages": [
-				{
-					"path": "index",
-					"style": {
-						"navigationBarTitleText": "搜索页",
-						"navigationStyle": "custom"
-					}
-				}
-			]
-		},
-		{
-			"root": "pages/article",
-			"pages": [
-				{
-					"path": "info",
-					"style": {
-						"navigationBarTitleText": "文章详情页",
-						"navigationStyle": "custom"
-					}
-				}
-			]
-		},
-		{
-			"root": "pages/mine",
-			"pages": [
-				{
-					"path": "index",
-					"style": {
-						"navigationBarTitleText": "我的",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "all-service",
-					"style": {
-						"navigationBarTitleText": "全部服务"
-					}
-				},
-				{
-					"path": "message/index",
-					"style": {
-						"navigationBarTitleText": "消息私信",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "download/index",
-					"style": {
-						"navigationBarTitleText": "下载",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "content/index",
-					"style": {
-						"navigationBarTitleText": "内容",
-						"navigationStyle": "custom"
-					}
-				}
-				
-			]
-		},
-		// 设置
-		{
-			"root": "pages/mine/setting",
-			"pages": [
-				{
-					"path": "index",
-					"style": {
-						"navigationBarTitleText": "设置"
-					}
-				},
-				{
-					"path": "profile/index",
-					"style": {
-						"navigationBarTitleText": "编辑资料"
-						// "navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "profile/edit",
-					"style": {
-						"navigationBarTitleText": "编辑资料",
-						"navigationStyle": "custom"
-					}
-				},
-				{
-					"path": "account/index",
-					"style": {
-						"navigationBarTitleText": "账号安全"
-					}
-				},
-				{
-					"path": "account/replace",
-					"style": {
-						"navigationBarTitleText": "更换"
-					}
-				},
-				{
-					"path": "account/del-account",
-					"style": {
-						"navigationBarTitleText": "注销账号"
-					}
-				},
-				{
-					"path": "account/device/login-device",
-					"style": {
-						"navigationBarTitleText": "登录设备管理"
-					}
-				},
-				{
-					"path": "account/device/device-info",
-					"style": {
-						"navigationBarTitleText": "登录设备详情"
-					}
-				},
-				{
-					"path": "account/security/index",
-					"style": {
-						"navigationBarTitleText": "安全中心"
-					}
-				},
-				{
-					"path": "account/security/security-lock",
-					"style": {
-						"navigationBarTitleText": "安全锁定"
-					}
-				},
-				{
-					"path": "privacy/index",
-					"style": {
-						"navigationBarTitleText": "隐私设置"
-					}
-				},
-				{
-					"path": "message/index",
-					"style": {
-						"navigationBarTitleText": "消息设置"
-					}
-				}
-			]
-		}
-	],
+	// "subPackages": [
+	// 	{
+	// 		"root": "pages/search",
+	// 		"pages": [
+	// 			{
+	// 				"path": "index",
+	// 				"style": {
+	// 					"navigationBarTitleText": "搜索页",
+	// 					"navigationStyle": "custom"
+	// 				}
+	// 			}
+	// 		]
+	// 	}
+	// ],
 		"globalStyle": {
 			"navigationBarTextStyle": "black",
 			"navigationBarTitleText": "uni-app",
@@ -238,22 +47,16 @@
 		  "backgroundColor": "#ffffff",
 		  "list": [
 				{
-		      "pagePath": "pages/index/index",
+		      "pagePath": "pages/home/home",
 		      "iconPath": "static/images/tabbar/home.png",
 		      "selectedIconPath": "static/images/tabbar/home_.png",
-		      "text": "首页"
+		      "text": "%tabbar.home%"
 		    }, 
 				{
-				  "pagePath": "pages/test/test",
-				  "iconPath": "static/images/tabbar/home.png",
-				  "selectedIconPath": "static/images/tabbar/home_.png",
-				  "text": "test"
-				},
-				{
-		      "pagePath": "pages/mine/index",
+		      "pagePath": "pages/mine/mine",
 		      "iconPath": "static/images/tabbar/mine.png",
 		      "selectedIconPath": "static/images/tabbar/mine_.png",
-		      "text": "我的"
+		      "text": "%tabbar.mine%"
 		    }
 		  ]
 		},

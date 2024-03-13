@@ -46,9 +46,8 @@ import i18nConfig from '@/locale'
 import { createSSRApp } from 'vue'
 import i18n from "./locale";
 import { setupStore } from '@/store'
-import MayaUi from '@/maya-ui';
 import '@/utils/mixin' // mixin
-import './permission' // permission
+// import './permission' // permission
 import 'uno.css'
 export function createApp() {
   const app = createSSRApp(App)
@@ -56,7 +55,6 @@ export function createApp() {
 	app.use(i18n)
 	// 挂载到全局的每一个Vue实例上
 	// app.config.globalProperties.$http = myRequest
-	app.use(MayaUi)
   return {
     app,
   }
