@@ -19,7 +19,16 @@
 				// "navigationStyle": "custom"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/pay/pay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "pay",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	// "subPackages": [
 	// 	{
 	// 		"root": "pages/search",
