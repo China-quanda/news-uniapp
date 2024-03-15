@@ -26,7 +26,6 @@
             "Geolocation" : {},
             "Maps" : {},
             "Push" : {},
-            "Payment" : {},
             "OAuth" : {},
             "Share" : {}
         },
@@ -85,11 +84,7 @@
                     }
                 },
                 "share" : {},
-                "payment" : {
-                    "alipay" : {
-                        "__platform__" : [ "ios", "android" ]
-                    }
-                },
+                "payment" : {},
                 "oauth" : {
                     "univerify" : {}
                 }
