@@ -2,13 +2,16 @@
 	<!-- <uni-nav-bar shadow statusBar fixed title="导航栏组件"></uni-nav-bar> -->
 	<nav-search-bar></nav-search-bar>
 	<view class="channel relative h-35px">
-		<view class="channel-wrapper fixed left-0 right-40px flex items-center flex-nowrap overflow-x-scroll h-35px z-1 text-15px bg-white">
-			<view class="channel-item flex items-center px-10px h-full text-#0e0e0e" :class="{'activeCtegory':item.id === articleCtegoryStore.ctegorId}"
+		<view
+			class="channel-wrapper fixed left-0 right-40px flex items-center flex-nowrap overflow-x-scroll h-35px z-1 text-15px bg-white">
+			<view class="channel-item flex items-center px-10px h-full text-#0e0e0e"
+				:class="{'activeCtegory':item.id === articleCtegoryStore.ctegorId}"
 				v-for="(item,index) in articleCtegoryStore.myCtegoryList" :key="item.id"
 				@click="handleClickArticleCtegory(item,index)">
 				{{item.name}}
 			</view>
-			<view class="hamburger fixed right-0 flex items-center justify-center h-35px w-40px bg-white" @click="handleClickHamburger">
+			<view class="hamburger fixed right-0 flex items-center justify-center h-35px w-40px bg-white"
+				@click="handleClickHamburger">
 				<uni-icons type="bars" size="18" color="#999" />
 			</view>
 		</view>
@@ -22,12 +25,6 @@
 		<!-- home  -->
 	</view>
 
-	<uni-card
-		title="文章列表"
-		@click=""
-	>
-		
-	</uni-card>
 	<uni-badge text="1"></uni-badge>
 	<uni-badge text="2" type="success" @click="bindClick"></uni-badge>
 	<uni-badge text="3" type="primary" :inverted="true"></uni-badge>

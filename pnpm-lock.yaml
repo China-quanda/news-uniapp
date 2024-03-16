@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@climblee/uv-ui':
+    specifier: ^1.1.20
+    version: 1.1.20
   '@dcloudio/uni-ui':
     specifier: ^1.5.2
     version: 1.5.2
@@ -423,6 +426,10 @@ packages:
       '@babel/helper-string-parser': 7.23.4
       '@babel/helper-validator-identifier': 7.22.20
       to-fast-properties: 2.0.0
+
+  /@climblee/uv-ui@1.1.20:
+    resolution: {integrity: sha512-jkyesHJsPJkF4Nap9ZmG1/ibKlxXA5M8+ntqKXwwloIsYSYL5SOKb0gyPj17aBOU1PkJpmeiZ8PwnTolhK2/HA==}
+    dev: false
 
   /@dcloudio/types@3.4.8:
     resolution: {integrity: sha512-IPXuoghLv7qNPOnRuP7vC5++MdRHhE0U7EMw9ia//uOh69fFXZiRTfoHd51+nzciD6R50gqYhbrCCZIxnxhM9Q==}
