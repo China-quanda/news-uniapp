@@ -78,6 +78,7 @@
 	},
 	"vueCompilerOptions": {
     "nativeTags": ["block", "component", "template", "slot"],
+		"target": 2.7,
   },
 	// 指定被编译文件所在的目录
 	"include": [
@@ -91,9 +92,10 @@
 		"pages/**/*.ts", "pages/**/*.d.ts", "pages/**/*.tsx", "pages/**/*.vue",
 		"./pages/**/*.ts", "./pages/**/*.d.ts", "./pages/**/*.tsx", "./pages/**/*.vue",
 		// unplugin-auto-import/vite自动引入的类型声明文件
-		// "./typings/**/*.d.ts",
-		// "./typings/**/*.ts",
-		// "./typings/auto-imports.d.ts"
+		"./typings/**/*.d.ts",
+		"./typings/**/*.ts",
+		"./typings/auto-imports.d.ts",
+		"./typings/*.d.ts",
 	],
 	// 指定不需要被编译的目录
 	"exclude": [
