@@ -1,5 +1,6 @@
 {
 	"dependencies": {
+		"@dcloudio/uni-ui": "^1.5.2",
 		"@hyoga/uni-socket.io": "^3.0.4",
 		"@uni-helper/unocss-preset-uni": "^0.2.7",
 		"pinia-plugin-unistorage": "^0.0.17",
@@ -10,7 +11,12 @@
 		"@iconify/json": "^2.2.191",
 		"@tsconfig/node18": "^18.2.2",
 		"@types/node": "18",
+		"@types/uni-app": "^1.4.8",
+		"@types/wechat-miniprogram": "^3.4.7",
+		"@uni-helper/uni-app-types": "^0.5.12",
+		"@uni-helper/uni-ui-types": "^0.5.12",
 		"@vue/tsconfig": "^0.5.1",
+		"miniprogram-api-typings": "^3.12.2",
 		"unocss": "^0.58.5",
 		"unocss-applet": "^0.7.8",
 		"unplugin-auto-import": "^0.17.5"

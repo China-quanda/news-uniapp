@@ -21,6 +21,18 @@
 
 		<!-- home  -->
 	</view>
+
+	<uni-card
+		title="文章列表"
+		@click=""
+	>
+		
+	</uni-card>
+	<uni-badge text="1"></uni-badge>
+	<uni-badge text="2" type="success" @click="bindClick"></uni-badge>
+	<uni-badge text="3" type="primary" :inverted="true"></uni-badge>
+
+
 	<view>
 		{{$t('locale.auto')}}
 		<button @click="setLocale('en')">设置英文语言</button>
