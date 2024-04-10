@@ -2,10 +2,7 @@
 //使用小技巧：在填写路径时 ** 表示任意目录， * 表示任意文件。
 {
 	// 指定要继承的配置文件。
-	"extends": [
-		// "@tsconfig/node18/tsconfig.json",
-		"@vue/tsconfig/tsconfig.json"
-	],
+	"extends":"@vue/tsconfig/tsconfig.json",
 	// 定义项目的运行时期望、JavaScript 的发出方式和位置以及与现有 JavaScript 代码的集成级别。
 	"compilerOptions": {
 		"sourceMap": true, //是否生成相应的Map映射的文件，默认：false。
@@ -16,6 +13,7 @@
 		"lib": ["esnext", "dom"], // TS需要引用的库
 		"types": [
 			"@types/node",
+			"@dcloudio/types/uni-app",
 			"@dcloudio/types", // uni-app API 类型
 			"@types/uni-app",
       "miniprogram-api-typings", // 原生微信小程序类型
@@ -86,16 +84,6 @@
 		"./**/*.d.ts",
 		"./**/*.tsx",
 		"./**/*.vue",
-		"/**/*.ts", "/**/*.d.ts", "/**/*.tsx", "/**/*.vue",
-		"./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx", "./src/**/*.vue",
-		"src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue",
-		"pages/**/*.ts", "pages/**/*.d.ts", "pages/**/*.tsx", "pages/**/*.vue",
-		"./pages/**/*.ts", "./pages/**/*.d.ts", "./pages/**/*.tsx", "./pages/**/*.vue",
-		// unplugin-auto-import/vite自动引入的类型声明文件
-		"./typings/**/*.d.ts",
-		"./typings/**/*.ts",
-		"./typings/auto-imports.d.ts",
-		"./typings/*.d.ts",
 	],
 	// 指定不需要被编译的目录
 	"exclude": [
