@@ -42,9 +42,7 @@ app.$mount()
 
 // #ifdef VUE3
 // 国际化 json 文件，文件内容详见下面的示例
-import i18nConfig from '@/locale'
 import { createSSRApp } from 'vue'
-import i18n from "./locale";
 import { initPlugins } from "./plugins";
 import '@/utils/mixin' // mixin
 // import './permission' // permission
@@ -52,7 +50,6 @@ import 'uno.css'
 export function createApp() {
   const app = createSSRApp(App)
   initPlugins(app)
-  app.use(i18n)
   // 挂载到全局的每一个Vue实例上
   // app.config.globalProperties.$http = myRequest
   return {
