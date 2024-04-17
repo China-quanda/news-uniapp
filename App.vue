@@ -76,4 +76,15 @@
 	/*每个页面公共css */
 	/* 阿里图标 */
 	@import '@/static/font/iconfont.css';
+		.ellipsis1 {
+			@include ellipsis(1);
+		}
+	
+		.ellipsis2 {
+			@include ellipsis(2);
+		}
+	
+		.ellipsis3 {
+			@include ellipsis(3);
+		}
 </style>

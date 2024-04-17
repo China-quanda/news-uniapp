@@ -10,6 +10,12 @@
 	},
 	"pages": [
 		{
+			"path": "pages/test/articleItem",
+			"style": {
+				"navigationBarTitleText": "articleItem"
+			}
+		},
+		{
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "%pages.home%",
@@ -22,17 +28,15 @@
 				"navigationBarTitleText": "%pages.mine%"
 				// "navigationStyle": "custom"
 			}
+		},
+		{
+			"path": "pages/pay/pay",
+			"style": {
+				"navigationBarTitleText": "pay",
+				"enablePullDownRefresh": false
+			}
 		}
-	    ,{
-            "path" : "pages/pay/pay",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "pay",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ],
+	],
 	// "subPackages": [
 	// 	{
 	// 		"root": "pages/search",
@@ -47,31 +51,31 @@
 	// 		]
 	// 	}
 	// ],
-		"globalStyle": {
-			"navigationBarTextStyle": "black",
-			"navigationBarTitleText": "uni-app",
-			"navigationBarBackgroundColor": "#F8F8F8",
-			"backgroundColor": "#F8F8F8"
-		},
-		"tabBar": {
-		  "color": "#000000",
-		  "selectedColor": "#000000",
-		  "borderStyle": "white",
-		  "backgroundColor": "#ffffff",
-		  "list": [
-				{
-		      "pagePath": "pages/home/home",
-		      "iconPath": "static/images/tabbar/home.png",
-		      "selectedIconPath": "static/images/tabbar/home_.png",
-		      "text": "%tabbar.home%"
-		    }, 
-				{
-		      "pagePath": "pages/mine/mine",
-		      "iconPath": "static/images/tabbar/mine.png",
-		      "selectedIconPath": "static/images/tabbar/mine_.png",
-		      "text": "%tabbar.mine%"
-		    }
-		  ]
-		},
-		"uniIdRouter": {}
-	}
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#000000",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/images/tabbar/home.png",
+				"selectedIconPath": "static/images/tabbar/home_.png",
+				"text": "%tabbar.home%"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"iconPath": "static/images/tabbar/mine.png",
+				"selectedIconPath": "static/images/tabbar/mine_.png",
+				"text": "%tabbar.mine%"
+			}
+		]
+	},
+	"uniIdRouter": {}
+}
