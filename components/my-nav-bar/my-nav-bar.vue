@@ -52,7 +52,7 @@ const props = defineProps({
   },
   rightIcon: {
     type: String,
-    default: 'icon-gengduo1'
+    default: ''
   },
   color: {
     type: String,
