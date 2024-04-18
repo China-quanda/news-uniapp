@@ -27,7 +27,7 @@
     <!-- fixed定位固定在底部时，是否生成一个等高元素防止塌陷 -->
     <view class="placeholder" v-if="fixed && placeholder"></view>
     <!-- 是否为iPhoneX留出底部安全距离 -->
-    <view class="safeArea-inset-bottom-heigh" v-if="fixed && safeAreaInsetBottom"></view>
+    <view class="safeArea-inset-bottom-height" v-if="fixed && safeAreaInsetBottom"></view>
   </view>
 </template>
 
@@ -143,7 +143,7 @@ onMounted(() => {
     height: calc(var(--news-action-height) - var(--safeArea-insets-bottom-height));
   }
 
-  .safeArea-inset-bottom-heigh {
+  .safeArea-inset-bottom-height {
     height: var(--safeArea-insets-bottom-height);
   }
 
