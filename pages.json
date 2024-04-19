@@ -8,7 +8,15 @@
 			// "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
 		}
 	},
-	"pages": [{
+	"pages": [
+		{
+			"path": "pages/channel/index",
+			"style": {
+				"navigationBarTitleText": "channel",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/article/info",
 			"style": {
 				"navigationBarTitleText": "文章详情",
@@ -73,7 +81,8 @@
 		"selectedColor": "#000000",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/home/home",
 				"iconPath": "static/images/tabbar/home.png",
 				"selectedIconPath": "static/images/tabbar/home_.png",
