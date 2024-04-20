@@ -1,26 +1,22 @@
 <script setup lang="ts">
-
 onLaunch(() => {
-	// console.log('App Launch'	)
-	//#ifdef APP-PLUS
-	uni.getPushClientId({
-		success: (res) => {
-			console.log(res.cid);
-		},
-		fail(err) {
-			console.log(err)
-		}
-	})
+	console.log('App Launch');
+	// #ifdef APP
+
+	// 手动关闭启动界面
+	setTimeout(() => {
+		plus.navigator.closeSplashscreen();
+	}, 2000);
+
 	const clientInfo = plus.push.getClientInfo();
 	let clientId = clientInfo.clientid;
 	uni.setStorageSync('clientInfo', clientInfo);
 	console.log('客户端推送标识:', clientInfo);
-	console.log('客户端推送标识:', clientInfo.clientid);
 
 	// 2 获取客户端推送标识信息 cid   必须要获取到cid后才能接收推送信息
 
 	// 3 启动监听推送消息事件
-	uni.onPushMessage(res => {
+	uni.onPushMessage((res) => {
 		const { type, data } = res;
 		if (type == 'click') {
 			console.log('"click"-从系统推送服务点击消息启动应用事件；', res);
@@ -62,8 +58,7 @@ onLaunch(() => {
 	});
 
 	//#endif
-
-})
+});
 </script>
 
 <style lang="scss">
