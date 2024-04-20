@@ -8,7 +8,22 @@
 			// "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
 		}
 	},
-	"pages": [
+	"pages": [{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationStyle": "custom",
+				"app-plus": { // ios模拟器测试无效果，真机未测试
+					"safearea": {
+						"background": "#FFFFFF", // 安全区域外的背景颜色，默认值为"#FFFFFF"  
+						"bottom": {
+							// 底部安全区域配置  
+							"offset": "none" // 底部安全区域偏移，"none"表示不空出安全区域，"auto"自动计算空出安全区域，默认值为"none" 
+						}
+					}
+				}
+			}
+		},
 		{
 			"path": "pages/login/confirmLogin",
 			"style": {
@@ -87,8 +102,7 @@
 		"selectedColor": "#000000",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/home/home",
 				"iconPath": "static/images/tabbar/home.png",
 				"selectedIconPath": "static/images/tabbar/home_.png",
