@@ -30,6 +30,18 @@
 }
 
 /**
+ * isWeChat是一个判断是否在微信浏览器的方法
+ */
+export const isweChat = () => {
+  const ua = window.navigator.userAgent.toLowerCase()
+  // eslint-disable-next-line eqeqeq
+  if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+    return true
+  }
+  return false
+}
+
+/**
  * 验证URL格式
  */
  export const url=(value) =>{
