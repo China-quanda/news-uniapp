@@ -10,6 +10,12 @@
 	},
 	"pages": [
 		{
+			"path": "pages/login/confirmLogin",
+			"style": {
+				"navigationBarTitleText": "扫码登录确认"
+			}
+		},
+		{
 			"path": "pages/channel/index",
 			"style": {
 				"navigationBarTitleText": "channel",
