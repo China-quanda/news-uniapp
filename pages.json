@@ -8,7 +8,29 @@
 			// "^my-(.*)": "@/maya-ui/components/my-$1/my-$1.vue"
 		}
 	},
-	"pages": [{
+	"pages": [
+		{
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/mine/allService",
+			"style": {
+				"navigationBarTitleText": "全部服务"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/mine/mine",
+			"style": {
+				"navigationBarTitleText": "%pages.mine%"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/search/index",
 			"style": {
 				"navigationBarTitleText": "搜索",
@@ -70,13 +92,6 @@
 			}
 		},
 		{
-			"path": "pages/mine/mine",
-			"style": {
-				"navigationBarTitleText": "%pages.mine%"
-				// "navigationStyle": "custom"
-			}
-		},
-		{
 			"path": "pages/pay/pay",
 			"style": {
 				"navigationBarTitleText": "pay",
@@ -109,7 +124,8 @@
 		"selectedColor": "#000000",
 		"borderStyle": "white",
 		"backgroundColor": "#ffffff",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/home/home",
 				"iconPath": "static/images/tabbar/home.png",
 				"selectedIconPath": "static/images/tabbar/home_.png",
