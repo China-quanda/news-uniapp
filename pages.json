@@ -24,6 +24,13 @@
 			}
 		},
 		{
+			"path": "pages/mine/download/index",
+			"style": {
+				"navigationBarTitleText": "下载管理"
+				// "navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
