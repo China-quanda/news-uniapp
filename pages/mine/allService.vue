@@ -22,7 +22,10 @@ let serviceList = ref([
 	{
 		title: '精选工具',
 		data: [
-			{ text: '下载管理', icon: 'icon-xiazai' },
+			{
+				text: '下载管理', icon: 'icon-xiazai', url: '/pages/mine/download/index',
+				type: 'download'
+			},
 			{ text: '客服中心', icon: 'icon-kefu' },
 			{ text: '大字模式', icon: 'icon-zitifangda' },
 			{ text: '夜间模式', icon: 'icon-yejian' },
