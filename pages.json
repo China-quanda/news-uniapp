@@ -50,6 +50,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/privacy/index",
+			"style": {
+				"navigationBarTitleText": "隐私设置"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
