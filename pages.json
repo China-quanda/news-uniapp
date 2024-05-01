@@ -105,6 +105,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/security/security-lock",
+			"style": {
+				"navigationBarTitleText": "安全锁定"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
