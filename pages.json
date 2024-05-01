@@ -99,6 +99,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/security/index",
+			"style": {
+				"navigationBarTitleText": "安全中心"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
