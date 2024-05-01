@@ -87,6 +87,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/device/login-device",
+			"style": {
+				"navigationBarTitleText": "登录设备管理"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
