@@ -1,14 +1,3 @@
-interface option {
-  option: string;
-}
-interface msgOption {
-  title: string;
-  icon?: string;
-  image?: string;
-  mask?: boolean;
-  duration?: number;
-  position?: string;
-}
 /**
  * @description 提示 prompt
  * @method msg() 显示消息提示框。
@@ -23,22 +12,22 @@ interface msgOption {
 export default {
 	/**
 	 * @description 显示消息提示框。
-	 * @param {string ｜ object} option option
+	 * @param {string ｜ object} option ShowToastOptions or string
 	 * @example msg('您有新短消息') ｜ msg({
-		    title: '您有新短消息',
-		    icon: "none",
-		    duration: 2000
-		  })
+				title: '您有新短消息',
+				icon: "none",
+				duration: 2000
+			})
 	 */
-	msg: (option:str|msgOption): void => {
+	msg: (option: string | ShowToastOptions): void => {
 		if (typeof option === "object") {
-		  uni.showToast(option)
+			uni.showToast(option)
 		} else {
-		  uni.showToast({
-		    title: option,
-		    icon: "none",
-		    duration: 2000
-		  })
+			uni.showToast({
+				title: option,
+				icon: "none",
+				duration: 2000
+			})
 		}
 	},
 	/**
@@ -46,10 +35,10 @@ export default {
 	 * @param {string} content content
 	 * @example errorMsg('请求失败') 
 	 */
-	errorMsg: (content:string): void => {
+	errorMsg: (content: string): void => {
 		uni.showToast({
-		  title: content,
-		  icon: 'error'
+			title: content,
+			icon: 'error'
 		})
 	},
 	/**
@@ -57,33 +46,33 @@ export default {
 	 * @param {string} content content
 	 * @example msgSuccess('操作成功') 
 	 */
-	successMsg: (content:string): void => {
+	successMsg: (content: string): void => {
 		uni.showToast({
-		  title: content,
-		  icon: 'success'
+			title: content,
+			icon: 'success'
 		})
 	},
 	/**
 	 * @description 隐藏提示框。
 	 * @example hideMsg() 
 	 */
-	hideMsg:():void=> {
-	  uni.hideToast()
+	hideMsg: (): void => {
+		uni.hideToast()
 	},
 	/**
 	 * @description 显示 loading 提示框, 需主动调用 hideLoading 才能关闭提示框。
 	 * @example loading('加载中') ｜ loading()
 	 */
-	loading:(content?:string):void=> {
+	loading: (content?: string): void => {
 		if (typeof content === "string") {
-		  uni.showLoading({
-				title:content,
-				mask:true
+			uni.showLoading({
+				title: content,
+				mask: true
 			});
 		} else {
 			uni.showLoading({
 				title: '加载中',
-				mask:true
+				mask: true
 			});
 		}
 	},
@@ -91,8 +80,8 @@ export default {
 	 * @description 隐藏 loading 提示框。
 	 * @example hideLoading() 
 	 */
-	hideLoading:():void=> {
-	  uni.hideLoading();
+	hideLoading: (): void => {
+		uni.hideLoading();
 	},
 	/**
 	 * @description 显示模态弹窗，只有一个确定按钮
@@ -101,19 +90,19 @@ export default {
 		 content:'撤销成功'
 	 }) 
 	 */
-	alert:(option:object|string):void=> {
+	alert: (option: ShowModalOptions | string): void => {
 		if (typeof option === "object") {
-		  uni.showModal({
-		    title: option.title || '提示',
-		    content: option.content,
+			uni.showModal({
+				title: option.title || '提示',
+				content: option.content,
 				confirmText: option.confirmText || '确定',
-		    showCancel: false
-		  })
+				showCancel: false
+			})
 		} else {
 			uni.showModal({
-			  title: '提示',
-			  content: option,
-			  showCancel: false
+				title: '提示',
+				content: option,
+				showCancel: false
 			})
 		}
 	},
@@ -136,37 +125,37 @@ export default {
 			 console.log('点击了取消');
 		})
 	 */
-	confirm:(option:object|string) :void=>{
-	  return new Promise((resolve, reject) => {
+	confirm: (option: ShowModalOptions | string): Promise<boolean> => {
+		return new Promise((resolve, reject) => {
 			if (typeof option === "object") {
-			  uni.showModal({
-			    title: option.title || '',
-			    content: option.content,
-			    confirmText: option.confirmText || '确定',
-			    cancelText: option.cancelText || '取消',
-			    success: function(res) {
-			      if (res.confirm) {
-			        resolve(res.confirm)
-			      }else if (res.cancel) {
-			  			reject(res.cancel)
-			  		}
-			    }
-			  })
-			} else {
 				uni.showModal({
-				  title: '系统提示',
-				  content: option,
-				  cancelText: '取消',
-				  confirmText: '确定',
-				  success: function(res) {
-				    if (res.confirm) {
-				      resolve(res.confirm)
-				    }else if (res.cancel) {
+					title: option.title || '',
+					content: option.content,
+					confirmText: option.confirmText || '确定',
+					cancelText: option.cancelText || '取消',
+					success(res: ShowModalRes) {
+						if (res.confirm) {
+							resolve(res.confirm)
+						} else if (res.cancel) {
 							reject(res.cancel)
 						}
-				  }
+					}
+				})
+			} else {
+				uni.showModal({
+					title: '系统提示',
+					content: option,
+					cancelText: '取消',
+					confirmText: '确定',
+					success: function (res) {
+						if (res.confirm) {
+							resolve(res.confirm)
+						} else if (res.cancel) {
+							reject(res.cancel)
+						}
+					}
 				})
 			}
-	  })
+		})
 	}
 };

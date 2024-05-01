@@ -95,9 +95,9 @@ onLoad(() => {
 	// getUserHomePage(this.userId)
 	// getUserArticle(this.userId);
 });
-let userInfo = reactive({})
+let userInfo = reactive<any>({})
 let total = ref<number>(0);
-let myAllArticle = ref([]);
+let myAllArticle = ref<any[]>([]);
 let query = reactive({
 	pageNum: 1,
 	pageSize: 10
@@ -157,14 +157,14 @@ const tapScan = () => {
 	// #endif
 	if (!storage.get('token')) return prompt.msg('请登录后再扫码！')
 	uni.scanCode({
-		success: (res) => {
+		success: (res: any) => {
 			console.log('条码类型：' + res.scanType);
 			console.log('条码内容：' + res.result);
 			let result = JSON.parse(res.result)
 			if (result.type == 'login') {
-				qrScannedLogin({ qrcodeId: result.qrcodeId }).then(res => {
-					console.log(res);
-					storage.set('qrCode', { ...result, ...res })
+				qrScannedLogin({ qrcodeId: result.qrcodeId }).then((qrRes: any) => {
+					console.log(qrRes);
+					storage.set('qrCode', { ...result, ...qrRes })
 					router.push({ url: '/pages/login/confirmLogin' })
 				}).catch((err) => {
 					console.log(err);
@@ -182,7 +182,7 @@ let goToPublish = () => {
 };
 // 获取用户发布的文章列表 根据用户id
 let getUserArticle = async id => {
-	const res = await getUserArticle(id, this.query);
+	const res: any = await getUserArticle(id);
 	if (!res) return;
 	myAllArticle.value = res.list;
 	total.value = res.total;

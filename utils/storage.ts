@@ -1,7 +1,8 @@
 // 获取 从本地缓存中同步获取指定 key 对应的内容。
 export const getStorage = (name: string): any => {
+	let data = null
 	try {
-		const data = uni.getStorageSync(name);
+		data = uni.getStorageSync(name);
 		return data;
 	} catch (e) {
 		return data;
@@ -27,13 +28,13 @@ export const removeStorage = (name: string): void => {
 export const getStorageAll = (): any => {
 	try {
 		return uni.getStorageInfoSync();
-	} catch (e) {}
+	} catch (e) { }
 };
 // 清除所有 同步清理本地数据缓存。
 export const clearStorage = (): void => {
 	try {
 		uni.clearStorageSync();
-	} catch (e) {}
+	} catch (e) { }
 };
 
 /**
@@ -54,7 +55,7 @@ export default {
 	get: (name: string): any => {
 		try {
 			const data = uni.getStorageSync(name);
-			return data ? JSON.parse(data) :false;
+			return data ? JSON.parse(data) : false;
 		} catch (e) {
 			const data = uni.getStorageSync(name);
 			return data ? data : false;
@@ -93,7 +94,7 @@ export default {
 	getAll: (): any => {
 		try {
 			return uni.getStorageInfoSync();
-		} catch (e) {}
+		} catch (e) { }
 	},
 	/**
 	 * @description 清除所有 同步清理本地数据缓存。
@@ -102,6 +103,6 @@ export default {
 	clear: (): void => {
 		try {
 			uni.clearStorageSync();
-		} catch (e) {}
+		} catch (e) { }
 	}
 };

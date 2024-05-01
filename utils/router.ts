@@ -1,18 +1,4 @@
-interface base {
-  animationType?: number;
-  animationDuration?: number;
-}
-interface push extends base{
-	url: string;
-	events?:object;
-}
-interface back extends base{
-	delta?: number;
-	events?:object;
-}
-interface url {
-  url: string;
-}
+
 /**
  * @description 路由 router
  * @method push() 关闭当前页面，返回上一页面或多级页面
@@ -31,11 +17,11 @@ export default {
 	 * @param {Objct} payload.events 页面间通信接口，用于监听被打开页面发送到当前页面的数据。2.8.9+ 开始支持。
 	 * @example push({url:'/pages/index/index'})
 	 */
-	push:(payload:push|string)=>{
+	push: (payload: NavigateToOptions | string) => {
 		if (typeof payload === "object") {
-		  uni.navigateTo(payload);
+			uni.navigateTo(payload);
 		} else {
-		  uni.navigateTo({url:payload});
+			uni.navigateTo({ url: payload });
 		}
 	},
 	/**
@@ -45,7 +31,7 @@ export default {
 	 * @param {string} url 需要跳转的 tabBar 页面的路径（需在 pages.json 的 tabBar 字段定义的页面），路径后不能带参数
 	 * @example tab({url:'/pages/index/index'})
 	 */
-	tab:(url:string)=>{
+	tab: (url: string) => {
 		uni.switchTab({ url });
 	},
 	/**
@@ -55,7 +41,7 @@ export default {
 	 * @param {string} url 需要跳转的应用内页面路径 , 路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；如 'path?key=value&key2=value2'，如果跳转的页面路径是 tabBar 页面则不能带参数
 	 * @example reLaunch({url:'/pages/index/index'})
 	 */
-	reLaunch:(url:url)=>{
+	reLaunch: (url: string) => {
 		uni.reLaunch({ url });
 	},
 	/**
@@ -64,7 +50,7 @@ export default {
 	 * @param {string} url 需要跳转的应用内非 tabBar 的页面的路径，路径后可以带参数。参数与路径之间使用?分隔，参数键与参数值用=相连，不同参数用&分隔；如 'path?key=value&key2=value2'
 	 * @example redirect({url:'/pages/index/index'})
 	 */
-	redirect:(url:url)=>{
+	redirect: (url: string) => {
 		uni.redirectTo({ url });
 	},
 	/**
@@ -75,11 +61,11 @@ export default {
 	 * @param {number} payload.animationDuration 窗口关闭动画的持续时间，单位为 ms。 默认值：300
 	 * @example redirect({delta:1})
 	 */
-	back:(payload?:back)=>{
+	back: (payload?: NavigateBackOptions) => {
 		if (typeof payload === "object") {
-		  uni.navigateBack(payload)
+			uni.navigateBack(payload)
 		} else {
-		  uni.navigateBack()
+			uni.navigateBack()
 		}
 	}
 }
