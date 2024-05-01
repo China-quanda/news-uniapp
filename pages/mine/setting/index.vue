@@ -199,7 +199,7 @@ page {
 	@apply bg-white px-12px;
 
 	.cell {
-		@apply flex flex-items-center py-8px;
+		@apply flex flex-items-center py-10px;
 
 		.cell-left {
 			@apply flex flex-col flex-1;
