@@ -31,6 +31,13 @@
 			}
 		},
 		{
+			"path": "pages/mine/message/index",
+			"style": {
+				"navigationBarTitleText": "消息私信",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
