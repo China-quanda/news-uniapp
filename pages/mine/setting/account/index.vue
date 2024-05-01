@@ -57,7 +57,7 @@
 				</view>
 			</view>
 			<view class="describe">高级设置</view>
-			<view class="cell is-border" @click="router.push('del-account')">
+			<view class="cell is-border" @click="router.push('delAccount')">
 				<view class="cell-left">
 					<text class="title">账号注销</text>
 				</view>
@@ -76,6 +76,7 @@
 			<view class="cell is-border" @click="router.push('./security/index')">
 				<view class="cell-left">
 					<text class="title">安全中心</text>
+					<text class="subtitle">账户锁定或解除</text>
 				</view>
 				<view class="cell-right">
 					<text class="iconfont icon-xiangyoujiantou text-14px text-#a3a6a8"></text>
