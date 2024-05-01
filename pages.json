@@ -44,6 +44,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/message/index",
+			"style": {
+				"navigationBarTitleText": "消息设置"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
