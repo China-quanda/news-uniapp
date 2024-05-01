@@ -123,7 +123,7 @@ const tapPassword = () => {
 
 let weixinStatus = ref<boolean>(false)
 let qqStatus = ref<boolean>(false)
-let userInfo = reactive({})
+let userInfo = reactive<any>({})
 </script>
 <style lang="scss" scoped>
 .describe {
