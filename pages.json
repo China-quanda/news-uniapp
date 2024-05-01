@@ -69,6 +69,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/index",
+			"style": {
+				"navigationBarTitleText": "账号安全"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
