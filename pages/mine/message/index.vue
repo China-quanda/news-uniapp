@@ -144,7 +144,7 @@
 <script setup lang="ts">
 import router from '@/utils/router';
 const rightClick = () => {
-	router.push('../setting/message/index')
+	router.push('/pages/mine/setting/message/index')
 }
 </script>
 <style lang="scss" scoped>
