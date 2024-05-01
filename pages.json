@@ -56,6 +56,19 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/profile/index",
+			"style": {
+				"navigationBarTitleText": "编辑资料"
+			}
+		},
+		{
+			"path": "pages/mine/setting/profile/edit",
+			"style": {
+				"navigationBarTitleText": "编辑资料",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
