@@ -93,6 +93,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/device/device-info",
+			"style": {
+				"navigationBarTitleText": "登录设备详情"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
