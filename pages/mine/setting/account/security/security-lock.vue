@@ -26,6 +26,7 @@
 					<text class="d">·</text><text class="text-#626262">解除锁定保护帐号可以正常登录</text>
 				</view>
 			</view>
+
 			<view class="button">{{ type === 'lock' ? '开启锁定保护' : '解除锁定保护' }}</view>
 		</view>
 
@@ -34,8 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
-import { onLoad } from '@dcloudio/uni-app';
 let title = ref('')
 let type = ref('')
 onLoad((o) => {
