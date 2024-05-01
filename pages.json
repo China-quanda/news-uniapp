@@ -81,6 +81,12 @@
 			}
 		},
 		{
+			"path": "pages/mine/setting/account/delAccount",
+			"style": {
+				"navigationBarTitleText": "注销账号"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
