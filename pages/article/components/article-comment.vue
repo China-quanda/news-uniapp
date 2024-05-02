@@ -130,7 +130,7 @@ export default { name: 'article-comment' }
 const placeholderheight = ref('0px')
 const safeAreaInsetsBottomHeight = ref('0px')
 const safeAreaInsetsBottomHeight2 = ref('10px')
-let systemInfo: GetSystemInfoResult = {}
+let systemInfo: any = {}
 const init = () => {
 	// #ifndef H5
 	systemInfo = uni.getSystemInfoSync()
@@ -369,10 +369,6 @@ defineExpose({
 			.more {
 				display: flex;
 				margin-top: 10px;
-
-				.more-item {
-					// display: flex;
-				}
 
 				.more-text {
 					margin-right: 30px;

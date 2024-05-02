@@ -60,14 +60,13 @@ const porps = withDefaults(defineProps<IPorps>(), {
 const safeAreaInsetsBottomHeight = ref('0px')
 watchEffect(() => {
   if (porps.fixed && porps.safeAreaInsetBottom) {
-    const systemInfo = uni.getSystemInfoSync()
+    const systemInfo: any = uni.getSystemInfoSync()
     safeAreaInsetsBottomHeight.value = (systemInfo!.safeAreaInsets?.bottom! || 0) + 'px';
   }
 })
 
 
 const clickItem = (value: any) => {
-  emit('onAction', value);
   if (value === 'share') handleShare()
   if (value === 'like') handleLike()
   if (value === 'comment') handleComment()
