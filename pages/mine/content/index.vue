@@ -1,14 +1,10 @@
 <template>
 	<div class="user-content">
-		<my-nav-bar title="我的内容" @clickLeft="router.back()" leftWidth="60rpx" rightWidth="160rpx" fixed border>
+		<my-nav-bar title="我的内容" @clickLeft="router.back()" leftWidth="30px" rightWidth="50px" fixed border>
 			<block v-slot:right>
-				<view style="display: flex; align-items: center;">
-					<uni-icons type="search" size="18" color="#000" style="margin-right: 7.5px;" @tap="search" />
-					<!-- <uni-icons type="more-filled" size="18" color="#000"  @tap="more" /> -->
-					<view style="margin-left: 7.5px; font-size: 14px;">
-						管理
-						<!-- 完成 -->
-					</view>
+				<view class="flex flex-items-center gap-x-5px">
+					<text class="iconfont icon-sousuo text-black text-14px" @click="search"></text>
+					<text class="text-14px">{{ '管理' || '完成' }}</text>
 				</view>
 			</block>
 		</my-nav-bar>

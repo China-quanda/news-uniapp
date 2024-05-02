@@ -1,6 +1,6 @@
 <template>
 	<view class='container'>
-
+		<view class="gap"></view>
 		<view class="cell-group">
 			<view class="cell is-border" @click="router.push('/pages/mine/setting/profile/index')">
 				<view class="cell-left">
