@@ -111,6 +111,13 @@
 			}
 		},
 		{
+			"path": "pages/mine/content/index",
+			"style": {
+				"navigationBarTitleText": "内容",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/mine/mine",
 			"style": {
 				"navigationBarTitleText": "%pages.mine%"
