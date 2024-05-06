@@ -17,6 +17,13 @@
 			}
 		},
 		{
+			"path": "pages/common/guide/index",
+			"style": {
+				"navigationBarTitleText": "引导页",
+				"navigationStyle": "custom"
+			}
+		},
+		{
 			"path": "pages/mine/allService",
 			"style": {
 				"navigationBarTitleText": "全部服务"

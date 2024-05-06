@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import { useAppStore } from '@/store/app';
+const appStore = useAppStore();
 onLaunch(() => {
-	console.log('App Launch');
-	// #ifdef APP
 
+	console.log('App Launch');
+
+	// #ifndef APP-PLUS
+	appStore.loadExecution()
+	// #endif
+
+	// #ifdef APP
 	// 手动关闭启动界面
 	setTimeout(() => {
 		plus.navigator.closeSplashscreen();
+		appStore.loadExecution()
 	}, 2000);
 
 	const clientInfo = plus.push.getClientInfo();
