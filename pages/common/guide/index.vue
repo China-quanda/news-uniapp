@@ -1,7 +1,7 @@
 <!-- 引导页 -->
 <template>
   <view class="guide">
-    <swiper class="swiper" indicator-dots @change="swiperChange">
+    <swiper class="swiper" indicator-dots @change="swiperChange" :current="current">
       <swiper-item class="swiper-item">
         <image class="image" src="@/static/images/guide/guide-1.jpg" mode="aspectFill" />
       </swiper-item>
@@ -44,13 +44,13 @@ import { useAppStore } from '@/store/app';
 const appStore = useAppStore();
 
 const safeAreaInsetsBottom = appStore.systemInfo.safeAreaInsets.bottom + 'px';
-let safeAreaInsetsTop = '0px';
+let safeAreaInsetsTop = '15px';
 // #ifdef MP-WEIXIN
 const menuButton: GetMenuButtonBoundingClientRectRes = uni.getMenuButtonBoundingClientRect()
-safeAreaInsetsTop = menuButton.height + appStore.systemInfo.safeAreaInsets.top + 10 + 'px';
+safeAreaInsetsTop = menuButton.height + appStore.systemInfo.safeAreaInsets.top + 15 + 'px';
 // #endif
 // #ifdef APP-PLUS
-safeAreaInsetsTop = appStore.systemInfo.safeAreaInsets.top + 10 + 'px';
+safeAreaInsetsTop = appStore.systemInfo.safeAreaInsets.top + 15 + 'px';
 // #endif
 
 
@@ -71,10 +71,13 @@ const handleUserAgrement = () => {
   uni.navigateTo({ url: `/pages/common/webview/index?title=${site.title}&url=${site.url}` })
 }
 const openApp = () => {
-  if (!isChecked.value) return uni.showToast({
-    title: '请先勾选同意并接受',
-    icon: 'none'
-  } as ShowToastOptions)
+  if (!isChecked.value) {
+    current.value = 3
+    return uni.showToast({
+      title: '请先勾选同意并接受',
+      icon: 'none'
+    } as ShowToastOptions)
+  }
   appStore.launchFlag = true
   appStore.loadExecution()
 }
