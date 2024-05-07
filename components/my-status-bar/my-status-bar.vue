@@ -3,13 +3,12 @@
 	<slot />
 </template>
 <script lang="ts">
-export default { name: 'statusBar' };
+export default { name: 'MyStatusBar' };
 </script>
 <script setup lang="ts">
 import { useAppStore } from '@/store/app';
 const appStore = useAppStore();
-const systemInfo: GetSystemInfoResult = appStore.systemInfo;
-const statusBarHeight = systemInfo.statusBarHeight || 0;
+const statusBarHeight = appStore.systemInfo.safeAreaInsets.top || 0;
 defineProps({
 	bgColor: {
 		type: String,
