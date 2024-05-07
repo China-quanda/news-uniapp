@@ -1,21 +1,19 @@
 <template>
-  <view :style="{ height: statusBarHeight + 'px', backgroundColor: bgColor }" class="my-status-bar w-full">
-    <slot />
-  </view>
+	<view :style="{ height: statusBarHeight + 'px', backgroundColor: bgColor }" class="my-status-bar w-full"></view>
+	<slot />
 </template>
 <script lang="ts">
-export default { name: 'statusBar' }
+export default { name: 'statusBar' };
 </script>
 <script setup lang="ts">
-const statusBarHeight = ref(0)
-onMounted(() => {
-  const systemInfo: GetSystemInfoResult = uni.getSystemInfoSync()
-  statusBarHeight.value = systemInfo.statusBarHeight! || 0
-})
+import { useAppStore } from '@/store/app';
+const appStore = useAppStore();
+const systemInfo: GetSystemInfoResult = appStore.systemInfo;
+const statusBarHeight = systemInfo.statusBarHeight || 0;
 defineProps({
-  bgColor: {
-    type: String,
-    default: 'transparent'
-  }
-})
+	bgColor: {
+		type: String,
+		default: 'transparent'
+	}
+});
 </script>
