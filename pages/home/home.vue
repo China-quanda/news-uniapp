@@ -71,6 +71,17 @@
 	import { t, locale, setLocale, getLocale } from "@/locale"
 	const name = ref(t('locale.auto'))
 	let lang = ref<string>('')
+	onLoad(() => {
+		const systemInfo = uni.getSystemInfoSync();
+		const systemLocale = systemInfo.osLanguage;
+		console.log('systemLocale', systemLocale);
+		let applicationLocale = uni.getLocale();
+		console.log('applicationLocale', applicationLocale);
+		uni.onLocaleChange((e) => {
+			applicationLocale = e.locale;
+			console.log('onLocaleChange-applicationLocale', applicationLocale);
+		})
+	})
 	onMounted(() => {
 		console.log('当前语言为：', getLocale());
 		lang.value = getLocale()
@@ -81,20 +92,24 @@
 </script>
 
 <style scoped lang="scss">
-.channel {
+	.channel {
 		.channel-wrapper {
 			&::-webkit-scrollbar {
 				height: 0px;
 			}
+
 			.channel-item {
 				&:not(:first-child) {
 					margin-left: 10px;
 				}
 			}
+
 			.activeCtegory {
 				color: #3c73cc;
 			}
+
 			.hamburger {
+
 				// background-color: rgba(255,255,255,0.8);
 				&::before {
 					position: absolute;

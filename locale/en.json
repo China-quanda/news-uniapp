@@ -1,10 +1,11 @@
-{	
-		"tabbar.home":"home",
-		"tabbar.qa":"qa",
-		"tabbar.mine":"mine",
-		"pages.home":"home",
-		"pages.mine":"mine",
-		
+{
+	"tabbar.home": "home",
+	"tabbar.qa": "qa",
+	"tabbar.mine": "mine",
+	"pages.home": "home",
+	"pages.mine": "mine",
+	"index.language-change-confirm": "Applying this setting will restart the app",
+
 	"locale.auto": "System",
 	"locale.en": "English",
 	"locale.zh-hans": "简体中文",
@@ -26,7 +27,6 @@
 	"index.language-info": "Settings",
 	"index.system-language": "System language",
 	"index.application-language": "Application language",
-	"index.language-change-confirm": "Applying this setting will restart the app",
 	"word.whole": "whole",
 	"word.download": "Download Records",
 	"word.preservation": "Transfer to my mobile phone",
@@ -40,9 +40,9 @@
 	"schema.name": "Name",
 	"schema.add": "Add",
 	"schema.add-success": "Add success",
-	"message":{
-			"hello": "{msg} world"
-		}
+	"message": {
+		"hello": "{msg} world"
+	}
 	// "login": {
 	// 	"text": {
 	// 		"title": "System Login",
