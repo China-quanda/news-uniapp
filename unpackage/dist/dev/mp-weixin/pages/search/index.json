@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "搜索",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "my-nav-bar": "../../components/my-nav-bar/my-nav-bar",
+    "search-hot": "./components/search-hot",
+    "search-advice": "./components/search-advice",
+    "search-history": "./components/search-history"
+  }
+}

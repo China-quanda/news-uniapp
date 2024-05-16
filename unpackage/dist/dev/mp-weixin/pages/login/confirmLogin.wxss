@@ -1,0 +1,73 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* 导航栏高度 */
+.button-group.data-v-7aef36b4 {
+width:100%;display:flex;flex-direction:column;row-gap:10px;
+}
+.button-group .button.data-v-7aef36b4 {
+position:relative;margin-left:12px;margin-right:12px;display:flex;justify-content:center;column-gap:5px;align-items:center;border-radius:5px;padding:8px;--un-text-opacity:1;color:rgb(255 255 255 / var(--un-text-opacity));
+}
+.button-group .button .iconfont.data-v-7aef36b4 {
+font-size:16px;
+}
+.button-group .button .loading.data-v-7aef36b4 {
+width:14px;height:14px;border-radius:50%;padding:1px;
+  background: conic-gradient(#0000 10%, #ccc) content-box;
+  -webkit-mask: repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg), radial-gradient(farthest-side, #0000 calc(100% - 2.5px), #000 calc(100% - 2.5px));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: s4-7aef36b4 1s infinite steps(10);
+}
+@keyframes s4-7aef36b4 {
+to {
+    transform: rotate(1turn);
+}
+}
+.button-group .button__text.data-v-7aef36b4 {
+font-size:14px;
+}
+.button-group .button__primary.data-v-7aef36b4 {
+--un-bg-opacity:1;background-color:rgb(0 122 255 / var(--un-bg-opacity));
+}
+.button-group .button__loading.data-v-7aef36b4 {
+--un-bg-opacity:1;background-color:rgb(0 98 204 / var(--un-bg-opacity));
+}
+.button-group .button__default.data-v-7aef36b4 {
+--un-bg-opacity:1;background-color:rgb(248 248 248 / var(--un-bg-opacity));--un-text-opacity:1;color:rgb(0 0 0 / var(--un-text-opacity));
+}
+.button-group .button__default.data-v-7aef36b4:after {
+  content: " ";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transform: scale(0.5);
+  transform-origin: 0 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}

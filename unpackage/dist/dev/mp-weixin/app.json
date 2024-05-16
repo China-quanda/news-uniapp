@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/mine/index",
+    "pages/common/guide/index",
+    "pages/mine/allService",
+    "pages/mine/download/index",
+    "pages/mine/message/index",
+    "pages/mine/setting/index",
+    "pages/mine/setting/message/index",
+    "pages/mine/setting/privacy/index",
+    "pages/mine/setting/profile/index",
+    "pages/mine/setting/profile/edit",
+    "pages/mine/setting/account/index",
+    "pages/mine/setting/account/replace",
+    "pages/mine/setting/account/delAccount",
+    "pages/mine/setting/account/device/login-device",
+    "pages/mine/setting/account/device/device-info",
+    "pages/mine/setting/account/security/index",
+    "pages/mine/setting/account/security/security-lock",
+    "pages/mine/content/index",
+    "pages/mine/mine",
+    "pages/search/index",
+    "pages/login/login",
+    "pages/login/confirmLogin",
+    "pages/channel/index",
+    "pages/article/info",
+    "pages/test/articleItem",
+    "pages/home/home",
+    "pages/pay/pay"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/images/tabbar/home.png",
+        "selectedIconPath": "static/images/tabbar/home_.png",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/images/tabbar/mine.png",
+        "selectedIconPath": "static/images/tabbar/mine_.png",
+        "text": "mine"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

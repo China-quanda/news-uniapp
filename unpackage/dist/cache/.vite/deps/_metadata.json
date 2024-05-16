@@ -1,0 +1,15 @@
+{
+  "hash": "ec94d2e0",
+  "configHash": "a6b1bde1",
+  "lockfileHash": "76baabcc",
+  "browserHash": "b4ecc959",
+  "optimized": {
+    "pinia-plugin-unistorage": {
+      "src": "../../../../../node_modules/.pnpm/pinia-plugin-unistorage@0.0.17_typescript@5.4.2_vue@3.3.11/node_modules/pinia-plugin-unistorage/dist/index.mjs",
+      "file": "pinia-plugin-unistorage.js",
+      "fileHash": "30feaa7f",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}

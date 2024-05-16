@@ -1,0 +1,163 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* 导航栏高度 */
+.placeholder[data-v-75ed7c30] {
+  height: calc(var(--75ed7c30-navBarHeight) + var(--75ed7c30-statusBarHeight));
+}
+.my-nav-bar-wrap[data-v-75ed7c30] {
+display:flex;align-items:center;
+  background-color: var(--75ed7c30-props\.bgColor);
+  height: var(--75ed7c30-navBarHeight);
+  padding-top: var(--75ed7c30-statusBarHeight);
+}
+.my-nav-bar-wrap .my-nav-bar-left[data-v-75ed7c30] {
+margin-left:12px;display:flex;justify-content:flex-start;text-align:left;
+  width: var(--75ed7c30-props\.leftWidth);
+}
+.my-nav-bar-wrap .my-nav-bar-right[data-v-75ed7c30] {
+margin-right:12px;display:flex;justify-content:flex-end;text-align:right;
+  width: var(--75ed7c30-props\.rightWidth);
+}
+.my-nav-bar-wrap .my-nav-bar-center[data-v-75ed7c30] {
+display:flex;flex:1 1 0%;justify-content:center;align-items:center;text-align:center;
+  color: var(--75ed7c30-props\.color);
+  font-size: 16px;
+}
+.my-nav-bar-wrap .my-nav-bar-btn[data-v-75ed7c30] {
+display:flex;flex-direction:column;cursor:pointer;align-items:center;
+}
+.my-nav-bar-wrap .my-nav-bar-btn .btn-icon[data-v-75ed7c30] {
+font-size:19px;
+}
+.my-nav-bar-wrap .my-nav-bar-btn .btn-text[data-v-75ed7c30] {
+font-size:13px;
+}
+.is-border[data-v-75ed7c30] {
+  border-bottom: 1px solid #eee;
+}
+.is-fixed[data-v-75ed7c30] {
+position:fixed;right:0;left:0;top:0;z-index:9;
+}
+.is-shadow[data-v-75ed7c30] {
+  box-shadow: 0 1px 6px #ccc;
+}
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+/* 导航栏高度 */
+.message[data-v-900b976d] {
+  background-color: #eeeeee;
+}
+.message-list .message-item[data-v-900b976d] {
+display:flex;column-gap:10px;align-items:center;--un-bg-opacity:1;background-color:rgb(255 255 255 / var(--un-bg-opacity));padding:12px;font-size:13px;
+}
+.message-list .message-item .item-left[data-v-900b976d] {
+width:43px;height:43px;border-radius:9999px;
+}
+.message-list .message-item .item-center[data-v-900b976d] {
+display:flex;flex:1 1 0%;flex-direction:column;row-gap:3px;
+}
+.message-list .message-item .item-center .title[data-v-900b976d],
+.message-list .message-item .item-center .desc[data-v-900b976d] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.message-list .message-item .item-center .title[data-v-900b976d] {
+font-size:13.5px;font-weight:500;
+}
+.message-list .message-item .item-center .desc[data-v-900b976d] {
+--un-text-opacity:1;color:rgb(99 103 106 / var(--un-text-opacity));
+}
+.message-list .message-item .item-right[data-v-900b976d] {
+display:flex;flex-direction:column;row-gap:6px;align-items:flex-end;
+}
+.message-list .message-item .item-right .time[data-v-900b976d] {
+font-size:11px;--un-text-opacity:1;color:rgb(163 166 168 / var(--un-text-opacity));
+}
+.message-list .message-item .item-right .badge[data-v-900b976d] {
+width:15px;height:15px;border-radius:9999px;--un-bg-opacity:1;background-color:rgb(248 113 113 / var(--un-bg-opacity));text-align:center;font-size:11px;--un-text-opacity:1;color:rgb(255 255 255 / var(--un-text-opacity));line-height:15px;
+}
+.img-comment[data-v-900b976d],
+.img-like[data-v-900b976d],
+.img-fans[data-v-900b976d],
+.img-creation-message[data-v-900b976d],
+.img-system-message[data-v-900b976d],
+.img-strange-message[data-v-900b976d] {
+  background: url("../../../static/images/jlt.png") no-repeat;
+}
+.img-comment[data-v-900b976d] {
+  background-size: 45px 385px;
+  background-position: 0px 0px;
+}
+.img-like[data-v-900b976d] {
+  background-size: 45px 385px;
+  background-position: 0px -67px;
+}
+.img-fans[data-v-900b976d] {
+  text-indent: -1000px;
+  background-size: 45px 385px;
+  background-position: 0px -134px;
+}
+.img-creation-message[data-v-900b976d] {
+  text-indent: -1000px;
+  background-size: 45px 385px;
+  background-position: 0px -206px;
+}
+.img-system-message[data-v-900b976d] {
+  text-indent: -1000px;
+  background-size: 45px 385px;
+  background-position: 0px -273px;
+}
+.img-strange-message[data-v-900b976d] {
+  text-indent: -1000px;
+  background-size: 45px 385px;
+  background-position: 0px -341px;
+}

@@ -1,0 +1,45 @@
+/* 背景颜色 */
+  --bg-color: #f2f3f5;
+
+  /* 主色调 */
+  --primary: #3c9cff;
+  --primary-dark: #398ade;
+  --primary-disabled: #9acafc;
+  --primary-light: #ecf5ff;
+
+  /* 成功色调 */
+  --success: #5ac725;
+  --success-dark: #53c21d;
+  --success-disabled: #a9e08f;
+  --success-light: #f5fff0;
+
+  /* 警告色调 */
+  --warning: #f9ae3d;
+  --warning-dark: #f1a532;
+  --warning-disabled: #f9d39b;
+  --warning-light: #fdf6ec;
+
+  /* 失败色调 */
+  --error: #f56c6c;
+  --error-dark: #e45656;
+  --error-disabled: #f7b2b2;
+  --error-light: #fef0f0;
+
+  /* 信息色调 */
+  --info: #909399;
+  --info-dark: #767a82;
+  --info-disabled: #c4c6c9;
+  --info-light: #f4f4f5;
+
+  /* 主要文字颜色一般用于内容的标题等，如新闻列表的标题 */
+  --main-color: #303133;
+  /* 常规文字颜色一般用于内容的主体，如新闻列表的概要 */
+  --content-color: #606266;
+  /* 次要文字颜色一般用于内容的提示部分，如新闻列表底部的时间，评论数量的提示文字 */
+  --tips-color: #909193;
+  /* 占位文字颜色属于更浅的灰色，看场景选择使用 */
+  --light-color: #c0c4cc;
+  /* 边框颜色 */
+  --border-color: #dadbde;
+  /* 禁用文字颜色 */
+  --disabled-color: #c8c9cc;

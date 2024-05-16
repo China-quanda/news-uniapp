@@ -1,0 +1,1 @@
+<view class="advice data-v-f40c3399"><view wx:for="{{a}}" wx:for-item="advice" wx:key="b" class="item ellipsis1 data-v-f40c3399" bindtap="{{advice.c}}"><text class="iconfont icon-sousuo text-_a_999 data-v-f40c3399"></text><view class="data-v-f40c3399"><rich-text class="data-v-f40c3399" nodes="{{advice.a}}"/></view></view></view>

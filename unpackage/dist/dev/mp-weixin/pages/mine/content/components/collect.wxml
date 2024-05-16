@@ -1,0 +1,1 @@
+<view class="collect"><view wx:for="{{a}}" wx:for-item="item" wx:key="d" class="collect-item mb-10px"><home-article-item wx:if="{{b}}" class="" u-i="{{item.a}}" bind:__l="__l" u-p="{{b}}"/><info-action wx:if="{{item.c}}" u-i="{{item.b}}" bind:__l="__l" u-p="{{item.c}}"/></view></view>

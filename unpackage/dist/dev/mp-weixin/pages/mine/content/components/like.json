@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "info-action": "../../../article/components/info-action",
+    "home-article-item": "../../../article/components/home-article-item"
+  }
+}

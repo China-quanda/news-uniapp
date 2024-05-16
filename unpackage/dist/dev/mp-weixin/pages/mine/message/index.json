@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "消息私信",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "my-nav-bar": "../../../components/my-nav-bar/my-nav-bar"
+  }
+}

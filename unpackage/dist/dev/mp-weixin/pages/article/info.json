@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "文章详情",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "info-article-item": "./components/info-article-item",
+    "article-comment": "./components/article-comment",
+    "info-action": "./components/info-action"
+  }
+}
