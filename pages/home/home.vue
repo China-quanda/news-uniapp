@@ -1,6 +1,7 @@
 <template>
 	<!-- <uni-nav-bar shadow statusBar fixed title="导航栏组件"></uni-nav-bar> -->
 	<nav-search-bar></nav-search-bar>
+	<navigator url="/pages/article/info">/pages/article/info</navigator>
 	<view class="channel relative h-35px">
 		<view
 			class="channel-wrapper fixed left-0 right-40px flex items-center flex-nowrap overflow-x-scroll h-35px z-1 text-15px bg-white">

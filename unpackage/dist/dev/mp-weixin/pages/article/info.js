@@ -1,10 +1,11 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 if (!Math) {
-  (infoArticleItem + articleComment + infoAction)();
+  (infoArticleItem + articleComment + infoAction + favoritesList)();
 }
 const infoArticleItem = () => "./components/info-article-item.js";
 const articleComment = () => "./components/article-comment.js";
+const favoritesList = () => "./components/favorites/list.js";
 const infoAction = () => "./components/info-action.js";
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "info",
@@ -15,6 +16,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       "e2bd283a": common_vendor.unref(menuButtonWidth),
       "6b1c9c84": common_vendor.unref(safeAreaBottomHeight)
     }));
+    const favoritesListRef = common_vendor.ref();
     const pageTitle = common_vendor.ref("文章详情页");
     const showNavBarAuthor = common_vendor.ref(false);
     const articleCommentRef = common_vendor.ref();
@@ -31,8 +33,14 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       navBarPaddingTopheight.value = (systemInfo.safeArea.top || 0) + "px";
       menuButtonWidth.value = menuButtonInfo.width + 15 + "px";
     };
-    const onClickComment = () => {
-      articleCommentRef.value.popupOpen();
+    const actionChange = (type) => {
+      var _a, _b;
+      if (type === "collect") {
+        (_a = favoritesListRef.value) == null ? void 0 : _a.open();
+      }
+      if (type === "comment") {
+        (_b = articleCommentRef.value) == null ? void 0 : _b.popupOpen();
+      }
     };
     const back = () => {
       common_vendor.index.navigateBack();
@@ -68,7 +76,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         e: common_vendor.p({
           articleId: 1
         }),
-        f: common_vendor.o(onClickComment),
+        f: common_vendor.o(actionChange),
         g: common_vendor.p({
           id: 1,
           info: {
@@ -79,7 +87,13 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
           fixed: true
         }),
         h: common_vendor.o(scroll),
-        i: common_vendor.s(_ctx.__cssVars())
+        i: common_vendor.sr(favoritesListRef, "e8340613-6", {
+          "k": "favoritesListRef"
+        }),
+        j: common_vendor.p({
+          articleId: 1
+        }),
+        k: common_vendor.s(_ctx.__cssVars())
       });
     };
   }

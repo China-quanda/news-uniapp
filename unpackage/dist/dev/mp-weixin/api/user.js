@@ -27,13 +27,6 @@ const smsUpdatePassword = (data) => {
     data
   });
 };
-const qrScannedLogin = (data) => {
-  return utils_request.request({
-    url: "/app/qrCode/scanned",
-    method: "post",
-    data
-  });
-};
 const qrConfirmLogin = (data) => {
   return utils_request.request({
     url: "/app/qrCode/confirm",
@@ -52,6 +45,5 @@ exports.getUserInfo = getUserInfo;
 exports.localLogin = localLogin;
 exports.qrCancelLogin = qrCancelLogin;
 exports.qrConfirmLogin = qrConfirmLogin;
-exports.qrScannedLogin = qrScannedLogin;
 exports.smsLogin = smsLogin;
 exports.smsUpdatePassword = smsUpdatePassword;

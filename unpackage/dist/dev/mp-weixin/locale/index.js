@@ -9,6 +9,7 @@ const en = {
   "tabbar.mine": "mine",
   "pages.home": "home",
   "pages.mine": "mine",
+  "index.language-change-confirm": "Applying this setting will restart the app",
   "locale.auto": "System",
   "locale.en": "English",
   "locale.zh-hans": "简体中文",
@@ -30,7 +31,6 @@ const en = {
   "index.language-info": "Settings",
   "index.system-language": "System language",
   "index.application-language": "Application language",
-  "index.language-change-confirm": "Applying this setting will restart the app",
   "word.whole": "whole",
   "word.download": "Download Records",
   "word.preservation": "Transfer to my mobile phone",
@@ -55,6 +55,7 @@ const zhHans = {
   "tabbar.mine": "我的",
   "pages.home": "首页",
   "pages.mine": "我的",
+  "index.language-change-confirm": "应用此设置将重启App",
   "locale.auto": "系统",
   "locale.en": "English",
   "locale.zh-hans": "简体中文",
@@ -88,11 +89,23 @@ const i18n = common_vendor.createI18n(i18nConfig);
 const t = i18n.global.t;
 const locale = i18n.global.locale;
 const setLocale = (lang) => {
-  common_vendor.index.setLocale(lang);
-  i18n.global.locale = lang;
+  const systemInfo = common_vendor.index.getSystemInfoSync();
+  if (systemInfo.osName === "android") {
+    common_vendor.index.showModal({
+      content: t("index.language-change-confirm"),
+      success: (res) => {
+        if (res.confirm) {
+          common_vendor.index.setLocale(lang);
+        }
+      }
+    });
+  } else {
+    common_vendor.index.setLocale(lang);
+    i18n.global.locale = lang;
+  }
 };
 const getLocale = () => {
-  return i18n.global.locale;
+  return i18n.global.locale || common_vendor.index.getLocale();
 };
 exports.getLocale = getLocale;
 exports.i18n = i18n;

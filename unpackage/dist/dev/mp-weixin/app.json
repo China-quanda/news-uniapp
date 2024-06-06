@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/mine/index",
     "pages/common/guide/index",
     "pages/mine/allService",
     "pages/mine/download/index",

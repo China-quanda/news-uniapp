@@ -15,7 +15,7 @@ export const useUserStore = defineStore('userStore', {
 	},
 	state: () => ({
 		username: '',
-		token: '',
+		token: '111',
 		avatar: '',
 		userInfo: {},
 		roles: [],

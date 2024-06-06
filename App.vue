@@ -6,7 +6,7 @@ onLaunch(() => {
 	console.log('App Launch');
 
 	// #ifndef APP-PLUS
-	appStore.loadExecution()
+	// appStore.loadExecution()
 	// #endif
 
 	// #ifdef APP

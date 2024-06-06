@@ -4,7 +4,6 @@ const common_vendor = require("./common/vendor.js");
 const store_app = require("./store/app.js");
 const plugins_index = require("./plugins/index.js");
 if (!Math) {
-  "./pages/mine/index.js";
   "./pages/common/guide/index.js";
   "./pages/mine/allService.js";
   "./pages/mine/download/index.js";
@@ -35,10 +34,9 @@ if (!Math) {
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "App",
   setup(__props) {
-    const appStore = store_app.useAppStore();
+    store_app.useAppStore();
     common_vendor.onLaunch(() => {
       console.log("App Launch");
-      appStore.loadExecution();
     });
     return () => {
     };

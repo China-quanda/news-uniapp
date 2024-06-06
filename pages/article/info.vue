@@ -81,18 +81,22 @@
 
 			<!-- 底部区域 -->
 			<info-action class="info-action" :id="1" :info="{ commentCount: 0, collectCount: 0, likeCount: 0 }"
-				@onClickComment="onClickComment" fixed border />
+				@change="actionChange" fixed border />
 
 
 			<!-- <view class="safeAreaBottomHeight"></view> -->
 		</scroll-view>
+
+		<favoritesList ref="favoritesListRef" :articleId="1" />
 	</view>
 </template>
 
 <script setup lang="ts">
 import infoArticleItem from '@/pages/article/components/info-article-item.vue';
 import articleComment from './components/article-comment.vue';
+import favoritesList from './components/favorites/list.vue';
 import infoAction from './components/info-action.vue';
+const favoritesListRef = ref()
 const pageTitle = ref('文章详情页');
 const showNavBarAuthor = ref(false);
 const articleCommentRef = ref()
@@ -127,9 +131,13 @@ const getPlaceholder = () => {
 	// placeholderheight.value = (menuButtonInfo.height! || 0) + (systemInfo.statusBarHeight! || 0) + 10 + 'px';
 	// #endif
 }
-
-const onClickComment = () => {
-	articleCommentRef.value.popupOpen()
+const actionChange = (type: 'share' | 'like' | 'comment' | 'collect') => {
+	if (type === 'collect') {
+		favoritesListRef.value?.open()
+	}
+	if (type === 'comment') {
+		articleCommentRef.value?.popupOpen()
+	}
 }
 const back = () => {
 	uni.navigateBack();

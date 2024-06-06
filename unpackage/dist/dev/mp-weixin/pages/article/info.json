@@ -4,6 +4,7 @@
   "usingComponents": {
     "info-article-item": "./components/info-article-item",
     "article-comment": "./components/article-comment",
+    "favorites-list": "./components/favorites/list",
     "info-action": "./components/info-action"
   }
 }

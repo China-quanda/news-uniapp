@@ -16,7 +16,7 @@ const useUserStore = common_vendor.defineStore("userStore", {
   },
   state: () => ({
     username: "",
-    token: "",
+    token: "111",
     avatar: "",
     userInfo: {},
     roles: [],

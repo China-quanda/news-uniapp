@@ -26,6 +26,8 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
       }
     });
     const clickItem = (value) => {
+      if (value === "share")
+        handleShare();
       if (value === "like")
         handleLike();
       if (value === "comment")
@@ -35,12 +37,18 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     const like = common_vendor.ref(false);
     const handleLike = async () => {
+      emit("change", "like");
     };
     const collect = common_vendor.ref(false);
     const handleCollect = async () => {
+      emit("change", "collect");
+    };
+    const handleShare = () => {
+      emit("change", "share");
     };
     const handleComment = () => {
       emit("onClickComment");
+      emit("change", "comment");
     };
     common_vendor.onMounted(() => {
     });

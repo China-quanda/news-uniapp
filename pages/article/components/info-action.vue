@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 const emit = defineEmits<{
-  (e: 'change', value: string): void
+  (e: 'change', value: 'share' | 'like' | 'comment' | 'collect'): void
   (e: 'onRefresh'): void
   (e: 'onClickShare'): void
   (e: 'onClickLike'): void
@@ -80,7 +80,7 @@ const hshLike = () => {
 };
 // 点赞或取消点赞
 const handleLike = async () => {
-
+  emit('change', 'like')
 };
 const collect = ref(false);
 // 查看当前文章是否已点赞
@@ -89,16 +89,17 @@ const hshCollect = () => {
 };
 // 收藏或取消收藏
 const handleCollect = async () => {
-
+  emit('change', 'collect')
 };
 // 点击分享
 const handleShare = () => {
-
+  emit('change', 'share')
 };
 
 // 点击评论按钮，跳转到评论喵点
 const handleComment = () => {
   emit('onClickComment')
+  emit('change', 'comment')
 };
 
 onMounted(() => {

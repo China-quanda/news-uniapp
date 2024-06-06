@@ -9,13 +9,13 @@
 		}
 	},
 	"pages": [
-		{
-			"path": "pages/mine/index",
-			"style": {
-				"navigationBarTitleText": "我的",
-				"navigationStyle": "custom"
-			}
-		},
+		// {
+		// 	"path": "pages/mine/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "我的",
+		// 		"navigationStyle": "custom"
+		// 	}
+		// },
 		{
 			"path": "pages/common/guide/index",
 			"style": {

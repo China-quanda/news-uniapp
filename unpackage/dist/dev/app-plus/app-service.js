@@ -31,6 +31,10 @@ if (uni.restoreGlobal) {
 }
 (function(vue) {
   "use strict";
+  const _imports_0$3 = "/static/images/guide/guide-1.jpg";
+  const _imports_1 = "/static/images/guide/guide-2.jpg";
+  const _imports_2 = "/static/images/guide/guide-3.jpg";
+  const _imports_3 = "/static/images/guide/guide-4.jpg";
   const ON_SHOW = "onShow";
   const ON_LAUNCH = "onLaunch";
   const ON_LOAD = "onLoad";
@@ -52,209 +56,6 @@ if (uni.restoreGlobal) {
   const onLaunch = /* @__PURE__ */ createHook(ON_LAUNCH);
   const onLoad = /* @__PURE__ */ createHook(ON_LOAD);
   const onUnload = /* @__PURE__ */ createHook(ON_UNLOAD);
-  const _sfc_main$K = /* @__PURE__ */ vue.defineComponent({
-    __name: "my-nav-bar",
-    props: {
-      bgColor: {
-        type: String,
-        default: "#fff"
-      },
-      title: {
-        type: String,
-        default: ""
-      },
-      leftText: {
-        type: String,
-        default: ""
-      },
-      rightText: {
-        type: String,
-        default: ""
-      },
-      leftIcon: {
-        type: String,
-        default: "icon-xiangzuojiantou"
-      },
-      rightIcon: {
-        type: String,
-        default: ""
-      },
-      color: {
-        type: String,
-        default: "#000000"
-      },
-      fixed: {
-        type: Boolean,
-        default: false
-      },
-      statusBar: {
-        type: Boolean,
-        default: true
-      },
-      shadow: {
-        // 微信小程序不支持
-        type: Boolean,
-        default: false
-      },
-      border: {
-        // 微信小程序不支持
-        type: Boolean,
-        default: false
-      },
-      height: {
-        type: [Number, String],
-        default: "44px"
-      },
-      leftWidth: {
-        type: [String, Number],
-        default: "40px"
-      },
-      rightWidth: {
-        type: [String, Number],
-        default: "40px"
-      }
-    },
-    emits: ["clickLeft", "clickRight", "clickCenter"],
-    setup(__props, { emit: __emit }) {
-      vue.useCssVars((_ctx) => ({
-        "75ed7c30-navBarHeight": vue.unref(navBarHeight),
-        "75ed7c30-statusBarHeight": vue.unref(statusBarHeight),
-        "75ed7c30-props.bgColor": props.bgColor,
-        "75ed7c30-props.leftWidth": props.leftWidth,
-        "75ed7c30-props.rightWidth": props.rightWidth,
-        "75ed7c30-props.color": props.color
-      }));
-      const props = __props;
-      const emit = __emit;
-      const onClickLeft = () => {
-        emit("clickLeft");
-      };
-      const onClickRight = () => {
-        emit("clickRight");
-      };
-      const onClickCenter = () => {
-        emit("clickCenter");
-      };
-      const statusBarHeight = vue.ref("0px");
-      const navBarHeight = vue.ref("0px");
-      vue.ref("0px");
-      vue.ref({});
-      const systemInfo = vue.ref({});
-      const init = () => {
-        navBarHeight.value = props.height;
-        systemInfo.value = uni.getSystemInfoSync();
-        statusBarHeight.value = systemInfo.value.statusBarHeight + "px";
-        uni.setNavigationBarTitle({
-          title: props.title
-        });
-      };
-      vue.onMounted(() => {
-        init();
-      });
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "my-nav-bar" }, [
-          vue.createCommentVNode(" 占位 "),
-          __props.fixed ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "placeholder"
-          })) : vue.createCommentVNode("v-if", true),
-          vue.createElementVNode(
-            "view",
-            {
-              class: vue.normalizeClass(["my-nav-bar-wrap", { "is-border": __props.border, "is-fixed": __props.fixed, "is-shadow": __props.shadow }])
-            },
-            [
-              vue.createElementVNode("view", {
-                class: "my-nav-bar-left",
-                onClick: onClickLeft
-              }, [
-                vue.renderSlot(_ctx.$slots, "left", {}, () => [
-                  vue.createElementVNode("view", { class: "my-nav-bar-btn" }, [
-                    __props.leftIcon ? (vue.openBlock(), vue.createElementBlock(
-                      "text",
-                      {
-                        key: 0,
-                        class: vue.normalizeClass(["btn-icon iconfont", [__props.leftIcon]])
-                      },
-                      null,
-                      2
-                      /* CLASS */
-                    )) : vue.createCommentVNode("v-if", true),
-                    __props.leftText ? (vue.openBlock(), vue.createElementBlock(
-                      "text",
-                      {
-                        key: 1,
-                        class: "btn-text"
-                      },
-                      vue.toDisplayString(__props.leftText),
-                      1
-                      /* TEXT */
-                    )) : vue.createCommentVNode("v-if", true)
-                  ])
-                ], true)
-              ]),
-              vue.createElementVNode("view", {
-                class: "my-nav-bar-center",
-                onClick: onClickCenter
-              }, [
-                vue.renderSlot(_ctx.$slots, "default", {}, () => [
-                  __props.title ? (vue.openBlock(), vue.createElementBlock(
-                    "view",
-                    {
-                      key: 0,
-                      class: "my-nav-bar-title ellipsis1"
-                    },
-                    vue.toDisplayString(__props.title),
-                    1
-                    /* TEXT */
-                  )) : vue.createCommentVNode("v-if", true)
-                ], true)
-              ]),
-              vue.createElementVNode("view", {
-                class: "my-nav-bar-right",
-                onClick: onClickRight
-              }, [
-                vue.renderSlot(_ctx.$slots, "right", {}, () => [
-                  vue.createElementVNode("view", { class: "my-nav-bar-btn" }, [
-                    __props.rightIcon ? (vue.openBlock(), vue.createElementBlock(
-                      "text",
-                      {
-                        key: 0,
-                        class: vue.normalizeClass(["btn-icon iconfont", [__props.rightIcon]])
-                      },
-                      null,
-                      2
-                      /* CLASS */
-                    )) : vue.createCommentVNode("v-if", true),
-                    __props.rightText ? (vue.openBlock(), vue.createElementBlock(
-                      "text",
-                      {
-                        key: 1,
-                        class: "btn-text"
-                      },
-                      vue.toDisplayString(__props.rightText),
-                      1
-                      /* TEXT */
-                    )) : vue.createCommentVNode("v-if", true)
-                  ])
-                ], true)
-              ])
-            ],
-            2
-            /* CLASS */
-          )
-        ]);
-      };
-    }
-  });
-  const _export_sfc = (sfc, props) => {
-    const target = sfc.__vccOpts || sfc;
-    for (const [key, val] of props) {
-      target[key] = val;
-    }
-    return target;
-  };
-  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-75ed7c30"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/components/my-nav-bar/my-nav-bar.vue"]]);
   var isVue2 = false;
   function set$1(target, key, val) {
     if (Array.isArray(target)) {
@@ -1857,135 +1658,280 @@ This will fail in production.`);
       });
     });
   };
-  const smsLogin = (data) => {
-    return request({
-      url: "/user/smsLogin",
-      method: "POST",
-      data
+  const getAppVersion = (version) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        formatAppLog("log", "at api/app.ts:11", 3);
+        resolve({
+          "msg": "操作成功",
+          "code": 200,
+          "data": {
+            "version": "1.0.0",
+            "url": "#",
+            "update": true
+          }
+        });
+      }, 1500);
     });
   };
-  const getUserInfo = () => {
-    return request({
-      url: "/user/getUserInfo",
-      method: "GET"
-    });
-  };
-  const localLogin = (data) => {
-    return request({
-      url: "/user/localLogin",
-      method: "POST",
-      data
-    });
-  };
-  const smsUpdatePassword = (data) => {
-    return request({
-      url: "/user/smsUpdatePassword",
-      method: "POST",
-      data
-    });
-  };
-  const qrScannedLogin = (data) => {
-    return request({
-      url: "/app/qrCode/scanned",
-      method: "post",
-      data
-    });
-  };
-  const qrConfirmLogin = (data) => {
-    return request({
-      url: "/app/qrCode/confirm",
-      method: "post",
-      data
-    });
-  };
-  const qrCancelLogin = (data) => {
-    return request({
-      url: "/app/qrCode/cancel",
-      method: "post",
-      data
-    });
-  };
-  const useUserStore = defineStore("userStore", {
+  const useAppStore = defineStore("appStore", {
+    // unistorage: true, // 是否持久化
     unistorage: {
-      key: "userStore",
-      // paths: ['appName', 'version'], 
+      // true
+      key: "appStore",
+      // 缓存的键，默认为该 store 的 id，这里是 appStore,
+      paths: ["appName", "version", "launchFlag"],
+      // 需要缓存的路径，这里设置 appName 和 version 下的 data 会被缓存
+      // 初始化恢复前触发
+      // beforeRestore(ctx) {},
+      // 初始化恢复后触发
+      // afterRestore(ctx) {},
       serializer: {
+        // 序列化，默认为 JSON.stringify
         serialize(v) {
           return JSON.stringify(v);
         },
+        // 反序列化，默认为 JSON.parse
         deserialize(v) {
           return JSON.parse(v);
         }
       }
     },
     state: () => ({
-      username: "",
-      token: "",
-      avatar: "",
-      userInfo: {},
-      roles: [],
-      menus: [],
-      permissions: []
+      launchFlag: false,
+      systemInfo: uni.getSystemInfoSync(),
+      appName: "mayaApp",
+      // 应用名称
+      version: "1.0.0",
+      // 应用版本
+      logo: "/static/logo.png",
+      // 应用logo
+      site_url: "http://hnsilian.cn",
+      // 官方网站
+      homeUrl: "/pages/index/index",
+      //首页地址
+      request: {
+        timeout: 1e4,
+        dataType: "json",
+        baseUrl: ""
+        // 请求基本地址
+      },
+      // 政策协议
+      agreements: [
+        {
+          title: "隐私政策",
+          url: "/pages/privacyAgreement"
+        },
+        {
+          title: "用户服务协议",
+          url: "/pages/userAgreement"
+        }
+      ]
     }),
     getters: {},
     actions: {
-      getUserInfo() {
-        return new Promise((resolve, reject) => {
-          getUserInfo().then(({ data: { user, token } }) => {
-            this.username = user.username;
-            this.userInfo = user;
-            this.token = token;
-            this.avatar = "https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg";
-            resolve({ user, token });
-          }).catch(() => {
-            reject();
+      // 检测app是否需要更新版本
+      checkUpdate() {
+        getAppVersion(this.systemInfo.appVersion).then((result) => {
+          formatAppLog("log", "at store/app.ts:52", result);
+          if (!result.data.update)
+            return;
+          uni.showModal({
+            title: "新版本发布",
+            content: "检查到当前有新版本,需要更新吗？",
+            confirmText: "立即更新",
+            success: (res) => {
+              if (res.confirm) {
+                uni.showLoading({
+                  title: "正在下载"
+                });
+                uni.downloadFile({
+                  url: result.data.url,
+                  success: (downloadResult) => {
+                    if (downloadResult.statusCode === 200) {
+                      uni.showLoading({
+                        title: "安装中.."
+                      });
+                      plus.runtime.install(downloadResult.tempFilePath, {
+                        force: true
+                      }, function() {
+                        formatAppLog("log", "at store/app.ts:73", "install success...");
+                        uni.setStorageSync("version", result.data.version);
+                        uni.hideLoading();
+                        plus.runtime.restart();
+                      }, function(e) {
+                        formatAppLog("log", "at store/app.ts:78", "e：" + JSON.stringify(e));
+                        uni.hideLoading();
+                        uni.showToast({
+                          title: "安装失败:" + JSON.stringify(e),
+                          duration: 1500
+                        });
+                      });
+                    }
+                  }
+                });
+              } else if (res.cancel) {
+                this.handleAppOut();
+              }
+            }
           });
         });
       },
-      logout() {
-        return new Promise((resolve) => {
-          this.username = "";
-          this.userInfo = {};
-          this.token = "";
-          this.avatar = "";
-          resolve({ message: "退出登录成功" });
-        });
+      // 退出APP
+      handleAppOut() {
+        if (this.systemInfo.platform == "android") {
+          plus.runtime.quit();
+        } else {
+          plus.ios.import("UIApplication").sharedApplication().performSelector("exit");
+        }
       },
-      // 验证码登录 and 注册
-      smsLogin(data) {
-        return new Promise((resolve, reject) => {
-          smsLogin(data).then((res) => {
-            this.token = res.data;
-            resolve(res.data);
-          }).catch(() => {
-            reject();
-          });
-        });
-      },
-      // 本地账户密码登录 and 注册
-      localLogin(data) {
-        return new Promise((resolve, reject) => {
-          localLogin(data).then((res) => {
-            this.token = res.data;
-            resolve(res.data);
-          }).catch(() => {
-            reject();
-          });
-        });
-      },
-      // 本地账户密码登录 and 注册
-      smsUpdatePassword(data) {
-        return new Promise((resolve, reject) => {
-          smsUpdatePassword(data).then((res) => {
-            this.token = res.data;
-            resolve(res.data);
-          }).catch(() => {
-            reject();
-          });
-        });
+      /**
+      * 获取本地存储中launchFlag的值
+      * 若存在，说明不是首次启动，直接进入首页；
+      * 若不存在，说明是首次启动，进入引导页；
+      */
+      loadExecution() {
+        let url = this.launchFlag ? "/pages/home/home" : "/pages/common/guide/index";
+        uni.reLaunch({ url });
       }
     }
   });
+  const _sfc_main$L = /* @__PURE__ */ vue.defineComponent({
+    __name: "index",
+    setup(__props) {
+      vue.useCssVars((_ctx) => ({
+        "4ddeaa10-safeAreaInsetsBottom": safeAreaInsetsBottom,
+        "4ddeaa10-safeAreaInsetsTop": vue.unref(safeAreaInsetsTop)
+      }));
+      const appStore = useAppStore();
+      const safeAreaInsetsBottom = appStore.systemInfo.safeAreaInsets.bottom + "px";
+      let safeAreaInsetsTop = "15px";
+      safeAreaInsetsTop = appStore.systemInfo.safeAreaInsets.top + 15 + "px";
+      let current = vue.ref(0);
+      const swiperChange = (e) => {
+        current.value = e.detail.current;
+      };
+      let isChecked = vue.ref(false);
+      const checkboxChange = (e) => {
+        isChecked.value = e.detail.value.length ? true : false;
+      };
+      const handlePrivacy = () => {
+        let site = appStore.agreements[0];
+        uni.navigateTo({ url: `/pages/common/webview/index?title=${site.title}&url=${site.url}` });
+      };
+      const handleUserAgrement = () => {
+        let site = appStore.agreements[1];
+        uni.navigateTo({ url: `/pages/common/webview/index?title=${site.title}&url=${site.url}` });
+      };
+      const openApp = () => {
+        if (!isChecked.value) {
+          current.value = 3;
+          return uni.showToast({
+            title: "请先勾选同意并接受",
+            icon: "none"
+          });
+        }
+        appStore.launchFlag = true;
+        appStore.loadExecution();
+      };
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", { class: "guide" }, [
+          vue.createElementVNode("swiper", {
+            class: "swiper",
+            "indicator-dots": "",
+            onChange: swiperChange,
+            current: vue.unref(current)
+          }, [
+            vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
+              vue.createElementVNode("image", {
+                class: "image",
+                src: _imports_0$3,
+                mode: "aspectFill"
+              })
+            ]),
+            vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
+              vue.createElementVNode("image", {
+                class: "image",
+                src: _imports_1,
+                mode: "aspectFill"
+              })
+            ]),
+            vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
+              vue.createElementVNode("image", {
+                class: "image",
+                src: _imports_2,
+                mode: "aspectFill"
+              })
+            ]),
+            vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
+              vue.createElementVNode("image", {
+                class: "image",
+                src: _imports_3,
+                mode: "aspectFill"
+              })
+            ])
+          ], 40, ["current"]),
+          vue.unref(current) !== 3 ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "right-top",
+            onClick: openApp
+          }, " 跳过 ")) : vue.createCommentVNode("v-if", true),
+          vue.unref(current) === 3 ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 1,
+            class: "bottom"
+          }, [
+            vue.createElementVNode("view", {
+              class: "button",
+              onClick: openApp
+            }, [
+              vue.createElementVNode("view", { class: "button-text" }, [
+                vue.createElementVNode("text", null, "立"),
+                vue.createElementVNode("text", null, "即"),
+                vue.createElementVNode("text", null, "开"),
+                vue.createElementVNode("text", null, "启")
+              ])
+            ]),
+            vue.createElementVNode("view", { class: "privacy" }, [
+              vue.createElementVNode(
+                "checkbox-group",
+                {
+                  class: "checkbox-group",
+                  onChange: checkboxChange
+                },
+                [
+                  vue.createElementVNode("checkbox", {
+                    checked: vue.unref(isChecked),
+                    color: "#60a5fa",
+                    style: { "transform": "scale(0.6)" }
+                  }, null, 8, ["checked"])
+                ],
+                32
+                /* NEED_HYDRATION */
+              ),
+              vue.createElementVNode("text", { class: "text" }, "同意并接受"),
+              vue.createElementVNode("text", {
+                class: "text text-blue",
+                onClick: handlePrivacy
+              }, "《服务协议》"),
+              vue.createElementVNode("text", { class: "text" }, " 和 "),
+              vue.createElementVNode("text", {
+                class: "text text-blue",
+                onClick: handleUserAgrement
+              }, "《个人信息保护政策》")
+            ])
+          ])) : vue.createCommentVNode("v-if", true)
+        ]);
+      };
+    }
+  });
+  const _export_sfc = (sfc, props) => {
+    const target = sfc.__vccOpts || sfc;
+    for (const [key, val] of props) {
+      target[key] = val;
+    }
+    return target;
+  };
+  const PagesCommonGuideIndex = /* @__PURE__ */ _export_sfc(_sfc_main$L, [["__scopeId", "data-v-4ddeaa10"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/common/guide/index.vue"]]);
   const router = {
     /**
      * 关闭当前页面，返回上一页面或多级页面
@@ -2198,575 +2144,7 @@ This will fail in production.`);
       });
     }
   };
-  const _sfc_main$J = /* @__PURE__ */ vue.defineComponent({
-    __name: "index",
-    setup(__props) {
-      const userStore = useUserStore();
-      onLoad(() => {
-      });
-      let userInfo = vue.reactive({});
-      vue.ref(0);
-      vue.ref([]);
-      vue.reactive({
-        pageNum: 1,
-        pageSize: 10
-      });
-      vue.ref([{ name: "全部" }, { name: "文章" }, { name: "视频" }, { name: "问答" }, { name: "小视频" }, { name: "微头条" }]);
-      let twoGridList = vue.ref([
-        {
-          icon: "icon-pinglun",
-          text: "评论",
-          url: "/pages/mine/content/index",
-          type: "comment"
-        },
-        {
-          icon: "icon-shoucang",
-          text: "收藏",
-          url: "/pages/mine/content/index",
-          type: "collect"
-        },
-        {
-          icon: "icon-xiazai",
-          text: "下载",
-          url: "./download/index"
-        },
-        {
-          icon: "icon-lishi",
-          text: "历史",
-          url: "/pages/mine/content/index",
-          type: "history"
-        },
-        {
-          icon: "icon-xiaoxi",
-          text: "消息",
-          url: "./message/index"
-        },
-        {
-          icon: "icon-dianzan",
-          text: "点赞",
-          url: "/pages/mine/content/index",
-          type: "like"
-        },
-        {
-          icon: "icon-jubao",
-          text: "举报",
-          url: "/pages/mine/content/index",
-          type: "report"
-        },
-        {
-          icon: "icon-quanbu",
-          text: "全部",
-          url: "./allService"
-        }
-      ]);
-      const tapScan = () => {
-        formatAppLog("log", "at pages/mine/index.vue:154", "tapScan");
-        if (!storage.get("token"))
-          return prompt$1.msg("请登录后再扫码！");
-        uni.scanCode({
-          success: (res) => {
-            formatAppLog("log", "at pages/mine/index.vue:161", "条码类型：" + res.scanType);
-            formatAppLog("log", "at pages/mine/index.vue:162", "条码内容：" + res.result);
-            let result = JSON.parse(res.result);
-            if (result.type == "login") {
-              qrScannedLogin({ qrcodeId: result.qrcodeId }).then((qrRes) => {
-                formatAppLog("log", "at pages/mine/index.vue:166", qrRes);
-                storage.set("qrCode", { ...result, ...qrRes });
-                router.push({ url: "/pages/login/confirmLogin" });
-              }).catch((err) => {
-                formatAppLog("log", "at pages/mine/index.vue:170", err);
-              });
-            }
-          }
-        });
-      };
-      let goToPublish = () => {
-        prompt$1.msg("请先登录");
-      };
-      let toLogin = () => {
-        router.push("/pages/login/login");
-      };
-      const tapItem = (row) => {
-        formatAppLog("log", "at pages/mine/index.vue:198", row);
-        if (row.url) {
-          if (row.type) {
-            router.push(`${row.url}?type=${row.type}`);
-          } else {
-            router.push(`${row.url}`);
-          }
-        } else {
-          return prompt$1.msg(`${row.text} 功能未实现`);
-        }
-      };
-      return (_ctx, _cache) => {
-        var _a, _b, _c, _d, _e;
-        const _component_my_nav_bar = resolveEasycom(vue.resolveDynamicComponent("my-nav-bar"), __easycom_0$4);
-        return vue.openBlock(), vue.createElementBlock("view", { class: "container" }, [
-          vue.createVNode(_component_my_nav_bar, {
-            "bg-color": "transparent",
-            onClickLeft: tapScan
-          }, {
-            left: vue.withCtx(() => [
-              vue.createElementVNode("text", { class: "iconfont icon-saoyisao" })
-            ]),
-            right: vue.withCtx(() => [
-              vue.createElementVNode(
-                "view",
-                {
-                  class: "my-nav-bar-right",
-                  style: vue.normalizeStyle({ width: vue.unref(userStore).token ? "60px" : "" })
-                },
-                [
-                  vue.unref(userStore).token ? (vue.openBlock(), vue.createElementBlock("text", {
-                    key: 0,
-                    class: "iconfont icon-jiahao text-black",
-                    onClick: _cache[0] || (_cache[0] = //@ts-ignore
-                    (...args) => vue.unref(goToPublish) && vue.unref(goToPublish)(...args))
-                  })) : vue.createCommentVNode("v-if", true),
-                  vue.createElementVNode("text", {
-                    class: "iconfont icon-set text-black text-18px",
-                    onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(router).push("/pages/mine/setting/index"))
-                  })
-                ],
-                4
-                /* STYLE */
-              )
-            ]),
-            _: 1
-            /* STABLE */
-          }),
-          vue.createElementVNode("view", { class: "one" }, [
-            vue.createElementVNode("view", null, [
-              vue.unref(userStore).token ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "info"
-              }, [
-                vue.createElementVNode("view", { class: "info-one" }, [
-                  vue.createElementVNode("view", { class: "logo" }, [
-                    vue.createElementVNode("image", {
-                      class: "w-70px h-70px",
-                      src: vue.unref(userStore).avatar,
-                      mode: "scaleToFill"
-                    }, null, 8, ["src"])
-                  ]),
-                  vue.createElementVNode("view", { class: "info-name" }, [
-                    vue.createElementVNode(
-                      "view",
-                      { class: "name" },
-                      vue.toDisplayString(vue.unref(userStore).username || "你的maya"),
-                      1
-                      /* TEXT */
-                    ),
-                    vue.createElementVNode("view", null, [
-                      vue.createElementVNode(
-                        "text",
-                        null,
-                        vue.toDisplayString(((_a = vue.unref(userInfo)) == null ? void 0 : _a.myFocus) || 0) + "关注",
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode(
-                        "text",
-                        null,
-                        vue.toDisplayString(((_b = vue.unref(userInfo)) == null ? void 0 : _b.myFans) || 0) + "粉丝",
-                        1
-                        /* TEXT */
-                      ),
-                      vue.createElementVNode(
-                        "text",
-                        null,
-                        vue.toDisplayString(((_c = vue.unref(userInfo)) == null ? void 0 : _c.praise) || 0) + "获赞",
-                        1
-                        /* TEXT */
-                      )
-                    ])
-                  ])
-                ]),
-                vue.createElementVNode(
-                  "view",
-                  { class: "info-two" },
-                  "介绍：" + vue.toDisplayString(((_d = vue.unref(userInfo)) == null ? void 0 : _d.introduce) || "它很懒，什么都没介绍。"),
-                  1
-                  /* TEXT */
-                ),
-                vue.createElementVNode(
-                  "view",
-                  { class: "info-three" },
-                  "IP 属地：" + vue.toDisplayString(((_e = vue.unref(userInfo)) == null ? void 0 : _e.city) || "未知"),
-                  1
-                  /* TEXT */
-                ),
-                vue.createElementVNode("view", { class: "info-four" }, [
-                  vue.createElementVNode("view", {
-                    class: "button",
-                    onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(prompt$1).msg("暂时未开发此功能"))
-                  }, [
-                    vue.createElementVNode("text", { class: "iconfont icon-fenxiang" }),
-                    vue.createElementVNode("text", { class: "text" }, "申请认证")
-                  ]),
-                  vue.createElementVNode("view", {
-                    class: "button",
-                    onClick: _cache[3] || (_cache[3] = ($event) => vue.unref(router).push("/pages/mine/setting/profile/index"))
-                  }, [
-                    vue.createElementVNode("text", { class: "iconfont icon-fenxiang" }),
-                    vue.createElementVNode("text", { class: "text" }, "编辑资料")
-                  ]),
-                  vue.createElementVNode("view", {
-                    class: "button button-mini",
-                    onClick: _cache[4] || (_cache[4] = ($event) => vue.unref(prompt$1).msg("暂时未开发此功能"))
-                  }, [
-                    vue.createElementVNode("text", { class: "iconfont icon-fenxiang" })
-                  ])
-                ])
-              ])) : (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                class: "cover",
-                onClick: _cache[5] || (_cache[5] = //@ts-ignore
-                (...args) => vue.unref(toLogin) && vue.unref(toLogin)(...args))
-              }, "登录"))
-            ])
-          ]),
-          vue.createElementVNode("view", { class: "channel-list" }, [
-            (vue.openBlock(true), vue.createElementBlock(
-              vue.Fragment,
-              null,
-              vue.renderList(vue.unref(twoGridList), (item, index) => {
-                return vue.openBlock(), vue.createElementBlock("view", {
-                  class: "channel-item rd-4px",
-                  key: index,
-                  onClick: ($event) => tapItem(item)
-                }, [
-                  vue.createElementVNode(
-                    "text",
-                    {
-                      class: vue.normalizeClass(["iconfont", item.icon])
-                    },
-                    null,
-                    2
-                    /* CLASS */
-                  ),
-                  vue.createElementVNode(
-                    "text",
-                    { class: "item-text" },
-                    vue.toDisplayString(item.text),
-                    1
-                    /* TEXT */
-                  )
-                ], 8, ["onClick"]);
-              }),
-              128
-              /* KEYED_FRAGMENT */
-            ))
-          ]),
-          vue.createElementVNode("view", { class: "bottom" }, [
-            !vue.unref(userStore).token ? (vue.openBlock(), vue.createElementBlock("view", {
-              key: 0,
-              class: "three"
-            }, [
-              vue.createElementVNode("view", null, [
-                vue.createElementVNode("text", null, "“"),
-                vue.createTextVNode(" 分享今天值得记录的瞬间 "),
-                vue.createElementVNode("text", null, "”")
-              ]),
-              vue.unref(userStore).token ? (vue.openBlock(), vue.createElementBlock("view", {
-                key: 0,
-                class: "btn-publish",
-                onClick: _cache[6] || (_cache[6] = //@ts-ignore
-                (...args) => vue.unref(goToPublish) && vue.unref(goToPublish)(...args))
-              }, "发布")) : (vue.openBlock(), vue.createElementBlock("view", {
-                key: 1,
-                class: "btn-publish",
-                onClick: _cache[7] || (_cache[7] = //@ts-ignore
-                (...args) => vue.unref(toLogin) && vue.unref(toLogin)(...args))
-              }, "去登录"))
-            ])) : (vue.openBlock(), vue.createElementBlock("view", {
-              key: 1,
-              class: "four"
-            }, [
-              vue.createCommentVNode(' <u-sticky bgColor="#fff">\n					<u-tabs :list="myList">\n					</u-tabs>\n				</u-sticky> ')
-            ]))
-          ]),
-          vue.createCommentVNode(' <u-popup :show="isAllServiceShow" mode="right" @close="isAllServiceShow = false" @open="isAllServiceShow = true" >\n				<AllService @close="isAllServiceShow=false"/>\n		</u-popup> ')
-        ]);
-      };
-    }
-  });
-  const PagesMineIndex = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["__scopeId", "data-v-569e925a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/index.vue"]]);
-  const _imports_0$3 = "/static/images/guide/guide-1.jpg";
-  const _imports_1 = "/static/images/guide/guide-2.jpg";
-  const _imports_2 = "/static/images/guide/guide-3.jpg";
-  const _imports_3 = "/static/images/guide/guide-4.jpg";
-  const getAppVersion = (version) => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        formatAppLog("log", "at api/app.ts:11", 3);
-        resolve({
-          "msg": "操作成功",
-          "code": 200,
-          "data": {
-            "version": "1.0.0",
-            "url": "#",
-            "update": true
-          }
-        });
-      }, 1500);
-    });
-  };
-  const useAppStore = defineStore("appStore", {
-    // unistorage: true, // 是否持久化
-    unistorage: {
-      // true
-      key: "appStore",
-      // 缓存的键，默认为该 store 的 id，这里是 appStore,
-      paths: ["appName", "version", "launchFlag"],
-      // 需要缓存的路径，这里设置 appName 和 version 下的 data 会被缓存
-      // 初始化恢复前触发
-      // beforeRestore(ctx) {},
-      // 初始化恢复后触发
-      // afterRestore(ctx) {},
-      serializer: {
-        // 序列化，默认为 JSON.stringify
-        serialize(v) {
-          return JSON.stringify(v);
-        },
-        // 反序列化，默认为 JSON.parse
-        deserialize(v) {
-          return JSON.parse(v);
-        }
-      }
-    },
-    state: () => ({
-      launchFlag: false,
-      systemInfo: uni.getSystemInfoSync(),
-      appName: "mayaApp",
-      // 应用名称
-      version: "1.0.0",
-      // 应用版本
-      logo: "/static/logo.png",
-      // 应用logo
-      site_url: "http://hnsilian.cn",
-      // 官方网站
-      homeUrl: "/pages/index/index",
-      //首页地址
-      request: {
-        timeout: 1e4,
-        dataType: "json",
-        baseUrl: ""
-        // 请求基本地址
-      },
-      // 政策协议
-      agreements: [
-        {
-          title: "隐私政策",
-          url: "/pages/privacyAgreement"
-        },
-        {
-          title: "用户服务协议",
-          url: "/pages/userAgreement"
-        }
-      ]
-    }),
-    getters: {},
-    actions: {
-      // 检测app是否需要更新版本
-      checkUpdate() {
-        getAppVersion(this.systemInfo.appVersion).then((result) => {
-          formatAppLog("log", "at store/app.ts:52", result);
-          if (!result.data.update)
-            return;
-          uni.showModal({
-            title: "新版本发布",
-            content: "检查到当前有新版本,需要更新吗？",
-            confirmText: "立即更新",
-            success: (res) => {
-              if (res.confirm) {
-                uni.showLoading({
-                  title: "正在下载"
-                });
-                uni.downloadFile({
-                  url: result.data.url,
-                  success: (downloadResult) => {
-                    if (downloadResult.statusCode === 200) {
-                      uni.showLoading({
-                        title: "安装中.."
-                      });
-                      plus.runtime.install(downloadResult.tempFilePath, {
-                        force: true
-                      }, function() {
-                        formatAppLog("log", "at store/app.ts:73", "install success...");
-                        uni.setStorageSync("version", result.data.version);
-                        uni.hideLoading();
-                        plus.runtime.restart();
-                      }, function(e) {
-                        formatAppLog("log", "at store/app.ts:78", "e：" + JSON.stringify(e));
-                        uni.hideLoading();
-                        uni.showToast({
-                          title: "安装失败:" + JSON.stringify(e),
-                          duration: 1500
-                        });
-                      });
-                    }
-                  }
-                });
-              } else if (res.cancel) {
-                this.handleAppOut();
-              }
-            }
-          });
-        });
-      },
-      // 退出APP
-      handleAppOut() {
-        if (this.systemInfo.platform == "android") {
-          plus.runtime.quit();
-        } else {
-          plus.ios.import("UIApplication").sharedApplication().performSelector("exit");
-        }
-      },
-      /**
-      * 获取本地存储中launchFlag的值
-      * 若存在，说明不是首次启动，直接进入首页；
-      * 若不存在，说明是首次启动，进入引导页；
-      */
-      loadExecution() {
-        let url = this.launchFlag ? "/pages/home/home" : "/pages/common/guide/index";
-        uni.reLaunch({ url });
-      }
-    }
-  });
-  const _sfc_main$I = /* @__PURE__ */ vue.defineComponent({
-    __name: "index",
-    setup(__props) {
-      vue.useCssVars((_ctx) => ({
-        "4ddeaa10-safeAreaInsetsBottom": safeAreaInsetsBottom,
-        "4ddeaa10-safeAreaInsetsTop": vue.unref(safeAreaInsetsTop)
-      }));
-      const appStore = useAppStore();
-      const safeAreaInsetsBottom = appStore.systemInfo.safeAreaInsets.bottom + "px";
-      let safeAreaInsetsTop = "0px";
-      safeAreaInsetsTop = appStore.systemInfo.safeAreaInsets.top + 10 + "px";
-      let current = vue.ref(0);
-      const swiperChange = (e) => {
-        current.value = e.detail.current;
-      };
-      let isChecked = vue.ref(false);
-      const checkboxChange = (e) => {
-        isChecked.value = e.detail.value.length ? true : false;
-      };
-      const handlePrivacy = () => {
-        let site = appStore.agreements[0];
-        uni.navigateTo({ url: `/pages/common/webview/index?title=${site.title}&url=${site.url}` });
-      };
-      const handleUserAgrement = () => {
-        let site = appStore.agreements[1];
-        uni.navigateTo({ url: `/pages/common/webview/index?title=${site.title}&url=${site.url}` });
-      };
-      const openApp = () => {
-        if (!isChecked.value)
-          return uni.showToast({
-            title: "请先勾选同意并接受",
-            icon: "none"
-          });
-        appStore.launchFlag = true;
-        appStore.loadExecution();
-      };
-      return (_ctx, _cache) => {
-        return vue.openBlock(), vue.createElementBlock("view", { class: "guide" }, [
-          vue.createElementVNode(
-            "swiper",
-            {
-              class: "swiper",
-              "indicator-dots": "",
-              onChange: swiperChange
-            },
-            [
-              vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
-                vue.createElementVNode("image", {
-                  class: "image",
-                  src: _imports_0$3,
-                  mode: "aspectFill"
-                })
-              ]),
-              vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
-                vue.createElementVNode("image", {
-                  class: "image",
-                  src: _imports_1,
-                  mode: "aspectFill"
-                })
-              ]),
-              vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
-                vue.createElementVNode("image", {
-                  class: "image",
-                  src: _imports_2,
-                  mode: "aspectFill"
-                })
-              ]),
-              vue.createElementVNode("swiper-item", { class: "swiper-item" }, [
-                vue.createElementVNode("image", {
-                  class: "image",
-                  src: _imports_3,
-                  mode: "aspectFill"
-                })
-              ])
-            ],
-            32
-            /* NEED_HYDRATION */
-          ),
-          vue.unref(current) !== 3 ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 0,
-            class: "right-top",
-            onClick: openApp
-          }, " 跳过 ")) : vue.createCommentVNode("v-if", true),
-          vue.unref(current) === 3 ? (vue.openBlock(), vue.createElementBlock("view", {
-            key: 1,
-            class: "bottom"
-          }, [
-            vue.createElementVNode("view", {
-              class: "button",
-              onClick: openApp
-            }, [
-              vue.createElementVNode("view", { class: "button-text" }, [
-                vue.createElementVNode("text", null, "立"),
-                vue.createElementVNode("text", null, "即"),
-                vue.createElementVNode("text", null, "开"),
-                vue.createElementVNode("text", null, "启")
-              ])
-            ]),
-            vue.createElementVNode("view", { class: "privacy" }, [
-              vue.createElementVNode(
-                "checkbox-group",
-                {
-                  class: "checkbox-group",
-                  onChange: checkboxChange
-                },
-                [
-                  vue.createElementVNode("checkbox", {
-                    checked: vue.unref(isChecked),
-                    color: "#60a5fa",
-                    style: { "transform": "scale(0.6)" }
-                  }, null, 8, ["checked"])
-                ],
-                32
-                /* NEED_HYDRATION */
-              ),
-              vue.createElementVNode("text", { class: "text" }, "同意并接受"),
-              vue.createElementVNode("text", {
-                class: "text text-blue",
-                onClick: handlePrivacy
-              }, "《服务协议》"),
-              vue.createElementVNode("text", { class: "text" }, " 和 "),
-              vue.createElementVNode("text", {
-                class: "text text-blue",
-                onClick: handleUserAgrement
-              }, "《个人信息保护政策》")
-            ])
-          ])) : vue.createCommentVNode("v-if", true)
-        ]);
-      };
-    }
-  });
-  const PagesCommonGuideIndex = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-4ddeaa10"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/common/guide/index.vue"]]);
-  const _sfc_main$H = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$K = /* @__PURE__ */ vue.defineComponent({
     __name: "allService",
     setup(__props) {
       let serviceList = vue.ref([
@@ -2912,8 +2290,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineAllService = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-ca6f6c41"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/allService.vue"]]);
-  const _sfc_main$G = {};
+  const PagesMineAllService = /* @__PURE__ */ _export_sfc(_sfc_main$K, [["__scopeId", "data-v-ca6f6c41"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/allService.vue"]]);
+  const _sfc_main$J = {};
   function _sfc_render$8(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "download" }, [
       vue.createCommentVNode(' <u-empty mode="data"  text="暂无下载内容"/> '),
@@ -2921,9 +2299,205 @@ This will fail in production.`);
       vue.createElementVNode("text", { class: "text" }, "暂无下载内容")
     ]);
   }
-  const PagesMineDownloadIndex = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["render", _sfc_render$8], ["__scopeId", "data-v-5d45996a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/download/index.vue"]]);
+  const PagesMineDownloadIndex = /* @__PURE__ */ _export_sfc(_sfc_main$J, [["render", _sfc_render$8], ["__scopeId", "data-v-5d45996a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/download/index.vue"]]);
+  const _sfc_main$I = /* @__PURE__ */ vue.defineComponent({
+    __name: "my-nav-bar",
+    props: {
+      bgColor: {
+        type: String,
+        default: "#fff"
+      },
+      title: {
+        type: String,
+        default: ""
+      },
+      leftText: {
+        type: String,
+        default: ""
+      },
+      rightText: {
+        type: String,
+        default: ""
+      },
+      leftIcon: {
+        type: String,
+        default: "icon-xiangzuojiantou"
+      },
+      rightIcon: {
+        type: String,
+        default: ""
+      },
+      color: {
+        type: String,
+        default: "#000000"
+      },
+      fixed: {
+        type: Boolean,
+        default: false
+      },
+      statusBar: {
+        type: Boolean,
+        default: true
+      },
+      shadow: {
+        // 微信小程序不支持
+        type: Boolean,
+        default: false
+      },
+      border: {
+        // 微信小程序不支持
+        type: Boolean,
+        default: false
+      },
+      height: {
+        type: [Number, String],
+        default: "44px"
+      },
+      leftWidth: {
+        type: [String, Number],
+        default: "40px"
+      },
+      rightWidth: {
+        type: [String, Number],
+        default: "40px"
+      }
+    },
+    emits: ["clickLeft", "clickRight", "clickCenter"],
+    setup(__props, { emit: __emit }) {
+      vue.useCssVars((_ctx) => ({
+        "75ed7c30-navBarHeight": vue.unref(navBarHeight),
+        "75ed7c30-statusBarHeight": vue.unref(statusBarHeight),
+        "75ed7c30-props.bgColor": props.bgColor,
+        "75ed7c30-props.leftWidth": props.leftWidth,
+        "75ed7c30-props.rightWidth": props.rightWidth,
+        "75ed7c30-props.color": props.color
+      }));
+      const props = __props;
+      const emit = __emit;
+      const onClickLeft = () => {
+        emit("clickLeft");
+      };
+      const onClickRight = () => {
+        emit("clickRight");
+      };
+      const onClickCenter = () => {
+        emit("clickCenter");
+      };
+      const statusBarHeight = vue.ref("0px");
+      const navBarHeight = vue.ref("0px");
+      vue.ref("0px");
+      vue.ref({});
+      const systemInfo = vue.ref({});
+      const init = () => {
+        navBarHeight.value = props.height;
+        systemInfo.value = uni.getSystemInfoSync();
+        statusBarHeight.value = systemInfo.value.statusBarHeight + "px";
+        uni.setNavigationBarTitle({
+          title: props.title
+        });
+      };
+      vue.onMounted(() => {
+        init();
+      });
+      return (_ctx, _cache) => {
+        return vue.openBlock(), vue.createElementBlock("view", { class: "my-nav-bar" }, [
+          vue.createCommentVNode(" 占位 "),
+          __props.fixed ? (vue.openBlock(), vue.createElementBlock("view", {
+            key: 0,
+            class: "placeholder"
+          })) : vue.createCommentVNode("v-if", true),
+          vue.createElementVNode(
+            "view",
+            {
+              class: vue.normalizeClass(["my-nav-bar-wrap", { "is-border": __props.border, "is-fixed": __props.fixed, "is-shadow": __props.shadow }])
+            },
+            [
+              vue.createElementVNode("view", {
+                class: "my-nav-bar-left",
+                onClick: onClickLeft
+              }, [
+                vue.renderSlot(_ctx.$slots, "left", {}, () => [
+                  vue.createElementVNode("view", { class: "my-nav-bar-btn" }, [
+                    __props.leftIcon ? (vue.openBlock(), vue.createElementBlock(
+                      "text",
+                      {
+                        key: 0,
+                        class: vue.normalizeClass(["btn-icon iconfont", [__props.leftIcon]])
+                      },
+                      null,
+                      2
+                      /* CLASS */
+                    )) : vue.createCommentVNode("v-if", true),
+                    __props.leftText ? (vue.openBlock(), vue.createElementBlock(
+                      "text",
+                      {
+                        key: 1,
+                        class: "btn-text"
+                      },
+                      vue.toDisplayString(__props.leftText),
+                      1
+                      /* TEXT */
+                    )) : vue.createCommentVNode("v-if", true)
+                  ])
+                ], true)
+              ]),
+              vue.createElementVNode("view", {
+                class: "my-nav-bar-center",
+                onClick: onClickCenter
+              }, [
+                vue.renderSlot(_ctx.$slots, "default", {}, () => [
+                  __props.title ? (vue.openBlock(), vue.createElementBlock(
+                    "view",
+                    {
+                      key: 0,
+                      class: "my-nav-bar-title ellipsis1"
+                    },
+                    vue.toDisplayString(__props.title),
+                    1
+                    /* TEXT */
+                  )) : vue.createCommentVNode("v-if", true)
+                ], true)
+              ]),
+              vue.createElementVNode("view", {
+                class: "my-nav-bar-right",
+                onClick: onClickRight
+              }, [
+                vue.renderSlot(_ctx.$slots, "right", {}, () => [
+                  vue.createElementVNode("view", { class: "my-nav-bar-btn" }, [
+                    __props.rightIcon ? (vue.openBlock(), vue.createElementBlock(
+                      "text",
+                      {
+                        key: 0,
+                        class: vue.normalizeClass(["btn-icon iconfont", [__props.rightIcon]])
+                      },
+                      null,
+                      2
+                      /* CLASS */
+                    )) : vue.createCommentVNode("v-if", true),
+                    __props.rightText ? (vue.openBlock(), vue.createElementBlock(
+                      "text",
+                      {
+                        key: 1,
+                        class: "btn-text"
+                      },
+                      vue.toDisplayString(__props.rightText),
+                      1
+                      /* TEXT */
+                    )) : vue.createCommentVNode("v-if", true)
+                  ])
+                ], true)
+              ])
+            ],
+            2
+            /* CLASS */
+          )
+        ]);
+      };
+    }
+  });
+  const __easycom_0$4 = /* @__PURE__ */ _export_sfc(_sfc_main$I, [["__scopeId", "data-v-75ed7c30"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/components/my-nav-bar/my-nav-bar.vue"]]);
   const _imports_0$2 = "/static/logo.png";
-  const _sfc_main$F = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$H = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       const rightClick = () => {
@@ -3125,7 +2699,129 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineMessageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["__scopeId", "data-v-900b976d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/message/index.vue"]]);
+  const PagesMineMessageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$H, [["__scopeId", "data-v-900b976d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/message/index.vue"]]);
+  const smsLogin = (data) => {
+    return request({
+      url: "/user/smsLogin",
+      method: "POST",
+      data
+    });
+  };
+  const getUserInfo = () => {
+    return request({
+      url: "/user/getUserInfo",
+      method: "GET"
+    });
+  };
+  const localLogin = (data) => {
+    return request({
+      url: "/user/localLogin",
+      method: "POST",
+      data
+    });
+  };
+  const smsUpdatePassword = (data) => {
+    return request({
+      url: "/user/smsUpdatePassword",
+      method: "POST",
+      data
+    });
+  };
+  const qrConfirmLogin = (data) => {
+    return request({
+      url: "/app/qrCode/confirm",
+      method: "post",
+      data
+    });
+  };
+  const qrCancelLogin = (data) => {
+    return request({
+      url: "/app/qrCode/cancel",
+      method: "post",
+      data
+    });
+  };
+  const useUserStore = defineStore("userStore", {
+    unistorage: {
+      key: "userStore",
+      // paths: ['appName', 'version'], 
+      serializer: {
+        serialize(v) {
+          return JSON.stringify(v);
+        },
+        deserialize(v) {
+          return JSON.parse(v);
+        }
+      }
+    },
+    state: () => ({
+      username: "",
+      token: "111",
+      avatar: "",
+      userInfo: {},
+      roles: [],
+      menus: [],
+      permissions: []
+    }),
+    getters: {},
+    actions: {
+      getUserInfo() {
+        return new Promise((resolve, reject) => {
+          getUserInfo().then(({ data: { user, token } }) => {
+            this.username = user.username;
+            this.userInfo = user;
+            this.token = token;
+            this.avatar = "https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg";
+            resolve({ user, token });
+          }).catch(() => {
+            reject();
+          });
+        });
+      },
+      logout() {
+        return new Promise((resolve) => {
+          this.username = "";
+          this.userInfo = {};
+          this.token = "";
+          this.avatar = "";
+          resolve({ message: "退出登录成功" });
+        });
+      },
+      // 验证码登录 and 注册
+      smsLogin(data) {
+        return new Promise((resolve, reject) => {
+          smsLogin(data).then((res) => {
+            this.token = res.data;
+            resolve(res.data);
+          }).catch(() => {
+            reject();
+          });
+        });
+      },
+      // 本地账户密码登录 and 注册
+      localLogin(data) {
+        return new Promise((resolve, reject) => {
+          localLogin(data).then((res) => {
+            this.token = res.data;
+            resolve(res.data);
+          }).catch(() => {
+            reject();
+          });
+        });
+      },
+      // 本地账户密码登录 and 注册
+      smsUpdatePassword(data) {
+        return new Promise((resolve, reject) => {
+          smsUpdatePassword(data).then((res) => {
+            this.token = res.data;
+            resolve(res.data);
+          }).catch(() => {
+            reject();
+          });
+        });
+      }
+    }
+  });
   defineStore("bluetooth", {
     // unistorage: true, // 是否持久化
     unistorage: {
@@ -3279,7 +2975,7 @@ This will fail in production.`);
       }
     }
   });
-  const _sfc_main$E = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$G = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       const userStore = useUserStore();
@@ -3474,8 +3170,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-d9df6a80"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/index.vue"]]);
-  const _sfc_main$D = {};
+  const PagesMineSettingIndex = /* @__PURE__ */ _export_sfc(_sfc_main$G, [["__scopeId", "data-v-d9df6a80"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/index.vue"]]);
+  const _sfc_main$F = {};
   function _sfc_render$7(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "message" }, [
       vue.createElementVNode("view", { class: "section" }, "互动消息"),
@@ -3651,8 +3347,8 @@ This will fail in production.`);
       ])
     ]);
   }
-  const PagesMineSettingMessageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["render", _sfc_render$7], ["__scopeId", "data-v-5640519e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/message/index.vue"]]);
-  const _sfc_main$C = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingMessageIndex = /* @__PURE__ */ _export_sfc(_sfc_main$F, [["render", _sfc_render$7], ["__scopeId", "data-v-5640519e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/message/index.vue"]]);
+  const _sfc_main$E = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       vue.ref(false);
@@ -3897,8 +3593,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingPrivacyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["__scopeId", "data-v-bd541bec"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/privacy/index.vue"]]);
-  const _sfc_main$B = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingPrivacyIndex = /* @__PURE__ */ _export_sfc(_sfc_main$E, [["__scopeId", "data-v-bd541bec"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/privacy/index.vue"]]);
+  const _sfc_main$D = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       let showGender = vue.ref(false);
@@ -4110,7 +3806,7 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingProfileIndex = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["__scopeId", "data-v-17db42f7"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/profile/index.vue"]]);
+  const PagesMineSettingProfileIndex = /* @__PURE__ */ _export_sfc(_sfc_main$D, [["__scopeId", "data-v-17db42f7"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/profile/index.vue"]]);
   const fontData = [
     {
       "font_class": "arrow-down",
@@ -4761,7 +4457,7 @@ This will fail in production.`);
     const reg = /^[0-9]*$/g;
     return typeof val === "number" || reg.test(val) ? val + "px" : val;
   };
-  const _sfc_main$A = {
+  const _sfc_main$C = {
     name: "UniIcons",
     emits: ["click"],
     props: {
@@ -4830,7 +4526,7 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["render", _sfc_render$6], ["__scopeId", "data-v-c50d4ede"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
+  const __easycom_0$3 = /* @__PURE__ */ _export_sfc(_sfc_main$C, [["render", _sfc_render$6], ["__scopeId", "data-v-c50d4ede"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue"]]);
   function obj2strClass(obj) {
     let classess = "";
     for (let key in obj) {
@@ -4849,7 +4545,7 @@ This will fail in production.`);
     }
     return style;
   }
-  const _sfc_main$z = {
+  const _sfc_main$B = {
     name: "uni-easyinput",
     emits: ["click", "iconClick", "update:modelValue", "input", "focus", "blur", "confirm", "clear", "eyes", "change", "keyboardheightchange"],
     model: {
@@ -5310,8 +5006,8 @@ This will fail in production.`);
       /* CLASS, STYLE */
     );
   }
-  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["render", _sfc_render$5], ["__scopeId", "data-v-cd7f1d6e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue"]]);
-  const _sfc_main$y = /* @__PURE__ */ vue.defineComponent({
+  const __easycom_0$2 = /* @__PURE__ */ _export_sfc(_sfc_main$B, [["render", _sfc_render$5], ["__scopeId", "data-v-cd7f1d6e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue"]]);
+  const _sfc_main$A = /* @__PURE__ */ vue.defineComponent({
     __name: "edit",
     setup(__props) {
       vue.ref(false);
@@ -5414,8 +5110,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingProfileEdit = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-addd1d6b"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/profile/edit.vue"]]);
-  const _sfc_main$x = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingProfileEdit = /* @__PURE__ */ _export_sfc(_sfc_main$A, [["__scopeId", "data-v-addd1d6b"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/profile/edit.vue"]]);
+  const _sfc_main$z = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       const tapPhone = () => {
@@ -5565,8 +5261,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountIndex = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-81008e1e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/index.vue"]]);
-  const _sfc_main$w = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountIndex = /* @__PURE__ */ _export_sfc(_sfc_main$z, [["__scopeId", "data-v-81008e1e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/index.vue"]]);
+  const _sfc_main$y = /* @__PURE__ */ vue.defineComponent({
     __name: "replace",
     setup(__props) {
       onLoad((o) => {
@@ -5746,8 +5442,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountReplace = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-4304dd3b"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/replace.vue"]]);
-  const _sfc_main$v = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountReplace = /* @__PURE__ */ _export_sfc(_sfc_main$y, [["__scopeId", "data-v-4304dd3b"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/replace.vue"]]);
+  const _sfc_main$x = /* @__PURE__ */ vue.defineComponent({
     __name: "delAccount",
     setup(__props) {
       let tips = vue.ref("获取验证码");
@@ -5869,8 +5565,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountDelAccount = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["__scopeId", "data-v-be033e5c"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/delAccount.vue"]]);
-  const _sfc_main$u = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountDelAccount = /* @__PURE__ */ _export_sfc(_sfc_main$x, [["__scopeId", "data-v-be033e5c"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/delAccount.vue"]]);
+  const _sfc_main$w = /* @__PURE__ */ vue.defineComponent({
     __name: "login-device",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5896,8 +5592,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountDeviceLoginDevice = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-10ee109e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/device/login-device.vue"]]);
-  const _sfc_main$t = {};
+  const PagesMineSettingAccountDeviceLoginDevice = /* @__PURE__ */ _export_sfc(_sfc_main$w, [["__scopeId", "data-v-10ee109e"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/device/login-device.vue"]]);
+  const _sfc_main$v = {};
   function _sfc_render$4(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "device-info" }, [
       vue.createElementVNode("view", { class: "gap" }),
@@ -5947,8 +5643,8 @@ This will fail in production.`);
       vue.createElementVNode("view", { class: "login-out" }, "退出登录")
     ]);
   }
-  const PagesMineSettingAccountDeviceDeviceInfo = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["render", _sfc_render$4], ["__scopeId", "data-v-3f4f64e9"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/device/device-info.vue"]]);
-  const _sfc_main$s = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountDeviceDeviceInfo = /* @__PURE__ */ _export_sfc(_sfc_main$v, [["render", _sfc_render$4], ["__scopeId", "data-v-3f4f64e9"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/device/device-info.vue"]]);
+  const _sfc_main$u = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       return (_ctx, _cache) => {
@@ -5982,8 +5678,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountSecurityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-c073f0fd"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/security/index.vue"]]);
-  const _sfc_main$r = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountSecurityIndex = /* @__PURE__ */ _export_sfc(_sfc_main$u, [["__scopeId", "data-v-c073f0fd"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/security/index.vue"]]);
+  const _sfc_main$t = /* @__PURE__ */ vue.defineComponent({
     __name: "security-lock",
     setup(__props) {
       let title = vue.ref("");
@@ -6058,8 +5754,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineSettingAccountSecuritySecurityLock = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-720387f8"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/security/security-lock.vue"]]);
-  const _sfc_main$q = /* @__PURE__ */ vue.defineComponent({
+  const PagesMineSettingAccountSecuritySecurityLock = /* @__PURE__ */ _export_sfc(_sfc_main$t, [["__scopeId", "data-v-720387f8"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/setting/account/security/security-lock.vue"]]);
+  const _sfc_main$s = /* @__PURE__ */ vue.defineComponent({
     __name: "home-article-item",
     props: {
       // 类型 0:无图片；1:一张图片-右侧小图；2:一张图片-一张大图；3:三张小图排一行
@@ -6210,8 +5906,8 @@ This will fail in production.`);
       };
     }
   });
-  const homeArticleItem = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__scopeId", "data-v-ca43cbb2"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/home-article-item.vue"]]);
-  const _sfc_main$p = /* @__PURE__ */ vue.defineComponent({
+  const homeArticleItem = /* @__PURE__ */ _export_sfc(_sfc_main$s, [["__scopeId", "data-v-ca43cbb2"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/home-article-item.vue"]]);
+  const _sfc_main$r = /* @__PURE__ */ vue.defineComponent({
     __name: "info-action",
     props: {
       type: { type: String, required: false, default: "article" },
@@ -6237,6 +5933,8 @@ This will fail in production.`);
         }
       });
       const clickItem = (value) => {
+        if (value === "share")
+          handleShare();
         if (value === "like")
           handleLike();
         if (value === "comment")
@@ -6246,12 +5944,18 @@ This will fail in production.`);
       };
       const like2 = vue.ref(false);
       const handleLike = async () => {
+        emit("change", "like");
       };
       const collect2 = vue.ref(false);
       const handleCollect = async () => {
+        emit("change", "collect");
+      };
+      const handleShare = () => {
+        emit("change", "share");
       };
       const handleComment = () => {
         emit("onClickComment");
+        emit("change", "comment");
       };
       vue.onMounted(() => {
       });
@@ -6346,7 +6050,7 @@ This will fail in production.`);
       };
     }
   });
-  const infoAction = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-7a0707fd"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/info-action.vue"]]);
+  const infoAction = /* @__PURE__ */ _export_sfc(_sfc_main$r, [["__scopeId", "data-v-7a0707fd"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/info-action.vue"]]);
   const getUserCollectList = (query) => {
     return request({
       url: "/article/collect/getUserCollectList",
@@ -6355,7 +6059,7 @@ This will fail in production.`);
     });
   };
   const __default__$6 = { name: "collect" };
-  const _sfc_main$o = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$q = /* @__PURE__ */ vue.defineComponent({
     ...__default__$6,
     setup(__props) {
       const list = vue.ref([]);
@@ -6401,9 +6105,9 @@ This will fail in production.`);
       };
     }
   });
-  const collect = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/collect.vue"]]);
+  const collect = /* @__PURE__ */ _export_sfc(_sfc_main$q, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/collect.vue"]]);
   const __default__$5 = { name: "comment" };
-  const _sfc_main$n = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$p = /* @__PURE__ */ vue.defineComponent({
     ...__default__$5,
     setup(__props) {
       let list = vue.ref([]);
@@ -6490,9 +6194,9 @@ This will fail in production.`);
       };
     }
   });
-  const comment = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__scopeId", "data-v-ba2f5cae"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/comment.vue"]]);
+  const comment = /* @__PURE__ */ _export_sfc(_sfc_main$p, [["__scopeId", "data-v-ba2f5cae"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/comment.vue"]]);
   const __default__$4 = { name: "like" };
-  const _sfc_main$m = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$o = /* @__PURE__ */ vue.defineComponent({
     ...__default__$4,
     setup(__props) {
       vue.ref([]);
@@ -6528,9 +6232,9 @@ This will fail in production.`);
       };
     }
   });
-  const like = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/like.vue"]]);
+  const like = /* @__PURE__ */ _export_sfc(_sfc_main$o, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/like.vue"]]);
   const __default__$3 = { name: "history" };
-  const _sfc_main$l = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$n = /* @__PURE__ */ vue.defineComponent({
     ...__default__$3,
     setup(__props) {
       vue.ref([]);
@@ -6567,8 +6271,8 @@ This will fail in production.`);
       };
     }
   });
-  const history = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/history.vue"]]);
-  const _sfc_main$k = /* @__PURE__ */ vue.defineComponent({
+  const history = /* @__PURE__ */ _export_sfc(_sfc_main$n, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/history.vue"]]);
+  const _sfc_main$m = /* @__PURE__ */ vue.defineComponent({
     __name: "report",
     setup(__props) {
       let list = vue.ref([
@@ -6680,8 +6384,8 @@ This will fail in production.`);
       };
     }
   });
-  const report = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["__scopeId", "data-v-6d0a3e75"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/report.vue"]]);
-  const _sfc_main$j = /* @__PURE__ */ vue.defineComponent({
+  const report = /* @__PURE__ */ _export_sfc(_sfc_main$m, [["__scopeId", "data-v-6d0a3e75"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/components/report.vue"]]);
+  const _sfc_main$l = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       onLoad((query) => {
@@ -6759,12 +6463,12 @@ This will fail in production.`);
       };
     }
   });
-  const PagesMineContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-2f37139f"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/index.vue"]]);
-  const _sfc_main$i = {};
+  const PagesMineContentIndex = /* @__PURE__ */ _export_sfc(_sfc_main$l, [["__scopeId", "data-v-2f37139f"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/content/index.vue"]]);
+  const _sfc_main$k = {};
   function _sfc_render$3(_ctx, _cache) {
     return vue.openBlock(), vue.createElementBlock("view", null, " mine ");
   }
-  const PagesMineMine = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["render", _sfc_render$3], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/mine.vue"]]);
+  const PagesMineMine = /* @__PURE__ */ _export_sfc(_sfc_main$k, [["render", _sfc_render$3], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/mine/mine.vue"]]);
   const getUserSearchHistoryList = (query) => {
     return request({
       url: "/article/search/getUserSearchHistory",
@@ -6804,7 +6508,7 @@ This will fail in production.`);
     });
   };
   const __default__$2 = { name: "search-hot" };
-  const _sfc_main$h = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$j = /* @__PURE__ */ vue.defineComponent({
     ...__default__$2,
     props: {
       list: {
@@ -6850,8 +6554,8 @@ This will fail in production.`);
       };
     }
   });
-  const searchHot = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-42fcbe26"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-hot.vue"]]);
-  const _sfc_main$g = /* @__PURE__ */ vue.defineComponent({
+  const searchHot = /* @__PURE__ */ _export_sfc(_sfc_main$j, [["__scopeId", "data-v-42fcbe26"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-hot.vue"]]);
+  const _sfc_main$i = /* @__PURE__ */ vue.defineComponent({
     __name: "search-advice",
     props: {
       list: {
@@ -6897,9 +6601,9 @@ This will fail in production.`);
       };
     }
   });
-  const searchAdvice = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-f40c3399"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-advice.vue"]]);
+  const searchAdvice = /* @__PURE__ */ _export_sfc(_sfc_main$i, [["__scopeId", "data-v-f40c3399"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-advice.vue"]]);
   const __default__$1 = { name: "search-history" };
-  const _sfc_main$f = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$h = /* @__PURE__ */ vue.defineComponent({
     ...__default__$1,
     props: {
       list: {
@@ -6989,8 +6693,8 @@ This will fail in production.`);
       };
     }
   });
-  const searchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-6e7c64aa"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-history.vue"]]);
-  const _sfc_main$e = /* @__PURE__ */ vue.defineComponent({
+  const searchHistory = /* @__PURE__ */ _export_sfc(_sfc_main$h, [["__scopeId", "data-v-6e7c64aa"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/components/search-history.vue"]]);
+  const _sfc_main$g = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       vue.ref("");
@@ -7159,7 +6863,7 @@ This will fail in production.`);
       };
     }
   });
-  const PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-2dab939d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/index.vue"]]);
+  const PagesSearchIndex = /* @__PURE__ */ _export_sfc(_sfc_main$g, [["__scopeId", "data-v-2dab939d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/search/index.vue"]]);
   const _imports_0$1 = "/static/images/login.png";
   const login = {
     background: "data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAABLAAD/4QMvaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzE0NSA3OS4xNjM0OTksIDIwMTgvMDgvMTMtMTY6NDA6MjIgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo5Mjg2NkQyRTdBMEMxMUVBQTlFRTg5MEZFMkE3MEZBQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo5Mjg2NkQyRjdBMEMxMUVBQTlFRTg5MEZFMkE3MEZBQiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjkyODY2RDJDN0EwQzExRUFBOUVFODkwRkUyQTcwRkFCIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjkyODY2RDJEN0EwQzExRUFBOUVFODkwRkUyQTcwRkFCIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+IMWElDQ19QUk9GSUxFAAEBAAAMSExpbm8CEAAAbW50clJH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U222221OSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSYpJJJJJJOZMmSAbISSSSSSSSSSSSSSSSSSSSSTC222220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTJJJJJJJIFk2SBbASSSSSSSSSSSSSSSSSSSSSSIW22222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQtJJJJJJJEkyQDZCSSSSSSSSSSSSSSSSSSSSSSTW22221eSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDJJJJJJJJSSQLYCSSSSSSSSSSSSSSSSSSSSSSSW22222iSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQpJJJJJJJIGAbISSSSSSSSSSSSSSSSSSSSSSSSSW2222lySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSRVJJJJJJJJBBbASSSSSSSSSSSSSSSSSSSSSSSSQK22220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSNJJJJJJJJLDZCSSSSSSSSSSSSSSSSSSSSSSSSSC22220eSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSUpJJJJJJJJJMCSSSSSSSSSSSSSSSSSSSSSSSSSQW2222uSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTJJJJJJJJJJaSSSSSSSSSSSSSSSSSSSSSSSSSSTq22226SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQBJJJJJJJJJI6SSSSSSSSSSSSSSSSSSSSSSSSSSS22220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTJJJJJJJJJJQySSSSSSSSSSSSSSSSSSSSSSSSSc22222SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSJJJJJJJJJJJWSSSSSSSSSSSSSSSSSSSSSSSSST22223SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSST5JJJJJJJJJJLeSSSSSSSSSSSSSSSSSSSSSSSSTW2222mSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSEJJJJJJJJJJJSySSSSUySSSSSSSSSSSSSSSSSQK22222SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSST1JJJJJJJJJJL+SSSGUmSSSSSSSSSSSSSSSSSSS2222iSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSMVJJJJJJJJJJC+SaUkmSSSSSSSSSSSSSSSSSSG2222iSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSNJJJJJJJJJJJBxEkkmSSSSSSSSSSSSSSSSSSG2222kSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSAZJJJJJJJJKOxEkkmSSSSSSSSSSSSSSSSSSRW2220ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSW9JJJJJJYoyQakkmSSSSSSSSSSSSSSSSSSS22221SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSnPJIyzySSSQdUmSSSSSSSSSSSSSSSSSST22220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQvySSSSSSSHKSSSSSSSSSSSSSSSSSSQW2222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSRW2221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSR22221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSR22221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTW2222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQW2220ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSR22223SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTW2222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSK22223ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSK22226SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSO2222uSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSW2222+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSR22222qSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSR22220qSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDW2221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSa22222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSW2222nySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTW2222+SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSDW2222qSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS22220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSRW22220SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSfW2222gSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQW222226SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSB222221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQO22222hySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSa2222222SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQi222221ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSVW222227ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSF2222221WSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSeG2222223SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSEC2222222mSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQSSSSSSSQ+222222222ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQ2EPiDnea222222220iSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS2222222222222222pSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS2222222222222220GSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS222222222222222gSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS222222222222225SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS2222222222222jCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS222222222222kOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS22222222222qOSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS22222222220qSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS222222227HySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSQWO5Cha55ySSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS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kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk4MAkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJMDkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkF2jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgijkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjrnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkiPXkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhxXkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkiBXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklO/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkka/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkj0LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkh1LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJgMkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkn+kckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkqUckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk1c8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkp48kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk2q8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkGK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJn4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVX4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkLRYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmhYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkZMAkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkd8DkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkF2jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkginkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjLnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmXXkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklxXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmFXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklu/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkq7Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkki0LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhlLEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJgckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkj+kckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkIUckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVc8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJ48kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkWq8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkGK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJn4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkTX4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkqRYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmpYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkRMAkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkd8jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklyjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmqnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklLHkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmXXkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklxXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmE3Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkknu/EkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhaLEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkki0LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkknBKEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJgckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkg+kckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkMUckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdc8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkB68kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkeK8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkSK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkJn4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzX4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk6hYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkOpYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkBMAkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk/0jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklSjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmKnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklfHkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmVXkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklxXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmE/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjq/EkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhaLEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkm0LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkknBgEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhJgckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgu0ckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkEUckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdc8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkR68kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkOK8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkQK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkp34kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkzX4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkehYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkOpYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhMDkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk/0jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklSjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmrnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklPHkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkm1XkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhxXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgM/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkiq/EkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhaLEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk0LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjJgEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhvgckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgu0ckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkEU8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkdc8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkky68kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkuK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwq4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkt34kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklXYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkehYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkMpYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhMDkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkf0jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklCjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkirnkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhPHkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkki1XkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgxXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhM/Ekkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkki6/EkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklSLEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk1LEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjJgEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjvkckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkuUckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkklU8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk5Y8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkky68kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkuK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkwm4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkt34kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkLRYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkWhYkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk4JQkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhMDkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkH0jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmyjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkj0nkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkmyjkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkd0Lkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk8ICkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkVXakkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkSK4kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk6U8kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkjqI0kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk/tXEkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgVonkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkj264kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkgup48kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk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"
@@ -7177,7 +6881,7 @@ This will fail in production.`);
       data
     });
   };
-  const _sfc_main$d = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$f = /* @__PURE__ */ vue.defineComponent({
     __name: "login",
     setup(__props) {
       const appStore = useAppStore();
@@ -7922,9 +7626,9 @@ This will fail in production.`);
       };
     }
   });
-  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-e4e4508d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/login/login.vue"]]);
+  const PagesLoginLogin = /* @__PURE__ */ _export_sfc(_sfc_main$f, [["__scopeId", "data-v-e4e4508d"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/login/login.vue"]]);
   const _imports_0 = "/static/macbook.png";
-  const _sfc_main$c = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$e = /* @__PURE__ */ vue.defineComponent({
     __name: "confirmLogin",
     setup(__props) {
       const { appName } = useAppStore();
@@ -8006,8 +7710,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesLoginConfirmLogin = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-7aef36b4"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/login/confirmLogin.vue"]]);
-  const _sfc_main$b = /* @__PURE__ */ vue.defineComponent({
+  const PagesLoginConfirmLogin = /* @__PURE__ */ _export_sfc(_sfc_main$e, [["__scopeId", "data-v-7aef36b4"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/login/confirmLogin.vue"]]);
+  const _sfc_main$d = /* @__PURE__ */ vue.defineComponent({
     __name: "index",
     setup(__props) {
       const editStatus = vue.ref(false);
@@ -8379,8 +8083,8 @@ This will fail in production.`);
       };
     }
   });
-  const PagesChannelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["__scopeId", "data-v-09f7f959"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/channel/index.vue"]]);
-  const _sfc_main$a = /* @__PURE__ */ vue.defineComponent({
+  const PagesChannelIndex = /* @__PURE__ */ _export_sfc(_sfc_main$d, [["__scopeId", "data-v-09f7f959"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/channel/index.vue"]]);
+  const _sfc_main$c = /* @__PURE__ */ vue.defineComponent({
     __name: "info-article-item",
     setup(__props) {
       const isPic = vue.ref(true);
@@ -8429,7 +8133,7 @@ This will fail in production.`);
       };
     }
   });
-  const infoArticleItem = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["__scopeId", "data-v-c45bd66a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/info-article-item.vue"]]);
+  const infoArticleItem = /* @__PURE__ */ _export_sfc(_sfc_main$c, [["__scopeId", "data-v-c45bd66a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/info-article-item.vue"]]);
   class MPAnimation {
     constructor(options, _this) {
       this.options = options;
@@ -8542,7 +8246,7 @@ This will fail in production.`);
     clearTimeout(_this.timer);
     return new MPAnimation(option, _this);
   }
-  const _sfc_main$9 = {
+  const _sfc_main$b = {
     name: "uniTransition",
     emits: ["click", "change"],
     props: {
@@ -8806,8 +8510,8 @@ This will fail in production.`);
       [vue.vShow, $data.isShow]
     ]);
   }
-  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["render", _sfc_render$2], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
-  const _sfc_main$8 = {
+  const __easycom_0$1 = /* @__PURE__ */ _export_sfc(_sfc_main$b, [["render", _sfc_render$2], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue"]]);
+  const _sfc_main$a = {
     name: "uniPopup",
     components: {},
     emits: ["change", "maskClick"],
@@ -9194,9 +8898,9 @@ This will fail in production.`);
       /* CLASS */
     )) : vue.createCommentVNode("v-if", true);
   }
-  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["render", _sfc_render$1], ["__scopeId", "data-v-b85870fc"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
+  const __easycom_0 = /* @__PURE__ */ _export_sfc(_sfc_main$a, [["render", _sfc_render$1], ["__scopeId", "data-v-b85870fc"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/node_modules/.pnpm/@dcloudio+uni-ui@1.5.2/node_modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue"]]);
   const __default__ = { name: "article-comment" };
-  const _sfc_main$7 = /* @__PURE__ */ vue.defineComponent({
+  const _sfc_main$9 = /* @__PURE__ */ vue.defineComponent({
     ...__default__,
     props: {
       articleId: {
@@ -9541,7 +9245,482 @@ This will fail in production.`);
       };
     }
   });
-  const articleComment = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-a61c81ed"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/article-comment.vue"]]);
+  const articleComment = /* @__PURE__ */ _export_sfc(_sfc_main$9, [["__scopeId", "data-v-a61c81ed"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/article-comment.vue"]]);
+  const _sfc_main$8 = /* @__PURE__ */ vue.defineComponent({
+    ...{
+      name: "CreateFavoritesPopup"
+    },
+    __name: "create",
+    emits: ["addSuccess"],
+    setup(__props, { expose: __expose, emit: __emit }) {
+      const emit = __emit;
+      const isShow = vue.ref(true);
+      const popupRef = vue.ref();
+      const submitLoading = vue.ref(false);
+      const form = vue.reactive({
+        name: "",
+        desc: "",
+        isPublic: true
+      });
+      const changeRadio = (e) => {
+        form.isPublic = e.detail.value == "true" ? true : false;
+      };
+      const formSubmit = async () => {
+        if (submitLoading.value || !form.name)
+          return;
+        formatAppLog("log", "at pages/article/components/favorites/create.vue:82", "formdata", form);
+        submitLoading.value = true;
+        await addFavorite();
+        submitLoading.value = false;
+        close();
+        emit("addSuccess");
+      };
+      function open2() {
+        var _a;
+        (_a = popupRef.value) == null ? void 0 : _a.open();
+      }
+      function close() {
+        var _a;
+        (_a = popupRef.value) == null ? void 0 : _a.close();
+        form.name = "";
+        form.desc = "";
+        form.isPublic = true;
+      }
+      function addFavorite(time = 350) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve([]);
+          }, time);
+        });
+      }
+      __expose({
+        open: open2,
+        close
+      });
+      return (_ctx, _cache) => {
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0);
+        return vue.openBlock(), vue.createBlock(
+          _component_uni_popup,
+          {
+            ref_key: "popupRef",
+            ref: popupRef,
+            type: "bottom",
+            isMaskClick: false,
+            "border-radius": "10px 10px 0 0"
+          },
+          {
+            default: vue.withCtx(() => [
+              vue.unref(isShow) ? (vue.openBlock(), vue.createElementBlock("view", {
+                key: 0,
+                class: "popup-box"
+              }, [
+                vue.createElementVNode("view", { class: "top" }, [
+                  vue.createElementVNode("view", { class: "title-bar" }, [
+                    vue.createElementVNode("view", {
+                      class: "back",
+                      onClick: close
+                    }, [
+                      vue.createElementVNode("text", { class: "iconfont icon-xiangzuojiantou text-blue-5 text-18px" })
+                    ]),
+                    vue.createElementVNode("view", { class: "title" }, [
+                      vue.createElementVNode("text", { class: "text-15px text-_a_484a4b" }, " 新键收藏夹 ")
+                    ]),
+                    vue.createElementVNode("view", { class: "back" }, [
+                      vue.createElementVNode(
+                        "text",
+                        {
+                          class: vue.normalizeClass(["text-14px", !vue.unref(submitLoading) && vue.unref(form).name ? "text-blue-5" : "text-blue-3"]),
+                          onClick: formSubmit
+                        },
+                        " 完成 ",
+                        2
+                        /* CLASS */
+                      )
+                    ])
+                  ])
+                ]),
+                vue.createElementVNode("view", { class: "centre" }, [
+                  vue.createElementVNode(
+                    "form",
+                    {
+                      class: "form",
+                      onSubmit: formSubmit
+                    },
+                    [
+                      vue.createElementVNode("view", { class: "uni-form-item uni-column is-border" }, [
+                        vue.withDirectives(vue.createElementVNode(
+                          "input",
+                          {
+                            class: "input",
+                            "onUpdate:modelValue": _cache[0] || (_cache[0] = ($event) => vue.unref(form).name = $event),
+                            placeholder: "收藏夹名称",
+                            maxlength: "15",
+                            "adjust-position": false,
+                            focus: ""
+                          },
+                          null,
+                          512
+                          /* NEED_PATCH */
+                        ), [
+                          [vue.vModelText, vue.unref(form).name]
+                        ])
+                      ]),
+                      vue.createElementVNode("view", { class: "uni-form-item uni-column is-border" }, [
+                        vue.withDirectives(vue.createElementVNode(
+                          "textarea",
+                          {
+                            class: "textarea",
+                            "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event) => vue.unref(form).desc = $event),
+                            placeholder: "收藏夹描述",
+                            "adjust-position": false,
+                            "auto-height": "",
+                            maxlength: "100"
+                          },
+                          null,
+                          512
+                          /* NEED_PATCH */
+                        ), [
+                          [vue.vModelText, vue.unref(form).desc]
+                        ])
+                      ]),
+                      vue.createElementVNode("view", { class: "uni-form-item uni-column" }, [
+                        vue.createElementVNode(
+                          "radio-group",
+                          {
+                            class: "radio-group",
+                            onChange: changeRadio
+                          },
+                          [
+                            vue.createElementVNode("view", null, [
+                              vue.createElementVNode("label", { class: "radio-item" }, [
+                                vue.createElementVNode("radio", {
+                                  class: "radio",
+                                  value: "true",
+                                  checked: ""
+                                }),
+                                vue.createElementVNode("text", { class: "name" }, "公开"),
+                                vue.createElementVNode("text", { class: "desc" }, "将展示在你的主页")
+                              ])
+                            ]),
+                            vue.createElementVNode("view", null, [
+                              vue.createElementVNode("label", { class: "radio-item" }, [
+                                vue.createElementVNode("radio", {
+                                  class: "radio",
+                                  value: "false"
+                                }),
+                                vue.createElementVNode("text", { class: "name" }, "私密"),
+                                vue.createElementVNode("text", { class: "desc" }, "仅自己可见")
+                              ])
+                            ])
+                          ],
+                          32
+                          /* NEED_HYDRATION */
+                        )
+                      ])
+                    ],
+                    32
+                    /* NEED_HYDRATION */
+                  )
+                ])
+              ])) : vue.createCommentVNode("v-if", true)
+            ]),
+            _: 1
+            /* STABLE */
+          },
+          512
+          /* NEED_PATCH */
+        );
+      };
+    }
+  });
+  const CreateFavorites = /* @__PURE__ */ _export_sfc(_sfc_main$8, [["__scopeId", "data-v-a2698d1a"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/favorites/create.vue"]]);
+  const _sfc_main$7 = /* @__PURE__ */ vue.defineComponent({
+    ...{
+      name: "FavoritesPopup"
+    },
+    __name: "list",
+    props: {
+      articleId: {
+        type: Number,
+        default: true
+      }
+    },
+    setup(__props, { expose: __expose }) {
+      const popupRef = vue.ref();
+      const createFavoritesRef = vue.ref();
+      const openCreateFavorites = () => {
+        var _a;
+        (_a = createFavoritesRef.value) == null ? void 0 : _a.open();
+      };
+      const loading = vue.ref(false);
+      const submitLoading = vue.ref(false);
+      const list = vue.ref([]);
+      const selectList = vue.ref([]);
+      const clickItem = (item) => {
+        item.isChecked = !item.isChecked;
+        if (selectList.value.includes(item.id)) {
+          if (!item.isChecked) {
+            selectList.value = selectList.value.filter((fid) => fid != item.id);
+          }
+        } else {
+          selectList.value.push(item.id);
+        }
+      };
+      const submit = async () => {
+        if (selectList.value.length === 0 || submitLoading.value)
+          return;
+        submitLoading.value = true;
+        await getList();
+        submitLoading.value = false;
+        close();
+        uni.showToast({
+          title: "收藏成功",
+          icon: "success"
+        });
+      };
+      function open2() {
+        var _a;
+        (_a = popupRef.value) == null ? void 0 : _a.open();
+        loadList();
+      }
+      function close() {
+        var _a;
+        (_a = popupRef.value) == null ? void 0 : _a.close();
+      }
+      const loadList = async () => {
+        formatAppLog("log", "at pages/article/components/favorites/list.vue:141", "loadList");
+        loading.value = true;
+        list.value = [];
+        const reslut = await getList();
+        list.value = reslut;
+        loading.value = false;
+        list.value.forEach((item) => {
+          if (item.isChecked === true) {
+            selectList.value.push(item.id);
+          }
+        });
+      };
+      function getList(time = 350) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve([
+              {
+                id: 1,
+                name: "娱乐",
+                count: 398,
+                isPublic: true,
+                isChecked: true
+              },
+              {
+                id: 2,
+                name: "股票",
+                count: 323,
+                isPublic: true,
+                isChecked: true
+              },
+              {
+                id: 3,
+                name: "后端",
+                count: 398,
+                isPublic: false,
+                isChecked: false
+              },
+              {
+                id: 4,
+                name: "饭菜",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              },
+              {
+                id: 5,
+                name: "提神",
+                count: 398,
+                isPublic: false,
+                isChecked: false
+              },
+              {
+                id: 6,
+                name: "提神",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              },
+              {
+                id: 7,
+                name: "提神",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              },
+              {
+                id: 8,
+                name: "提神",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              },
+              {
+                id: 9,
+                name: "提神",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              },
+              {
+                id: 10,
+                name: "提神",
+                count: 398,
+                isPublic: true,
+                isChecked: false
+              }
+            ]);
+          }, time);
+        });
+      }
+      __expose({
+        open: open2,
+        close
+      });
+      return (_ctx, _cache) => {
+        const _component_uni_popup = resolveEasycom(vue.resolveDynamicComponent("uni-popup"), __easycom_0);
+        return vue.openBlock(), vue.createElementBlock(
+          vue.Fragment,
+          null,
+          [
+            vue.createVNode(
+              _component_uni_popup,
+              {
+                ref_key: "popupRef",
+                ref: popupRef,
+                type: "bottom",
+                "border-radius": "10px 10px 0 0"
+              },
+              {
+                default: vue.withCtx(() => [
+                  vue.createElementVNode("view", { class: "popup-box" }, [
+                    vue.createElementVNode("view", { class: "top" }, [
+                      vue.createElementVNode("view", { class: "title-bar" }, [
+                        vue.createElementVNode("view", { class: "title" }, [
+                          vue.createElementVNode("text", { class: "iconfont icon-shoucang1 text-blue-5 text-16px" }),
+                          vue.createElementVNode("text", null, " 选择收藏夹 ")
+                        ]),
+                        vue.createElementVNode("view", {
+                          class: "create",
+                          onClick: openCreateFavorites
+                        }, [
+                          vue.createElementVNode("text", { class: "iconfont icon-jiahao text-blue-5 text-11px" }),
+                          vue.createElementVNode("text", { class: "m-l2px text-12px text-blue-5" }, " 新建收藏夹 ")
+                        ])
+                      ])
+                    ]),
+                    vue.createElementVNode("view", { class: "centre" }, [
+                      vue.unref(list).length ? (vue.openBlock(true), vue.createElementBlock(
+                        vue.Fragment,
+                        { key: 0 },
+                        vue.renderList(vue.unref(list), (item, index) => {
+                          return vue.openBlock(), vue.createElementBlock("view", {
+                            class: "list",
+                            key: index
+                          }, [
+                            vue.createElementVNode("checkbox-group", null, [
+                              vue.createElementVNode("label", {
+                                class: "item",
+                                onClick: ($event) => clickItem(item)
+                              }, [
+                                vue.createElementVNode("view", { class: "item-left" }, [
+                                  vue.createElementVNode(
+                                    "view",
+                                    { class: "item-title" },
+                                    vue.toDisplayString(item.name),
+                                    1
+                                    /* TEXT */
+                                  ),
+                                  vue.createElementVNode("view", { class: "item-content" }, [
+                                    vue.createElementVNode(
+                                      "text",
+                                      null,
+                                      vue.toDisplayString(item.count) + "个内容",
+                                      1
+                                      /* TEXT */
+                                    ),
+                                    vue.createElementVNode("text", { class: "mx-5px" }, "·"),
+                                    vue.createElementVNode(
+                                      "text",
+                                      { class: "text-11px" },
+                                      vue.toDisplayString(item.isPublic ? "公开" : "私密"),
+                                      1
+                                      /* TEXT */
+                                    )
+                                  ])
+                                ]),
+                                vue.createElementVNode("view", { class: "item-right" }, [
+                                  vue.createElementVNode("checkbox", {
+                                    class: "checkbox",
+                                    value: item.id + "",
+                                    checked: item.isChecked,
+                                    onClick: ($event) => clickItem(item)
+                                  }, null, 8, ["value", "checked", "onClick"])
+                                ])
+                              ], 8, ["onClick"])
+                            ])
+                          ]);
+                        }),
+                        128
+                        /* KEYED_FRAGMENT */
+                      )) : (vue.openBlock(), vue.createElementBlock("view", {
+                        key: 1,
+                        class: "empty"
+                      }, [
+                        vue.createCommentVNode(' <image src="@/s" mode="aspectFit"></image> '),
+                        vue.createElementVNode("view", { class: "iconfont icon-liebiao" }),
+                        vue.createElementVNode(
+                          "view",
+                          { class: "text" },
+                          vue.toDisplayString(vue.unref(loading) ? "数据加载中" : "暂无收藏"),
+                          1
+                          /* TEXT */
+                        )
+                      ]))
+                    ]),
+                    vue.createElementVNode("view", { class: "bottom" }, [
+                      vue.createElementVNode("button", {
+                        style: { "background-color": "#2fa3f3" },
+                        class: "btn",
+                        size: "mini",
+                        type: "primary",
+                        disabled: vue.unref(selectList).length === 0 || vue.unref(submitLoading),
+                        loading: vue.unref(submitLoading),
+                        onClick: submit
+                      }, " 完成 ", 8, ["disabled", "loading"])
+                    ])
+                  ])
+                ]),
+                _: 1
+                /* STABLE */
+              },
+              512
+              /* NEED_PATCH */
+            ),
+            vue.createVNode(
+              vue.unref(CreateFavorites),
+              {
+                ref_key: "createFavoritesRef",
+                ref: createFavoritesRef,
+                onAddSuccess: loadList
+              },
+              null,
+              512
+              /* NEED_PATCH */
+            )
+          ],
+          64
+          /* STABLE_FRAGMENT */
+        );
+      };
+    }
+  });
+  const favoritesList = /* @__PURE__ */ _export_sfc(_sfc_main$7, [["__scopeId", "data-v-4328f121"], ["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/article/components/favorites/list.vue"]]);
   const _sfc_main$6 = /* @__PURE__ */ vue.defineComponent({
     __name: "info",
     setup(__props) {
@@ -9550,6 +9729,7 @@ This will fail in production.`);
         "e8340613-navBarPaddingTopheight": vue.unref(navBarPaddingTopheight),
         "e8340613-safeAreaBottomHeight": vue.unref(safeAreaBottomHeight)
       }));
+      const favoritesListRef = vue.ref();
       const pageTitle = vue.ref("文章详情页");
       const showNavBarAuthor = vue.ref(false);
       const articleCommentRef = vue.ref();
@@ -9564,8 +9744,14 @@ This will fail in production.`);
         navBarheight.value = systemInfo.safeArea.top + 44 + "px";
         navBarPaddingTopheight.value = systemInfo.safeArea.top + "px";
       };
-      const onClickComment = () => {
-        articleCommentRef.value.popupOpen();
+      const actionChange = (type) => {
+        var _a, _b;
+        if (type === "collect") {
+          (_a = favoritesListRef.value) == null ? void 0 : _a.open();
+        }
+        if (type === "comment") {
+          (_b = articleCommentRef.value) == null ? void 0 : _b.popupOpen();
+        }
       };
       const back = () => {
         uni.navigateBack();
@@ -9580,7 +9766,7 @@ This will fail in production.`);
         const query = uni.createSelectorQuery();
         query.select(".article-user").boundingClientRect((data) => {
           if (!data)
-            return formatAppLog("error", "at pages/article/info.vue:150", "data is null");
+            return formatAppLog("error", "at pages/article/info.vue:158", "data is null");
           if (Number(data.top) - 44 <= 0) {
             showNavBarAuthor.value = true;
           } else {
@@ -9726,7 +9912,7 @@ This will fail in production.`);
                 class: "info-action",
                 id: 1,
                 info: { commentCount: 0, collectCount: 0, likeCount: 0 },
-                onOnClickComment: onClickComment,
+                onChange: actionChange,
                 fixed: "",
                 border: ""
               }),
@@ -9734,6 +9920,17 @@ This will fail in production.`);
             ],
             32
             /* NEED_HYDRATION */
+          ),
+          vue.createVNode(
+            favoritesList,
+            {
+              ref_key: "favoritesListRef",
+              ref: favoritesListRef,
+              articleId: 1
+            },
+            null,
+            512
+            /* NEED_PATCH */
           )
         ]);
       };
@@ -13577,6 +13774,7 @@ ${codeFrame}` : message2);
     "tabbar.mine": "mine",
     "pages.home": "home",
     "pages.mine": "mine",
+    "index.language-change-confirm": "Applying this setting will restart the app",
     "locale.auto": "System",
     "locale.en": "English",
     "locale.zh-hans": "简体中文",
@@ -13598,7 +13796,6 @@ ${codeFrame}` : message2);
     "index.language-info": "Settings",
     "index.system-language": "System language",
     "index.application-language": "Application language",
-    "index.language-change-confirm": "Applying this setting will restart the app",
     "word.whole": "whole",
     "word.download": "Download Records",
     "word.preservation": "Transfer to my mobile phone",
@@ -13623,6 +13820,7 @@ ${codeFrame}` : message2);
     "tabbar.mine": "我的",
     "pages.home": "首页",
     "pages.mine": "我的",
+    "index.language-change-confirm": "应用此设置将重启App",
     "locale.auto": "系统",
     "locale.en": "English",
     "locale.zh-hans": "简体中文",
@@ -13656,11 +13854,23 @@ ${codeFrame}` : message2);
   const t = i18n.global.t;
   const locale = i18n.global.locale;
   const setLocale = (lang) => {
-    uni.setLocale(lang);
-    i18n.global.locale = lang;
+    const systemInfo = uni.getSystemInfoSync();
+    if (systemInfo.osName === "android") {
+      uni.showModal({
+        content: t("index.language-change-confirm"),
+        success: (res) => {
+          if (res.confirm) {
+            uni.setLocale(lang);
+          }
+        }
+      });
+    } else {
+      uni.setLocale(lang);
+      i18n.global.locale = lang;
+    }
   };
   const getLocale = () => {
-    return i18n.global.locale;
+    return i18n.global.locale || uni.getLocale();
   };
   const _sfc_main$2 = /* @__PURE__ */ vue.defineComponent({
     __name: "home",
@@ -13689,12 +13899,23 @@ ${codeFrame}` : message2);
       };
       const name = vue.ref(t("locale.auto"));
       let lang = vue.ref("");
+      onLoad(() => {
+        const systemInfo = uni.getSystemInfoSync();
+        const systemLocale = systemInfo.osLanguage;
+        formatAppLog("log", "at pages/home/home.vue:78", "systemLocale", systemLocale);
+        let applicationLocale = uni.getLocale();
+        formatAppLog("log", "at pages/home/home.vue:80", "applicationLocale", applicationLocale);
+        uni.onLocaleChange((e) => {
+          applicationLocale = e.locale;
+          formatAppLog("log", "at pages/home/home.vue:83", "onLocaleChange-applicationLocale", applicationLocale);
+        });
+      });
       vue.onMounted(() => {
-        formatAppLog("log", "at pages/home/home.vue:75", "当前语言为：", getLocale());
+        formatAppLog("log", "at pages/home/home.vue:87", "当前语言为：", getLocale());
         lang.value = getLocale();
-        formatAppLog("log", "at pages/home/home.vue:77", "name", name.value);
-        formatAppLog("log", "at pages/home/home.vue:78", "tt", t("message.hello", { msg: "hello" }));
-        formatAppLog("log", "at pages/home/home.vue:79", "locale", locale);
+        formatAppLog("log", "at pages/home/home.vue:89", "name", name.value);
+        formatAppLog("log", "at pages/home/home.vue:90", "tt", t("message.hello", { msg: "hello" }));
+        formatAppLog("log", "at pages/home/home.vue:91", "locale", locale);
       });
       return (_ctx, _cache) => {
         const _component_uni_icons = resolveEasycom(vue.resolveDynamicComponent("uni-icons"), __easycom_0$3);
@@ -13705,6 +13926,7 @@ ${codeFrame}` : message2);
           [
             vue.createCommentVNode(' <uni-nav-bar shadow statusBar fixed title="导航栏组件"></uni-nav-bar> '),
             vue.createVNode(navSearchBar),
+            vue.createElementVNode("navigator", { url: "/pages/article/info" }, "/pages/article/info"),
             vue.createElementVNode("view", { class: "channel relative h-35px" }, [
               vue.createElementVNode("view", { class: "channel-wrapper fixed left-0 right-40px flex items-center flex-nowrap overflow-x-scroll h-35px z-1 text-15px bg-white" }, [
                 (vue.openBlock(true), vue.createElementBlock(
@@ -13851,7 +14073,6 @@ ${codeFrame}` : message2);
     }
   });
   const PagesPayPay = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__file", "/Users/quanda/Desktop/news_project/news-uniapp/pages/pay/pay.vue"]]);
-  __definePage("pages/mine/index", PagesMineIndex);
   __definePage("pages/common/guide/index", PagesCommonGuideIndex);
   __definePage("pages/mine/allService", PagesMineAllService);
   __definePage("pages/mine/download/index", PagesMineDownloadIndex);

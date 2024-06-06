@@ -40,6 +40,17 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
     const name = common_vendor.ref(locale_index.t("locale.auto"));
     let lang = common_vendor.ref("");
+    common_vendor.onLoad(() => {
+      const systemInfo = common_vendor.index.getSystemInfoSync();
+      const systemLocale = systemInfo.osLanguage;
+      console.log("systemLocale", systemLocale);
+      let applicationLocale = common_vendor.index.getLocale();
+      console.log("applicationLocale", applicationLocale);
+      common_vendor.index.onLocaleChange((e) => {
+        applicationLocale = e.locale;
+        console.log("onLocaleChange-applicationLocale", applicationLocale);
+      });
+    });
     common_vendor.onMounted(() => {
       console.log("当前语言为：", locale_index.getLocale());
       lang.value = locale_index.getLocale();
